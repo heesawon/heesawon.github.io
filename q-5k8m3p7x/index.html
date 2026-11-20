@@ -237,19 +237,31 @@ function renderTab2() {
   </div>`;
 }
 
+let cur = 0;
 function render(i) {
+  cur = i;
   document.getElementById('view').innerHTML = [renderTab0, renderTab1, renderTab2][i]();
   document.querySelectorAll('.tab').forEach((b, k) => b.classList.toggle('on', k === i));
   window.scrollTo({top: 0, behavior: 'auto'});
 }
 
-document.getElementById('hdsub').textContent = DATA.meta.asof_label;
-document.getElementById('fxbadge').innerHTML = `환율<b>${DATA.meta.fx.toLocaleString('ko-KR')}원</b>`;
+function paintHeader() {
+  document.getElementById('hdsub').textContent = DATA.meta.asof_label;
+  document.getElementById('fxbadge').innerHTML = `환율<b>${DATA.meta.fx.toLocaleString('ko-KR')}원</b>`;
+}
+
 document.getElementById('tabs').addEventListener('click', e => {
   const b = e.target.closest('.tab'); if (!b) return;
   render(Number(b.dataset.tab));
 });
+paintHeader();
 render(0);
+
+// 최신 상태 파일이 있으면 그것으로 다시 그린다 (다음 업데이트는 JSON만 교체하면 됨)
+fetch('stock_portfolio_data.json', {cache: 'no-store'})
+  .then(r => r.ok ? r.json() : null)
+  .then(d => { if (d && d.account) { Object.assign(DATA, d); paintHeader(); render(cur); } })
+  .catch(() => {});
 </script>
 <style>
 :root{
