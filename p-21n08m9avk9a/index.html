@@ -490,6 +490,32 @@ main{
 .ev-line>span{min-width:0;overflow-wrap:anywhere}
 .ev-link{display:inline-flex;align-items:center;gap:2px;margin-left:auto;flex:0 0 auto;font-size:10.5px;font-weight:900;color:var(--accent);padding:2px 0 2px 8px;letter-spacing:-.02em}
 
+/* ---------------- threads × coupang ---------------- */
+.th-date{font-size:9px;font-weight:900;letter-spacing:.1em;color:var(--ink-3);text-transform:uppercase;white-space:nowrap}
+.th-date i{font-style:normal;margin-left:2px;letter-spacing:0}
+.th-right{display:flex;align-items:center;gap:6px;flex:0 0 auto;min-width:0}
+.th-tag{
+  max-width:112px;font-size:9px;font-weight:850;letter-spacing:-.01em;
+  background:rgba(20,20,19,.055);color:var(--ink-2);
+  padding:3px 7px;border-radius:99px;line-height:1.3;
+  white-space:nowrap;overflow:hidden;text-overflow:ellipsis;
+}
+.th-stats{
+  display:flex;align-items:center;gap:8px;margin-top:10px;padding-top:9px;
+  border-top:1px solid var(--line-2);
+  font-size:10px;font-weight:700;color:var(--ink-3);letter-spacing:-.01em;white-space:nowrap;
+}
+.th-stats b{font-size:11.5px;font-weight:850;color:var(--ink)}
+.th-stats>i{flex:0 0 1px;width:1px;height:9px;background:var(--line)}
+.th-stats b.up{color:var(--up)}
+.conv{
+  border:1px solid var(--line);background:var(--paper-2);border-radius:var(--r);
+  padding:14px 14px 13px;margin-bottom:14px;
+}
+.conv-l{font-size:8.5px;font-weight:900;color:var(--ink-3);letter-spacing:.12em;text-transform:uppercase}
+.conv-v{margin-top:6px;font-family:var(--serif);font-size:27px;font-weight:700;letter-spacing:-.04em;line-height:1;color:var(--ink-3)}
+.conv-s{margin-top:6px;font-size:10px;font-weight:650;color:var(--ink-3);letter-spacing:-.01em;line-height:1.45}
+
 /* ---------------- empty ---------------- */
 .empty{padding:30px 20px 26px;text-align:center;max-width:100%}
 .empty-ic{width:44px;height:44px;margin:0 auto 11px;border-radius:50%;display:grid;place-items:center;border:1px solid var(--line);color:var(--ink-3);background:rgba(20,20,19,.03)}
@@ -535,7 +561,7 @@ body.sheet-open .fab{opacity:0;pointer-events:none;transform:scale(.8)}
 .tabbar{
   position:fixed;left:0;right:0;bottom:0;z-index:50;
   height:calc(var(--tabh) + var(--safe-b));padding-bottom:var(--safe-b);
-  display:grid;grid-template-columns:repeat(4,minmax(0,1fr));
+  display:grid;grid-template-columns:repeat(5,minmax(0,1fr));
   background:rgba(247,245,240,.94);
   -webkit-backdrop-filter:blur(20px) saturate(160%);
   backdrop-filter:blur(20px) saturate(160%);
@@ -550,6 +576,7 @@ body.sheet-open .fab{opacity:0;pointer-events:none;transform:scale(.8)}
 .tab.on{color:var(--ink)}
 .tab.on::before{content:"";position:absolute;top:0;left:50%;transform:translateX(-50%);width:16px;height:2px;background:var(--accent);border-radius:0 0 2px 2px}
 .tab svg{width:20px;height:20px}
+.tab>span{max-width:100%;padding:0 1px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 
 /* ---------------- sheet ---------------- */
 .backdrop{position:fixed;inset:0;background:rgba(20,20,19,.34);z-index:80;opacity:0;transition:opacity .26s;-webkit-backdrop-filter:blur(2px);backdrop-filter:blur(2px)}
@@ -734,6 +761,10 @@ body.sheet-open{overflow:hidden}
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4 10.2h16V20a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1zM2.8 6.4h18.4v3.8H2.8zM12 6.4V21"/><path d="M8.3 6.4c-1.4 0-2.2-.8-2.2-1.9S6.9 2.7 8 2.7c1.6 0 2.6 1.6 3.2 3.7M15.7 6.4c1.4 0 2.2-.8 2.2-1.9s-.7-1.8-1.8-1.8c-1.6 0-2.6 1.6-3.2 3.7"/></svg>
     <span>응모·당첨</span>
   </button>
+  <button class="tab" data-act="tab" data-tab="threads" aria-label="쓰레드·쿠팡">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M7 3.5 5 20.5M17 3.5l-2 17M4 8.5h16M3 15.5h16"/></svg>
+    <span>쓰레드·쿠팡</span>
+  </button>
 </nav>
 
 <div id="sheetRoot"></div>
@@ -747,7 +778,7 @@ body.sheet-open{overflow:hidden}
    상수 · 기본 데이터 (엑셀 1000만원_부업_관리표 + 아침 부업 루틴)
    ============================================================ */
 var KEY='bupsaeng1000.v1';
-var VERSION=4;
+var VERSION=5;
 var CHALLENGE_START='2026-11-19';
 var CHALLENGE_GOAL=10000000;
 var LV_NAMES=['루키','러너','하슬러','크루','캡틴','마스터','레전드'];
@@ -807,6 +838,7 @@ var BASELINE={
     {id:'k17',group:'경매·강의',text:'권리분석·명도 리스크 체크리스트 만들기',memo:'',done:false},
     {id:'k18',group:'경매·강의',text:'강의·클래스 개설 플랫폼 후보 비교하기',memo:'수수료·정산 조건 비교',done:false}
   ],
+  threads:[],
   events:[
     {id:'e1',date:'2026-11-19',type:'퀴즈',name:'용산구청 11월 음주폐해 예방의 달 OX 퀴즈',prize:'편의점 모바일상품권 5,000원 (200명)',announce:'2026-11-27',status:'응모 완료',url:'https://naver.me/I5wql1zx'},
     {id:'e2',date:'2026-11-20',type:'퀴즈',name:'국립한글박물관 한박웃음 11월호 맞춤법 퀴즈',prize:'메가MGC커피 3,000원 (20명)',announce:'11/30 마감 후 개별연락',status:'응모 완료',url:'https://www.hangeul.go.kr/webzine/202611/sub3_2.html'},
@@ -957,7 +989,7 @@ function showStoreNote(){
 /* ============================ 상태 ============================ */
 var state=null;
 var uiTab='home';
-var filter={cat:'all',type:'all',scope:'month'};
+var filter={cat:'all',type:'all',scope:'month',thScope:'month'};
 var sheetCtx={type:null,id:null,cat:null,color:0,emoji:'✦',xp:20};
 var anim={amount:-1};
 var pendingPop=null;
@@ -1034,6 +1066,23 @@ function migrate(s){
     if(!Array.isArray(q.history))q.history=[];
     if(typeof q.lastActiveDay!=='string')q.lastActiveDay='';
   }
+  if(!Array.isArray(s.threads))s.threads=[];
+  else s.threads=s.threads.map(function(t,i){
+    t=t||{};
+    return {
+      id:t.id||('t'+i+Date.now().toString(36)),
+      date:String(t.date||todayISO()),
+      title:String(t.title||'').slice(0,90),
+      tag:String(t.tag||'').slice(0,24),
+      product:String(t.product||'').slice(0,60),
+      url:String(t.url||''),
+      clicks:Math.max(0,n(t.clicks)),
+      buys:Math.max(0,n(t.buys)),
+      revenue:n(t.revenue),
+      createdAt:t.createdAt||'',
+      updatedAt:t.updatedAt||''
+    };
+  });
   s.version=VERSION;
   return s;
 }
@@ -1151,7 +1200,7 @@ function rolloverIfNeeded(){
 }
 
 /* ============================ 렌더 ============================ */
-var TAB_TITLES={home:'오늘의 부업',ledger:'수익 · 지출',check:'체크리스트',events:'응모 · 당첨'};
+var TAB_TITLES={home:'오늘의 부업',ledger:'수익 · 지출',check:'체크리스트',events:'응모 · 당첨',threads:'쓰레드 · 쿠팡'};
 
 function render(keepScroll){
   var y=window.scrollY||0;
@@ -1563,7 +1612,92 @@ function viewEvents(){
   return html;
 }
 
-var VIEWS={home:viewHome,ledger:viewLedger,check:viewCheck,events:viewEvents};
+/* ============================ 쓰레드 · 쿠팡 ============================ */
+function threadConv(clicks,buys){
+  var c=n(clicks);
+  return c>0?(n(buys)/c*100):0;
+}
+function threadStats(list){
+  var L=list||[],posts=L.length,clicks=0,buys=0,rev=0;
+  L.forEach(function(t){clicks+=n(t.clicks);buys+=n(t.buys);rev+=n(t.revenue);});
+  return {posts:posts,clicks:clicks,buys:buys,rev:rev,conv:clicks?buys/clicks*100:0};
+}
+function sortThreads(a,b){
+  var d=String(b.date||'').localeCompare(String(a.date||''));
+  if(d)return d;
+  return String(b.createdAt||'').localeCompare(String(a.createdAt||''));
+}
+function threadCard(t){
+  var conv=threadConv(t.clicks,t.buys);
+  var tag=String(t.tag||'').replace(/^#+/,'');
+  var rev=n(t.revenue);
+  var d=parseISO(t.date)||new Date();
+  return '<div class="ev th" data-act="edit-thread" data-id="'+esc(t.id)+'" role="button" tabindex="0">'+
+    '<div class="ev-top">'+
+      '<span class="th-date">'+esc(shortDate(t.date))+'<i>'+esc(WD[d.getDay()])+'</i></span>'+
+      '<span class="th-right">'+(tag?'<span class="th-tag">#'+esc(tag)+'</span>':'')+
+        '<span class="pill '+(conv>=3?'win':'wait')+'">전환 '+conv.toFixed(1)+'%</span></span>'+
+    '</div>'+
+    '<div class="ev-t">'+esc(t.title||'(제목 없음)')+'</div>'+
+    ((t.product||t.url)?'<div class="ev-line">'+
+      '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" width="12" height="12"><path d="M3 4h2.2l2.3 10.2h9.8L19 7.4H6.4"/><circle cx="9.4" cy="19" r="1.4"/><circle cx="17" cy="19" r="1.4"/></svg>'+
+      '<span>'+esc(t.product||'파트너스 링크')+'</span>'+
+      (t.url?'<a class="ev-link" href="'+esc(t.url)+'" target="_blank" rel="noopener noreferrer" data-stop="1">상품'+
+        '<svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M9 7h8v8"/></svg></a>':'')+
+    '</div>':'')+
+    '<div class="th-stats">'+
+      '<span><b>'+fmt(n(t.clicks))+'</b> 클릭</span><i></i>'+
+      '<span><b>'+fmt(n(t.buys))+'</b> 구매</span><i></i>'+
+      '<span>수익 <b class="'+(rev>0?'up':'')+'">'+(rev>0?'+':(rev<0?'−':''))+fmt(Math.abs(rev))+'원</b></span>'+
+    '</div>'+
+  '</div>';
+}
+
+function viewThreads(){
+  var all=state.threads||[];
+  var st=threadStats(all);
+  var mt=all.filter(function(t){return String(t.date||'').slice(0,7)===curMonth();});
+  var list=(filter.thScope==='month'?mt:all).slice().sort(sortThreads);
+  var html='';
+
+  html+='<section class="page">';
+  html+='<div class="ph-kick">Threads × Coupang Partners</div>';
+  html+='<h1 class="ph-title">쓰레드 · 쿠팡</h1>';
+  html+='<div class="ph-sub">누적 '+st.posts+'건 · 이번 달 '+mt.length+'건 · 평균 전환율은 구매 ÷ 클릭</div>';
+  html+='<div class="ph-stats c4">'+
+    '<div><span>업로드 글</span><b>'+fmt(st.posts)+'</b></div>'+
+    '<div><span>총 클릭</span><b>'+fmt(st.clicks)+'</b></div>'+
+    '<div><span>평균 전환율</span><b class="'+(st.conv>=3?'up':'')+'">'+st.conv.toFixed(1)+'%</b></div>'+
+    '<div><span>총 수익</span><b class="'+(st.rev>0?'up':'')+'">'+(st.rev>0?'+':(st.rev<0?'−':''))+compact(Math.abs(st.rev))+'원</b></div>'+
+  '</div>';
+  html+='</section>';
+
+  html+='<div class="seg">'+
+    '<button class="'+(filter.thScope==='month'?'on':'')+'" data-act="filter-th" data-scope="month">이번 달 '+mt.length+'</button>'+
+    '<button class="'+(filter.thScope==='all'?'on':'')+'" data-act="filter-th" data-scope="all">전체 '+all.length+'</button>'+
+  '</div>';
+
+  if(!list.length){
+    html+='<div class="empty" style="margin-top:16px;border:1px solid var(--line);background:var(--paper-2);border-radius:3px">'+
+      '<div class="empty-ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3 4h2.2l2.3 10.2h9.8L19 7.4H6.4"/><circle cx="9.4" cy="19" r="1.4"/><circle cx="17" cy="19" r="1.4"/></svg></div>'+
+      '<p>'+(filter.thScope==='month'&&all.length?'이번 달 성과 기록이 없어요':'아직 쓰레드 성과 기록이 없어요')+'</p>'+
+      '<span>'+(filter.thScope==='month'&&all.length?'지난 기록은 「전체」에서 볼 수 있어요':'글을 올리고 첫 댓글에 쿠팡 링크를 단 뒤,<br>클릭·구매·수익을 남기면 전환율이 자동으로 계산돼요')+'</span>'+
+      (filter.thScope==='month'&&all.length?'<button class="btn-soft" data-act="filter-th" data-scope="all">전체 기록 보기</button>':'<button class="btn-soft" data-act="add-thread">성과 기록 추가</button>')+
+    '</div>';
+  }else{
+    html+='<div style="margin-top:16px">'+list.map(threadCard).join('')+'</div>';
+    html+='<p class="hint-line" style="text-align:center">카드를 탭하면 클릭·구매·수익을 수정할 수 있어요.</p>';
+  }
+
+  html+='<div class="note tip" style="margin-top:14px"><span class="note-ic" aria-hidden="true">!</span>'+
+    '<span><b>첫 댓글에 링크 · 대가성 문구 필수</b>'+
+    '<span class="note-sub">"이 포스팅은 쿠팡 파트너스 활동의 일환으로, 이에 따른 일정액의 수수료를 제공받습니다."</span></span></div>';
+
+  html+='<button class="btn-line solid" style="width:100%;margin-top:14px" data-act="add-thread">＋ 성과 기록 추가</button>';
+  return html;
+}
+
+var VIEWS={home:viewHome,ledger:viewLedger,check:viewCheck,events:viewEvents,threads:viewThreads};
 
 /* ============================ 시트 ============================ */
 function openSheet(opt){
@@ -1853,6 +1987,95 @@ function setStatus(id,status){
   }
 }
 
+/* ---------- 쓰레드·쿠팡 성과 시트 ---------- */
+function openThreadSheet(id){
+  if(!Array.isArray(state.threads))state.threads=[];
+  var t=null;
+  if(id)state.threads.forEach(function(x){if(x.id===id)t=x;});
+  sheetCtx={type:'thread',id:id||null};
+  var body=''+
+    '<div class="form-card">'+
+      '<div class="field"><label for="f-tdate">날짜</label>'+
+        '<input type="date" id="f-tdate" value="'+esc(t?t.date:todayISO())+'"></div>'+
+      '<div class="field"><label for="f-ttitle">글 제목</label>'+
+        '<input type="text" id="f-ttitle" placeholder="예: BJN=부장님, DRN=대리님" value="'+esc(t?t.title:'')+'" maxlength="90"></div>'+
+      '<div class="field"><label for="f-ttag">주제 태그</label>'+
+        '<input type="text" id="f-ttag" placeholder="예: 회사 · 직장인 · N잡직장인" value="'+esc(t?t.tag:'')+'" maxlength="24"></div>'+
+      '<div class="field"><label for="f-tprod">쿠팡 상품명</label>'+
+        '<input type="text" id="f-tprod" placeholder="예: 로지텍 무소음 마우스" value="'+esc(t?t.product:'')+'" maxlength="60"></div>'+
+      '<div class="field"><label for="f-turl">파트너스 링크</label>'+
+        '<input type="url" id="f-turl" inputmode="url" placeholder="https://link.coupang.com/..." value="'+esc(t?t.url:'')+'"></div>'+
+    '</div>'+
+    '<div class="flabel-block">성과</div>'+
+    '<div class="form-card">'+
+      '<div class="field"><label for="f-tclick">클릭(유입) 수</label><div class="amt-wrap">'+
+        '<input type="text" inputmode="numeric" id="f-tclick" placeholder="0" value="'+(t&&n(t.clicks)?fmt(t.clicks):'')+'"><span class="cur">회</span></div></div>'+
+      '<div class="field"><label for="f-tbuy">구매 건수</label><div class="amt-wrap">'+
+        '<input type="text" inputmode="numeric" id="f-tbuy" placeholder="0" value="'+(t&&n(t.buys)?fmt(t.buys):'')+'"><span class="cur">건</span></div></div>'+
+      '<div class="field"><label for="f-trev">수익 (원)</label><div class="amt-wrap">'+
+        '<input type="text" inputmode="numeric" id="f-trev" placeholder="0" value="'+(t&&n(t.revenue)?fmt(t.revenue):'')+'"><span class="cur">원</span></div>'+
+        '<div class="amt-hint" id="f-trev-hint"></div></div>'+
+    '</div>'+
+    '<div class="conv"><div class="conv-l">구매 전환율 · 자동 계산</div>'+
+      '<div class="conv-v" id="f-tconv">0.0%</div>'+
+      '<div class="conv-s" id="f-tconv-s">클릭 수를 넣으면 바로 계산돼요 (구매 ÷ 클릭 × 100)</div></div>'+
+    (t?'<button class="btn-danger" data-act="del-thread">이 기록 삭제</button>':'')+
+    '<p class="hint-line">첫 댓글에 파트너스 링크와 대가성 문구를 꼭 남겨 주세요.</p>';
+  openSheet({
+    title:t?'성과 수정':'성과 기록',
+    body:body,
+    focus:'#f-ttitle',
+    act:'save-thread',
+    foot:'<button class="btn-primary" data-act="save-thread">'+(t?'수정 저장':'저장하기')+'</button>'
+  });
+  updateThreadConv();
+}
+function updateThreadConv(){
+  var v=$('#f-tconv');
+  if(!v)return;
+  var clicks=Number(((($('#f-tclick')||{}).value)||'').replace(/[^\d]/g,''))||0;
+  var buys=Number(((($('#f-tbuy')||{}).value)||'').replace(/[^\d]/g,''))||0;
+  var conv=threadConv(clicks,buys);
+  v.textContent=conv.toFixed(1)+'%';
+  v.style.color=clicks?(conv>=3?'var(--up)':'var(--ink)'):'var(--ink-3)';
+  var s=$('#f-tconv-s');
+  if(s)s.textContent=clicks?('클릭 '+fmt(clicks)+'회 → 구매 '+fmt(buys)+'건 · 자동 계산'):'클릭 수를 넣으면 바로 계산돼요 (구매 ÷ 클릭 × 100)';
+}
+function saveThread(){
+  var title=((($('#f-ttitle')||{}).value)||'').trim();
+  if(!title){toast('글 제목을 입력해 주세요');return;}
+  var obj={
+    date:(($('#f-tdate')||{}).value)||todayISO(),
+    title:title.slice(0,90),
+    tag:((($('#f-ttag')||{}).value)||'').trim().slice(0,24),
+    product:((($('#f-tprod')||{}).value)||'').trim().slice(0,60),
+    url:((($('#f-turl')||{}).value)||'').trim(),
+    clicks:Number(((($('#f-tclick')||{}).value)||'').replace(/[^\d]/g,''))||0,
+    buys:Number(((($('#f-tbuy')||{}).value)||'').replace(/[^\d]/g,''))||0,
+    revenue:Number(((($('#f-trev')||{}).value)||'').replace(/[^\d]/g,''))||0
+  };
+  if(sheetCtx.id){
+    state.threads.forEach(function(x){
+      if(x.id===sheetCtx.id){for(var k in obj)x[k]=obj[k];x.updatedAt=new Date().toISOString();}
+    });
+  }else{
+    obj.id='t'+Date.now();
+    obj.createdAt=new Date().toISOString();
+    state.threads.unshift(obj);
+  }
+  save();closeSheet();render();toast(sheetCtx.id?'성과 기록을 수정했어요':'성과 기록을 저장했어요');
+}
+function delThread(){
+  var list=state.threads,id=sheetCtx.id,idx=-1,item=null;
+  for(var i=0;i<list.length;i++){if(list[i].id===id){idx=i;item=list[i];}}
+  if(idx<0)return;
+  list.splice(idx,1);
+  save();closeSheet();render();
+  toast('성과 기록을 삭제했어요','되돌리기',function(){
+    list.splice(Math.min(idx,list.length),0,item);save();render(true);toast('되돌렸어요');
+  });
+}
+
 /* ---------- 퀘스트 시트 ---------- */
 var EMOJIS=['🌅','💸','📱','👜','🎤','✍️','📊','🧾','📦','🎬','📚','✨'];
 function openQuestSheet(id){
@@ -2012,6 +2235,7 @@ function openSettings(){
       setRow('export-ledger','수익·지출 CSV','날짜·부업·내용·수익·지출·잔액','<path d="M4 6.5h16M4 12h16M4 17.5h9"/>')+
       setRow('export-check','체크리스트 CSV','구분·항목·상태·메모','<circle cx="12" cy="12" r="8.5"/><path d="M8.4 12.2l2.5 2.5 4.7-4.9"/>')+
       setRow('export-events','응모·당첨 CSV','응모일·이벤트·경품·발표일·상태','<path d="M4 10h16v10H4zM3 6.5h18V10H3z"/>')+
+      setRow('export-threads','쓰레드·쿠팡 CSV','날짜·글·상품·링크·클릭·구매·전환율·수익','<path d="M7 3.5 5 20.5M17 3.5l-2 17M4 8.5h16M3 15.5h16"/>')+
       setRow('export-json','JSON 백업','기록·퀘스트 전체를 파일 하나로','<path d="M12 3v12M8 11l4 4 4-4M5 20h14"/>')+
     '</div></div>'+
     '<div class="set-group"><div class="set-group-t">복원</div><div class="list">'+
@@ -2019,7 +2243,7 @@ function openSettings(){
     '</div><p class="set-note">백업 파일은 아이폰 「파일」 앱에 저장돼요. 새로 열었을 때 불러오면 그대로 이어집니다.</p></div>'+
     '<div class="set-group"><div class="set-group-t">기록 상태</div><div class="list">'+
       '<div class="set-row"><div class="set-ic"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="8.5"/><path d="M12 7.5V12l3 1.8"/></svg></div>'+
-        '<div class="set-t">'+esc(last)+'<small>기록 '+state.ledger.length+'건 · 체크 '+state.checklist.filter(function(x){return x.done;}).length+'/'+state.checklist.length+' · 응모 '+state.events.length+'건</small></div></div>'+
+        '<div class="set-t">'+esc(last)+'<small>기록 '+state.ledger.length+'건 · 체크 '+state.checklist.filter(function(x){return x.done;}).length+'/'+state.checklist.length+' · 응모 '+state.events.length+'건 · 쓰레드 '+(state.threads||[]).length+'건</small></div></div>'+
       '<div class="set-row"><div class="set-ic"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3.5l2.6 5.3 5.9.9-4.3 4.1 1 5.8-5.2-2.8-5.2 2.8 1-5.8L3.5 9.7l5.9-.9z"/></svg></div>'+
         '<div class="set-t">LV.'+lv.lvl+' '+esc(lv.name)+'<small>'+n(state.quest.xp)+' XP · 오늘 퀘스트 '+questDone()+'/'+state.quest.items.length+' · 연속 '+n(state.quest.streak)+'일</small></div></div>'+
       setRow('reset','처음 상태로 초기화','수정한 내용을 모두 지우고 기본값으로','<path d="M3.5 12a8.5 8.5 0 1 0 2.8-6.3M3.5 4.5V10h5.5"/>','danger')+
@@ -2119,6 +2343,19 @@ function buildSummary(){
     lose.forEach(function(e){L.push('  · 미당첨 · '+shortDate(e.date)+' '+e.name);});
   }
   if(!win.length&&!lose.length)L.push('  · 발표 전 (달라진 응모 상태 없음)');
+  L.push('');
+
+  /* 쓰레드·쿠팡 성과 */
+  var ths=state.threads||[],tst=threadStats(ths);
+  L.push('■ 쓰레드·쿠팡 '+tst.posts+'건 · 클릭 '+fmt(tst.clicks)+' · 구매 '+fmt(tst.buys)+'건 · 평균 전환율 '+tst.conv.toFixed(1)+'% · 수익 '+(tst.rev>0?'+':(tst.rev<0?'−':''))+fmt(Math.abs(tst.rev))+'원');
+  if(ths.length){
+    ths.slice().sort(sortThreads).slice(0,3).forEach(function(t){
+      var tg=String(t.tag||'').replace(/^#+/,'');
+      L.push('  '+shortDate(t.date)+(tg?' #'+tg:'')+' · '+(t.title||'(제목 없음)')+' · 클릭 '+fmt(n(t.clicks))+' → 구매 '+fmt(n(t.buys))+' · '+threadConv(t.clicks,t.buys).toFixed(1)+'% · '+(n(t.revenue)>0?'+':(n(t.revenue)<0?'−':''))+fmt(Math.abs(n(t.revenue)))+'원');
+    });
+  }else{
+    L.push('  · 아직 기록 없음');
+  }
 
   L.push('');
   L.push('('+timeStr(new Date().toISOString())+' 기준 · 부업 챌린지 앱에서 복사)');
@@ -2239,6 +2476,12 @@ function exportAll(){
   rows.push(['[응모·당첨 내역]']);
   rows.push(['응모일','구분','이벤트명','경품','발표일','상태','링크']);
   state.events.forEach(function(e){rows.push([e.date||'',e.type||'',e.name||'',e.prize||'',e.announce||'',e.status||'',e.url||'']);});
+  rows.push([]);
+  rows.push(['[쓰레드·쿠팡 성과]']);
+  rows.push(['날짜','업로드 글 제목','주제 태그','쿠팡 상품명','쿠팡 파트너스 링크','클릭(유입) 수','구매 건수','구매 전환율(%)','수익(원)']);
+  (state.threads||[]).slice().sort(sortThreads).forEach(function(t){
+    rows.push([t.date||'',t.title||'',t.tag||'',t.product||'',t.url||'',n(t.clicks),n(t.buys),threadConv(t.clicks,t.buys).toFixed(1),n(t.revenue)]);
+  });
   downloadFile('1000만원_부업_기록_'+stamp()+'.csv',csv(rows),'text/csv;charset=utf-8');
 }
 function exportLedger(){
@@ -2260,6 +2503,13 @@ function exportEvents(){
   var rows=[['응모일','구분','이벤트명','경품','발표일','상태','링크']];
   state.events.forEach(function(e){rows.push([e.date||'',e.type||'',e.name||'',e.prize||'',e.announce||'',e.status||'',e.url||'']);});
   downloadFile('응모당첨_'+stamp()+'.csv',csv(rows),'text/csv;charset=utf-8');
+}
+function exportThreads(){
+  var rows=[['날짜','업로드 글 제목','주제 태그','쿠팡 상품명','쿠팡 파트너스 링크','클릭(유입) 수','구매 건수','구매 전환율(%)','수익(원)']];
+  (state.threads||[]).slice().sort(sortThreads).forEach(function(t){
+    rows.push([t.date||'',t.title||'',t.tag||'',t.product||'',t.url||'',n(t.clicks),n(t.buys),threadConv(t.clicks,t.buys).toFixed(1),n(t.revenue)]);
+  });
+  downloadFile('쓰레드쿠팡_'+stamp()+'.csv',csv(rows),'text/csv;charset=utf-8');
 }
 function exportJSON(){
   downloadFile('부업백업_'+stamp()+'.json',JSON.stringify({app:'1000만원 부업 관리',version:VERSION,exportedAt:new Date().toISOString(),state:state},null,2),'application/json');
@@ -2313,7 +2563,7 @@ document.addEventListener('click',function(ev){
   switch(act){
     case 'tab':
       uiTab=el.getAttribute('data-tab');
-      filter.cat='all';filter.type='all';filter.scope='month';
+      filter.cat='all';filter.type='all';filter.scope='month';filter.thScope='month';
       render();
       break;
     case 'go-check':uiTab='check';render();break;
@@ -2327,6 +2577,7 @@ document.addEventListener('click',function(ev){
     case 'fab':
       if(uiTab==='check')openCheckSheet(null);
       else if(uiTab==='events')openEventSheet(null);
+      else if(uiTab==='threads')openThreadSheet(null);
       else openRecordSheet(null);
       break;
     case 'add-record':openRecordSheet(null);break;
@@ -2343,6 +2594,12 @@ document.addEventListener('click',function(ev){
     case 'save-event':saveEvent();break;
     case 'del-event':delEvent();break;
     case 'set-status':setStatus(id,val);break;
+    case 'filter-th':filter.thScope=el.getAttribute('data-scope');render(true);break;
+    case 'add-thread':openThreadSheet(null);break;
+    case 'edit-thread':openThreadSheet(id);break;
+    case 'save-thread':saveThread();break;
+    case 'del-thread':delThread();break;
+    case 'export-threads':exportThreads();break;
     case 'toggle-quest':toggleQuest(id);break;
     case 'add-quest':openQuestSheet(null);break;
     case 'edit-quest':openQuestSheet(id);break;
@@ -2428,6 +2685,17 @@ document.addEventListener('input',function(ev){
       hint.textContent=d?fmt(Number(d))+'원':'';
       hint.classList.toggle('on',!!d);
     }
+  }else if(t.id==='f-tclick'||t.id==='f-tbuy'||t.id==='f-trev'){
+    var dt=t.value.replace(/[^\d]/g,'').slice(0,12);
+    if(dt!==t.value)t.value=dt;
+    if(t.id==='f-trev'){
+      var th=$('#f-trev-hint');
+      if(th){
+        th.textContent=dt?fmt(Number(dt))+'원':'';
+        th.classList.toggle('on',!!dt);
+      }
+    }
+    updateThreadConv();
   }
 });
 
@@ -2479,6 +2747,7 @@ window.__bupsaeng={
   rolloverIfNeeded:rolloverIfNeeded,upsertHistory:upsertHistory,
   view:function(t){return VIEWS[t]();},
   challengeDay:challengeDay,
+  threadStats:threadStats,threadConv:threadConv,openThreadSheet:openThreadSheet,
   freshQuest:freshQuest,todayISO:todayISO,
   storageGet:storageGet,storageSet:storageSet,storageUsable:storageUsable,
   showStoreNote:showStoreNote
