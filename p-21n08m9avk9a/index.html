@@ -270,6 +270,10 @@ main{
 }
 .q-e{font-style:normal;margin-right:2px}
 .q-s{display:block;margin-top:2px;font-size:10.5px;font-weight:700;color:var(--ink-3);letter-spacing:-.01em}
+.q-tag{
+  display:inline-block;margin-right:4px;padding:1px 5px;border-radius:3px;
+  font-size:9px;font-weight:900;letter-spacing:-.01em;line-height:1.5;vertical-align:1px;
+}
 .q.done .q-t{color:var(--ink-3);text-decoration:line-through;text-decoration-thickness:1px;text-decoration-color:rgba(20,20,19,.3)}
 .q-xp{
   flex:0 0 auto;font-size:10px;font-weight:900;letter-spacing:-.01em;
@@ -737,7 +741,7 @@ body.sheet-open{overflow:hidden}
 <main id="main">
 <div class="note store" id="storeNote" role="status" hidden></div>
 <div id="view"><div class="note tip" role="note"><span class="note-ic" aria-hidden="true">↑</span><span><b>지금은 미리보기 화면이에요</b><span class="note-sub">공유(↑) → Safari로 열면 터치·기록·저장이 모두 작동해요</span></span></div>
-<section class="cover"><div class="cover-meta"><span>VOL.01</span><span class="csep">/</span><span class="cmid">2026. 11. 20 (금)</span><span class="cday">DAY 02</span></div><div class="cover-kicker"><span>이번 달 번 금액</span><em>This month</em></div><div class="cover-amount"><span class="won">₩</span><span class="num" id="coverNum">0</span></div><div class="cover-under"><span>누적 순수익 <b>0원</b></span><i></i><span>기록 0건</span></div><div class="cover-stats"><div class="cs"><span class="cs-l">시드 잔액</span><b class="cs-v">₩1,000만</b></div><div class="cs"><span class="cs-l">이번 달 지출</span><b class="cs-v">₩0</b></div><div class="cs"><span class="cs-l">이번 달 순수익</span><b class="cs-v">0</b></div><div class="cs"><span class="cs-l">목표 달성률</span><b class="cs-v">0.0%</b><span class="cs-l" style="margin-top:3px;opacity:.75">1,000만 원</span></div></div><div class="cover-quest"><span class="lv">LV.1</span><span class="lvname">루키</span><span class="cq-bar"><i id="xpFill" style="width: 0%;"></i></span><span class="cq-xp">0 / 100 XP</span><span class="cq-streak">🔥 0일</span></div></section><section class="sec"><div class="sec-head"><div class="sh-l"><span class="sh-no">01</span><div class="sh-t">오늘의 퀘스트</div></div><div class="sh-meta"><b>0</b>/5 · 0 XP</div></div><div class="qprog"><i id="qFill" style="width: 0%;"></i></div><div class="list"><div class="q" data-id="q1" data-q="q1" role="button" tabindex="-1" aria-pressed="false" aria-disabled="true"><span class="q-box"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.6l4.4 4.4L19 7.4"></path></svg></span><span class="q-main"><span class="q-t"><span class="q-e">🌅</span>아침 퀴즈·체험단 응모 확인</span><span class="q-s">매일 09:00 루틴</span></span><span class="q-xp">+30</span></div><div class="q" data-id="q2" data-q="q2" role="button" tabindex="-1" aria-pressed="false" aria-disabled="true"><span class="q-box"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.6l4.4 4.4L19 7.4"></path></svg></span><span class="q-main"><span class="q-t"><span class="q-e">💸</span>오늘 수익·지출 1건 기록하기</span><span class="q-s">수익·지출 탭에서 바로</span></span><span class="q-xp">+20</span></div><div class="q" data-id="q3" data-q="q3" role="button" tabindex="-1" aria-pressed="false" aria-disabled="true"><span class="q-box"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.6l4.4 4.4L19 7.4"></path></svg></span><span class="q-main"><span class="q-t"><span class="q-e">📱</span>쓰레드 @heesawon 글감·포스팅 1개</span></span><span class="q-xp">+30</span></div><div class="q" data-id="q4" data-q="q4" role="button" tabindex="-1" aria-pressed="false" aria-disabled="true"><span class="q-box"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.6l4.4 4.4L19 7.4"></path></svg></span><span class="q-main"><span class="q-t"><span class="q-e">👜</span>당근 명품 리셀 시세·매물 체크</span></span><span class="q-xp">+25</span></div><div class="q" data-id="q5" data-q="q5" role="button" tabindex="-1" aria-pressed="false" aria-disabled="true"><span class="q-box"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.6l4.4 4.4L19 7.4"></path></svg></span><span class="q-main"><span class="q-t"><span class="q-e">🎤</span>결혼식 사회자·공구 일정 점검</span></span><span class="q-xp">+20</span></div></div><div class="q-actions"><button class="btn-line solid" tabindex="-1" aria-disabled="true">＋ 퀘스트 추가</button><button class="btn-line" tabindex="-1" aria-disabled="true">새 하루 시작</button></div></section><section class="sec"><div class="sec-head"><div class="sh-l"><span class="sh-no">02</span><div class="sh-t">부업별 성적</div></div><button class="sec-link" tabindex="-1" aria-disabled="true">기록 →</button></div><div class="empty" style="border:1px solid var(--line);background:var(--paper-2);border-radius:3px"><div class="empty-ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><path d="M4 19V9M10 19V5M16 19v-6M22 19H2"></path></svg></div><p>아직 부업별 기록이 없어요</p><span>첫 수익이나 지출을 남기면<br>부업별 성적이 여기에 쌓여요</span><button class="btn-soft" tabindex="-1" aria-disabled="true">기록 추가</button></div></section>
+<section class="cover"><div class="cover-meta"><span>VOL.01</span><span class="csep">/</span><span class="cmid">2026. 11. 20 (금)</span><span class="cday">DAY 02</span></div><div class="cover-kicker"><span>이번 달 번 금액</span><em>This month</em></div><div class="cover-amount"><span class="won">₩</span><span class="num" id="coverNum">0</span></div><div class="cover-under"><span>누적 순수익 <b>0원</b></span><i></i><span>기록 0건</span></div><div class="cover-stats"><div class="cs"><span class="cs-l">시드 잔액</span><b class="cs-v">₩1,000만</b></div><div class="cs"><span class="cs-l">이번 달 지출</span><b class="cs-v">₩0</b></div><div class="cs"><span class="cs-l">이번 달 순수익</span><b class="cs-v">0</b></div><div class="cs"><span class="cs-l">목표 달성률</span><b class="cs-v">0.0%</b><span class="cs-l" style="margin-top:3px;opacity:.75">1,000만 원</span></div></div><div class="cover-quest"><span class="lv">LV.1</span><span class="lvname">루키</span><span class="cq-bar"><i id="xpFill" style="width: 0%;"></i></span><span class="cq-xp">0 / 100 XP</span><span class="cq-streak">🔥 0일</span></div></section><section class="sec"><div class="sec-head"><div class="sh-l"><span class="sh-no">01</span><div class="sh-t">오늘의 퀘스트</div></div><div class="sh-meta"><b>0</b>/5 · 0 XP</div></div><div class="qprog"><i id="qFill" style="width: 0%;"></i></div><div class="list"><div class="q" data-id="q1" data-q="q1" role="button" tabindex="-1" aria-pressed="false" aria-disabled="true"><span class="q-box"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.6l4.4 4.4L19 7.4"></path></svg></span><span class="q-main"><span class="q-t"><span class="q-e">🧵</span>쓰레드 1글 올리기</span><span class="q-s"><span class="q-tag" style="background:#E0F0F2;color:#1F6470">쓰레드</span>셔틀 2시간 중 5분 · 후추 추천 글 고르기</span></span><span class="q-xp">+20</span></div><div class="q" data-id="q2" data-q="q2" role="button" tabindex="-1" aria-pressed="false" aria-disabled="true"><span class="q-box"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.6l4.4 4.4L19 7.4"></path></svg></span><span class="q-main"><span class="q-t"><span class="q-e">💬</span>댓글·대댓글 3개 달기</span><span class="q-s"><span class="q-tag" style="background:#E0F0F2;color:#1F6470">쓰레드</span>첫 댓글 쿠팡링크 + 소통 3개</span></span><span class="q-xp">+15</span></div><div class="q" data-id="q3" data-q="q3" role="button" tabindex="-1" aria-pressed="false" aria-disabled="true"><span class="q-box"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.6l4.4 4.4L19 7.4"></path></svg></span><span class="q-main"><span class="q-t"><span class="q-e">🎁</span>퀴즈·설문 당첨 확인</span><span class="q-s"><span class="q-tag" style="background:#E8E3FA;color:#5B44A6">앱테크</span>아침·저녁 알림 1분 체크</span></span><span class="q-xp">+10</span></div><div class="q" data-id="q4" data-q="q4" role="button" tabindex="-1" aria-pressed="false" aria-disabled="true"><span class="q-box"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.6l4.4 4.4L19 7.4"></path></svg></span><span class="q-main"><span class="q-t"><span class="q-e">👜</span>리셀·공구 아이템 1개 보기</span><span class="q-s"><span class="q-tag" style="background:#FCE4D6;color:#8A4B2A">리셀·공구</span>당근 시세 또는 소싱 10분</span></span><span class="q-xp">+15</span></div><div class="q" data-id="q5" data-q="q5" role="button" tabindex="-1" aria-pressed="false" aria-disabled="true"><span class="q-box"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.6l4.4 4.4L19 7.4"></path></svg></span><span class="q-main"><span class="q-t"><span class="q-e">✍️</span>오늘 부업 기록 1줄 남기기</span><span class="q-s"><span class="q-tag" style="background:#EDEDED;color:#5A5A5E">기록</span>수익·지출 0원이라도 체크하기</span></span><span class="q-xp">+10</span></div></div><div class="q-actions"><button class="btn-line solid" tabindex="-1" aria-disabled="true">＋ 퀘스트 추가</button><button class="btn-line" tabindex="-1" aria-disabled="true">새 하루 시작</button></div></section><section class="sec"><div class="sec-head"><div class="sh-l"><span class="sh-no">02</span><div class="sh-t">부업별 성적</div></div><button class="sec-link" tabindex="-1" aria-disabled="true">기록 →</button></div><div class="empty" style="border:1px solid var(--line);background:var(--paper-2);border-radius:3px"><div class="empty-ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><path d="M4 19V9M10 19V5M16 19v-6M22 19H2"></path></svg></div><p>아직 부업별 기록이 없어요</p><span>첫 수익이나 지출을 남기면<br>부업별 성적이 여기에 쌓여요</span><button class="btn-soft" tabindex="-1" aria-disabled="true">기록 추가</button></div></section>
 <p class="foot-note">수익·지출 · 체크리스트 · 응모·당첨 탭은 Safari에서 열면 채워져요.</p></div>
 </main>
 
@@ -779,7 +783,7 @@ body.sheet-open{overflow:hidden}
    상수 · 기본 데이터 (엑셀 1000만원_부업_관리표 + 아침 부업 루틴)
    ============================================================ */
 var KEY='bupsaeng1000.v1';
-var VERSION=5;
+var VERSION=6;
 var CHALLENGE_START='2026-11-19';
 var CHALLENGE_GOAL=10000000;
 var LV_NAMES=['루키','러너','하슬러','크루','캡틴','마스터','레전드'];
@@ -797,12 +801,27 @@ var PALETTE=[
 ];
 
 var DEFAULT_QUESTS=[
-  {id:'q1',emoji:'🌅',text:'아침 퀴즈·체험단 응모 확인',sub:'매일 09:00 루틴',xp:30},
-  {id:'q2',emoji:'💸',text:'오늘 수익·지출 1건 기록하기',sub:'수익·지출 탭에서 바로',xp:20},
-  {id:'q3',emoji:'📱',text:'쓰레드 @heesawon 글감·포스팅 1개',sub:'',xp:30},
-  {id:'q4',emoji:'👜',text:'당근 명품 리셀 시세·매물 체크',sub:'',xp:25},
-  {id:'q5',emoji:'🎤',text:'결혼식 사회자·공구 일정 점검',sub:'',xp:20}
+  {id:'q1',emoji:'🧵',text:'쓰레드 1글 올리기',sub:'셔틀 2시간 중 5분 · 후추 추천 글 고르기',tag:'쓰레드',xp:20},
+  {id:'q2',emoji:'💬',text:'댓글·대댓글 3개 달기',sub:'첫 댓글 쿠팡링크 + 소통 3개',tag:'쓰레드',xp:15},
+  {id:'q3',emoji:'🎁',text:'퀴즈·설문 당첨 확인',sub:'아침·저녁 알림 1분 체크',tag:'앱테크',xp:10},
+  {id:'q4',emoji:'👜',text:'리셀·공구 아이템 1개 보기',sub:'당근 시세 또는 소싱 10분',tag:'리셀·공구',xp:15},
+  {id:'q5',emoji:'✍️',text:'오늘 부업 기록 1줄 남기기',sub:'수익·지출 0원이라도 체크하기',tag:'기록',xp:10}
 ];
+
+/* 퀘스트 태그(부업 분류) 색상 — 관리표 카테고리 색과 맞춤 */
+var TAG_COLORS={
+  '쓰레드':{bg:'#E0F0F2',fg:'#1F6470'},
+  '앱테크':{bg:'#E8E3FA',fg:'#5B44A6'},
+  '리셀·공구':{bg:'#FCE4D6',fg:'#8A4B2A'},
+  '기록':{bg:'#EDEDED',fg:'#5A5A5E'}
+};
+function tagColor(t){return TAG_COLORS[t]||PALETTE[0];}
+function tagChip(tag){
+  tag=String(tag||'').trim();
+  if(!tag)return '';
+  var c=tagColor(tag);
+  return '<span class="q-tag" style="background:'+c.bg+';color:'+c.fg+'">'+esc(tag)+'</span>';
+}
 
 var BASELINE={
   version:VERSION,
@@ -1000,7 +1019,7 @@ function freshQuest(){
   return {
     day:todayISO(),
     items:DEFAULT_QUESTS.map(function(q){
-      return {id:q.id,emoji:q.emoji,text:q.text,sub:q.sub,xp:q.xp,done:false,custom:false};
+      return {id:q.id,emoji:q.emoji,text:q.text,sub:q.sub,tag:q.tag,xp:q.xp,done:false,custom:false};
     }),
     xp:0,
     todayXp:0,
@@ -1054,6 +1073,7 @@ function migrate(s){
         emoji:it.emoji||'✦',
         text:String(it.text||'').slice(0,60),
         sub:String(it.sub||'').slice(0,40),
+        tag:String(it.tag||'').slice(0,12),
         xp:n(it.xp)||20,
         done:!!it.done,
         custom:!!it.custom
@@ -1066,6 +1086,21 @@ function migrate(s){
     q.best=Math.max(n(q.best),q.streak);
     if(!Array.isArray(q.history))q.history=[];
     if(typeof q.lastActiveDay!=='string')q.lastActiveDay='';
+    /* v6: 옛 기본 퀘스트(q1~q5)를 가벼운 데일리 5개로 교체 — 완료 표시·XP·연속 기록은 그대로 둔다 */
+    if(v<6){
+      var oldById={};
+      q.items.forEach(function(it){if(it&&/^q[1-5]$/.test(String(it.id)))oldById[it.id]=it;});
+      var nextQ=DEFAULT_QUESTS.map(function(d){
+        var old=oldById[d.id];
+        return {id:d.id,emoji:d.emoji,text:d.text,sub:d.sub,tag:d.tag,xp:d.xp,done:!!(old&&old.done),custom:false};
+      });
+      q.items.forEach(function(it){
+        if(!it)return;
+        if(/^q[1-5]$/.test(String(it.id)))return; /* 옛 기본 퀘스트는 새 기본 5개로 대체 */
+        nextQ.push(it);                              /* 사용자가 직접 만든 퀘스트는 그대로 유지 */
+      });
+      q.items=nextQ;
+    }
   }
   if(!Array.isArray(s.threads))s.threads=[];
   else s.threads=s.threads.map(function(t,i){
@@ -1282,7 +1317,7 @@ function questRow(it){
   return '<div class="q'+(it.done?' done':'')+'" data-act="toggle-quest" data-id="'+esc(it.id)+'" data-q="'+esc(it.id)+'" role="button" tabindex="0" aria-pressed="'+(it.done?'true':'false')+'">'+
     '<span class="q-box"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.6l4.4 4.4L19 7.4"/></svg></span>'+
     '<span class="q-main"><span class="q-t">'+(it.emoji?'<span class="q-e">'+esc(it.emoji)+'</span>':'')+esc(it.text)+'</span>'+
-      (it.sub?'<span class="q-s">'+esc(it.sub)+'</span>':'')+'</span>'+
+      (it.sub||it.tag?'<span class="q-s">'+tagChip(it.tag)+esc(it.sub)+'</span>':'')+'</span>'+
     '<span class="q-xp">+'+n(it.xp)+'</span>'+
     (it.custom?'<button class="q-more" data-act="edit-quest" data-id="'+esc(it.id)+'" aria-label="퀘스트 수정">⋯</button>':'')+
   '</div>';
@@ -2074,10 +2109,11 @@ function delThread(){
 }
 
 /* ---------- 퀘스트 시트 ---------- */
-var EMOJIS=['🌅','💸','📱','👜','🎤','✍️','📊','🧾','📦','🎬','📚','✨'];
+var EMOJIS=['🧵','💬','🎁','👜','✍️','💸','📱','🌅','🎤','📊','🧾','✨'];
 function openQuestSheet(id){
   var it=id?findQuest(id):null;
-  sheetCtx={type:'quest',id:id||null,emoji:(it&&it.emoji)||'✨',xp:it?n(it.xp):20};
+  sheetCtx={type:'quest',id:id||null,emoji:(it&&it.emoji)||'✨',tag:(it&&it.tag)||'',xp:it?n(it.xp):20};
+  var tagOpts=[''].concat(['쓰레드','앱테크','리셀·공구','기록']);
   var body=''+
     '<div class="flabel-block">아이콘</div>'+
     '<div class="emoji-grid" id="emojiGrid">'+EMOJIS.map(function(e){
@@ -2086,6 +2122,10 @@ function openQuestSheet(id){
     '<div class="form-card">'+
       '<div class="field"><label for="f-qtext">퀘스트 내용</label>'+
         '<input type="text" id="f-qtext" maxlength="40" placeholder="예: 인스타 스토리 1개 올리기" value="'+esc(it?it.text:'')+'"></div>'+
+      '<div class="field"><label for="f-qtag">태그</label>'+
+        '<select id="f-qtag">'+tagOpts.map(function(t){
+          return '<option value="'+esc(t)+'"'+(t===sheetCtx.tag?' selected':'')+'>'+esc(t||'태그 없음')+'</option>';
+        }).join('')+'</select></div>'+
       '<div class="field"><div class="fl">완료하면 얻는 XP</div><div class="xp-chips" id="xpChips">'+
         [10,15,20,25,30,40,50].map(function(x){
           return '<button type="button" class="xp-chip'+(x===sheetCtx.xp?' on':'')+'" data-act="pick-qxp" data-xp="'+x+'">'+x+'</button>';
@@ -2104,11 +2144,13 @@ function openQuestSheet(id){
 function saveQuest(){
   var text=((($('#f-qtext')||{}).value)||'').trim();
   if(!text){toast('퀘스트 내용을 입력해 주세요');return;}
+  var tag=((($('#f-qtag')||{}).value)||'').trim().slice(0,12);
   if(sheetCtx.id){
     var it=findQuest(sheetCtx.id);
     if(it){
       it.text=text;
       it.emoji=sheetCtx.emoji||it.emoji;
+      it.tag=tag;
       it.xp=n(sheetCtx.xp)||n(it.xp);
     }
   }else{
@@ -2118,6 +2160,7 @@ function saveQuest(){
       emoji:sheetCtx.emoji||'✨',
       text:text,
       sub:'내가 만든 퀘스트',
+      tag:tag,
       xp:n(sheetCtx.xp)||20,
       done:false,
       custom:true
