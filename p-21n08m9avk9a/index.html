@@ -513,8 +513,9 @@ main{
   padding:14px 14px 13px;margin-bottom:14px;
 }
 .conv-l{font-size:8.5px;font-weight:900;color:var(--ink-3);letter-spacing:.12em;text-transform:uppercase}
-.conv-v{margin-top:6px;font-family:var(--serif);font-size:27px;font-weight:700;letter-spacing:-.04em;line-height:1;color:var(--ink-3)}
-.conv-s{margin-top:6px;font-size:10px;font-weight:650;color:var(--ink-3);letter-spacing:-.01em;line-height:1.45}
+.foot-conv{display:flex;align-items:baseline;justify-content:space-between;gap:8px;padding:0 2px 9px}
+.foot-conv span{font-size:8.5px;font-weight:900;color:var(--ink-3);letter-spacing:.1em;text-transform:uppercase}
+.foot-conv b{font-family:var(--serif);font-size:20px;font-weight:700;letter-spacing:-.04em;line-height:1;color:var(--ink)}
 
 /* ---------------- empty ---------------- */
 .empty{padding:30px 20px 26px;text-align:center;max-width:100%}
@@ -2016,17 +2017,15 @@ function openThreadSheet(id){
         '<input type="text" inputmode="numeric" id="f-trev" placeholder="0" value="'+(t&&n(t.revenue)?fmt(t.revenue):'')+'"><span class="cur">원</span></div>'+
         '<div class="amt-hint" id="f-trev-hint"></div></div>'+
     '</div>'+
-    '<div class="conv"><div class="conv-l">구매 전환율 · 자동 계산</div>'+
-      '<div class="conv-v" id="f-tconv">0.0%</div>'+
-      '<div class="conv-s" id="f-tconv-s">클릭 수를 넣으면 바로 계산돼요 (구매 ÷ 클릭 × 100)</div></div>'+
     (t?'<button class="btn-danger" data-act="del-thread">이 기록 삭제</button>':'')+
-    '<p class="hint-line">첫 댓글에 파트너스 링크와 대가성 문구를 꼭 남겨 주세요.</p>';
+    '<p class="hint-line">클릭·구매를 넣으면 구매 전환율(구매 ÷ 클릭 × 100)이 바로 계산돼요. 첫 댓글에 파트너스 링크와 대가성 문구도 꼭 남겨 주세요.</p>';
   openSheet({
     title:t?'성과 수정':'성과 기록',
     body:body,
     focus:'#f-ttitle',
     act:'save-thread',
-    foot:'<button class="btn-primary" data-act="save-thread">'+(t?'수정 저장':'저장하기')+'</button>'
+    foot:'<div class="foot-conv"><span>구매 전환율 · 자동 계산</span><b id="f-tconv" style="color:var(--ink-3)">0.0%</b></div>'+
+      '<button class="btn-primary" data-act="save-thread">'+(t?'수정 저장':'저장하기')+'</button>'
   });
   updateThreadConv();
 }
@@ -2038,8 +2037,6 @@ function updateThreadConv(){
   var conv=threadConv(clicks,buys);
   v.textContent=conv.toFixed(1)+'%';
   v.style.color=clicks?(conv>=3?'var(--up)':'var(--ink)'):'var(--ink-3)';
-  var s=$('#f-tconv-s');
-  if(s)s.textContent=clicks?('클릭 '+fmt(clicks)+'회 → 구매 '+fmt(buys)+'건 · 자동 계산'):'클릭 수를 넣으면 바로 계산돼요 (구매 ÷ 클릭 × 100)';
 }
 function saveThread(){
   var title=((($('#f-ttitle')||{}).value)||'').trim();
