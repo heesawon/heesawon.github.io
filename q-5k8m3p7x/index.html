@@ -124,9 +124,9 @@ function posCard(p) {
     </div>
     ${sparkline(p, p.spark_chg >= 0)}
     <div class="g3">
-      <div><div class="k">평단가</div><div class="v">${won(p.avg_krw)}</div></div>
-      <div><div class="k">현재가</div><div class="v">${usd(p.entry_usd)}</div></div>
+      <div><div class="k">매입금액</div><div class="v">${won(p.cost_krw)}</div></div>
       <div><div class="k">평가액</div><div class="v">${won(p.value_krw)}</div></div>
+      <div><div class="k">평단가</div><div class="v">${usd(p.entry_usd * 1.0025)}</div></div>
     </div>
     <div class="range">
       <div class="lbl"><span>손절 ${usd(p.stop_usd)}</span><span>익절 ${usd(p.tp_usd)}</span></div>
@@ -201,7 +201,7 @@ function renderTab2() {
           <tr>
             <td class="l">${b.sym}<em>n=${b.n}</em></td>
             <td class="${cls(b.avg)}">${pct(b.avg)}</td>
-            <td>${b.win}%</td>
+            <td>${b.win.toFixed(1)}%</td>
             <td class="muted">${pct(b.base)}</td>
           </tr>`).join('')}
       </tbody>
@@ -233,7 +233,7 @@ function renderTab2() {
     <div class="fh">데이터·한계</div>
     <p>가격·지표는 2026-11-19 미국장 종가(야후 파이낸스 일봉)로 직접 계산했습니다. SMA는 단순이동평균, RSI는 14일 윌더 방식입니다. 환율은 1,339.4원/달러 고정이라 실제 환차손익은 반영되지 않았습니다. 소수점 매수 가능한 증권사(토스증권 등)를 가정했습니다.</p>
     <p class="warn">이 화면은 공부용 시뮬레이션이며 투자 권유가 아닙니다. 실제 주문은 이루어지지 않았습니다.</p>
-    <div class="meta2">state · v${DATA.version} · ${DATA.meta.asof} · <a href="stock_portfolio_data.json">JSON</a></div>
+    <div class="meta2">state · ${DATA.version} · ${DATA.meta.asof} · <a href="stock_portfolio_data.json">JSON</a></div>
   </div>`;
 }
 
