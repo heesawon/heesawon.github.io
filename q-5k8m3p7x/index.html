@@ -52,12 +52,8 @@ function sparkline(d, up) {
   const w = 100, h = 30;
   const stroke = up ? '#1B7A57' : '#C4534B';
   return `<svg class="spark" viewBox="0 0 ${w} ${h}" preserveAspectRatio="none">
-    <defs><linearGradient id="g${d.sym}" x1="0" y1="0" x2="0" y2="1">
-      <stop offset="0%" stop-color="${stroke}" stop-opacity=".18"/>
-      <stop offset="100%" stop-color="${stroke}" stop-opacity="0"/>
-    </linearGradient></defs>
-    <path d="${d.spark} L100,30 L0,30 Z" fill="url(#g${d.sym})"/>
-    <path d="${d.spark}" fill="none" stroke="${stroke}" stroke-width="1.6" vector-effect="non-scaling-stroke" stroke-linejoin="round"/>
+    <line x1="0" y1="29.5" x2="100" y2="29.5" stroke="#E7E2D6" stroke-width="1" vector-effect="non-scaling-stroke"/>
+    <path d="${d.spark}" fill="none" stroke="${stroke}" stroke-width="1.6" vector-effect="non-scaling-stroke" stroke-linejoin="round" stroke-linecap="round"/>
   </svg>`;
 }
 
