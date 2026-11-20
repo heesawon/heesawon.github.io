@@ -1086,13 +1086,10 @@ function migrate(s){
     q.best=Math.max(n(q.best),q.streak);
     if(!Array.isArray(q.history))q.history=[];
     if(typeof q.lastActiveDay!=='string')q.lastActiveDay='';
-    /* v6: 옛 기본 퀘스트(q1~q5)를 가벼운 데일리 5개로 교체 — 완료 표시·XP·연속 기록은 그대로 둔다 */
+    /* v6: 옛 기본 퀘스트(q1~q5)를 가벼운 데일리 5개로 교체 — 모은 XP·연속 기록·기록은 그대로 둔다 */
     if(v<6){
-      var oldById={};
-      q.items.forEach(function(it){if(it&&/^q[1-5]$/.test(String(it.id)))oldById[it.id]=it;});
       var nextQ=DEFAULT_QUESTS.map(function(d){
-        var old=oldById[d.id];
-        return {id:d.id,emoji:d.emoji,text:d.text,sub:d.sub,tag:d.tag,xp:d.xp,done:!!(old&&old.done),custom:false};
+        return {id:d.id,emoji:d.emoji,text:d.text,sub:d.sub,tag:d.tag,xp:d.xp,done:false,custom:false};
       });
       q.items.forEach(function(it){
         if(!it)return;
@@ -1100,6 +1097,10 @@ function migrate(s){
         nextQ.push(it);                              /* 사용자가 직접 만든 퀘스트는 그대로 유지 */
       });
       q.items=nextQ;
+      /* 오늘의 XP 칸은 지금 체크된 퀘스트와 맞춘다(모은 전체 XP·연속일수는 건드리지 않음) */
+      var today=0;
+      q.items.forEach(function(it){if(it&&it.done)today+=n(it.xp);});
+      q.todayXp=today;
     }
   }
   if(!Array.isArray(s.threads))s.threads=[];
