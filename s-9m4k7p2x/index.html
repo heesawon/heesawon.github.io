@@ -703,8 +703,8 @@ function draw(){
     ctx.lineWidth=6; ctx.strokeStyle="#141519"; ctx.stroke();
     // tail
     ctx.beginPath();
-    if(bottom){ ctx.moveTo(bx+bw*0.20,by+4); ctx.lineTo(bx+bw*0.06,by-46); ctx.lineTo(bx+bw*0.44,by+4); }
-    else { ctx.moveTo(bx+bw*0.24,by+bh-4); ctx.lineTo(bx+bw*0.10,by+bh+46); ctx.lineTo(bx+bw*0.48,by+bh-4); }
+    if(bottom){ ctx.moveTo(bx+4,by+bh*0.34); ctx.lineTo(bx-46,by+bh*0.34+28); ctx.lineTo(bx+4,by+bh*0.34+56); }
+    else { ctx.moveTo(bx+bw-4,by+bh*0.34); ctx.lineTo(bx+bw+46,by+bh*0.34+28); ctx.lineTo(bx+bw-4,by+bh*0.34+56); }
     ctx.closePath(); ctx.fillStyle="rgba(255,255,255,.98)"; ctx.fill();
     ctx.lineWidth=6; ctx.strokeStyle="#141519"; ctx.stroke();
     ctx.fillStyle="#15161B"; ctx.textAlign="center";
