@@ -1,0 +1,834 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="noindex, nofollow, noarchive, nosnippet, noimageindex">
+<meta name="googlebot" content="noindex, nofollow, noarchive, nosnippet">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>부자차차 인스타툰 스튜디오</title>
+<meta name="theme-color" content="#0B0D12">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="부자차차 스튜디오">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="format-detection" content="telephone=no">
+<link rel="apple-touch-icon" href="icon-180.png">
+<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css">
+<style>
+:root{
+  color-scheme:dark;
+  --bg:#0B0D12; --bg2:#0F1219; --card:#151922; --card2:#1C2130; --card3:#252B3A;
+  --line:rgba(255,255,255,.09); --line2:rgba(255,255,255,.06);
+  --ink:#F3F4F8; --dim:#9CA3B4; --dim2:#6E7688;
+  --orange:#FF6B00; --purple:#6C47FF; --red:#E63946; --green:#2BD98A;
+  --sans:"Pretendard",-apple-system,BlinkMacSystemFont,"Apple SD Gothic Neo","Noto Sans KR","Noto Sans CJK KR","Malgun Gothic",system-ui,sans-serif;
+  --safe-t:env(safe-area-inset-top,0px); --safe-b:env(safe-area-inset-bottom,0px);
+}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{margin:0;padding:0}
+body{
+  background:var(--bg); color:var(--ink); font-family:var(--sans);
+  font-size:15px; line-height:1.5; -webkit-font-smoothing:antialiased;
+  padding-bottom:calc(78px + var(--safe-b));
+}
+button{font-family:inherit;font-size:inherit;color:inherit;background:none;border:0;padding:0;cursor:pointer}
+input,select,textarea{font-family:inherit;font-size:16px;color:var(--ink);background:var(--card3);
+  border:1px solid var(--line);border-radius:12px;padding:12px 13px;width:100%;outline:none;
+  -webkit-appearance:none;appearance:none}
+input:focus,textarea:focus,select:focus{border-color:rgba(255,107,0,.65);background:#2B3242}
+::placeholder{color:var(--dim2)}
+select{background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='12' height='8'><path d='M1 1l5 5 5-5' fill='none' stroke='%239CA3B4' stroke-width='2'/></svg>");
+  background-repeat:no-repeat;background-position:right 14px center;padding-right:36px}
+
+/* ── shell ── */
+.app{max-width:520px;margin:0 auto;min-height:100vh;background:var(--bg)}
+.topbar{
+  position:sticky;top:0;z-index:40;padding:calc(var(--safe-t) + 14px) 18px 12px;
+  background:linear-gradient(180deg,#0B0D12 72%,rgba(11,13,18,.86));
+  backdrop-filter:saturate(160%) blur(14px);border-bottom:1px solid var(--line2);
+  display:flex;align-items:flex-end;justify-content:space-between;gap:12px;
+}
+.brand{display:flex;flex-direction:column;gap:3px;min-width:0}
+.brand .kick{font-size:10.5px;letter-spacing:.16em;color:var(--orange);font-weight:700}
+.brand h1{font-size:19px;line-height:1.2;margin:0;font-weight:800;letter-spacing:-.02em;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.brand .sub{font-size:11.5px;color:var(--dim2)}
+.mark{width:34px;height:34px;border-radius:11px;border:1px solid var(--line);
+  background:#0e1119 url("icon-180.png") center/cover;flex:none}
+
+.view{display:none;padding:16px 18px 8px}
+.view.on{display:block}
+.sec-h{display:flex;align-items:baseline;justify-content:space-between;margin:22px 0 10px}
+.sec-h:first-child{margin-top:4px}
+.sec-h h2{font-size:15px;margin:0;font-weight:800;letter-spacing:-.01em}
+.sec-h .meta{font-size:11.5px;color:var(--dim2)}
+.hint{font-size:12px;color:var(--dim2);line-height:1.55;margin:8px 0 0}
+
+/* ── tabbar ── */
+.tabbar{
+  position:fixed;left:0;right:0;bottom:0;z-index:50;
+  padding:7px max(10px,calc((100% - 520px)/2)) calc(7px + var(--safe-b));
+  background:rgba(13,16,23,.94);backdrop-filter:blur(18px) saturate(160%);
+  border-top:1px solid var(--line);display:flex;
+}
+.tabbar button{flex:1;display:flex;flex-direction:column;align-items:center;gap:3px;
+  padding:6px 2px;border-radius:12px;color:var(--dim2);font-size:10.5px;font-weight:600;transition:.15s}
+.tabbar button .ic{font-size:19px;line-height:1;filter:grayscale(1) opacity(.65);transition:.15s}
+.tabbar button.on{color:var(--ink)}
+.tabbar button.on .ic{filter:none;transform:translateY(-1px)}
+.tabbar button.on::after{content:"";position:absolute;bottom:2px;width:16px;height:2px;border-radius:2px;background:var(--orange)}
+.tabbar button{position:relative}
+
+/* ── episode picker ── */
+.eps{display:flex;gap:10px;overflow-x:auto;scroll-snap-type:x mandatory;padding:2px 0 10px;margin:0 -18px;padding-left:18px;padding-right:18px;scrollbar-width:none}
+.eps::-webkit-scrollbar{display:none}
+.epcard{scroll-snap-align:start;flex:none;width:138px;border-radius:16px;overflow:hidden;
+  background:var(--card);border:1px solid var(--line);text-align:left;transition:.16s;position:relative}
+.epcard.on{border-color:var(--orange);box-shadow:0 0 0 1px var(--orange),0 8px 22px rgba(255,107,0,.14)}
+.epcard img{display:block;width:100%;aspect-ratio:4/5;object-fit:cover;opacity:.92}
+.epcard .in{padding:9px 10px 11px}
+.epcard .no{font-size:10px;font-weight:800;letter-spacing:.1em;color:var(--orange)}
+.epcard .tt{font-size:12px;font-weight:700;line-height:1.32;margin-top:3px;
+  display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.epcard .st{font-size:10px;color:var(--dim2);margin-top:5px}
+
+/* ── viewer ── */
+.viewer{margin-top:6px;border-radius:20px;background:var(--card);border:1px solid var(--line);overflow:hidden;position:relative}
+.strip{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;background:#000}
+.strip::-webkit-scrollbar{display:none}
+.strip .sl{flex:none;width:100%;scroll-snap-align:center;position:relative}
+.strip .sl img{display:block;width:100%;aspect-ratio:4/5;object-fit:cover;background:#111}
+.counter{position:absolute;right:10px;top:10px;background:rgba(8,9,13,.72);border:1px solid rgba(255,255,255,.22);
+  color:#fff;font-size:11px;font-weight:700;padding:4px 9px;border-radius:20px;backdrop-filter:blur(6px)}
+.dots{display:flex;gap:5px;justify-content:center;padding:10px 0 2px}
+.dots i{width:5px;height:5px;border-radius:50%;background:rgba(255,255,255,.22);transition:.15s}
+.dots i.on{background:var(--orange);width:16px;border-radius:3px}
+.vbar{padding:10px 12px 12px}
+.seg{display:flex;gap:6px;background:var(--card3);border-radius:12px;padding:3px}
+.seg button{flex:1;padding:8px 0;border-radius:9px;font-size:12px;font-weight:700;color:var(--dim)}
+.seg button.on{background:var(--ink);color:#101218}
+.seg button.on.done{background:var(--green);color:#06281A}
+.btnrow{display:flex;gap:8px;margin-top:10px}
+.btn{flex:1;display:flex;align-items:center;justify-content:center;gap:6px;
+  padding:13px 8px;border-radius:13px;font-size:13px;font-weight:700;border:1px solid var(--line);
+  background:var(--card2);transition:.14s}
+.btn:active{transform:scale(.985);background:var(--card3)}
+.btn.pri{background:var(--orange);border-color:var(--orange);color:#1a0d00}
+.btn.ghost{background:transparent}
+.btn.wide{width:100%;flex:none}
+.cap{margin-top:10px;border-top:1px solid var(--line2);padding-top:2px}
+.cap summary{list-style:none;cursor:pointer;font-size:12.5px;font-weight:700;color:var(--dim);
+  padding:11px 2px;display:flex;justify-content:space-between;align-items:center}
+.cap summary::-webkit-details-marker{display:none}
+.cap summary::after{content:"▾";color:var(--dim2);font-size:11px}
+.cap[open] summary::after{content:"▴"}
+.cap p{white-space:pre-wrap;font-size:12.5px;line-height:1.72;color:#C6CBD8;margin:0 0 8px;padding:0 2px 2px}
+.tagline{font-size:10.5px;color:var(--dim2);margin-top:6px;display:flex;justify-content:space-between}
+
+/* ── chips ── */
+.chips{display:flex;gap:7px;overflow-x:auto;scrollbar-width:none;margin:0 -18px;padding:0 18px 2px}
+.chips::-webkit-scrollbar{display:none}
+.chip{flex:none;padding:7px 13px;border-radius:20px;border:1px solid var(--line);font-size:12px;font-weight:600;color:var(--dim);background:var(--card)}
+.chip.on{background:var(--ink);color:#0F1219;border-color:var(--ink)}
+
+/* ── story bank ── */
+.stories{display:flex;flex-direction:column;gap:9px;margin-top:12px}
+.story{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:13px 13px 11px;position:relative}
+.story .row1{display:flex;align-items:center;gap:7px;margin-bottom:5px}
+.dot{width:6px;height:6px;border-radius:50%;flex:none}
+.story h3{margin:0;font-size:14px;font-weight:800;line-height:1.35;letter-spacing:-.01em}
+.story p{margin:3px 0 0;font-size:12.5px;color:var(--dim);line-height:1.55}
+.story .row2{display:flex;align-items:center;gap:6px;margin-top:9px;flex-wrap:wrap}
+.pill{font-size:10.5px;font-weight:700;padding:3px 8px;border-radius:7px;background:var(--card3);color:var(--dim)}
+.pill.cat{background:rgba(255,107,0,.14);color:#FFA45C}
+.pill.s0{background:rgba(255,255,255,.08);color:#B9BFCD}
+.pill.s1{background:rgba(108,71,255,.16);color:#B6A4FF}
+.pill.s2{background:rgba(255,176,0,.16);color:#FFC857}
+.pill.s3{background:rgba(43,217,138,.15);color:#5BE3A8}
+.story .acts{margin-left:auto;display:flex;gap:6px}
+.mini{font-size:11px;font-weight:700;padding:6px 10px;border-radius:9px;background:var(--card3);border:1px solid var(--line);color:#D6DAE4}
+.mini.pri{background:rgba(255,107,0,.16);border-color:rgba(255,107,0,.45);color:#FFB077}
+
+/* ── sheet ── */
+.sheetwrap{position:fixed;inset:0;z-index:80;display:none}
+.sheetwrap.on{display:block}
+.sheetwrap .bd{position:absolute;inset:0;background:rgba(4,5,9,.62);backdrop-filter:blur(3px)}
+.sheet{position:absolute;left:0;right:0;bottom:0;background:var(--bg2);border-radius:22px 22px 0 0;
+  border-top:1px solid var(--line);padding:8px 18px calc(20px + var(--safe-b));max-height:88vh;overflow:auto;
+  animation:up .22s ease-out}
+@keyframes up{from{transform:translateY(24px);opacity:.6}to{transform:none;opacity:1}}
+.sheet .grab{width:38px;height:4px;border-radius:3px;background:rgba(255,255,255,.18);margin:6px auto 14px}
+.sheet h3{margin:0 0 14px;font-size:16px;font-weight:800;padding-right:44px}
+.sheet .x{position:absolute;right:14px;top:12px;width:34px;height:34px;border-radius:50%;
+  background:var(--card3);border:1px solid var(--line);color:var(--dim);font-size:15px;line-height:1}
+.field{margin-bottom:11px}
+.field label{display:block;font-size:11.5px;font-weight:700;color:var(--dim);margin-bottom:5px}
+.field .two{display:flex;gap:8px}
+.sheet .btnrow{margin-top:14px}
+
+/* ── studio ── */
+.canvasbox{margin-top:10px;border-radius:18px;overflow:hidden;border:1px solid var(--line);background:#000;position:relative}
+.canvasbox canvas{display:block;width:100%;height:auto}
+.tpls{display:flex;gap:8px;overflow-x:auto;scrollbar-width:none;margin:0 -18px;padding:2px 18px 6px}
+.tpls::-webkit-scrollbar{display:none}
+.tpl{flex:none;width:56px;height:70px;border-radius:10px;overflow:hidden;border:2px solid transparent;background:var(--card3);padding:0}
+.tpl img{width:100%;height:100%;object-fit:cover;display:block;opacity:.85}
+.tpl.on{border-color:var(--orange)}
+.tpl.on img{opacity:1}
+.swatches{display:flex;gap:9px;margin-top:2px}
+.sw{width:32px;height:32px;border-radius:11px;border:2px solid transparent;position:relative}
+.sw.on{border-color:#fff;box-shadow:0 0 0 2px rgba(255,255,255,.18)}
+.sw.on::after{content:"✓";position:absolute;inset:0;display:flex;align-items:center;justify-content:center;
+  color:#fff;font-size:14px;font-weight:800;text-shadow:0 1px 3px rgba(0,0,0,.5)}
+.posrow{display:flex;gap:8px}
+.posrow .chip{flex:1;text-align:center}
+
+/* ── routine ── */
+.checkitem{display:flex;align-items:center;gap:11px;padding:12px 13px;background:var(--card);
+  border:1px solid var(--line);border-radius:14px;margin-bottom:8px}
+.checkitem .bx{width:22px;height:22px;border-radius:7px;border:1.5px solid rgba(255,255,255,.24);
+  flex:none;display:flex;align-items:center;justify-content:center;font-size:13px;color:#07220f;transition:.15s}
+.checkitem.on .bx{background:var(--green);border-color:var(--green)}
+.checkitem .tx{flex:1;min-width:0}
+.checkitem .tx b{display:block;font-size:13.5px;font-weight:700}
+.checkitem .tx span{font-size:11.5px;color:var(--dim2)}
+.checkitem .bx::after{content:"✓";opacity:0}
+.checkitem.on .bx::after{opacity:1}
+.prog{height:5px;border-radius:4px;background:var(--card3);overflow:hidden;margin:10px 0 4px}
+.prog i{display:block;height:100%;background:linear-gradient(90deg,var(--orange),#FF9A4D);border-radius:4px;transition:.3s}
+.metric{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:12px 13px;margin-bottom:8px}
+.metric .wk{font-size:11px;font-weight:800;color:var(--dim2);letter-spacing:.06em;margin-bottom:8px}
+.metric .grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:7px}
+.metric input{padding:9px 10px;font-size:13px;border-radius:10px}
+.metric .memo{margin-top:7px}
+.notecard{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:13px 14px;margin-bottom:8px}
+.notecard b{font-size:13px;display:block;margin-bottom:3px}
+.notecard span{font-size:12px;color:var(--dim);line-height:1.6}
+
+.toast{position:fixed;left:50%;bottom:calc(96px + var(--safe-b));transform:translate(-50%,12px);
+  background:rgba(243,244,248,.97);color:#101218;font-size:12.5px;font-weight:700;padding:11px 18px;
+  border-radius:30px;box-shadow:0 10px 30px rgba(0,0,0,.45);opacity:0;pointer-events:none;transition:.2s;z-index:120;max-width:86vw;text-align:center}
+.toast.on{opacity:1;transform:translate(-50%,0)}
+</style>
+</head>
+<body>
+<div class="app">
+  <header class="topbar">
+    <div class="brand">
+      <span class="kick">BUJACHACHA STUDIO</span>
+      <h1 id="brandTitle">부자차차 인스타툰 스튜디오</h1>
+      <span class="sub" id="brandSub">3편 완성 · 매주 화·금 발행</span>
+    </div>
+    <div class="mark"></div>
+  </header>
+
+  <!-- ══ 1. 에피소드 ══ -->
+  <section class="view on" id="view-eps">
+    <div class="sec-h"><h2>에피소드</h2><span class="meta" id="epMeta">3편 · 15컷</span></div>
+    <div class="eps" id="epList"></div>
+    <div class="viewer" id="viewer"></div>
+    <p class="tagline"><span>좌우로 넘겨서 전체 컷 확인</span><span>@bujachacha_</span></p>
+  </section>
+
+  <!-- ══ 2. 스토리 수집함 ══ -->
+  <section class="view" id="view-bank">
+    <div class="sec-h"><h2>스토리 수집함</h2><span class="meta" id="bankMeta"></span></div>
+    <div class="chips" id="bankFilters"></div>
+    <div class="stories" id="storyList"></div>
+    <button class="btn pri wide" style="margin-top:12px" id="addStory">+ 새 소재 추가</button>
+    <p class="hint">소재 카드의 <b>📋</b>를 누르면 피클에게 그대로 붙여넣을 제작 요청이 복사됩니다.</p>
+  </section>
+
+  <!-- ══ 3. 썸네일·컷 스튜디오 ══ -->
+  <section class="view" id="view-studio">
+    <div class="sec-h"><h2>썸네일 · 컷 스튜디오</h2><span class="meta">1080×1350</span></div>
+    <div class="canvasbox"><canvas id="cv" width="1080" height="1350"></canvas></div>
+    <div class="sec-h"><h2>배경 템플릿</h2><span class="meta">좌우로 넘기기</span></div>
+    <div class="tpls" id="tpls"></div>
+    <div class="field"><label>제목 1줄</label><input id="t1" maxlength="18" placeholder="예) 월급으론"></div>
+    <div class="field"><label>제목 2줄</label><input id="t2" maxlength="18" placeholder="예) 해탈이 안 와서"></div>
+    <div class="field"><label>강조 단어 (제목 안에서 색이 바뀝니다)</label>
+      <input id="hl" maxlength="12" placeholder="예) 해탈이"></div>
+    <div class="field"><label>강조 색</label>
+      <div class="swatches" id="swatches"></div>
+    </div>
+    <div class="field"><label>말풍선 (줄바꿈은 Enter)</label>
+      <textarea id="bb" rows="2" maxlength="40" placeholder="예) 잔고 보고 번뇌 폭발함..."></textarea></div>
+    <div class="field"><label>에피소드 배지</label><input id="badge" maxlength="12" placeholder="EP.04"></div>
+    <div class="field"><label>제목 위치</label>
+      <div class="posrow">
+        <button class="chip on" data-pos="bottom">아래</button>
+        <button class="chip" data-pos="top">위</button>
+      </div>
+    </div>
+    <div class="btnrow">
+      <button class="btn pri" id="saveCv">1080×1350 저장</button>
+      <button class="btn" id="resetCv">초기화</button>
+    </div>
+    <p class="hint">배경은 EP.01~03에 쓴 실제 씬입니다. 같은 템플릿·색을 쓰면 시리즈 톤이 유지됩니다.</p>
+  </section>
+
+  <!-- ══ 4. 발행 루틴 ══ -->
+  <section class="view" id="view-routine">
+    <div class="sec-h"><h2>이번 주 발행</h2><span class="meta" id="weekMeta"></span></div>
+    <div class="prog"><i id="progBar" style="width:0%"></i></div>
+    <p class="hint" id="progText" style="margin-bottom:12px"></p>
+    <div id="checkList"></div>
+    <div class="sec-h"><h2>지표 기록</h2><span class="meta">주 1회</span></div>
+    <div id="metricList"></div>
+    <button class="btn wide" id="addMetric" style="margin-top:4px">+ 이번 주 기록 추가</button>
+    <div class="sec-h"><h2>성장 장치 3개</h2><span class="meta">고정 원칙</span></div>
+    <div class="notecard"><b>① 마지막 컷엔 저장 유도 한 줄</b><span>저장 수가 도달을 만듭니다. "저장해두고 같이 가요" 문장은 모든 화에 넣습니다.</span></div>
+    <div class="notecard"><b>② 3번째 컷에 숫자 하나</b><span>캡처돼서 퍼지는 건 표와 숫자입니다. 250 / 180 / 70 처럼 한눈에 보이게.</span></div>
+    <div class="notecard"><b>③ 표지는 질문형 말고 선언형</b><span>"~였음", "~안 와서" 형태가 그리드에서 훅이 셉니다.</span></div>
+    <div class="sec-h"><h2>세율·기준 메모</h2><span class="meta">발행 전 확인</span></div>
+    <div class="notecard"><b>숫자는 바뀝니다</b><span>3.3% · 건보 피부양자 2,000만 원 · 월세 세액공제 구간은 해마다 바뀝니다. 발행 전 최신 기준을 확인하고, 컷 하단에 "기준: 2026년"을 남깁니다.</span></div>
+  </section>
+
+  <nav class="tabbar">
+    <button class="on" data-tab="eps"><span class="ic">📚</span>에피소드</button>
+    <button data-tab="bank"><span class="ic">💡</span>수집함</button>
+    <button data-tab="studio"><span class="ic">🎨</span>스튜디오</button>
+    <button data-tab="routine"><span class="ic">📅</span>발행 루틴</button>
+  </nav>
+</div>
+
+<!-- story sheet -->
+<div class="sheetwrap" id="sheet">
+  <div class="bd" data-close></div>
+  <div class="sheet">
+    <div class="grab"></div>
+    <h3 id="sheetTitle">새 소재</h3>
+    <button class="x" id="sheetClose" aria-label="닫기">✕</button>
+    <div class="field"><label>제목</label><input id="sTitle" maxlength="40" placeholder="예) 부수입이 생기면 제일 먼저 하는 일"></div>
+    <div class="field"><label>훅 (한 줄)</label><input id="sHook" maxlength="70" placeholder="예) 3.3% 떼인 다음에 벌어지는 일"></div>
+    <div class="field"><label>카테고리</label>
+      <select id="sCat"><option>재테크</option><option>N잡</option><option>절약</option><option>세금</option></select></div>
+    <div class="field"><label>상태</label>
+      <select id="sStatus"><option>아이디어</option><option>대본</option><option>제작중</option><option>발행완료</option></select></div>
+    <div class="btnrow">
+      <button class="btn pri" id="sSave">저장</button>
+      <button class="btn ghost" id="sDelete">삭제</button>
+    </div>
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script>
+(function(){
+"use strict";
+
+/* ─────────────── 데이터 ─────────────── */
+var EPS = [
+  { id:"ep01", no:"EP.01", title:"월급으론 해탈이 안 와서", sub:"부업 시작한 직장인 부처", accent:"#FF6B00",
+    slides:["ep01_01","ep01_02","ep01_03","ep01_04","ep01_05"],
+    caption:"월급날만 되면 잠깐 행복하고, 3일 뒤엔 다시 번뇌입니다.\n\n무소유를 실천하려고 지갑을 비웠는데\n마음이 편해진 게 아니라 통장이 비었더라고요.\n\n그래서 부처도 N잡을 시작했습니다.\n한 번에 하나, 6주 룰로요.\n\n1,000만 원 시드 굴리는 과정, 매주 화·금에 올립니다.\n같이 가실 분은 저장해두고 보세요.\n\n#부업 #N잡 #직장인부업 #재테크 #월급쟁이 #부자차차 #인스타툰 #경제툰 #부수입만들기 #사회초년생 #절약 #돈버는법 #퇴근후부업 #1인가구 #머니툰" },
+  { id:"ep02", no:"EP.02", title:"무소유하려다 통장 보고", sub:"1,000만 원 굴리는 현실 루틴", accent:"#6C47FF",
+    slides:["ep02_01","ep02_02","ep02_03","ep02_04","ep02_05"],
+    caption:"1,000만 원을 굴린다고 하면 다들 주식을 떠올리는데,\n실제로 제일 많이 한 일은 '칸 나누기'였습니다.\n\n쓸 돈 / 굴릴 돈 / 비상금.\n이 세 칸만 안 섞여도 1년 뒤 계좌가 달라집니다.\n\n저는 자동이체일 3개로 다 고정해두고\n한 달에 30분만 확인합니다. 그게 전부예요.\n\n본인 숫자로 바꿔서 저장해두세요.\n(금리·한도는 수시로 바뀌니 상품 가입 전 꼭 확인!)\n\n#재테크 #1천만원 #파킹통장 #ETF #적립식투자 #비상금 #직장인재테크 #부업 #N잡 #부자차차 #돈공부 #인스타툰 #경제툰 #머니루틴 #자산관리" },
+  { id:"ep03", no:"EP.03", title:"부수입 들어왔는데 왜 3.3%가 빠져?", sub:"직장인 세금·건보료 실전", accent:"#E63946",
+    slides:["ep03_01","ep03_02","ep03_03","ep03_04","ep03_05"],
+    caption:"부수입 첫 입금 보고 \"왜 3.3%가 빠져 있지?\" 하신 분.\n\n그건 세금을 더 낸 게 아니라, 미리 낸 겁니다.\n사업소득 3% + 지방소득세 0.3%.\n\n문제는 다음 해 5월.\n3.3%만 떼고 다 써버리면 종합소득세로 다시 만납니다.\n(소득이 적으면 돌려받는 경우도 있어요.)\n\n제가 지금 하는 건 세 가지뿐입니다.\n사업용 계좌 분리 / 입금일 30% 따로 두기 / 5월 전에 영수증 정리.\n\n세율·기준은 바뀔 수 있으니 신고 전 꼭 확인하세요.\n\n#N잡 #부업 #3.3% #종합소득세 #프리랜서세금 #사업소득 #건강보험피부양자 #직장인부업 #부수입 #부자차차 #경제툰 #돈공부 #절약 #재테크 #인스타툰" }
+];
+
+var CATS = ["재테크","N잡","절약","세금"];
+var STATUS = ["아이디어","대본","제작중","발행완료"];
+var SEED_STORIES = [
+  { id:"s1", title:"부수입이 생기면 제일 먼저 하는 일", hook:"3.3% 떼인 다음에 벌어지는 일", cat:"세금", status:"아이디어" },
+  { id:"s2", title:"야근 끝나고 30분이 내 부업의 전부", hook:"시간이 아니라 순서 문제였음", cat:"N잡", status:"대본" },
+  { id:"s3", title:"13월의 월급, 다들 반만 받고 있음", hook:"놓치면 그냥 사라지는 3가지", cat:"절약", status:"아이디어" },
+  { id:"s4", title:"1,000만 원 1개월 결산", hook:"수익률보다 안 깨진 게 중요함", cat:"재테크", status:"제작중" },
+  { id:"s5", title:"안 쓰는 구독 3개 정리하고 60만 원", hook:"월 5만 원이 1년에 60만 원", cat:"절약", status:"아이디어" },
+  { id:"s6", title:"직장인 부업, 회사에 들켜도 되는 선", hook:"세금 신고하면 회사가 알까?", cat:"세금", status:"아이디어" },
+  { id:"s7", title:"공구 중개 첫 달에 번 돈 그대로", hook:"수수료 10%의 현실", cat:"N잡", status:"발행완료" },
+  { id:"s8", title:"사회자 부업, 첫 섭외 받는 법", hook:"경력 없는 사람이 먼저 하는 것", cat:"N잡", status:"아이디어" }
+];
+
+var TPLS = [
+  { f:"t_night", n:"야근" }, { f:"t_bus", n:"셔틀" }, { f:"t_wallet", n:"지갑" },
+  { f:"t_lotus", n:"연꽃" }, { f:"t_jars", n:"세칸" }, { f:"t_scale", n:"저울" },
+  { f:"t_bed", n:"밤방" }, { f:"t_desk", n:"조사" }, { f:"t_office", n:"정리" }
+];
+var ACCENTS = ["#FF6B00","#6C47FF","#E63946","#2BD98A"];
+var GREEN = "#2BD98A";
+
+/* ─────────────── 상태 ─────────────── */
+var KEY = "bc_studio_v1";
+var state = load();
+
+function defaults(){
+  return {
+    epStatus: { ep01:"대기", ep02:"대기", ep03:"대기" },
+    stories: SEED_STORIES.slice(),
+    routine: { checks:{}, metrics:[ { w:weekLabel(), saves:"", reach:"", fans:"", memo:"" } ], week: weekLabel() },
+    studio: { tpl:0, t1:"월급으론", t2:"해탈이 안 와서", hl:"해탈이", accent:"#FF6B00",
+              bubble:"잔고 보고\n번뇌 폭발함...", badge:"EP.04", pos:"bottom" }
+  };
+}
+function load(){
+  try{
+    var raw = localStorage.getItem(KEY);
+    if(!raw) return defaults();
+    var d = JSON.parse(raw), base = defaults();
+    for (var k in base) if (!(k in d)) d[k] = base[k];
+    // 새 시드가 있으면 병합(사용자가 지운 건 되살리지 않음)
+    if (!Array.isArray(d.stories)) d.stories = base.stories;
+    return d;
+  }catch(e){ return defaults(); }
+}
+function save(){ try{ localStorage.setItem(KEY, JSON.stringify(state)); }catch(e){} }
+function weekLabel(){
+  var n = new Date(), mon = new Date(n); var d = (n.getDay()+6)%7;
+  mon.setDate(n.getDate()-d);
+  var sun = new Date(mon); sun.setDate(mon.getDate()+6);
+  return (mon.getMonth()+1)+"/"+mon.getDate()+"~"+(sun.getMonth()+1)+"/"+sun.getDate();
+}
+
+/* ─────────────── 유틸 ─────────────── */
+var $ = function(s){ return document.querySelector(s); };
+function el(tag, cls, html){ var e=document.createElement(tag); if(cls) e.className=cls; if(html!=null) e.innerHTML=html; return e; }
+var toastT;
+function toast(msg){
+  var t=$("#toast"); t.textContent=msg; t.classList.add("on");
+  clearTimeout(toastT); toastT=setTimeout(function(){ t.classList.remove("on"); },1700);
+}
+function copy(text){
+  if(navigator.clipboard && navigator.clipboard.writeText){
+    return navigator.clipboard.writeText(text).then(function(){ toast("복사했습니다"); })
+      .catch(function(){ legacyCopy(text); });
+  }
+  legacyCopy(text);
+}
+function legacyCopy(text){
+  var ta=el("textarea"); ta.value=text; ta.style.position="fixed"; ta.style.opacity="0";
+  document.body.appendChild(ta); ta.focus(); ta.select();
+  try{ document.execCommand("copy"); toast("복사했습니다"); }catch(e){ toast("복사가 막혔습니다 — 길게 눌러 복사하세요"); }
+  document.body.removeChild(ta);
+}
+function vibrate(){ if(navigator.vibrate) try{navigator.vibrate(8);}catch(e){} }
+
+/* ─────────────── 탭 ─────────────── */
+var TITLES = { eps:["부자차차 인스타툰 스튜디오","3편 완성 · 매주 화·금 발행"],
+               bank:["스토리 수집함","소재 → 대본 → 제작"],
+               studio:["썸네일 · 컷 스튜디오","1080×1350 직접 뽑기"],
+               routine:["발행 · 자동화 루틴","매주 화·금 19:00"] };
+document.querySelectorAll(".tabbar button").forEach(function(b){
+  b.addEventListener("click", function(){
+    var tab=b.dataset.tab;
+    document.querySelectorAll(".tabbar button").forEach(function(x){ x.classList.toggle("on", x===b); });
+    document.querySelectorAll(".view").forEach(function(v){ v.classList.toggle("on", v.id==="view-"+tab); });
+    $("#brandTitle").textContent = TITLES[tab][0];
+    $("#brandSub").textContent = TITLES[tab][1];
+    window.scrollTo({top:0, behavior:"instant"});
+    if(tab==="studio") { loadTpls().then(draw); }
+    vibrate();
+  });
+});
+
+/* ═══════════════ 1. 에피소드 ═══════════════ */
+var cur = { ep:0, idx:0 };
+function renderEps(){
+  var list=$("#epList"); list.innerHTML="";
+  EPS.forEach(function(ep,i){
+    var st = state.epStatus[ep.id] || "대기";
+    var b=el("button","epcard"+(i===cur.ep?" on":""));
+    b.innerHTML = '<img src="slides/'+ep.slides[0]+'.jpg" alt="" loading="lazy" decoding="async">'
+      + '<div class="in"><div class="no">'+ep.no+'</div><div class="tt">'+ep.title+'</div>'
+      + '<div class="st">'+ep.slides.length+'컷 · '+st+'</div></div>';
+    b.addEventListener("click", function(){ cur.ep=i; cur.idx=0; renderEps(); renderViewer(); vibrate(); });
+    list.appendChild(b);
+  });
+  $("#epMeta").textContent = "3편 · 15컷";
+}
+function renderViewer(){
+  var ep=EPS[cur.ep], v=$("#viewer");
+  var st = state.epStatus[ep.id] || "대기";
+  var html='<div class="strip" id="strip">';
+  ep.slides.forEach(function(s,i){
+    html += '<div class="sl"><img src="slides/'+s+'.jpg" alt="'+ep.no+' '+(i+1)+'컷" '
+          + (i===0?'':'loading="lazy"') + ' decoding="async"></div>';
+  });
+  html += '</div><div class="counter" id="counter">1 / '+ep.slides.length+'</div><div class="dots" id="dots">';
+  ep.slides.forEach(function(_,i){ html += '<i'+(i===cur.idx?' class="on"':'')+'></i>'; });
+  html += '</div><div class="vbar">'
+    + '<div class="seg" id="seg">'
+    + '<button data-st="대기" class="'+(st==="대기"?"on":"")+'">대기</button>'
+    + '<button data-st="발행완료" class="'+(st==="발행완료"?"on done":"")+'">발행완료</button>'
+    + '</div>'
+    + '<div class="btnrow">'
+    + '<button class="btn pri" id="dl">⬇︎ 이미지 저장</button>'
+    + '<button class="btn" id="op">↗︎ 크게 열기</button>'
+    + '</div>'
+    + '<div class="btnrow"><button class="btn wide" id="cp">📋 캡션·해시태그 복사</button></div>'
+    + '<details class="cap"><summary>캡션 미리보기</summary><p>'+esc(ep.caption)+'</p></details>'
+    + '</div>';
+  v.innerHTML = html;
+
+  var strip=$("#strip");
+  strip.addEventListener("scroll", function(){
+    var i = Math.round(strip.scrollLeft / strip.clientWidth);
+    if(i!==cur.idx && i>=0 && i<ep.slides.length){
+      cur.idx=i;
+      var c=$("#counter"); if(c) c.textContent=(i+1)+" / "+ep.slides.length;
+      document.querySelectorAll("#dots i").forEach(function(d,k){ d.classList.toggle("on",k===i); });
+    }
+  }, {passive:true});
+
+  document.querySelectorAll("#seg button").forEach(function(b){
+    b.addEventListener("click", function(){
+      state.epStatus[ep.id]=b.dataset.st; save();
+      document.querySelectorAll("#seg button").forEach(function(x){ x.classList.toggle("on", x===b); x.classList.toggle("done", x===b && b.dataset.st==="발행완료"); });
+      renderEps(); var card=document.querySelectorAll(".epcard")[cur.ep];
+      if(card) card.classList.add("on");
+      toast(ep.no+" "+b.dataset.st); vibrate();
+    });
+  });
+  $("#dl").addEventListener("click", function(){ download(ep, cur.idx); });
+  $("#op").addEventListener("click", function(){
+    window.open("slides/"+ep.slides[cur.idx]+".jpg","_blank");
+  });
+  $("#cp").addEventListener("click", function(){ copy(ep.caption); });
+  strip.scrollLeft = 0;
+}
+function esc(s){ return s.replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;"); }
+function download(ep,i){
+  var url="slides/"+ep.slides[i]+".jpg", name="bujachacha_"+ep.slides[i]+".jpg";
+  var a=el("a"); a.href=url; a.download=name; a.rel="noopener";
+  document.body.appendChild(a); a.click(); document.body.removeChild(a);
+  toast(name+" 저장 중…");
+  setTimeout(function(){ toast("저장이 안 되면 '크게 열기' 후 길게 눌러 저장"); }, 2200);
+}
+
+/* ═══════════════ 2. 스토리 수집함 ═══════════════ */
+var bankFilter="전체", editing=null;
+function renderBank(){
+  var f=$("#bankFilters"); f.innerHTML="";
+  ["전체"].concat(CATS).forEach(function(c){
+    var b=el("button","chip"+(bankFilter===c?" on":""),c);
+    b.addEventListener("click", function(){ bankFilter=c; renderBank(); });
+    f.appendChild(b);
+  });
+  var list=$("#storyList"); list.innerHTML="";
+  var items=state.stories.filter(function(s){ return bankFilter==="전체" || s.cat===bankFilter; });
+  $("#bankMeta").textContent = state.stories.length+"개 소재";
+  if(!items.length){ list.appendChild(el("p","hint","이 카테고리엔 아직 소재가 없습니다.")); }
+  items.forEach(function(s){
+    var d=el("div","story");
+    var si = STATUS.indexOf(s.status);
+    d.innerHTML = '<div class="row1"><span class="dot" style="background:'+catColor(s.cat)+'"></span>'
+      + '<h3>'+esc(s.title)+'</h3></div>'
+      + '<p>'+esc(s.hook)+'</p>'
+      + '<div class="row2"><span class="pill cat">'+s.cat+'</span>'
+      + '<span class="pill s'+si+'">'+s.status+'</span>'
+      + '<div class="acts">'
+      + '<button class="mini pri" data-copy="'+s.id+'">📋 피클에게 제작 요청</button>'
+      + '</div></div>';
+    d.addEventListener("click", function(e){
+      if(e.target.closest("[data-copy]")) return;
+      openSheet(s);
+    });
+    d.querySelector("[data-copy]").addEventListener("click", function(){ copy(requestText(s)); });
+    list.appendChild(d);
+  });
+}
+function catColor(c){ return {"재테크":"#FF6B00","N잡":"#6C47FF","절약":"#2BD98A","세금":"#E63946"}[c] || "#9CA3B4"; }
+function requestText(s){
+  return "〈부자차차〉 새 소재 제작 요청\n\n"
+    + "제목: "+s.title+"\n"
+    + "훅: "+s.hook+"\n"
+    + "카테고리: "+s.cat+"\n"
+    + "상태: "+s.status+"\n\n"
+    + "표지 1장 + 내지 4장, 1080×1350(4:5) 풀블리드 코믹 스타일로 만들어줘.\n"
+    + "캐릭터·색·서체는 EP.01~03과 동일하게(오렌지 #FF6B00 기본, 하단 @bujachacha_ 워터마크).\n"
+    + "3번째 컷에 숫자 하나, 마지막 컷엔 저장 유도 한 줄 넣어줘.";
+}
+function openSheet(s){
+  editing = s || null;
+  $("#sheetTitle").textContent = s ? "소재 수정" : "새 소재";
+  $("#sTitle").value = s ? s.title : "";
+  $("#sHook").value = s ? s.hook : "";
+  $("#sCat").value = s ? s.cat : "재테크";
+  $("#sStatus").value = s ? s.status : "아이디어";
+  $("#sDelete").style.display = s ? "" : "none";
+  $("#sheet").classList.add("on");
+}
+function closeSheet(){ $("#sheet").classList.remove("on"); }
+$("#addStory").addEventListener("click", function(){ openSheet(null); });
+document.querySelectorAll("[data-close]").forEach(function(b){ b.addEventListener("click", closeSheet); });
+$("#sheetClose").addEventListener("click", closeSheet);
+$("#sSave").addEventListener("click", function(){
+  var title=$("#sTitle").value.trim();
+  if(!title){ toast("제목을 입력하세요"); return; }
+  var obj = { title:title, hook:$("#sHook").value.trim(), cat:$("#sCat").value, status:$("#sStatus").value };
+  if(editing){ Object.assign(editing, obj); toast("수정했습니다"); }
+  else { obj.id = "s"+Date.now(); state.stories.unshift(obj); toast("소재를 추가했습니다"); }
+  save(); closeSheet(); renderBank(); vibrate();
+});
+$("#sDelete").addEventListener("click", function(){
+  if(!editing) return;
+  state.stories = state.stories.filter(function(x){ return x.id!==editing.id; });
+  save(); closeSheet(); renderBank(); toast("삭제했습니다");
+});
+
+/* ═══════════════ 3. 스튜디오 ═══════════════ */
+var cv=$("#cv"), ctx=cv.getContext("2d"), tplImgs={}, tplLoading=null;
+function loadTpls(){
+  if(tplLoading) return tplLoading;
+  var jobs = TPLS.map(function(t){
+    return new Promise(function(res){
+      if(tplImgs[t.f]) return res();
+      var im=new Image();
+      im.onload=function(){ tplImgs[t.f]=im; res(); };
+      im.onerror=function(){ res(); };
+      im.src="slides/scenes/"+t.f+".jpg";
+    });
+  });
+  tplLoading = Promise.all(jobs);
+  return tplLoading;
+}
+function renderTpls(){
+  var box=$("#tpls"); box.innerHTML="";
+  TPLS.forEach(function(t,i){
+    var b=el("button","tpl"+(state.studio.tpl===i?" on":""));
+    b.innerHTML='<img src="slides/scenes/'+t.f+'.jpg" alt="'+t.n+'" loading="lazy">';
+    b.addEventListener("click", function(){
+      state.studio.tpl=i; save(); renderTpls(); draw(); vibrate();
+    });
+    box.appendChild(b);
+  });
+}
+function renderSwatches(){
+  var box=$("#swatches"); box.innerHTML="";
+  ACCENTS.forEach(function(c){
+    var b=el("button","sw"+(state.studio.accent===c?" on":""));
+    b.style.background=c;
+    b.addEventListener("click", function(){ state.studio.accent=c; save(); renderSwatches(); draw(); });
+    box.appendChild(b);
+  });
+}
+function coverDraw(img){
+  var w=img.width, h=img.height, s=Math.max(1080/w, 1350/h);
+  var dw=w*s, dh=h*s;
+  ctx.drawImage(img, (1080-dw)/2, (1350-dh)/2, dw, dh);
+}
+function fitFont(text, maxW, start, family, weight){
+  var size=start;
+  do{
+    ctx.font=weight+" "+size+"px "+family;
+    if(ctx.measureText(text).width<=maxW) return size;
+    size-=2;
+  }while(size>24);
+  return 24;
+}
+var FONT="Pretendard, 'Apple SD Gothic Neo', 'Noto Sans KR', sans-serif";
+function draw(){
+  var t=state.studio;
+  ctx.setTransform(1,0,0,1,0,0);
+  ctx.clearRect(0,0,1080,1350);
+  ctx.fillStyle="#0D1017"; ctx.fillRect(0,0,1080,1350);
+  var img = tplImgs[TPLS[t.tpl].f];
+  if(img) coverDraw(img);
+
+  var bottom = t.pos!=="top";
+  // 스크림
+  var g;
+  if(bottom){
+    g=ctx.createLinearGradient(0,620,0,1350);
+    g.addColorStop(0,"rgba(5,6,11,0)"); g.addColorStop(.45,"rgba(5,6,11,.52)"); g.addColorStop(1,"rgba(5,6,11,.94)");
+  }else{
+    g=ctx.createLinearGradient(0,0,0,700);
+    g.addColorStop(0,"rgba(5,6,11,.92)"); g.addColorStop(.55,"rgba(5,6,11,.45)"); g.addColorStop(1,"rgba(5,6,11,0)");
+  }
+  ctx.fillStyle=g; ctx.fillRect(0,0,1080,1350);
+
+  // 제목
+  var acc=t.accent;
+  var lines=[t.t1,t.t2].filter(function(x){ return x && x.trim(); });
+  var maxW=1080-168;
+  var start = bottom?82:96;
+  var size = 82;
+  lines.forEach(function(l){ size=Math.min(size, fitFont(l, maxW, start, FONT, "900")); });
+
+  var lh = size*1.13;
+  var y;
+  if(bottom){ y = 1350 - 150 - lh*(lines.length-1) - 40; }
+  else { y = 210; }
+
+  ctx.textBaseline="alphabetic";
+  lines.forEach(function(line,i){
+    var yy = y + lh*i;
+    var hl = t.hl && t.hl.trim();
+    var parts=[], rest=line;
+    if(hl){
+      var p=line.indexOf(hl);
+      if(p>=0){ parts=[{s:line.slice(0,p),c:"#fff"},{s:hl,c:acc},{s:line.slice(p+hl.length),c:"#fff"}]; }
+    }
+    if(!parts.length) parts=[{s:line,c:"#fff"}];
+    // stroke pass
+    ctx.font="900 "+size+"px "+FONT;
+    ctx.lineWidth=Math.max(8, size*0.11); ctx.lineJoin="round"; ctx.miterLimit=2;
+    ctx.strokeStyle="rgba(10,11,17,.96)";
+    var x=84, total=parts.reduce(function(a,b){ return a+ctx.measureText(b.s).width; },0);
+    parts.forEach(function(pt){ ctx.strokeText(pt.s,x,yy); x+=ctx.measureText(pt.s).width; });
+    // shadow
+    ctx.shadowColor="rgba(0,0,0,.55)"; ctx.shadowBlur=18; ctx.shadowOffsetY=8;
+    x=84;
+    parts.forEach(function(pt){ ctx.fillStyle=pt.c; ctx.fillText(pt.s,x,yy); x+=ctx.measureText(pt.s).width; });
+    ctx.shadowColor="transparent"; ctx.shadowBlur=0; ctx.shadowOffsetY=0;
+  });
+
+  // 말풍선
+  if(t.bubble && t.bubble.trim()){
+    var bl=t.bubble.split("\n").filter(function(x){return x.trim();}).slice(0,3);
+    var bs=34;
+    ctx.font="700 "+bs+"px "+FONT;
+    var bw=Math.max.apply(null, bl.map(function(l){ return ctx.measureText(l).width; }))+80;
+    var bh=bl.length*46+56;
+    var bx, by;
+    if(bottom){ bx=1080-64-bw; by=y-lh*(lines.length-1)-160-bh+40; }
+    else { bx=64; by=1350-140-bh-60; }
+    if(by<130) by=130;
+    var r=30;
+    ctx.beginPath();
+    ctx.moveTo(bx+r,by);
+    ctx.arcTo(bx+bw,by,bx+bw,by+bh,r);
+    ctx.arcTo(bx+bw,by+bh,bx,by+bh,r);
+    ctx.arcTo(bx,by+bh,bx,by,r);
+    ctx.arcTo(bx,by,bx+bw,by,r);
+    ctx.closePath();
+    ctx.fillStyle="rgba(255,255,255,.98)";
+    ctx.shadowColor="rgba(0,0,0,.4)"; ctx.shadowBlur=16; ctx.shadowOffsetY=6;
+    ctx.fill(); ctx.shadowColor="transparent"; ctx.shadowBlur=0; ctx.shadowOffsetY=0;
+    ctx.lineWidth=6; ctx.strokeStyle="#141519"; ctx.stroke();
+    // tail
+    ctx.beginPath();
+    if(bottom){ ctx.moveTo(bx+bw*0.20,by+4); ctx.lineTo(bx+bw*0.06,by-46); ctx.lineTo(bx+bw*0.44,by+4); }
+    else { ctx.moveTo(bx+bw*0.24,by+bh-4); ctx.lineTo(bx+bw*0.10,by+bh+46); ctx.lineTo(bx+bw*0.48,by+bh-4); }
+    ctx.closePath(); ctx.fillStyle="rgba(255,255,255,.98)"; ctx.fill();
+    ctx.lineWidth=6; ctx.strokeStyle="#141519"; ctx.stroke();
+    ctx.fillStyle="#15161B"; ctx.textAlign="center";
+    bl.forEach(function(l,i){ ctx.fillText(l, bx+bw/2, by+46+ i*46 + 6); });
+    ctx.textAlign="left";
+  }
+
+  // 배지
+  var badge=(t.badge||"EP.04").trim();
+  ctx.font="700 26px "+FONT;
+  var tw=ctx.measureText(badge).width;
+  var pw=tw+52, ph=54, px=46, py=40;
+  ctx.fillStyle="rgba(14,14,18,.88)";
+  ctx.strokeStyle="rgba(255,255,255,.85)"; ctx.lineWidth=3;
+  roundRect(px,py,pw,ph,9); ctx.fill(); ctx.stroke();
+  ctx.fillStyle=acc; ctx.textBaseline="middle";
+  ctx.fillText(badge, px+26, py+ph/2+1);
+
+  // 워터마크
+  ctx.textBaseline="alphabetic";
+  ctx.font="600 24px "+FONT; ctx.textAlign="center";
+  ctx.fillStyle="rgba(255,255,255,.62)";
+  ctx.fillText("@bujachacha_", 540, 1318);
+  ctx.textAlign="left";
+}
+function roundRect(x,y,w,h,r){
+  ctx.beginPath();
+  ctx.moveTo(x+r,y);
+  ctx.arcTo(x+w,y,x+w,y+h,r);
+  ctx.arcTo(x+w,y+h,x,y+h,r);
+  ctx.arcTo(x,y+h,x,y,r);
+  ctx.arcTo(x,y,x+w,y,r);
+  ctx.closePath();
+}
+function syncStudioInputs(){
+  var t=state.studio;
+  $("#t1").value=t.t1; $("#t2").value=t.t2; $("#hl").value=t.hl;
+  $("#bb").value=t.bubble; $("#badge").value=t.badge;
+  document.querySelectorAll("[data-pos]").forEach(function(b){ b.classList.toggle("on", b.dataset.pos===t.pos); });
+}
+function bindStudio(){
+  var map={ "#t1":"t1","#t2":"t2","#hl":"hl","#bb":"bubble","#badge":"badge" };
+  Object.keys(map).forEach(function(sel){
+    $(sel).addEventListener("input", function(){
+      state.studio[map[sel]]=this.value; save(); draw();
+    });
+  });
+  document.querySelectorAll("[data-pos]").forEach(function(b){
+    b.addEventListener("click", function(){
+      state.studio.pos=b.dataset.pos; save();
+      document.querySelectorAll("[data-pos]").forEach(function(x){ x.classList.toggle("on",x===b); });
+      draw(); vibrate();
+    });
+  });
+  $("#saveCv").addEventListener("click", function(){
+    draw();
+    cv.toBlob(function(blob){
+      var a=el("a"); a.href=URL.createObjectURL(blob);
+      a.download="bujachacha_"+Date.now()+".png";
+      document.body.appendChild(a); a.click(); document.body.removeChild(a);
+      toast("1080×1350 PNG 저장 중…");
+      setTimeout(function(){ URL.revokeObjectURL(a.href); }, 4000);
+    }, "image/png");
+  });
+  $("#resetCv").addEventListener("click", function(){
+    state.studio={ tpl:0, t1:"", t2:"", hl:"", accent:"#FF6B00", bubble:"", badge:"EP.04", pos:"bottom" };
+    save(); syncStudioInputs(); renderSwatches(); renderTpls(); draw(); toast("초기화했습니다");
+  });
+}
+
+/* ═══════════════ 4. 발행 루틴 ═══════════════ */
+var CHECKS = [
+  { id:"tue", t:"화요일 19:00 발행", s:"EP.01 → EP.02 → EP.03 순서" },
+  { id:"fri", t:"금요일 19:00 발행", s:"다음 화 또는 릴스 재가공" },
+  { id:"story", t:"발행 후 스토리 1개 공유", s:"첫 컷 + 저장 유도 문구" },
+  { id:"reply", t:"댓글 10개 답글", s:"질문은 다음 화 소재로" },
+  { id:"save", t:"저장 유도 문구 확인", s:"마지막 컷에 반드시" },
+  { id:"reel", t:"주 1회 릴스 재가공", s:"저장 높은 화를 15초로" }
+];
+function renderRoutine(){
+  var r=state.routine;
+  if(r.week!==weekLabel()){ /* 새 주: 체크만 리셋 */ r.week=weekLabel(); r.checks={}; save(); }
+  $("#weekMeta").textContent = weekLabel();
+  var done = CHECKS.filter(function(c){ return r.checks[c.id]; }).length;
+  $("#progBar").style.width = Math.round(done/CHECKS.length*100)+"%";
+  $("#progText").textContent = done+" / "+CHECKS.length+" 완료 · "+(done===CHECKS.length?"이번 주 발행 끝, 저장 수 확인!":(CHECKS.length-done)+"개 남음");
+  var list=$("#checkList"); list.innerHTML="";
+  CHECKS.forEach(function(c){
+    var d=el("div","checkitem"+(r.checks[c.id]?" on":""));
+    d.innerHTML='<div class="bx"></div><div class="tx"><b>'+c.t+'</b><span>'+c.s+'</span></div>';
+    d.addEventListener("click", function(){
+      r.checks[c.id]=!r.checks[c.id]; save(); renderRoutine(); vibrate();
+    });
+    list.appendChild(d);
+  });
+  var ml=$("#metricList"); ml.innerHTML="";
+  r.metrics.forEach(function(m,i){
+    var d=el("div","metric");
+    d.innerHTML='<div class="wk">'+m.w+'</div><div class="grid">'
+      + '<input inputmode="numeric" placeholder="저장" value="'+escAttr(m.saves)+'" data-k="saves" data-i="'+i+'">'
+      + '<input inputmode="numeric" placeholder="도달" value="'+escAttr(m.reach)+'" data-k="reach" data-i="'+i+'">'
+      + '<input inputmode="numeric" placeholder="팔로워" value="'+escAttr(m.fans)+'" data-k="fans" data-i="'+i+'">'
+      + '</div><input class="memo" placeholder="메모 (예: 3.3% 화 저장 급증)" value="'+escAttr(m.memo)+'" data-k="memo" data-i="'+i+'">';
+    ml.appendChild(d);
+  });
+  ml.querySelectorAll("input").forEach(function(inp){
+    inp.addEventListener("input", function(){
+      state.routine.metrics[+this.dataset.i][this.dataset.k]=this.value; save();
+    });
+  });
+}
+function escAttr(s){ return String(s==null?"":s).replace(/"/g,"&quot;").replace(/</g,"&lt;"); }
+$("#addMetric").addEventListener("click", function(){
+  state.routine.metrics.unshift({ w:weekLabel(), saves:"", reach:"", fans:"", memo:"" });
+  save(); renderRoutine(); toast("이번 주 칸을 추가했습니다");
+});
+
+/* ═══════════════ 시작 ═══════════════ */
+renderEps(); renderViewer(); renderBank(); renderTpls(); renderSwatches();
+syncStudioInputs(); bindStudio(); renderRoutine();
+if(document.fonts && document.fonts.ready){ document.fonts.ready.then(function(){ draw(); }); }
+loadTpls().then(draw);
+window.addEventListener("resize", function(){ /* 캔버스는 고정 해상도 */ });
+})();
+</script>
+</body>
+</html>
