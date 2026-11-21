@@ -2740,7 +2740,8 @@ function buildSummary(){
   var ivRows=state.categories.map(function(c){return invStats(c.id);}).filter(function(s){return s.initial>0||s.recovered>0;});
   if(ivRows.length){
     ivRows.forEach(function(s){
-      L.push('  '+(s.status==='done'?'🟢':(s.status==='progress'?'🟡':'⚪'))+' '+s.name+' · 투자 '+fmt(s.initial)+'원 → 회수 '+fmt(s.recovered)+'원 · '+roiText(s.roi)+' ('+statusText(s)+')');
+      var roiTxt=s.roi===null?('순수익 +'+fmt(s.recovered)+'원'):roiText(s.roi);
+      L.push('  '+(s.status==='done'?'🟢':(s.status==='progress'?'🟡':'⚪'))+' '+s.name+' · 투자 '+fmt(s.initial)+'원 → 회수 '+fmt(s.recovered)+'원 · '+roiTxt+' ('+statusText(s)+')');
     });
   }else{
     L.push('  · 아직 초기 투자금을 적은 부업이 없어요');
