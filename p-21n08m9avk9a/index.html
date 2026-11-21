@@ -1332,12 +1332,10 @@ function invTotals(){
   state.categories.forEach(function(c){
     var s=invStats(c.id);
     T.initial+=s.initial;T.recovered+=s.recovered;
-    if(s.initial>0||s.recovered>0){
-      T.places++;
-      if(s.status==='done')T.done++;
-      else if(s.status==='progress')T.progress++;
-      else T.free++;
-    }
+    if(s.status==='done')T.done++;
+    else if(s.status==='progress')T.progress++;
+    else T.free++;
+    if(s.initial>0||s.recovered>0)T.places++;
   });
   T.roi=T.initial>0?((T.recovered-T.initial)/T.initial*100):null;
   return T;
@@ -2483,7 +2481,22 @@ function updateInvestPreview(){
   var roi=initial>0?((s.recovered-initial)/initial*100):null;
   var rate=initial>0?(s.recovered/initial*100):0;
   var pct=$('#invLivePct');
-  if(pct){pct.textContent=roiText(roi);pct.className='ih-v'+(roi!==null&&roi>0?' up':'');}
+  if(pct){
+    if(initial>0){pct.textContent=roiText(roi);pct.className='ih-v'+(roi>0?' up':'');}
+    else{pct.textContent=s.recovered>0?'+₩'+fmt(s.recovered):'무자본';pct.className='ih-v'+(s.recovered>0?' up':'');}
+  }
+  var lab=$('#invLiveLab');
+  if(lab)lab.textContent=initial>0?'현재 수익률':(s.recovered>0?'무자본 순수익':'회수 상태');
+  var pill=$('#invLivePill');
+  if(pill){
+    if(initial>0){
+      pill.className='pill '+(s.recovered>=initial?'done':'rec');
+      pill.textContent=s.recovered>=initial?'회수 완료 🎉':'회수 중 '+Math.min(999,Math.round(rate))+'%';
+    }else{
+      pill.className='pill free';
+      pill.textContent='무자본';
+    }
+  }
   var ini=$('#invLiveInit');
   if(ini)ini.textContent='₩'+fmt(initial);
   var left=$('#invLiveLeft');
@@ -2494,6 +2507,10 @@ function updateInvestPreview(){
   if(note)note.innerHTML=investNoteHtml(initial,s.recovered,s.ledgerN,s.threadRec);
   var hint=$('#f-inv-hint');
   if(hint){hint.textContent=initial?fmt(initial)+'원':'';hint.classList.toggle('on',!!initial);}
+}
+function invHeroBig(s){
+  if(s.initial>0)return roiText(s.roi);
+  return s.recovered>0?('+₩'+fmt(s.recovered)):'무자본';
 }
 function openInvestSheet(id){
   var isNew=!id;
@@ -2506,10 +2523,11 @@ function openInvestSheet(id){
       '<p class="hint-line" style="padding-top:0">부업을 하나 더 만들고 초기 투자금을 바로 적을 수 있어요.</p>';
   }else{
     body+='<div class="inv-hero">'+
-      '<div class="ih-top"><span class="ih-l">현재 수익률</span>'+
-        (s.status==='done'?'<span class="pill done">회수 완료 🎉</span>':(s.status==='progress'?'<span class="pill rec">'+statusText(s)+'</span>':'<span class="pill free">무자본</span>'))+
+      '<div class="ih-top"><span class="ih-l" id="invLiveLab">'+(s.initial>0?'현재 수익률':(s.recovered>0?'무자본 순수익':'회수 상태'))+'</span>'+
+        '<span id="invLivePill" class="pill '+(s.status==='done'?'done':(s.status==='progress'?'rec':'free'))+'">'+
+          (s.status==='done'?'회수 완료 🎉':(s.status==='progress'?'회수 중 '+Math.min(999,Math.round(s.rate))+'%':'무자본'))+'</span>'+
       '</div>'+
-      '<div class="ih-v'+(s.roi!==null&&s.roi>0?' up':'')+'" id="invLivePct">'+roiText(s.roi)+'</div>'+
+      '<div class="ih-v'+(s.initial>0?(s.roi>0?' up':''):(s.recovered>0?' up':''))+'" id="invLivePct">'+invHeroBig(s)+'</div>'+
       '<div class="ih-grid">'+
         '<div><span>초기 투자금</span><b id="invLiveInit">₩'+fmt(s.initial)+'</b></div>'+
         '<div><span>회수금</span><b class="up">₩'+fmt(s.recovered)+'</b></div>'+
