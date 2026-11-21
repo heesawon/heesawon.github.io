@@ -5,205 +5,208 @@
 <meta name="robots" content="noindex, nofollow, noarchive, nosnippet, noimageindex">
 <meta name="googlebot" content="noindex, nofollow, noarchive, nosnippet">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>AI 플레이리스트 스튜디오</title>
-<meta name="theme-color" content="#0B0A10">
+<title>플리 스튜디오 · ONE ROOM</title>
+<meta name="theme-color" content="#F4F1EA">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-title" content="플리 스튜디오">
-<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
 <meta name="format-detection" content="telephone=no">
 <meta name="referrer" content="no-referrer">
 <link rel="manifest" href="manifest.webmanifest">
 <link rel="icon" href="icon.svg" type="image/svg+xml">
-<link rel="icon" type="image/png" sizes="192x192" href="icon-192.png">
+<link rel="icon" href="icon-192.png" sizes="192x192" type="image/png">
 <link rel="apple-touch-icon" sizes="180x180" href="icon-180.png">
 <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@400;500;600&display=swap">
 <style>
 :root{
-  color-scheme:dark;
-  --bg:#0B0A10; --bg2:#100E16; --card:#16131D; --card2:#1D1927; --card3:#262031;
-  --line:rgba(255,255,255,.09); --line2:rgba(255,255,255,.055);
-  --ink:#F5F2F8; --dim:#A6A0B4; --dim2:#6F687F;
-  --amber:#F0A46A; --amber2:#FFC08A; --violet:#8E7CFF; --green:#4ADE80; --rose:#FF7A8A;
-  --sans:"Pretendard",-apple-system,BlinkMacSystemFont,"Apple SD Gothic Neo","Noto Sans KR",system-ui,sans-serif;
+  color-scheme: light;
+  --paper:#F4F1EA; --paper2:#FBFAF5; --paper3:#EFEBE0;
+  --ink:#1C1B17; --ink2:#4A463C; --muted:#857F6F; --faint:#A9A390;
+  --rule:#DBD4C3; --rule2:#E7E1D2;
+  --rust:#9E4F2C; --moss:#4C6150; --gold:#A9812A;
+  --serif:"Noto Serif KR",Georgia,"Times New Roman",serif;
+  --sans:"Pretendard",-apple-system,BlinkMacSystemFont,"Apple SD Gothic Neo",system-ui,sans-serif;
   --safe-t:env(safe-area-inset-top,0px); --safe-b:env(safe-area-inset-bottom,0px);
 }
 *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
 html,body{margin:0;padding:0}
 body{
-  background:
-    radial-gradient(1200px 600px at 80% -10%, rgba(142,124,255,.16), transparent 60%),
-    radial-gradient(900px 500px at -10% 10%, rgba(240,164,106,.13), transparent 55%),
-    var(--bg);
-  color:var(--ink); font-family:var(--sans); font-size:15px; line-height:1.5;
-  -webkit-font-smoothing:antialiased; padding-bottom:calc(86px + var(--safe-b));
+  background:var(--paper); color:var(--ink);
+  font-family:var(--sans); font-size:15px; line-height:1.55;
+  -webkit-font-smoothing:antialiased;
+  padding-bottom:calc(78px + var(--safe-b));
 }
 button{font-family:inherit;font-size:inherit;color:inherit;background:none;border:0;padding:0;cursor:pointer}
 h1,h2,h3,h4,p{margin:0}
-a{color:var(--amber2)}
-.app{max-width:560px;margin:0 auto;min-height:100vh}
+a{color:var(--rust)}
+.app{max-width:580px;margin:0 auto;min-height:100vh;background:var(--paper)}
 
-/* topbar */
+/* ---------- topbar ---------- */
 .topbar{
   position:sticky;top:0;z-index:40;
-  padding:calc(var(--safe-t) + 14px) 18px 12px;
-  background:linear-gradient(180deg,rgba(11,10,16,.96) 70%,rgba(11,10,16,.80));
-  backdrop-filter:saturate(160%) blur(16px);
-  border-bottom:1px solid var(--line2);
-  display:flex;align-items:flex-end;justify-content:space-between;gap:12px;
+  padding:calc(var(--safe-t) + 16px) 20px 14px;
+  background:rgba(244,241,234,.94);
+  backdrop-filter:saturate(120%) blur(10px);
+  border-bottom:1px solid var(--rule);
+  display:flex;align-items:flex-start;justify-content:space-between;gap:14px;
 }
-.brand{display:flex;flex-direction:column;gap:3px;min-width:0}
-.brand .kick{font-size:10px;letter-spacing:.18em;color:var(--amber);font-weight:700}
-.brand h1{font-size:19px;line-height:1.2;font-weight:800;letter-spacing:-.02em}
-.brand .sub{font-size:11.5px;color:var(--dim2)}
-.mark{width:38px;height:38px;border-radius:12px;border:1px solid var(--line);display:grid;place-items:center;
-  background:linear-gradient(160deg,rgba(240,164,106,.18),rgba(142,124,255,.14));flex:0 0 auto}
-.mark svg{width:20px;height:20px}
+.brand .kick{display:block;font-size:9.5px;letter-spacing:.26em;color:var(--rust);font-weight:700;margin-bottom:5px}
+.brand h1{font-family:var(--serif);font-size:23px;line-height:1.2;font-weight:600;letter-spacing:-.01em}
+.brand .sub{display:block;font-size:11px;color:var(--muted);margin-top:4px;letter-spacing:.02em}
+.mark{width:34px;height:34px;border:1px solid var(--rule);display:grid;place-items:center;flex:0 0 auto;margin-top:2px}
+.mark svg{width:16px;height:16px}
 
-/* views */
-.view{padding:16px 16px 4px}
+/* ---------- views ---------- */
+.view{padding:20px 20px 8px}
 .view.hidden{display:none}
+.foot{font-size:10.5px;color:var(--faint);margin:18px 2px 0;line-height:1.6;letter-spacing:.01em}
+.sec{display:flex;align-items:baseline;justify-content:space-between;gap:10px;margin:26px 2px 11px;padding-bottom:7px;border-bottom:1px solid var(--ink)}
+.sec h3{font-family:var(--serif);font-size:14px;font-weight:600;letter-spacing:.01em}
+.sec span{font-size:10px;color:var(--muted);letter-spacing:.06em}
+.sec:first-child{margin-top:0}
 
-/* section titles */
-.sec{display:flex;align-items:baseline;justify-content:space-between;gap:10px;margin:22px 2px 10px}
-.sec h3{font-size:13px;letter-spacing:.02em;font-weight:800;color:var(--ink)}
-.sec span{font-size:11px;color:var(--dim2)}
-.sec:first-child{margin-top:4px}
+/* ---------- strip ---------- */
+.strip{display:grid;grid-template-columns:repeat(3,1fr);border:1px solid var(--rule);background:var(--paper2)}
+.stat{padding:12px 12px 11px;border-right:1px solid var(--rule2)}
+.stat:last-child{border-right:0}
+.stat b{display:block;font-family:var(--serif);font-size:20px;font-weight:600;letter-spacing:-.01em}
+.stat span{display:block;font-size:9.5px;color:var(--muted);letter-spacing:.1em;margin-top:3px}
 
-/* overview strip */
-.strip{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:14px}
-.stat{background:var(--card);border:1px solid var(--line2);border-radius:14px;padding:10px 12px}
-.stat b{display:block;font-size:18px;font-weight:800;letter-spacing:-.02em}
-.stat span{font-size:10.5px;color:var(--dim2)}
-.stat.amber b{color:var(--amber2)}
-
-/* episode card */
-.ep{background:var(--card);border:1px solid var(--line2);border-radius:18px;margin-bottom:12px;overflow:hidden}
+/* ---------- episode card ---------- */
+.ep{background:var(--paper2);border:1px solid var(--rule);margin-bottom:12px}
 .ep-head{display:flex;gap:12px;align-items:flex-start;width:100%;text-align:left;padding:12px}
-.ep-cover{width:96px;height:54px;border-radius:9px;object-fit:cover;flex:0 0 auto;background:var(--card3)}
+.ep-cover{width:104px;height:58px;object-fit:cover;flex:0 0 auto;border:1px solid var(--rule)}
 .ep-meta{min-width:0;flex:1}
-.ep-badge{font-size:9.5px;letter-spacing:.12em;color:var(--amber);font-weight:700;display:block;margin-bottom:2px}
-.ep-meta h2{font-size:14.5px;font-weight:800;letter-spacing:-.02em;line-height:1.32}
-.ep-en{font-size:11px;color:var(--dim);margin-top:3px;line-height:1.4;
-  display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
-.chev{color:var(--dim2);font-size:18px;line-height:1;padding-top:2px;transition:transform .18s}
+.ep-badge{font-size:8.5px;letter-spacing:.2em;color:var(--rust);font-weight:700;display:block;margin-bottom:4px}
+.ep-meta h2{font-family:var(--serif);font-size:15px;font-weight:600;line-height:1.4;letter-spacing:-.01em}
+.ep-en{font-size:10.5px;color:var(--ink2);margin-top:5px;line-height:1.45;
+  display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+.chev{color:var(--faint);font-size:16px;line-height:1;padding-top:3px;transition:transform .18s}
 .ep.open .chev{transform:rotate(90deg)}
-.ep-body{display:none;padding:0 12px 14px;border-top:1px solid var(--line2)}
+.ep-body{display:none;padding:0 12px 14px;border-top:1px solid var(--rule2)}
 .ep.open .ep-body{display:block}
 
-.bar{height:5px;border-radius:99px;background:var(--card3);overflow:hidden;margin:12px 0 8px}
-.bar i{display:block;height:100%;background:linear-gradient(90deg,var(--violet),var(--amber));border-radius:99px;transition:width .25s}
-.stages{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:10px}
-.stage{font-size:11px;padding:6px 10px;border-radius:99px;border:1px solid var(--line);color:var(--dim);background:var(--card2)}
-.stage.on{border-color:rgba(240,164,106,.55);color:#1a1017;background:linear-gradient(160deg,var(--amber2),var(--amber));font-weight:700}
-.chips{display:flex;flex-wrap:wrap;gap:5px;margin:8px 0 4px}
-.chip{font-size:10.5px;color:var(--dim);background:var(--card2);border:1px solid var(--line2);padding:4px 8px;border-radius:99px}
-.rows{display:grid;grid-template-columns:1fr 1fr;gap:7px;margin-top:12px}
+.bar{height:2px;background:var(--rule2);overflow:hidden;margin:14px 0 10px}
+.bar i{display:block;height:100%;background:var(--ink);transition:width .25s}
+.stages{display:flex;flex-wrap:wrap;gap:14px;margin-bottom:12px}
+.stage{font-size:10.5px;letter-spacing:.08em;color:var(--faint);padding:2px 0;border-bottom:1px solid transparent}
+.stage.on{color:var(--ink);border-bottom-color:var(--ink)}
+.chips{display:flex;flex-wrap:wrap;gap:6px;margin:6px 0 0}
+.chip{font-size:9.5px;color:var(--ink2);border:1px solid var(--rule);padding:3px 7px;letter-spacing:.02em}
+.hint{font-size:11.5px;color:var(--ink2);line-height:1.65;margin-top:4px}
+.rows{display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-top:13px}
 .btn{
-  display:flex;align-items:center;justify-content:center;gap:6px;
-  font-size:12.5px;font-weight:700;padding:10px 8px;border-radius:11px;
-  background:var(--card2);border:1px solid var(--line);color:var(--ink);
+  display:flex;align-items:center;justify-content:center;gap:5px;
+  font-size:10px;font-weight:600;letter-spacing:.09em;padding:10px 8px;
+  border:1px solid var(--rule);background:transparent;color:var(--ink);text-align:center;
 }
-.btn:active{transform:scale(.985)}
-.btn.pri{background:linear-gradient(160deg,rgba(240,164,106,.22),rgba(142,124,255,.16));border-color:rgba(240,164,106,.4);color:var(--amber2)}
+.btn:active{background:var(--paper3)}
+.btn.pri{background:var(--ink);border-color:var(--ink);color:var(--paper)}
 .btn.wide{grid-column:1 / -1}
-.btn.done{background:rgba(74,222,128,.16);border-color:rgba(74,222,128,.4);color:#9BF3BE}
-.hint{font-size:11px;color:var(--dim2);margin-top:8px;line-height:1.5}
+.btn.done{background:var(--moss);border-color:var(--moss);color:#fff}
 
-/* prompt tab */
-.epchips{display:flex;gap:6px;overflow-x:auto;padding:2px 2px 10px;-webkit-overflow-scrolling:touch;scrollbar-width:none}
-.epchips::-webkit-scrollbar{display:none}
-.epchip{flex:0 0 auto;font-size:11.5px;font-weight:700;padding:8px 12px;border-radius:99px;
-  background:var(--card);border:1px solid var(--line2);color:var(--dim)}
-.epchip.on{background:linear-gradient(160deg,var(--amber2),var(--amber));color:#1a1017;border-color:transparent}
-.panel{background:var(--card);border:1px solid var(--line2);border-radius:16px;padding:13px;margin-bottom:11px}
-.panel h4{font-size:12.5px;font-weight:800;display:flex;align-items:center;gap:6px}
-.panel h4 .n{display:inline-grid;place-items:center;width:18px;height:18px;border-radius:6px;
-  background:rgba(240,164,106,.16);color:var(--amber2);font-size:10px;font-weight:800}
-.panel .where{font-size:10.5px;color:var(--dim2);margin:4px 0 9px}
+/* ---------- panels ---------- */
+.panel{background:var(--paper2);border:1px solid var(--rule);padding:14px;margin-bottom:10px}
+.panel h4{font-size:11.5px;font-weight:700;letter-spacing:.06em;margin-bottom:8px;display:flex;gap:8px;align-items:baseline}
+.panel h4 .n{font-family:var(--serif);font-size:11px;color:var(--rust);letter-spacing:.08em}
+.where{font-size:10px;color:var(--muted);margin:-3px 0 8px;letter-spacing:.02em}
 pre{
-  margin:0;padding:11px 12px;border-radius:11px;background:#0C0A12;border:1px solid var(--line2);
-  font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:11.5px;line-height:1.62;
-  white-space:pre-wrap;word-break:break-word;color:#D9D4E6;max-height:320px;overflow:auto;
-  -webkit-overflow-scrolling:touch;
+  font-family:"Courier New",ui-monospace,monospace;font-size:11px;line-height:1.6;
+  white-space:pre-wrap;word-break:break-word;margin:0;
+  background:var(--paper3);border-left:2px solid var(--rust);
+  padding:11px 12px;color:#26241E;max-height:320px;overflow:auto;
 }
 pre.tall{max-height:420px}
-.panel .prow{display:flex;gap:7px;margin-top:9px}
-.panel .prow .btn{flex:1}
-select,input[type=text]{font-family:inherit;font-size:14px;color:var(--ink);background:var(--card3);
-  border:1px solid var(--line);border-radius:10px;padding:10px 12px;width:100%;outline:none;-webkit-appearance:none;appearance:none}
-select:focus,input:focus{border-color:rgba(240,164,106,.6)}
-.mini{font-size:10.5px;color:var(--dim2);margin-top:6px}
-
-/* composer */
-.field{margin-top:10px}
-.field label{display:block;font-size:10.5px;color:var(--dim);margin-bottom:5px;letter-spacing:.02em}
+.mini{font-size:10.5px;color:var(--muted);margin-top:9px;line-height:1.6}
+.prow{display:flex;gap:6px;margin-top:9px}
+.prow .btn{flex:1}
+select,input[type=text]{
+  width:100%;font-family:inherit;font-size:12px;color:var(--ink);
+  background:var(--paper);border:1px solid var(--rule);padding:9px 10px;border-radius:0;
+  -webkit-appearance:none;appearance:none;
+}
+select{background-image:linear-gradient(45deg,transparent 50%,var(--muted) 50%),linear-gradient(135deg,var(--muted) 50%,transparent 50%);
+  background-position:calc(100% - 15px) 50%,calc(100% - 10px) 50%;background-size:5px 5px,5px 5px;background-repeat:no-repeat;padding-right:28px}
+.field{margin-bottom:11px}
+.field label{display:block;font-size:9.5px;letter-spacing:.12em;color:var(--muted);margin-bottom:5px}
+.field.grid2{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.tdiv{display:flex;align-items:center;gap:10px;margin:22px 0 11px}
+.tdiv b{font-size:10px;font-weight:700;letter-spacing:.18em;color:var(--rust)}
+.tdiv i{flex:1;height:1px;background:var(--rule)}
 .optrow{display:flex;flex-wrap:wrap;gap:5px}
-.opt{font-size:11px;padding:6px 10px;border-radius:99px;border:1px solid var(--line);color:var(--dim);background:var(--card2)}
-.opt.on{background:rgba(142,124,255,.2);border-color:rgba(142,124,255,.5);color:#CFC6FF;font-weight:700}
-input[type=range]{width:100%;-webkit-appearance:none;height:26px;background:transparent}
-input[type=range]::-webkit-slider-runnable-track{height:4px;border-radius:2px;background:var(--card3)}
-input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:20px;height:20px;border-radius:50%;
-  background:var(--amber);margin-top:-8px;border:2px solid #1a1017}
+.opt{font-size:10px;padding:5px 9px;border:1px solid var(--rule);color:var(--ink2);letter-spacing:.03em}
+.opt.on{background:var(--ink);border-color:var(--ink);color:var(--paper)}
 
-/* thumbnail studio */
-.canvas-wrap{background:var(--card);border:1px solid var(--line2);border-radius:16px;padding:10px}
-canvas#cv{width:100%;height:auto;display:block;border-radius:10px;background:#000;touch-action:manipulation}
-.presets{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;margin-top:9px}
-.preset{position:relative;border-radius:9px;overflow:hidden;border:2px solid transparent;aspect-ratio:16/9;background:var(--card3)}
-.preset img{width:100%;height:100%;object-fit:cover;display:block}
-.preset.on{border-color:var(--amber)}
-.preset span{position:absolute;left:3px;bottom:2px;font-size:8.5px;font-weight:800;color:#fff;
-  text-shadow:0 1px 3px rgba(0,0,0,.9)}
-.upbtn{margin-top:7px;width:100%}
-.grid2{display:grid;grid-template-columns:1fr 1fr;gap:8px}
-.tdiv{display:flex;align-items:center;gap:8px;margin:14px 2px 6px}
-.tdiv b{font-size:11.5px;color:var(--amber2);font-weight:800;letter-spacing:.02em;white-space:nowrap}
-.tdiv i{flex:1;height:1px;background:var(--line2)}
+/* ---------- chips row ---------- */
+.epchips{display:flex;gap:6px;overflow-x:auto;padding:1px 1px 12px;-webkit-overflow-scrolling:touch;scrollbar-width:none}
+.epchips::-webkit-scrollbar{display:none}
+.epchip{flex:0 0 auto;font-size:10px;font-weight:600;letter-spacing:.06em;padding:7px 11px;
+  border:1px solid var(--rule);color:var(--muted);background:transparent}
+.epchip.on{background:var(--ink);border-color:var(--ink);color:var(--paper)}
 
-/* rules tab */
-.ref{background:var(--card);border:1px solid var(--line2);border-radius:14px;padding:12px;margin-bottom:8px}
-.ref .top{display:flex;justify-content:space-between;gap:8px;align-items:baseline}
-.ref b{font-size:13px;font-weight:800}
-.ref .kind{font-size:9.5px;color:var(--amber);letter-spacing:.06em;font-weight:700}
-.ref .nums{font-size:11px;color:var(--dim);margin-top:3px}
-.ref .note{font-size:11px;color:var(--dim2);margin-top:2px}
-.ref .take{font-size:11.5px;color:#CFC6FF;margin-top:6px;padding-left:9px;border-left:2px solid rgba(142,124,255,.45);line-height:1.5}
-.check{display:flex;gap:9px;align-items:flex-start;padding:9px 2px;border-bottom:1px solid var(--line2)}
+/* ---------- thumbnail ---------- */
+.canvas-wrap{position:relative;border:1px solid var(--rule);background:#111;line-height:0}
+#cv{width:100%;height:auto;display:block}
+.presets{display:flex;gap:6px;overflow-x:auto;padding:9px 0 2px;scrollbar-width:none}
+.presets::-webkit-scrollbar{display:none}
+.preset{flex:0 0 auto;display:flex;flex-direction:column;gap:4px;border:1px solid var(--rule);background:var(--paper2);padding:4px;width:104px}
+.preset.on{border-color:var(--ink);box-shadow:inset 0 0 0 1px var(--ink)}
+.preset img{width:100%;height:56px;object-fit:cover;display:block;filter:saturate(.85)}
+.preset span{font-size:8.5px;letter-spacing:.05em;color:var(--ink2);text-align:center;line-height:1.3}
+.preset.on span{color:var(--ink);font-weight:700}
+.upbtn{width:100%;margin-top:9px}
+.range{width:100%;-webkit-appearance:none;appearance:none;height:22px;background:transparent}
+.range::-webkit-slider-runnable-track{height:1px;background:var(--rule)}
+.range::-webkit-slider-thumb{-webkit-appearance:none;width:14px;height:14px;margin-top:-7px;background:var(--ink);border-radius:0}
+.range::-moz-range-track{height:1px;background:var(--rule)}
+.range::-moz-range-thumb{width:14px;height:14px;background:var(--ink);border:0;border-radius:0}
+.laynote{font-size:10.5px;color:var(--ink2);border-left:2px solid var(--gold);padding:2px 0 2px 10px;margin:10px 0 0;line-height:1.6}
+
+/* ---------- rules ---------- */
+.ref{border-top:1px solid var(--rule);padding:12px 0}
+.ref:first-child{border-top:0}
+.ref .top{display:flex;gap:8px;align-items:baseline;justify-content:space-between}
+.ref .top b{font-family:var(--serif);font-size:14px;font-weight:600}
+.ref .kind{font-size:9px;letter-spacing:.1em;color:var(--rust)}
+.ref .nums{font-size:10px;color:var(--muted);margin-top:3px;letter-spacing:.03em}
+.ref .note{font-size:10.5px;color:var(--ink2);margin-top:5px;line-height:1.55}
+.ref .take{font-size:10.5px;margin-top:6px;padding-left:10px;border-left:2px solid var(--gold);color:var(--ink);line-height:1.6}
+.check{display:flex;gap:10px;align-items:flex-start;padding:9px 0;border-bottom:1px solid var(--rule2)}
 .check:last-child{border-bottom:0}
-.box{flex:0 0 auto;width:19px;height:19px;border-radius:6px;border:1.5px solid var(--line);margin-top:1px;
-  display:grid;place-items:center;font-size:11px;color:transparent}
-.check.on .box{background:var(--green);border-color:var(--green);color:#08210F}
-.check p{font-size:12.5px;line-height:1.45;color:var(--ink)}
-.check small{display:block;font-size:10px;color:var(--dim2);margin-top:1px}
-.check.on p{color:var(--dim)}
+.check .box{width:14px;height:14px;border:1px solid var(--faint);flex:0 0 auto;margin-top:3px;display:grid;place-items:center;font-size:10px;color:transparent}
+.check.on .box{background:var(--ink);border-color:var(--ink);color:var(--paper)}
+.check p{font-size:11.5px;line-height:1.55}
+.check small{font-size:9.5px;color:var(--faint);letter-spacing:.04em}
+.check.on p{color:var(--muted)}
+table.guide{width:100%;border-collapse:collapse;font-size:10px}
+table.guide th,table.guide td{text-align:left;padding:6px 5px;border-bottom:1px solid var(--rule2);vertical-align:top;line-height:1.5}
+table.guide th{font-size:9px;letter-spacing:.1em;color:var(--muted);font-weight:600;border-bottom:1px solid var(--rule)}
+table.guide td:first-child{color:var(--rust);white-space:nowrap}
 
-/* tabbar */
+/* ---------- tabbar ---------- */
 .tabbar{
   position:fixed;left:0;right:0;bottom:0;z-index:50;
-  display:flex;justify-content:center;
-  background:linear-gradient(180deg,rgba(11,10,16,.72),rgba(11,10,16,.97));
-  backdrop-filter:saturate(160%) blur(18px);border-top:1px solid var(--line2);
-  padding:7px 6px calc(7px + var(--safe-b));
+  background:rgba(244,241,234,.97);backdrop-filter:saturate(120%) blur(10px);
+  border-top:1px solid var(--rule);padding-bottom:var(--safe-b);
 }
-.tabbar .inner{display:flex;width:100%;max-width:560px}
-.tab{flex:1;display:flex;flex-direction:column;align-items:center;gap:3px;padding:6px 2px;border-radius:12px;color:var(--dim2)}
-.tab .ic{font-size:19px;line-height:1}
-.tab .lb{font-size:9.5px;font-weight:700;letter-spacing:.01em}
-.tab.on{color:var(--amber2)}
-.tab.on .lb{color:var(--amber2)}
+.tabbar .inner{max-width:580px;margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr)}
+.tab{padding:13px 4px 12px;display:flex;flex-direction:column;align-items:center;gap:3px;border-top:2px solid transparent;margin-top:-1px}
+.tab .lb{font-size:10px;letter-spacing:.11em;color:var(--muted)}
+.tab.on{border-top-color:var(--ink)}
+.tab.on .lb{color:var(--ink);font-weight:700}
+.tab .ic{display:none}
 
-/* toast */
 #toast{
-  position:fixed;left:50%;bottom:calc(96px + var(--safe-b));transform:translate(-50%,14px);
-  background:#231D2E;border:1px solid rgba(240,164,106,.45);color:var(--amber2);
-  font-size:12.5px;font-weight:700;padding:10px 16px;border-radius:99px;
-  opacity:0;pointer-events:none;transition:opacity .18s,transform .18s;z-index:90;max-width:88vw;text-align:center;
-  box-shadow:0 10px 30px rgba(0,0,0,.5)
+  position:fixed;left:50%;bottom:calc(84px + var(--safe-b));transform:translate(-50%,10px);
+  background:var(--ink);color:var(--paper);font-size:11px;letter-spacing:.05em;
+  padding:9px 14px;opacity:0;pointer-events:none;transition:opacity .18s,transform .18s;z-index:60;max-width:80vw;text-align:center;
 }
 #toast.show{opacity:1;transform:translate(-50%,0)}
-.foot{text-align:center;font-size:10px;color:var(--dim2);padding:18px 0 6px}
 </style>
 </head>
 <body>
@@ -211,174 +214,210 @@ canvas#cv{width:100%;height:auto;display:block;border-radius:10px;background:#00
 
 <header class="topbar">
   <div class="brand">
-    <span class="kick">BLUE HOUR CLUB · PAPER MOON</span>
-    <h1>AI 플레이리스트 스튜디오</h1>
+    <span class="kick">ONE ROOM · 원룸 · WORKROOM</span>
+    <h1>플리 스튜디오</h1>
     <span class="sub" id="subline">영어 보컬 · Suno · 4편 기획 완료</span>
   </div>
   <div class="mark" aria-hidden="true">
-    <svg viewBox="0 0 24 24" fill="none"><circle cx="13" cy="11" r="6.2" stroke="#F0A46A" stroke-width="1.7"/><circle cx="13" cy="11" r="1.6" fill="#F0A46A"/><path d="M4.5 17.5 3.6 20.4M7.4 17.5 6.5 20.4M10.3 17.5 9.4 20.4" stroke="#8E7CFF" stroke-width="1.6" stroke-linecap="round"/></svg>
+    <svg viewBox="0 0 24 24" fill="none">
+      <rect x="4.5" y="6" width="15" height="12" stroke="#1C1B17" stroke-width="1.4"/>
+      <path d="M8 6v12" stroke="#9E4F2C" stroke-width="1.4"/>
+      <circle cx="15" cy="12" r="1.6" fill="#1C1B17"/>
+    </svg>
   </div>
 </header>
 
-<!-- ============ TAB 1 ============ -->
+<!-- ============ 01 EPISODE ============ -->
 <main class="view" id="view-board">
   <div class="strip">
     <div class="stat"><b id="stEps">4</b><span>에피소드</span></div>
-    <div class="stat amber"><b id="stDone">0/20</b><span>제작 단계</span></div>
-    <div class="stat"><b id="stLen">1시간+</b><span>편당 길이</span></div>
+    <div class="stat"><b id="stDone">0/20</b><span>제작 단계</span></div>
+    <div class="stat"><b id="stLen">1시간</b><span>편당 길이</span></div>
   </div>
+
   <div class="sec"><h3>에피소드 보드</h3><span>카드를 눌러 펼치기</span></div>
   <div id="epList"></div>
+
+  <div class="sec"><h3>영상 본문 레이아웃</h3><span>CapCut 수치</span></div>
+  <div class="panel">
+    <h4><span class="n">A</span> 기본형 — 사진 1장 + 자막 4층</h4>
+    <div class="where">seroma room · URLIST 결. 1920×1080 / 30fps</div>
+    <table class="guide">
+      <tr><th>요소</th><th>수치</th></tr>
+      <tr><td>배경</td><td>한 편에 사진 1장. 시작 100% → 끝 104% (20분에 +2%), 위치·회전 고정</td></tr>
+      <tr><td>고스트 워드</td><td>ONE ROOM, Georgia Bold 260px, 자간 40, 불투명도 12%, y=470</td></tr>
+      <tr><td>Now Playing</td><td>24px / 자간 8 / 흰 55%, y=86, 곡 시작 0.4초 뒤 페이드인</td></tr>
+      <tr><td>곡명</td><td>Georgia Italic 44px, 흰 92%, y=830, 곡 시작 후 6초만</td></tr>
+      <tr><td>영문 가사</td><td>Georgia Italic 40px, #F2D06B, y=690, 곡당 2~3회 × 8초</td></tr>
+      <tr><td>한글 번역</td><td>Pretendard 34px SemiBold, 흰 88%, y=736</td></tr>
+      <tr><td>이퀄라이저</td><td>막대 6개·폭 6px·간격 6px·최고 28px, y=980, 흰 60%</td></tr>
+      <tr><td>전환</td><td>곡 사이 크로스페이드 6초. 자막 0.3초 아웃 → 0.3초 인</td></tr>
+      <tr><td>금지</td><td>화면 트랙리스트, 컷 편집, 3개 이상 자막 동시 노출</td></tr>
+    </table>
+  </div>
+  <div class="panel">
+    <h4><span class="n">B</span> 체크 — 업로드 전 30초</h4>
+    <p class="hint">① y ≤ 900(유튜브 컨트롤 바와 안 겹침) ② 360px 폭에서 곡명이 읽히는가 ③ 우하단 재생시간 자리 비었는가 ④ 중간광고가 트랙 경계에만 있는가 ⑤ 설명란 TIME LINE이 실제 영상과 맞는가.</p>
+  </div>
   <p class="foot">기획 → 음원 → 썸네일 → 편집 → 업로드 · 체크는 이 기기에 저장됩니다</p>
 </main>
 
-<!-- ============ TAB 2 ============ -->
+<!-- ============ 02 PROMPT ============ -->
 <main class="view hidden" id="view-prompts">
-  <div class="sec"><h3>프롬프트함</h3><span>Suno Custom mode 기준</span></div>
+  <div class="sec"><h3>프롬프트함</h3><span>Suno Custom mode</span></div>
   <div class="epchips" id="epChips"></div>
 
   <div class="panel">
-    <h4><span class="n">1</span> Suno 스타일 태그</h4>
-    <div class="where">Suno → Create → Custom → <b>Styles</b> 칸에 붙여넣기</div>
+    <h4><span class="n">01</span> Suno 스타일</h4>
+    <div class="where">Create → Custom → <b>Styles</b> 칸</div>
     <pre id="pStyle"></pre>
     <div class="prow">
-      <button class="btn pri" data-copy="style">스타일 태그 복사</button>
+      <button class="btn pri" data-copy="style">스타일 복사</button>
       <button class="btn" id="btnAltStyle">대안 스타일</button>
     </div>
     <p class="mini" id="pVocal"></p>
   </div>
 
   <div class="panel">
-    <h4><span class="n">2</span> 영문 가사 초안</h4>
-    <div class="where">Suno → <b>Lyrics</b> 칸에 그대로(메타태그 포함)</div>
+    <h4><span class="n">02</span> 영문 가사</h4>
+    <div class="where">Create → Custom → <b>Lyrics</b> 칸 (메타태그 포함)</div>
     <select id="lySel" aria-label="가사 선택"></select>
     <div style="height:8px"></div>
     <pre class="tall" id="pLyric"></pre>
     <div class="prow">
       <button class="btn pri" data-copy="lyric">가사 복사</button>
-      <button class="btn" id="btnLyricPrompt">가사 생성 프롬프트</button>
+      <button class="btn" id="btnLyricPrompt">가사 프롬프트</button>
     </div>
     <p class="mini" id="pSlots"></p>
   </div>
 
   <div class="panel">
-    <h4><span class="n">3</span> 배경 이미지 프롬프트</h4>
-    <div class="where">Midjourney / Ideogram · 16:9</div>
+    <h4><span class="n">03</span> 배경 사진 프롬프트</h4>
+    <div class="where">실사 필름 사진 · 16:9 · 인물은 뒷모습/손만</div>
     <pre id="pImg"></pre>
-    <div class="prow"><button class="btn pri" data-copy="img">이미지 프롬프트 복사</button></div>
+    <div class="prow"><button class="btn pri" data-copy="img">사진 프롬프트 복사</button></div>
   </div>
 
   <div class="panel">
-    <h4><span class="n">4</span> 루프 영상 프롬프트</h4>
-    <div class="where">Runway / Kling 이미지→비디오</div>
+    <h4><span class="n">04</span> 루프 영상 프롬프트</h4>
+    <div class="where">Runway / Kling · 이미지→비디오 8초</div>
     <pre id="pLoop"></pre>
     <div class="prow"><button class="btn pri" data-copy="loop">루프 프롬프트 복사</button></div>
   </div>
 
-  <div class="tdiv"><b>커스텀 조합기</b><i></i></div>
+  <div class="tdiv"><b>COMBINER</b><i></i></div>
   <div class="panel">
-    <h4>새 트랙 스타일 만들기</h4>
+    <h4>새 트랙 스타일 조합</h4>
     <div class="field"><label>장르</label><div class="optrow" id="optGenre"></div></div>
     <div class="field"><label>보컬</label><div class="optrow" id="optVocal"></div></div>
-    <div class="field"><label>악기 (복수 선택)</label><div class="optrow" id="optInst"></div></div>
-    <div class="field"><label>분위기 (복수 선택)</label><div class="optrow" id="optMood"></div></div>
-    <div class="field"><label>BPM <span id="bpmVal" style="color:var(--amber2);font-weight:800">76</span></label>
-      <input type="range" id="bpm" min="60" max="110" value="76" step="1">
+    <div class="field"><label>악기 (복수)</label><div class="optrow" id="optInst"></div></div>
+    <div class="field"><label>분위기 (복수)</label><div class="optrow" id="optMood"></div></div>
+    <div class="field"><label>BPM <span id="bpmVal" style="color:var(--rust);font-weight:700">72</span></label>
+      <input type="range" id="bpm" class="range" min="60" max="110" value="72" step="1">
     </div>
-    <pre id="cOut" style="margin-top:6px"></pre>
+    <pre id="cOut" style="margin-top:8px"></pre>
     <div class="prow"><button class="btn pri" data-copy="custom">이 스타일 복사</button></div>
-    <p class="mini">4~7개 핵심 디스크립터가 가장 안정적입니다. 너무 많이 넣으면 톤이 뭉개집니다.</p>
+    <p class="mini">핵심 디스크립터 4~7개가 가장 안정적입니다. 리버브 워시는 빼세요 — 작은 방이 AI 티를 줄입니다.</p>
   </div>
-  <p class="foot">스타일 태그는 영어로, 가사는 사람이 쓴 영어로.</p>
+  <p class="foot">스타일은 영어로, 가사는 사람이 쓴 영어로.</p>
 </main>
 
-<!-- ============ TAB 3 ============ -->
+<!-- ============ 03 THUMBNAIL ============ -->
 <main class="view hidden" id="view-thumb">
   <div class="sec"><h3>썸네일 스튜디오</h3><span>1280 × 720</span></div>
   <div class="canvas-wrap">
     <canvas id="cv" width="1280" height="720"></canvas>
-    <div class="presets" id="presets"></div>
-    <button class="btn upbtn" id="btnUpload">📷 내 사진 올리기</button>
-    <input type="file" id="fileInput" accept="image/*" hidden>
   </div>
+  <div class="presets" id="presets"></div>
+  <p class="laynote" id="laynote"></p>
+  <button class="btn upbtn" id="btnUpload">내 사진 올리기</button>
+  <input type="file" id="fileInput" accept="image/*" hidden>
 
-  <div class="tdiv"><b>제목</b><i></i></div>
+  <div class="tdiv"><b>04-LAYER TEXT</b><i></i></div>
   <div class="panel">
-    <div class="field"><label>메인 텍스트</label>
-      <input type="text" id="t1" value="rain on the window" maxlength="26">
+    <div class="field"><label>곡명 (Now Playing)</label>
+      <input type="text" id="np" value="Two Eggs, One Pan" maxlength="40">
     </div>
-    <div class="field"><label>시간대 · 장르</label>
-      <input type="text" id="t2" value="2AM · R&B · 1 HOUR" maxlength="30">
+    <div class="field"><label>영문 가사 한 줄</label>
+      <input type="text" id="ly1" value="eggshells in the sink, the whole day ahead" maxlength="52">
+    </div>
+    <div class="field"><label>한글 번역</label>
+      <input type="text" id="ly2" value="싱크대엔 계란 껍질, 하루는 아직 남아 있어" maxlength="52">
+    </div>
+    <div class="field"><label>하단 모토</label>
+      <input type="text" id="motto" value="one room, one window — the day can start later" maxlength="60">
+    </div>
+    <div class="field"><label>매거진 제목</label>
+      <input type="text" id="t1" value="아침 아홉 시" maxlength="30">
+    </div>
+    <div class="field"><label>보조 라인 (장르 · 시간)</label>
+      <input type="text" id="t2" value="SOFT R&B · 09:00 · 1 HOUR" maxlength="34">
     </div>
     <div class="field grid2">
       <div><label>서체</label>
         <select id="font">
-          <option value="Pretendard">Pretendard (고딕)</option>
-          <option value="Georgia">Georgia (세리프)</option>
-          <option value="Courier New">Courier (모노)</option>
-          <option value="system-ui">System (헤비)</option>
+          <option value="serif">세리프 (Georgia)</option>
+          <option value="sans">산세리프 (Pretendard)</option>
+          <option value="mono">모노 (Courier)</option>
         </select>
       </div>
       <div><label>정렬</label>
         <select id="align">
-          <option value="left">왼쪽</option>
           <option value="center">가운데</option>
-          <option value="right">오른쪽</option>
+          <option value="left">왼쪽</option>
         </select>
       </div>
     </div>
-    <div class="field"><label>메인 크기 <span id="s1v" style="color:var(--amber2);font-weight:800">126</span>px</label>
-      <input type="range" id="s1" min="48" max="200" value="126">
+  </div>
+
+  <div class="tdiv"><b>FILM GRADE</b><i></i></div>
+  <div class="panel">
+    <div class="field"><label>저채도 <span id="dsv" style="color:var(--rust);font-weight:700">22</span>%</label>
+      <input type="range" id="desat" class="range" min="0" max="70" value="22">
     </div>
-    <div class="field"><label>보조 크기 <span id="s2v" style="color:var(--amber2);font-weight:800">34</span>px</label>
-      <input type="range" id="s2" min="16" max="70" value="34">
+    <div class="field"><label>대비 <span id="ctv" style="color:var(--rust);font-weight:700">4</span>%</label>
+      <input type="range" id="contrast" class="range" min="-10" max="25" value="4">
     </div>
-    <div class="field"><label>세로 위치 <span id="yv" style="color:var(--amber2);font-weight:800">62</span>%</label>
-      <input type="range" id="yp" min="12" max="88" value="62">
+    <div class="field"><label>필름 그레인 <span id="grv" style="color:var(--rust);font-weight:700">10</span>%</label>
+      <input type="range" id="grain" class="range" min="0" max="40" value="10">
     </div>
-    <div class="field"><label>가로 여백 <span id="xv" style="color:var(--amber2);font-weight:800">72</span>px</label>
-      <input type="range" id="xp" min="0" max="240" value="72">
-    </div>
-    <div class="field grid2">
-      <div><label>글자색</label><input type="text" id="tc" value="#FFF6EA"></div>
-      <div><label>어둡게 <span id="dv" style="color:var(--amber2);font-weight:800">32</span>%</label>
-        <input type="range" id="dim" min="0" max="80" value="32">
-      </div>
+    <div class="field"><label>노출 (어둡게) <span id="dmv" style="color:var(--rust);font-weight:700">10</span>%</label>
+      <input type="range" id="dim" class="range" min="0" max="55" value="10">
     </div>
     <div class="field"><label>효과</label>
       <div class="optrow">
-        <button class="opt on" data-tg="shadow">그림자</button>
         <button class="opt on" data-tg="vignette">비네트</button>
-        <button class="opt" data-tg="safe">안전영역 보기</button>
-        <button class="opt on" data-tg="accent">포인트 라인</button>
+        <button class="opt on" data-tg="shadow">글자 그림자</button>
+        <button class="opt" data-tg="safe">안전영역</button>
       </div>
     </div>
   </div>
-  <button class="btn pri wide" id="btnDownload" style="width:100%;padding:14px;margin-top:4px">⬇︎ 1280×720 PNG 다운로드</button>
-  <a class="btn" id="saveLink" href="#" target="_blank" rel="noopener" style="display:none;width:100%;margin-top:7px">🖼️ 새 창에서 열기 (길게 눌러 저장)</a>
-  <p class="foot">우하단은 재생시간 배지 자리 — 비워두세요</p>
+
+  <button class="btn pri wide" id="btnDownload" style="width:100%;padding:14px;margin-top:2px">1280×720 PNG 다운로드</button>
+  <a class="btn" id="saveLink" href="#" target="_blank" rel="noopener" style="display:none;width:100%;margin-top:6px">새 창에서 열기 (길게 눌러 저장)</a>
+  <p class="foot">우하단은 재생시간 배지 자리 — 비워두세요 · 텍스트는 사방 60px 안쪽</p>
 </main>
 
-<!-- ============ TAB 4 ============ -->
+<!-- ============ 04 REFERENCE ============ -->
 <main class="view hidden" id="view-rules">
-  <div class="sec"><h3>1만+ 레퍼런스</h3><span>2026-11-21 조회</span></div>
-  <div id="refList"></div>
+  <div class="sec"><h3>레퍼런스 5</h3><span>2026-11-22 실사 확인</span></div>
+  <div class="panel" style="padding:4px 14px"><div id="refList"></div></div>
 
-  <div class="sec"><h3>공식 체크리스트</h3><span id="chkSum"></span></div>
+  <div class="sec"><h3>공식 체크</h3><span id="chkSum"></span></div>
   <div class="panel" id="chkBoxes"></div>
 
   <div class="sec"><h3>주간 루틴</h3><span id="routineSum"></span></div>
   <div class="panel" id="routineBoxes"></div>
   <button class="btn" id="btnResetRoutine" style="width:100%">이번 주 루틴 초기화</button>
-  <p class="foot">출처는 리서치 노트(downloads/ai_playlist_리서치노트.md)에 정리되어 있습니다.</p>
+  <p class="foot">근거는 리서치 노트(downloads/ai_playlist_리서치노트.md) PART 2에 정리되어 있습니다.</p>
 </main>
 
 <nav class="tabbar" role="tablist">
   <div class="inner">
-    <button class="tab on" data-tab="board" role="tab"><span class="ic">🎬</span><span class="lb">에피소드</span></button>
-    <button class="tab" data-tab="prompts" role="tab"><span class="ic">🎵</span><span class="lb">프롬프트함</span></button>
-    <button class="tab" data-tab="thumb" role="tab"><span class="ic">🖼️</span><span class="lb">썸네일</span></button>
-    <button class="tab" data-tab="rules" role="tab"><span class="ic">📈</span><span class="lb">1만+ 공식</span></button>
+    <button class="tab on" data-tab="board" role="tab"><span class="lb">에피소드</span></button>
+    <button class="tab" data-tab="prompts" role="tab"><span class="lb">프롬프트</span></button>
+    <button class="tab" data-tab="thumb" role="tab"><span class="lb">썸네일</span></button>
+    <button class="tab" data-tab="rules" role="tab"><span class="lb">레퍼런스</span></button>
   </div>
 </nav>
 </div>
@@ -386,84 +425,738 @@ canvas#cv{width:100%;height:auto;display:block;border-radius:10px;background:#00
 
 <script>
 window.__errs = [];
-window.addEventListener('error', function(e){ window.__errs.push(String(e.message||e.error)); });
-window.addEventListener('unhandledrejection', function(e){ window.__errs.push('promise:'+String(e.reason)); });
+window.addEventListener('error', function(e){ window.__errs.push(String(e.message || e.error)); });
+window.addEventListener('unhandledrejection', function(e){ window.__errs.push('promise:' + String(e.reason)); });
 
-const DATA = {"episodes":[{"id":"EP01","ko_title":"새벽 2시, 비 내리는 창가의 R&B","en_title":"rain on the window 🌧️ r&b songs for 2am (1 hour)","title_b":"2am in the rain 🌧️ chill r&b that feels like a window seat","badge":"BLUE HOUR CLUB · SESSION 01","air":"02:00 AM","genre":"Chill R&B / Neo-soul","bpm":"72–78 BPM","vocal":"Breathy female lead, close-mic","mood":"Rain, amber lamp, one cup, no plans","thumb":"ai_pl_thumb1.jpg","thumb_title":"rain on the window","thumb_sub":"2AM · R&B · 1 HOUR","keywords":["rainy night r&b","r&b songs for 2am","chill r&b playlist","late night r&b","songs for a rainy window","r&b to fall asleep to","soft r&b for studying","sad r&b playlist","새벽 감성 R&B","비 오는 날 R&B"],"tags":["chill rnb","latenight rnb","rainy rnb","2am playlist","rnb playlist","neo soul","smooth rnb","chill rnb mix","late night music","study rnb","rain sounds","cozy rnb","sad rnb","slow jams","rnb 2026","1 hour playlist","no ads playlist","blue hour club","새벽감성","비오는날","감성플리","알앤비","공부할때듣는노래","잠잘때듣는노래","카페음악","playlist","rnb songs","bedroom rnb"],"concept":"2AM, a small apartment above a closed shop. Rain on the glass, one amber lamp, a cup going cold. One voice across one night — the last person left at the Blue Hour Club.","style":"Late-night chill R&B, 74 BPM, warm Rhodes electric piano, muted electric guitar, soft brushed drums with finger snaps, upright bass, breathy female lead vocal, close-mic intimate mix, tape saturation and light vinyl crackle, rain ambience underneath the intro, melancholic and tender, English lyrics","style_alt":"Slow neo-soul ballad, 72 BPM, Fender Rhodes and warm analog bass, brushed drums, airy female vocal layered with low harmonies, chorus-first arrangement, wide reverb, wet night atmosphere, intimate and unhurried, English lyrics","vocal_direction":"Suno Settings: Custom mode → Styles = 위 문자열, Lyrics = 아래 가사. Vocal Gender = Female, Weirdness 25~35%, Style Influence 65~75%. 같은 가사로 2~3회 뽑아 1절 톤이 가장 고른 테이크를 채택.","lyrics":[{"name":"Rain on the Window","text":"[Intro]\n[Verse 1]\nThe kettle's off, the room is blue\nYour coat still hanging by the door\nI counted cracks across the ceiling\nLike a map of where we were before\n[Pre-Chorus]\nAnd the city keeps on humming\nThrough the glass, a blur of gold\nI turn the lamp down lower\nLet the dark come in and hold\n[Chorus]\nRain on the window, rain on the window\nThat's all the company I need tonight\nEvery drop a little slower\nEvery word I never said out loud\nRain on the window, rain on the window\nLet it fall, let it fall\n[Verse 2]\nYour coffee cup is in the sink\nI didn't wash it, didn't want to\nThere's a song inside the radiator\nKeeping time the way you used to\n[Pre-Chorus]\nAnd the clock above the doorway\nTakes its time, it always does\nSomewhere down the hallway\nSomeone's laughing, not for us\n[Chorus]\nRain on the window, rain on the window\nThat's all the company I need tonight\nEvery drop a little slower\nEvery word I never said out loud\nRain on the window, rain on the window\nLet it fall, let it fall\n[Bridge]\nIf I call you in the morning\nWill the rain have made me brave\nOr will I fold it like a letter\nPut it back inside the drawer\n[Chorus]\nRain on the window, rain on the window\nLet it fall, let it fall\n[Outro]\nThe kettle's off, the room is blue"},{"name":"Two Sugars","text":"[Intro]\n[Verse 1]\nYou always took two sugars\nI never asked you why\nA small thing I keep turning\nLike a coin at night\n[Pre-Chorus]\nNow the diner's almost empty\nAnd the waitress knows my name\nShe leaves the second cup there\nLike she's playing your old game\n[Chorus]\nTwo sugars, two sugars\nOne for the habit, one for the ache\nTwo sugars, two sugars\nSome things you don't unlearn, you just wait\n[Verse 2]\nThe jukebox in the corner\nPlays a song from '09\nI know every single word\nI just can't make them mine\n[Pre-Chorus]\nSo I stir it slow and steady\nWatch the steam go up the wall\nIf I sit here long enough\nThe morning takes it all\n[Chorus]\nTwo sugars, two sugars\nOne for the habit, one for the ache\nTwo sugars, two sugars\nSome things you don't unlearn, you just wait\n[Bridge]\nAnd I'm not asking for an answer\nI'm just stirring, killing time\n[Chorus]\nTwo sugars, two sugars\nSome things you don't unlearn, you just wait\n[Outro]\nTwo sugars, two sugars"},{"name":"Voicemail at 3:11","text":"[Intro]\n[Verse 1]\nThree eleven in the morning\nYour name is on my screen\nI let it ring out seven times\nThen I play the machine\n[Pre-Chorus]\nYour voice sounds like a hallway\nLike a door that's left ajar\nYou say you're doing better\nThen you don't say who you are\n[Chorus]\nVoicemail at 3:11\nI keep it like a photograph\nI don't call back in the daylight\nI just let the evening pass\nVoicemail at 3:11\nStatic on the line\nYou were never really asking\nAnd I was never really fine\n[Verse 2]\nThere's a pause that lasts forever\nEight seconds, maybe nine\nI can hear you pour a glass of water\nI can hear you change your mind\n[Pre-Chorus]\nAnd the screen goes dark and quiet\nAnd the ceiling starts to spin\n[Chorus]\nVoicemail at 3:11\nI keep it like a photograph\nI don't call back in the daylight\nI just let the evening pass\n[Bridge]\nDelete, delete — I never do\n[Chorus]\nVoicemail at 3:11\nYou were never really asking\n[Outro]\nThree eleven in the morning"}],"slots":[{"title":"Blue Porch Light","hook":"\"Your porch light's still on for someone who's not coming\"","beat":"돌아가지 않은 집 앞, 켜져 있는 불빛. 후렴은 'blue porch light, blue porch light' 반복."},{"title":"Kitchen Floor","hook":"\"We danced on the kitchen floor 'cause the radio was free\"","beat":"돈 없던 시절의 작은 춤. 3절에 현재형으로 전환해 그리움을 만든다."},{"title":"Umbrella in the Hall","hook":"\"There's an umbrella in the hall that doesn't know you left\"","beat":"남겨진 물건 시점. 후렴 끝에 'take your time' 한 줄로 여운."},{"title":"Paper Thin Walls","hook":"\"I hear your favourite record through the paper thin walls\"","beat":"이웃이 같은 노래를 튼다는 우연. 질투 대신 다정함으로 마무리."},{"title":"The Neighbor's TV","hook":"\"Somebody's laughing at a joke I'll never get\"","beat":"혼자인 밤의 배경 소음. 코러스는 낮게, 거의 말하듯."},{"title":"Sink Full of Cups","hook":"\"Two days of cups and I still set out two\"","beat":"습관이 남은 사람. 브릿지에서 물을 틀고 눈물 대신 설거지."},{"title":"Last Train Hum","hook":"\"The last train hums like a lullaby for people who missed it\"","beat":"막차 놓친 밤. 드럼 없이 베이스+보컬만."},{"title":"Half a Cigarette","hook":"\"Half a cigarette and half a mind to call\"","beat":"망설임. 후반부에 기타 솔로 한 마디만."},{"title":"Morning Bus","hook":"\"Morning bus, empty seat, someone else's coat\"","beat":"해가 뜨는 엔딩. 곡 길이를 조금 길게 잡아 앨범의 마지막 트랙처럼."}],"timeline":[{"time":"0:00","title":"Rain on the Window","dur":"4:12","sec":0},{"time":"4:12","title":"Blue Porch Light","dur":"3:58","sec":252},{"time":"8:10","title":"Two Sugars","dur":"4:05","sec":490},{"time":"12:15","title":"Kitchen Floor","dur":"4:20","sec":735},{"time":"16:35","title":"Voicemail at 3:11","dur":"3:44","sec":995},{"time":"20:19","title":"Umbrella in the Hall","dur":"4:02","sec":1219},{"time":"24:21","title":"Paper Thin Walls","dur":"3:55","sec":1461},{"time":"28:16","title":"The Neighbor's TV","dur":"4:18","sec":1696},{"time":"32:34","title":"Sink Full of Cups","dur":"3:50","sec":1954},{"time":"36:24","title":"Last Train Hum","dur":"4:24","sec":2184},{"time":"40:48","title":"Half a Cigarette","dur":"4:06","sec":2448},{"time":"44:54","title":"Rain on the Window (Reprise)","dur":"3:40","sec":2694},{"time":"48:34","title":"Two Sugars (Slow Version)","dur":"4:12","sec":2914},{"time":"52:46","title":"Window Left Open","dur":"4:30","sec":3166},{"time":"57:16","title":"Morning Bus","dur":"4:36","sec":3436}],"total_human":"1시간 1분","total_sec":3712,"tracklist_text":"0:00 Rain on the Window\n4:12 Blue Porch Light\n8:10 Two Sugars\n12:15 Kitchen Floor\n16:35 Voicemail at 3:11\n20:19 Umbrella in the Hall\n24:21 Paper Thin Walls\n28:16 The Neighbor's TV\n32:34 Sink Full of Cups\n36:24 Last Train Hum\n40:48 Half a Cigarette\n44:54 Rain on the Window (Reprise)\n48:34 Two Sugars (Slow Version)\n52:46 Window Left Open\n57:16 Morning Bus","description_final":"the rain started around eleven and never really stopped.\n\none lamp, one window, one voice — an hour of slow r&b for the hours when the city sounds like it's breathing.\n\nno ads in between songs.\nheadphones recommended. lamp optional.\n\n▸ TRACKLIST\n0:00 Rain on the Window\n4:12 Blue Porch Light\n8:10 Two Sugars\n12:15 Kitchen Floor\n16:35 Voicemail at 3:11\n20:19 Umbrella in the Hall\n24:21 Paper Thin Walls\n28:16 The Neighbor's TV\n32:34 Sink Full of Cups\n36:24 Last Train Hum\n40:48 Half a Cigarette\n44:54 Rain on the Window (Reprise)\n48:34 Two Sugars (Slow Version)\n52:46 Window Left Open\n57:16 Morning Bus\n\n▸ HOW THIS ONE WAS MADE\nThe rain under the first and last track was recorded on a phone at 1:40am from a fourth-floor window, slowed down and looped. Every lyric here was written by hand in one sitting with the lamp off. The voice is Suno singing those lyrics; the arrangement was cut back to Rhodes, one muted guitar, brushes and upright bass so nothing sits on top of the words. Sequenced and mixed for this film-length hour by Blue Hour Club.\n\n▸ THE ROOM (affiliate)\nThe lamp, the mug and the blanket in the thumbnail are the same ones in my room.\n▸ lamp: https://link.coupang.com/a/________  (본인 파트너스 링크로 교체)\n▸ mug + blanket: https://link.coupang.com/a/________  (본인 파트너스 링크로 교체)\nThis description contains affiliate links. If you buy through them, I may earn a small commission at no extra cost to you. (쿠팡 파트너스 활동의 일환으로 소정의 수수료를 받을 수 있습니다.)\n\n▸ IF YOU LIKED THIS\nThe Blue Hour Club is open every other Friday. Next session: 3AM, in a car, on the way home.\n\n▸ NOTE\nVocals and music produced with Suno AI from original lyrics written for this channel. No third-party samples or recordings were used.\n\n▸ 한국어\n새벽 2시, 비 내리는 창가에서 듣는 R&B 1시간. 곡 사이 광고 없이 이어집니다.\n\n#chillrnb #latenightrnb #rainyrnb #2am #studyrnb #rnbplaylist","pinned":"🌧️ which track are you on right now?\nmine is 3 — Two Sugars.\n\n0:00 Rain on the Window\n4:12 Blue Porch Light\n8:10 Two Sugars\n\nthe lamp's still on. stay a while.\n(links in the description are affiliate links · 쿠팡 파트너스)","image_prompt":"A rainy apartment window at 2AM seen from inside, rain streaks on glass, blurred city bokeh in cool teal and violet, one warm amber desk lamp at frame right, ceramic mug with steam on the sill, folded knit blanket, deep shadows, shallow depth of field, 35mm film grain, cinematic low-key lighting, photorealistic — 16:9, no text, no logos, large empty dark area upper-left for a title, nothing important in the bottom-right corner (YouTube puts the duration there) --ar 16:9 --style raw --v 6","loop_prompt":"Runway / Kling image-to-video, 8s seamless loop, locked-off camera: rain streaks crawl slowly down the glass, city bokeh breathes slightly out of focus, steam rises from the mug in a soft curl, the lamp filament flickers once every few seconds. No camera movement, no people, no text. Loop the last frame to the first; export 1080p, 24fps, then slow to 0.9x for an unhurried feel.","license_note":"Suno 유료(Pro 이상) 구독 상태에서 '다운로드'한 곡만 상업 사용 가능. 2026-09-03 이후 Pro 월 20곡 / Premier 월 60곡 다운로드 제한. 이 편 15곡 → Pro는 월 1편, Premier는 월 4편까지."},{"id":"EP02","ko_title":"새벽 3시, 집으로 가는 차 안","en_title":"songs for the drive home at 3am 🌙 chill r&b + neo-soul","title_b":"3am, windows down 🚗 r&b for the drive home (1 hour)","badge":"BLUE HOUR CLUB · SESSION 02","air":"03:00 AM","genre":"Neo-soul / Night-drive R&B","bpm":"78–88 BPM","vocal":"Warm male lead + airy female harmony","mood":"Wet windshield, red taillights, going the long way","thumb":"ai_pl_thumb2.jpg","thumb_title":"3am drive home","thumb_sub":"R&B · NEO-SOUL · 1 HR","keywords":["night drive r&b","songs for the drive home","3am playlist","chill neo soul","late night drive music","r&b for driving at night","rainy windshield playlist","chill r&b mix","새벽 드라이브 음악","밤 드라이브 R&B"],"tags":["night drive","rnb","neo soul","chill rnb","3am","drive playlist","late night drive","car music","rnb mix","smooth rnb","chillhop rnb","rainy night","city lights","lofi rnb","rnb 2026","1 hour playlist","no ads","blue hour club","새벽드라이브","드라이브음악","감성플리","알앤비","네오소울","밤드라이브","차안에서듣는노래","playlist","songs for the drive home","midnight rnb"],"concept":"3AM. Back seat of a car that isn't yours, going the long way because the long way is the point. Wet glass, red taillights, a voice in the back that knows the driver isn't listening.","style":"Neo-soul night-drive R&B, 82 BPM, warm analog synth pads, electric piano, round sub bass, lazy boom-bap drums, warm male lead vocal with airy female harmony, wide stereo mix, highway wind and faint radio static texture, bittersweet and cinematic, English lyrics","style_alt":"Late-night R&B duet, 86 BPM, Rhodes and tremolo guitar, tight dry drums, call-and-response male and female vocals, chorus-first hook, tape warmth, city-at-night atmosphere, English lyrics","vocal_direction":"Suno Settings: Custom mode → Styles = 위 문자열, Lyrics = 아래 가사. Vocal Gender = Male(1곡은 Female로 다시 뽑아 듀엣 버전 확보). Weirdness 30%, Style Influence 70%.","lyrics":[{"name":"Back Seat, Blue Hour","text":"[Intro]\n[Verse 1]\nDriver takes the long way\nPast the river, past the mills\nStreetlights falling on my lap\nLike piano keys, unstilled\n[Pre-Chorus]\nI'm not going anywhere\nThat's the whole point of the ride\n[Chorus]\nBack seat, blue hour\nCity sliding by\nEvery red light's a slow song\nEvery green light's a lie\nBack seat, blue hour\nNowhere I've got to be\nLet the engine keep the measure\nLet the night keep time for me\n[Verse 2]\nThere's a woman on the corner\nWith a paper cup of tea\nShe looks up at the same sky\nThat keeps looking after me\n[Pre-Chorus]\nAnd the meter keeps on running\nAnd I let it, let it run\n[Chorus]\nBack seat, blue hour\nCity sliding by\nEvery red light's a slow song\nEvery green light's a lie\n[Bridge]\nTell the driver take the bridge\nI've got nowhere else to be\nTell the driver take the bridge\nLet the water look at me\n[Chorus]\nBack seat, blue hour\nNowhere I've got to be\nLet the engine keep the measure\nLet the night keep time for me\n[Outro]\nBlue hour, blue hour"},{"name":"Toll Booth Love","text":"[Intro]\n[Verse 1]\nWe met at the toll booth\nYou counted out the change\nSaid the bridge is best at midnight\nWhen the water's out of range\n[Pre-Chorus]\nI've been paying ever since\nEvery crossing, every mile\n[Chorus]\nToll booth love, toll booth love\nA coin in your hand\nToll booth love, toll booth love\nThe only thing I understand\n[Verse 2]\nNow the highway's under water\nIn the dreams I don't repeat\nAnd the man who takes my money\nNever looks up from his seat\n[Pre-Chorus]\nSo I keep the window open\nLet the cold come in and stay\n[Chorus]\nToll booth love, toll booth love\nA coin in your hand\nToll booth love, toll booth love\nThe only thing I understand\n[Bridge]\nLet me through, let me through\nI've got nothing left to pay\n[Chorus]\nToll booth love, toll booth love\nThe only thing I understand\n[Outro]\nCount it out, count it out"},{"name":"Radio Silence","text":"[Intro]\n[Verse 1]\nStatic on the FM band\nBetween the stations and the storm\nI keep turning past the numbers\nLooking for a place that's warm\n[Pre-Chorus]\nYou said you'd meet me halfway\nHalfway's still a lonely drive\n[Chorus]\nRadio silence\nNothing but the hum\nRadio silence\nI'll be home before the sun\n[Verse 2]\nThe sign says last exit\nAnd I don't take it, not tonight\nThere's a morning in the mirror\nAnd it's holding me too tight\n[Pre-Chorus]\nSo I turn the dial a little\nLet the nothing fill the car\n[Chorus]\nRadio silence\nNothing but the hum\nRadio silence\nI'll be home before the sun\n[Bridge]\nTurn it up, turn it up\nLet it drown me out\nTurn it up, turn it up\n[Chorus]\nRadio silence\nNothing but the hum\nI'll be home before the sun\n[Outro]\nStatic on the FM band"}],"slots":[{"title":"Exit 14","hook":"\"Exit fourteen, and I still don't turn\"","beat":"집으로 가는 길목에서 그냥 지나치는 선택. 후렴은 최소한의 단어."},{"title":"Headlights in the Rearview","hook":"\"Somebody's behind me and I hope they stay\"","beat":"혼자가 아니라는 위로. 후반에 하모니만 겹친다."},{"title":"The Long Way","hook":"\"I always take the long way, it's the only way I know\"","beat":"습관. 베이스 라인이 곡 전체를 끈다."},{"title":"Service Station Coffee","hook":"\"Two dollars and a paper cup, the best thing in the world\"","beat":"새벽 편의점. 밝고 짧게, 앨범의 숨구멍."},{"title":"Bridge Lights","hook":"\"The bridge lights hold the water like a hand\"","beat":"다리 위 정경. 신스 패드가 넓게."},{"title":"Passenger Seat","hook":"\"Nobody in the passenger seat, and I keep it clean\"","beat":"비어 있는 자리. 후렴 마지막 줄은 속삭임."},{"title":"3AM Weather Report","hook":"\"Rain expected till the morning, clear by the time I'm home\"","beat":"라디오 DJ 톤으로 시작. 스포큰 인트로 후 노래."},{"title":"No Signal","hook":"\"No signal, no messages, no one to explain to\"","beat":"해방과 고립 사이. 드럼은 얇게."},{"title":"Dawn Exit","hook":"\"Sun's coming up on the wrong side of the road\"","beat":"해 뜨는 엔딩. 기타 톤을 밝게."},{"title":"Last Song Before Home","hook":"\"One more song before the driveway, one more minute of this\"","beat":"차를 세우기 전 1분. 곡 길이 넉넉히."}],"timeline":[{"time":"0:00","title":"Back Seat, Blue Hour","dur":"4:18","sec":0},{"time":"4:18","title":"Toll Booth Love","dur":"3:52","sec":258},{"time":"8:10","title":"Radio Silence","dur":"4:06","sec":490},{"time":"12:16","title":"Exit 14","dur":"4:22","sec":736},{"time":"16:38","title":"Headlights in the Rearview","dur":"3:58","sec":998},{"time":"20:36","title":"The Long Way","dur":"4:10","sec":1236},{"time":"24:46","title":"Service Station Coffee","dur":"3:46","sec":1486},{"time":"28:32","title":"Bridge Lights","dur":"4:26","sec":1712},{"time":"32:58","title":"Passenger Seat","dur":"4:02","sec":1978},{"time":"37:00","title":"3AM Weather Report","dur":"3:38","sec":2220},{"time":"40:38","title":"No Signal","dur":"4:14","sec":2438},{"time":"44:52","title":"Back Seat, Blue Hour (Night Version)","dur":"3:56","sec":2692},{"time":"48:48","title":"Radio Silence (Extended)","dur":"4:24","sec":2928},{"time":"53:12","title":"Dawn Exit","dur":"4:08","sec":3192},{"time":"57:20","title":"Last Song Before Home","dur":"4:32","sec":3440}],"total_human":"1시간 1분","total_sec":3712,"tracklist_text":"0:00 Back Seat, Blue Hour\n4:18 Toll Booth Love\n8:10 Radio Silence\n12:16 Exit 14\n16:38 Headlights in the Rearview\n20:36 The Long Way\n24:46 Service Station Coffee\n28:32 Bridge Lights\n32:58 Passenger Seat\n37:00 3AM Weather Report\n40:38 No Signal\n44:52 Back Seat, Blue Hour (Night Version)\n48:48 Radio Silence (Extended)\n53:12 Dawn Exit\n57:20 Last Song Before Home","description_final":"3am. the long way home, because the long way is the point.\n\nwet glass, red taillights, one warm voice in the back seat. an hour of neo-soul and slow r&b for the drive nobody asked you to take.\n\nno ads in between songs. put your headlights on.\n\n▸ TRACKLIST\n0:00 Back Seat, Blue Hour\n4:18 Toll Booth Love\n8:10 Radio Silence\n12:16 Exit 14\n16:38 Headlights in the Rearview\n20:36 The Long Way\n24:46 Service Station Coffee\n28:32 Bridge Lights\n32:58 Passenger Seat\n37:00 3AM Weather Report\n40:38 No Signal\n44:52 Back Seat, Blue Hour (Night Version)\n48:48 Radio Silence (Extended)\n53:12 Dawn Exit\n57:20 Last Song Before Home\n\n▸ HOW THIS ONE WAS MADE\nI drove this route at 3am on a Tuesday with a phone recorder on the dash to catch the wind and the indicator tick, then built the whole hour around that texture. Lyrics were written at a rest stop on the back of a receipt. The voice is Suno from those lyrics, re-sung line by line until the chorus sat behind the beat the way a tired driver hears it. Guitars and bass were pared down so the low end feels like a car, not a club.\n\n▸ THE CAR (affiliate)\n▸ phone mount: https://link.coupang.com/a/________  (본인 파트너스 링크로 교체)\n▸ warm car light: https://link.coupang.com/a/________  (본인 파트너스 링크로 교체)\nThis description contains affiliate links. If you buy through them, I may earn a small commission at no extra cost to you. (쿠팡 파트너스 활동의 일환으로 소정의 수수료를 받을 수 있습니다.)\n\n▸ NEXT SESSION\nBlue Hour Club 03: 9:30PM, a bedroom, a desk lamp and a paper moon.\n\n▸ NOTE\nVocals and music produced with Suno AI from original lyrics written for this channel. No third-party samples or recordings were used.\n\n▸ 한국어\n새벽 3시, 집으로 가는 차 안에서 듣는 네오소울·R&B 1시간. 곡 사이 광고 없이 이어집니다.\n\n#nightdrive #rnb #neosoul #3am #drivemusic #chillrnb","pinned":"🌙 where are you driving to?\n0:00 Back Seat, Blue Hour\n4:18 Toll Booth Love\n8:10 Radio Silence\n\ntell me your city and I'll put the next session there.\n(links in the description are affiliate links · 쿠팡 파트너스)","image_prompt":"Shot from the back seat of a car at night in the rain, wet windshield with droplets, out-of-focus neon and streetlights streaking red and amber across the glass, dark dashboard silhouette across the bottom third, cool blue night sky, anamorphic flare, film grain, photorealistic — 16:9, no text, no logos, deep black negative space across the top third for a title, keep the bottom-right empty --ar 16:9 --style raw --v 6","loop_prompt":"Runway / Kling image-to-video, 8s seamless loop, camera locked inside the car: raindrops crawl across the windshield, distant taillights blur and pulse, the wiper sweeps once from left to right and returns. No people, no text, no cuts. Hold the first and last frames identical so it loops without a seam; export 1080p 24fps and add 2% film grain in the edit.","license_note":"Suno 유료 구독 중 다운로드한 곡만 상업 사용 가능(2026-09-03 약관). 이 편 15곡 → Pro 월 20곡으로 1편 가능, 4편을 한 달에 올릴 계획이면 Premier(60곡)."},{"id":"EP03","ko_title":"종이달 아래, 공부하는 밤","en_title":"paper moon 🌙 bedroom pop for studying (1 hour)","title_b":"paper moon 🌙 songs for the desk at 9pm (study playlist)","badge":"PAPER MOON RADIO · 01","air":"09:30 PM","genre":"Bedroom / Dream pop","bpm":"84–96 BPM","vocal":"Breathy young female lead","mood":"Dusk sky, fairy lights, homework that can wait","thumb":"ai_pl_thumb3.jpg","thumb_title":"paper moon","thumb_sub":"BEDROOM POP · STUDY · 1 HR","keywords":["study playlist with lyrics","bedroom pop playlist","dream pop for studying","songs for studying at night","indie pop study mix","chill pop for homework","soft indie playlist","9pm study music","공부할 때 듣는 팝","자취방 감성 플리"],"tags":["bedroom pop","dream pop","study playlist","indie pop","chill pop","lofi pop","songs for studying","homework playlist","9pm","soft indie","pastel","liminal","study music with lyrics","1 hour playlist","no ads","paper moon radio","공부플리","공부할때듣는노래","자취방","인디팝","드림팝","감성팝","밤공부","영어가사","playlist","indie playlist","chill bedroom pop"],"concept":"9:30PM in a rented room. Dusk going lilac, fairy lights on, headphones over an open notebook. Paper Moon Radio — one hour of bedroom pop for people who study with the lights low.","style":"Bedroom dream pop, 90 BPM, clean lo-fi electric guitar, soft Juno-style synth pad, simple kick and shaker, breathy young female vocal, cassette-warble production, wide reverb, gentle tape hiss, diaristic and hopeful, English lyrics","style_alt":"Indie pop study mix, 94 BPM, fingerpicked guitar and warm upright piano, light drum machine, doubled female vocal, bright but soft chorus, bedroom production, English lyrics","vocal_direction":"Suno Settings: Custom mode → Styles = 위 문자열, Lyrics = 아래 가사. Vocal Gender = Female, Weirdness 20~30%(너무 높이면 카세트 노이즈가 보컬을 덮음), Style Influence 70%.","lyrics":[{"name":"Paper Moon","text":"[Intro]\n[Verse 1]\nWe cut a moon from paper\nTaped it to the window frame\nSaid if we don't move too quickly\nIt would look enough the same\n[Pre-Chorus]\nFifteen and certain\nCertain of nothing at all\n[Chorus]\nPaper moon, paper moon\nShining over a rented room\nPaper moon, paper moon\nI still look for it, do you\n[Verse 2]\nNow the streetlight does the job\nHarsher than we ever knew\nAnd I've got a better window\nAnd a worse view\n[Pre-Chorus]\nSo I keep the curtains open\nLet the orange in the room\n[Chorus]\nPaper moon, paper moon\nShining over a rented room\nPaper moon, paper moon\nI still look for it, do you\n[Bridge]\nFold it once, fold it twice\nKeep it in the paperback\n[Chorus]\nPaper moon, paper moon\nI still look for it, do you\n[Outro]\nTaped it to the window frame"},{"name":"Nearly Brave","text":"[Intro]\n[Verse 1]\nI had the sentence ready\nPracticed it in the hall\nThree words and a question\nI never asked at all\n[Pre-Chorus]\nReady is a room you leave\nBefore you say hello\n[Chorus]\nNearly brave, nearly brave\nAlmost out the door\nNearly brave, nearly brave\nAlmost, almost, almost\n[Verse 2]\nNow the desk is full of notebooks\nFull of almost-things\nAnd the girl inside the mirror\nKnows exactly what it means\n[Pre-Chorus]\nShe's not laughing, she's just waiting\nFor the next time I begin\n[Chorus]\nNearly brave, nearly brave\nAlmost out the door\nNearly brave, nearly brave\nAlmost, almost, almost\n[Bridge]\nNext time, next time\nI'll say it in the morning\nNext time, next time\n[Chorus]\nNearly brave, nearly brave\nAlmost out the door\n[Outro]\nAlmost, almost"},{"name":"Ceiling Stars","text":"[Intro]\n[Verse 1]\nGlow-in-the-dark planets\nFrom a magazine\nStuck above my bed\nWhere no one else has been\n[Pre-Chorus]\nWhen the day gets loud\nI come back to this room\n[Chorus]\nCeiling stars\nThat's the sky I know\nCeiling stars\nStill the best show in town\n[Verse 2]\nI read the same three pages\nOf a book I never finish\nThere's a whole world in the margin\nAnd I'm scared I'll diminish it\n[Pre-Chorus]\nSo I write my name in pencil\nWhere the paragraph runs out\n[Chorus]\nCeiling stars\nThat's the sky I know\nCeiling stars\nStill the best show in town\n[Bridge]\nLights off, lights on\nNothing changes, everything does\n[Chorus]\nCeiling stars\nStill the best show in town\n[Outro]\nGlow-in-the-dark planets"}],"slots":[{"title":"Notebook Margins","hook":"\"Half my life is written in the margins of a math book\"","beat":"공부하다 딴생각. 셔플 리듬, 짧은 곡."},{"title":"Thursday Uniform","hook":"\"Same shirt, same desk, same window, different year\"","beat":"반복되는 하루. 기타 한 대로 시작."},{"title":"The Long Hallway","hook":"\"I know every tile of the long hallway home\"","beat":"학교/회사 복도. 후렴에서 신스가 열린다."},{"title":"Glow Stickers","hook":"\"Everything I love is held up with tape\"","beat":"임시로 붙여둔 것들. 다정한 코러스."},{"title":"Almost Summer","hook":"\"Almost summer, almost someone I could be\"","beat":"계절의 문턱. 밝은 톤, 곡 중간에 박수."},{"title":"Half a Thought","hook":"\"I had half a thought and lost it in the hall\"","beat":"짧고 가벼운 곡(2:50). 앨범의 숨구멍."},{"title":"Bus Stop, 8:15","hook":"\"Bus stop at eight fifteen, everyone's half asleep\"","beat":"아침 등교/출근. 드럼 없이 어쿠스틱."},{"title":"Tiny Rebellion","hook":"\"Staying up an hour just to be someone\"","beat":"작은 반항. 후렴에 코러스 하모니 두 겹."},{"title":"Sunday Homework","hook":"\"Sunday homework, Monday me — we've never met\"","beat":"미루기의 심리. 템포 살짝 올림."},{"title":"Lights Off","hook":"\"Lights off, headphones on, world off\"","beat":"마지막 곡. 리버브 길게, 끝은 거의 무음."},{"title":"Desk by the Window","hook":"\"Everything I need fits on one desk by the window\"","beat":"공부방의 자족감. 마지막 코러스에 화음 두 겹."}],"timeline":[{"time":"0:00","title":"Paper Moon","dur":"3:48","sec":0},{"time":"3:48","title":"Nearly Brave","dur":"3:36","sec":228},{"time":"7:24","title":"Ceiling Stars","dur":"4:02","sec":444},{"time":"11:26","title":"Notebook Margins","dur":"3:44","sec":686},{"time":"15:10","title":"Thursday Uniform","dur":"3:52","sec":910},{"time":"19:02","title":"The Long Hallway","dur":"4:00","sec":1142},{"time":"23:02","title":"Glow Stickers","dur":"3:54","sec":1382},{"time":"26:56","title":"Almost Summer","dur":"4:06","sec":1616},{"time":"31:02","title":"Half a Thought","dur":"3:50","sec":1862},{"time":"34:52","title":"Bus Stop, 8:15","dur":"3:56","sec":2092},{"time":"38:48","title":"Tiny Rebellion","dur":"4:04","sec":2328},{"time":"42:52","title":"Paper Moon (Bedroom Version)","dur":"4:10","sec":2572},{"time":"47:02","title":"Nearly Brave (Soft Reprise)","dur":"3:42","sec":2822},{"time":"50:44","title":"Sunday Homework","dur":"4:00","sec":3044},{"time":"54:44","title":"Lights Off","dur":"4:18","sec":3284},{"time":"59:02","title":"Desk by the Window","dur":"4:04","sec":3542}],"total_human":"1시간 3분","total_sec":3786,"tracklist_text":"0:00 Paper Moon\n3:48 Nearly Brave\n7:24 Ceiling Stars\n11:26 Notebook Margins\n15:10 Thursday Uniform\n19:02 The Long Hallway\n23:02 Glow Stickers\n26:56 Almost Summer\n31:02 Half a Thought\n34:52 Bus Stop, 8:15\n38:48 Tiny Rebellion\n42:52 Paper Moon (Bedroom Version)\n47:02 Nearly Brave (Soft Reprise)\n50:44 Sunday Homework\n54:44 Lights Off\n59:02 Desk by the Window","description_final":"9:30pm. lamp on, phone face down, one hour of bedroom pop for the homework that can wait.\n\npastel dusk through the window, headphones on, a voice that sounds like someone in the next room.\n\nno ads in between songs.\nif you're studying for something — good luck. tell me what it is in the comments.\n\n▸ TRACKLIST\n0:00 Paper Moon\n3:48 Nearly Brave\n7:24 Ceiling Stars\n11:26 Notebook Margins\n15:10 Thursday Uniform\n19:02 The Long Hallway\n23:02 Glow Stickers\n26:56 Almost Summer\n31:02 Half a Thought\n34:52 Bus Stop, 8:15\n38:48 Tiny Rebellion\n42:52 Paper Moon (Bedroom Version)\n47:02 Nearly Brave (Soft Reprise)\n50:44 Sunday Homework\n54:44 Lights Off\n59:02 Desk by the Window\n\n▸ HOW THIS ONE WAS MADE\nThis is the first Paper Moon Radio session, recorded around a desk that still has last year's timetable taped to it. The notebook in the thumbnail is real and the page is a to-do list I never finished. Lyrics are hand-written — this one is about taping a paper moon to a window at fifteen. Suno sang them; the guitar, shaker and pad were arranged around the vocal so the words stay in front when you're reading.\n\n▸ THE DESK (affiliate)\nEvery study session needs one good object and nothing else.\n▸ desk lamp: https://link.coupang.com/a/________  (본인 파트너스 링크로 교체)\n▸ notebook + mug: https://link.coupang.com/a/________  (본인 파트너스 링크로 교체)\nThis description contains affiliate links. If you buy through them, I may earn a small commission at no extra cost to you. (쿠팡 파트너스 활동의 일환으로 소정의 수수료를 받을 수 있습니다.)\n\n▸ NOTE\nVocals and music produced with Suno AI from original lyrics written for this channel. No third-party samples or recordings were used.\n\n▸ 한국어\n밤 9시 30분, 자취방 책상에서 듣는 베드룸·드림팝 1시간. 곡 사이 광고 없이 이어집니다.\n\n#bedroompop #dreampop #studyplaylist #indiepop #lofipop #papermoonradio","pinned":"📖 what are you studying tonight?\n0:00 Paper Moon\n3:48 Nearly Brave\n7:24 Ceiling Stars\n\nI'll keep the lamp on till you're done.\n(links in the description are affiliate links · 쿠팡 파트너스)","image_prompt":"A small bedroom desk at dusk, side view, soft lilac and peach sky through the window, fairy lights blurred in the background, over-ear headphones on an open notebook, glass of water, small plant, dreamy pastel grading with gentle haze, 35mm film grain, quiet liminal mood, photorealistic — 16:9, no text, no logos, pale empty sky area on the left for a title, bottom-right kept clear --ar 16:9 --style raw --v 6","loop_prompt":"Runway / Kling image-to-video, 8s seamless loop, static camera: fairy lights breathe very slightly, curtain edge moves a few millimetres, dust motes drift through the window light, nothing else moves. No people, no text. First and last frames must match for an invisible loop; 1080p 24fps.","license_note":"Suno 유료 구독 중 다운로드한 곡만 상업 사용 가능. 이 편은 15곡이지만 3곡은 같은 곡의 버전이라 실제 신규 생성은 12곡 → Pro 월 20곡으로 EP03+여유분 가능."},{"id":"EP04","ko_title":"일요일 아침, 두 번째 커피","en_title":"sunday morning soul ☕ jazz vocal for slow mornings","title_b":"sunday morning soul ☕ jazz vocal + coffee (1 hour)","badge":"BLUE HOUR CLUB · SESSION 03","air":"10:00 AM","genre":"Jazz vocal / Bossa-soul","bpm":"66–76 BPM","vocal":"Husky female lead, small-room live feel","mood":"Sun on the table, vinyl, nowhere to be","thumb":"ai_pl_thumb4.jpg","thumb_title":"sunday morning soul","thumb_sub":"JAZZ VOCAL · 1 HOUR","keywords":["sunday morning jazz vocal","jazz vocal playlist","coffee jazz songs","slow morning music","bossa nova soul","jazz songs with lyrics","brunch playlist","sunday morning music","일요일 아침 재즈","카페 재즈 보컬"],"tags":["jazz vocal","sunday morning","coffee jazz","bossa nova","soul jazz","jazz playlist","morning playlist","brunch music","vinyl jazz","jazz songs with lyrics","1 hour playlist","no ads","blue hour club","일요일아침","재즈보컬","카페재즈","브런치음악","감성재즈","재즈플리","주말아침","playlist","jazz 2026","smooth jazz vocal","slow living","desk setup","morning routine"],"concept":"10AM Sunday. Sun across a wooden table, a stack of records, one cup and then another. The Blue Hour Club with the lights on — jazz vocal for the only morning that doesn't ask anything of you.","style":"Jazz vocal with neo-soul warmth, 70 BPM, upright bass, brushed drums, Fender Rhodes, muted trumpet, husky female lead vocal, small-room live mix, light vinyl surface noise, Sunday-morning calm, English lyrics","style_alt":"Bossa-soul duet, 74 BPM, nylon-string guitar, soft shaker, upright bass, warm male and female vocals trading lines, close acoustic mix, sunny and unhurried, English lyrics","vocal_direction":"Suno Settings: Custom mode → Styles = 위 문자열, Lyrics = 아래 가사. Vocal Gender = Female. Weirdness 20%(재즈는 즉흥 변수가 많아 낮게), Style Influence 75%. 트럼펫 솔로는 [Instrumental Break] 한 마디로 유도.","lyrics":[{"name":"Sunday Morning Soul","text":"[Intro]\n[Verse 1]\nSunday comes in sideways\nThrough the kitchen blinds\nTwo cups on the table\nOne is yours, one is mine\n[Pre-Chorus]\nNothing has to happen\nThat's the best part of the week\n[Chorus]\nSunday morning soul\nSlow as honey from a spoon\nSunday morning soul\nLet the afternoon come soon\n[Verse 2]\nThe record player's dusty\nBut it knows the way to go\nSide B, track four\nThe one we used to know\n[Pre-Chorus]\nAnd the needle finds the groove\nLike it never left the room\n[Chorus]\nSunday morning soul\nSlow as honey from a spoon\nSunday morning soul\nLet the afternoon come soon\n[Instrumental Break]\n[Bridge]\nStay in your socks\nStay another hour\nPour the second cup\nLet the sun do all the work\n[Chorus]\nSunday morning soul\nSlow as honey from a spoon\nSunday morning soul\nLet the afternoon come soon\n[Outro]\nSunday comes in sideways"},{"name":"Second Cup","text":"[Intro]\n[Verse 1]\nThe first one's for waking\nThe second one's for you\nI set it by the window\nAnd let the steam come through\n[Pre-Chorus]\nI don't believe in omens\nBut I believe in light\n[Chorus]\nSecond cup\nGetting cold beside the door\nSecond cup\nI'll keep pouring one more\n[Verse 2]\nThe neighbor's dog is barking\nAt a pigeon on the wire\nAnd the morning keeps on making\nEverything a little lighter\n[Pre-Chorus]\nSo I leave the window open\nLet the whole street come inside\n[Chorus]\nSecond cup\nGetting cold beside the door\nSecond cup\nI'll keep pouring one more\n[Instrumental Break]\n[Bridge]\nSit down, sit down\nYou don't have to say a word\n[Chorus]\nSecond cup\nI'll keep pouring one more\n[Outro]\nThe second one's for you"},{"name":"Windowsill","text":"[Intro]\n[Verse 1]\nBasil in a coffee tin\nStretching for the sun\nA receipt from Tuesday\nAnd the week's begun\n[Pre-Chorus]\nSmall things are the loud things\nWhen the house is still\n[Chorus]\nWindowsill, windowsill\nEverything I'm growing\nWindowsill, windowsill\nEverything I'm not yet knowing\n[Verse 2]\nThere's a bird that comes at seven\nAnd leaves at half past ten\nI've been watching from the armchair\nLearning how to begin\n[Pre-Chorus]\nAnd the light moves across the floor\nLike it's got somewhere to be\n[Chorus]\nWindowsill, windowsill\nEverything I'm growing\nWindowsill, windowsill\nEverything I'm not yet knowing\n[Instrumental Break]\n[Bridge]\nWater once, water twice\nSay good morning twice\n[Chorus]\nWindowsill, windowsill\nEverything I'm growing\n[Outro]\nBasil in a coffee tin"}],"slots":[{"title":"Vinyl Side B","hook":"\"Nobody plays side B anymore, so I do\"","beat":"레코드판 돌리는 손. 바이닐 노이즈 전면."},{"title":"Slow Sunday","hook":"\"Nowhere to be and I'm still running late\"","beat":"늘어지는 하루. 브러시 드럼만."},{"title":"The Bakery Downstairs","hook":"\"The bakery downstairs knows my order by heart\"","beat":"동네 사람들. 밝은 보사노바."},{"title":"Two Chairs","hook":"\"Two chairs at a one person table\"","beat":"혼자지만 두 개인 의자. 재즈 발라드."},{"title":"Honey Light","hook":"\"The light comes in like honey, slow and gold\"","beat":"오전 10시의 빛. 트럼펫 한 소절."},{"title":"Nothing to Do","hook":"\"I've got nothing to do and all day to do it\"","beat":"해방감. 템포 살짝 올려 앨범의 활력."},{"title":"Blue Apron","hook":"\"Cooking badly, singing worse, happy anyway\"","beat":"부엌의 소리(프라이팬, 물). 유머 한 줄."},{"title":"Afternoon Comes Slow","hook":"\"Afternoon comes slow when you're not counting\"","beat":"오후로 넘어가는 다리. 곡 길게."},{"title":"Windowsill (Humming Version)","hook":"허밍 + 기타만","beat":"가사 없는 버전이지만 목소리는 유지. 영상에 여백을 준다."},{"title":"Next Sunday","hook":"\"Next Sunday I'll do it all again\"","beat":"시리즈 예고. 마지막에 레코드 바늘 소리."},{"title":"Kitchen Radio","hook":"\"The kitchen radio only plays songs I half remember\"","beat":"부엌의 작은 라디오. 트럼펫 솔로 한 소절."}],"timeline":[{"time":"0:00","title":"Sunday Morning Soul","dur":"4:02","sec":0},{"time":"4:02","title":"Second Cup","dur":"3:44","sec":242},{"time":"7:46","title":"Windowsill","dur":"3:52","sec":466},{"time":"11:38","title":"Vinyl Side B","dur":"4:16","sec":698},{"time":"15:54","title":"Slow Sunday","dur":"3:58","sec":954},{"time":"19:52","title":"The Bakery Downstairs","dur":"3:40","sec":1192},{"time":"23:32","title":"Two Chairs","dur":"4:04","sec":1412},{"time":"27:36","title":"Honey Light","dur":"3:46","sec":1656},{"time":"31:22","title":"Nothing to Do","dur":"3:38","sec":1882},{"time":"35:00","title":"Blue Apron","dur":"3:54","sec":2100},{"time":"38:54","title":"Afternoon Comes Slow","dur":"4:20","sec":2334},{"time":"43:14","title":"Sunday Morning Soul (Reprise)","dur":"3:36","sec":2594},{"time":"46:50","title":"Second Cup (Jazz Version)","dur":"4:12","sec":2810},{"time":"51:02","title":"Windowsill (Humming Version)","dur":"3:30","sec":3062},{"time":"54:32","title":"Next Sunday","dur":"4:26","sec":3272},{"time":"58:58","title":"Kitchen Radio","dur":"4:08","sec":3538}],"total_human":"1시간 3분","total_sec":3786,"tracklist_text":"0:00 Sunday Morning Soul\n4:02 Second Cup\n7:46 Windowsill\n11:38 Vinyl Side B\n15:54 Slow Sunday\n19:52 The Bakery Downstairs\n23:32 Two Chairs\n27:36 Honey Light\n31:22 Nothing to Do\n35:00 Blue Apron\n38:54 Afternoon Comes Slow\n43:14 Sunday Morning Soul (Reprise)\n46:50 Second Cup (Jazz Version)\n51:02 Windowsill (Humming Version)\n54:32 Next Sunday\n58:58 Kitchen Radio","description_final":"sunday, 10am. sun on the table, records out of their sleeves, and a second cup you didn't plan on.\n\nan hour of jazz vocal with a little soul in it — for the morning that doesn't ask anything of you.\n\nno ads in between songs.\nput your phone face down. the sun's doing the work.\n\n▸ TRACKLIST\n0:00 Sunday Morning Soul\n4:02 Second Cup\n7:46 Windowsill\n11:38 Vinyl Side B\n15:54 Slow Sunday\n19:52 The Bakery Downstairs\n23:32 Two Chairs\n27:36 Honey Light\n31:22 Nothing to Do\n35:00 Blue Apron\n38:54 Afternoon Comes Slow\n43:14 Sunday Morning Soul (Reprise)\n46:50 Second Cup (Jazz Version)\n51:02 Windowsill (Humming Version)\n54:32 Next Sunday\n58:58 Kitchen Radio\n\n▸ HOW THIS ONE WAS MADE\nRecorded in my own kitchen on a Sunday, with the window open so the street and the dog and the plates are all in it. Lyrics written on the back of a grocery receipt during the second cup. Suno sang them in a small-room tone; upright bass, brushes, Rhodes and one muted trumpet were kept dry and close so it sounds like a table, not a stage. The whole hour was sequenced to follow the sun across the table.\n\n▸ THE DESK (affiliate · 쿠팡 파트너스)\nMy actual Sunday setup — the same lamp and mug you see in the thumbnail.\n▸ warm desk lamp: https://link.coupang.com/a/________  (본인 파트너스 링크로 교체)\n▸ ceramic mug + linen napkin: https://link.coupang.com/a/________  (본인 파트너스 링크로 교체)\n▸ record player mat: https://link.coupang.com/a/________  (본인 파트너스 링크로 교체)\nThis description contains affiliate links. If you buy through them, I may earn a small commission at no extra cost to you. (쿠팡 파트너스 활동의 일환으로 소정의 수수료를 받을 수 있습니다.)\n\n▸ NEXT SESSION\nBlue Hour Club 04 returns to the night. Friday, 2AM, same window.\n\n▸ NOTE\nVocals and music produced with Suno AI from original lyrics written for this channel. No third-party samples or recordings were used.\n\n▸ 한국어\n일요일 오전 10시, 햇살 드는 테이블에서 듣는 재즈 보컬 1시간. 곡 사이 광고 없이 이어집니다.\n\n#jazzvocal #sundaymorning #coffeejazz #bossanova #jazzplaylist #bluehourclub","pinned":"☕ what's in your second cup?\n0:00 Sunday Morning Soul\n4:02 Second Cup\n7:46 Windowsill\n\nthe desk stuff in the thumbnail is linked in the description (affiliate · 쿠팡 파트너스).\nenjoy your morning.","image_prompt":"Sunlit cafe table on a Sunday morning, low angle, white ceramic cup with latte art and steam, stack of vinyl records, small vase with a single dried branch, linen napkin, warm cream and honey tones, soft window light with long shadows, dust motes in the air, cozy analog film look, photorealistic — 16:9, no text, no logos, soft empty wall space at the top for a title, bottom-right kept clear --ar 16:9 --style raw --v 6","loop_prompt":"Runway / Kling image-to-video, 8s seamless loop, static tripod shot: steam rises and curls from the cup, dust motes drift through the sunbeam, a leaf on the branch shifts once. No camera movement, no people, no text. Match first and last frame exactly; 1080p 24fps, then add a very slow 1.03x push-in in the edit for the full loop.","license_note":"Suno 유료 구독 중 다운로드한 곡만 상업 사용. 이 편 15곡(신규 12곡+리프라이즈). 쿠팡 파트너스 링크는 반드시 본인 계정에서 발급한 링크로 교체하고, 대가성 문구를 설명란·고정댓글 양쪽에 남길 것."}],"refs":[{"name":"ORGAVSM","handle":"@orgavsm","kind":"R&B·소울 보컬","subs":"476K","views":"98.9M","note":"112편 · 편당 평균 88만 조회 · 178분 믹스 · 2주 1회","take":"보컬 R&B는 편수보다 편당 완성도. '매주 신곡' 프레임으로 재방문을 만든다."},{"name":"sarah world","handle":"@sarahworld6","kind":"네오소울 보컬","subs":"18.9K","views":"4.56M","note":"57편 · 편당 평균 80K · 최대 2.5시간 믹스","take":"구독자 2만이 안 되는데 편당 8만. 제목 끝에 아티스트명을 붙여 기억을 만든다."},{"name":"Chris & Crystal","handle":"AI+사람","kind":"AI 보컬 뮤직비디오","subs":"56.3K","views":"≈4M","note":"55편 · 중위 37K · 최고 549K · 2.6일 1편","take":"가사는 사람, 음악은 Suno. 단 설명란 동일 블록 복붙은 '템플릿' 신호다."},{"name":"alexrainbirdMusic","handle":"@alexrainbirdmusic","kind":"인디·포크 보컬","subs":"1.43M","views":"724.9M","note":"중위 14,954 · 최고 371,633(cozy autumn acoustic) · 중위 1:39:11 · 2일","take":"'계절+아늑함' 키워드가 보컬에서 가장 크게 터진다."},{"name":"Indie Playlists","handle":"@indieplaylists","kind":"인디·드림팝","subs":"332K","views":"127.2M","note":"379편 · 194분 · 주 2~3회 · 금요일 04:00 UTC 피크","take":"방대한 큐레이션보다 '한 편의 톤'이 중요. 업로드 요일 고정."},{"name":"The Jazz Hop Café","handle":"@jazzhopcafe","kind":"재즈·로파이","subs":"1.12M","views":"145.3M","note":"중위 12,832 · 최고 98,121 · 중위 1:06:14 · 6일","take":"소문자 문장형 제목 + 'no ai' 라벨. AI를 전면에 쓰지 않는 이유."},{"name":"Gotiva Jazz","handle":"@gotivajazz","kind":"재즈 (2026-02 개설)","subs":"73.9K","views":"1.37M","note":"34편 · 중위 10,614 · 최고 123.7K(Work Jazz late night focus) · 1:33 · 5일","take":"신생 채널도 10개월에 7.4만. 편당 1만+를 꾸준히 넘기면 된다."},{"name":"JazzNe","handle":"@moodisjazz","kind":"재즈 (한국)","subs":"—","views":"—","note":"중위 79,661 · 최고 2.38M · '잘 때 듣는 조용한 재즈' 437,901 · 2:55 · 4일","take":"한국어 상황 키워드('잘 때 듣는')가 영어권보다 CTR이 세다. 이중 언어 전략의 근거."},{"name":"Jazzoppa","handle":"@jazzoppa","kind":"재즈 (한국, 초장편)","subs":"257K","views":"40.3M","note":"146편 · 중위 41,036 · 최고 531,773 · 중위 8:10:56 · 7일","take":"8시간 초장편은 연주물이라 가능. 보컬은 45~70분이 한계선."},{"name":"Lofi Girl","handle":"@lofigirl","kind":"로파이 (글로벌)","subs":"15.8M","views":"2.74B","note":"중위 76,003 · 최고 2.23M · 중위 1:17:49","take":"장르 1위의 무기: 캐릭터·방·시간대가 10년째 같다. 우리의 '창문+램프+컵'도 같은 역할."}],"checks":{"ypp":[["구독자 1,000명 + 최근 12개월 공개 시청시간 4,000시간(또는 쇼츠 90일 1,000만 회) 충족","YPP 공식 기준"],["영상마다 '제작 과정' 문장이 다르다 — 템플릿 대량생산으로 보이지 않게","inauthentic content 정책"],["실제처럼 보이는 합성 음성·영상은 '변경된 콘텐츠' 공개 설정","합성 콘텐츠 공개 의무"],["가사·편집·큐레이션을 사람이 했다는 근거(원고·프로젝트 파일) 보관","미국 저작권청 2025-01"],["중간광고는 트랙 경계에만, 인트로 첫 곡은 광고 없이","시청 지속 방어"]],"suno":[["곡을 '생성'한 시점에 Pro 이상 유료 구독 상태였는가","무료 곡은 상업권 없음"],["쓰는 곡을 전부 '다운로드'했는가 — 상업권은 다운로드에만 붙는다","2026-09-03 약관"],["이번 달 다운로드 한도(Pro 20 / Premier 60) 안인가","편당 12~15곡"],["Suno가 붙인 워터마크·메타데이터를 제거하지 않았다","약관 금지 조항"],["가사 원고를 별도 저장(날짜·버전)했다","저작권 방어선"]],"thumb":[["창문(또는 장면) + 광원 1개 + 살아있는 것 1개","구도 공식"],["우하단 60px 비움 — 재생시간 배지 자리","YouTube UI"],["텍스트 2~3단어, 헤드라인 100~140pt","1280px 기준"],["휴대폰 168px에서 읽히는가","최소 노출 크기"],["팔레트가 지난 편과 같다(블루아워+앰버)","채널 인지"],["파일 1280×720 PNG, 2MB 이하","업로드 규격"]],"routine":[["월: 다음 편 키워드 3개 검색 → 자동완성 캡처",""],["화: 새 가사 12줄 직접 쓰기(클리셰 금지)",""],["수: Suno 12곡 생성 → 좋은 테이크만 다운로드",""],["목: 트랙 순서·크로스페이드·타임스탬프 확정",""],["금: 썸네일 1장 + 설명란(제작 노트 새로 쓰기)",""],["토: 업로드(같은 시간) + 고정댓글",""],["일: 댓글 전원 응대 + 지표 3개 기록(CTR·평균시청·구독)",""]]}};
+const BRAND = { name:'ONE ROOM', ko:'원룸', moto:'같은 방, 다른 빛' };
+
+const DATA = {
+  episodes: [
+    {
+      id:'EP01', ko:'아침 아홉 시, 커튼은 반만 열어두기',
+      en:'playlist 오늘 아침은 천천히 시작해도 돼 ☀️ 커튼 반쯤 열고 듣는 soft r&b | ONE ROOM 01',
+      alt:'playlist 커튼 반만 열었을 뿐인데 ☀️ 부엌에서 듣는 soft r&b · neo soul | ONE ROOM 01',
+      badge:'ONE ROOM · SESSION 01', air:'09:00 AM',
+      genre:'Soft R&B · Neo-soul', bpm:'68–76 BPM', vocal:'breathy female lead, close-mic',
+      mood:'부엌의 아침 빛, 식은 커피, 아무 계획 없음',
+      thumb:'ai_pl_thumb1.jpg',
+      np:'Two Eggs, One Pan',
+      ly1:'eggshells in the sink, the whole day ahead',
+      ly2:'싱크대엔 계란 껍질, 하루는 아직 남아 있어',
+      sub:'SOFT R&B · 09:00 · 1 HOUR',
+      motto:'one room, one window — the day can start later',
+      concept:'9AM. a one-room flat where the sun only reaches half the kitchen. one enamel cup, a kettle that takes its time, and an hour of soft r&b for the morning you decided to start slowly.',
+      style:'Soft R&B with a neo-soul lean, 72 BPM, warm upright piano and Fender Rhodes, muted electric guitar, brushed drums, upright bass, close-mic female lead with a breathy low register, doubled harmonies only in the chorus, dry small-room mix, light tape hiss and kitchen ambience, unhurried and tender, English lyrics',
+      style_alt:'Slow soul ballad, 69 BPM, Wurlitzer and a soft organ pad, finger snaps and brushed snare, warm male lead with airy female harmony, chorus first, no reverb wash, intimate living-room mix, English lyrics',
+      vocal_dir:'Custom mode · Styles = 위 문자열. Vocal Gender = Female, Weirdness 25%, Style Influence 70%. 같은 가사로 2~3회 뽑아 1절 톤이 가장 고른 테이크를 채택. 리버브가 크게 들리면 Style에 "dry small-room mix"를 한 번 더 넣습니다.',
+      lyrics:[
+        { name:'Two Eggs, One Pan', text:`[Intro]
+[Verse 1]
+The pan's still warm from yesterday
+I rinse it once and let it dry
+Two eggs, one pan, the smallest sound
+The fridge hums like it's on my side
+[Pre-Chorus]
+And the light comes through the curtain crack
+Just enough to find the cups
+[Chorus]
+Two eggs, one pan
+Nothing here to rush
+Two eggs, one pan
+The morning can wait for us
+[Verse 2]
+Your mug is on the second shelf
+I use it when I'm out of mine
+The kettle takes its time to boil
+I let it, I've got time
+[Pre-Chorus]
+And the neighbours start their car
+Somewhere three floors down
+[Chorus]
+Two eggs, one pan
+Nothing here to rush
+Two eggs, one pan
+The morning can wait for us
+[Bridge]
+If I make too much again
+I'll wrap it up and call it lunch
+[Chorus]
+Two eggs, one pan
+The morning can wait for us
+[Outro]
+Two eggs, one pan` },
+        { name:'Sunday Bus Is Empty', text:`[Intro]
+[Verse 1]
+The Sunday bus is empty
+Except a man with a folding chair
+He gets off at the market
+Like the whole street's waiting there
+[Pre-Chorus]
+And I ride it to the end
+Just to ride it back again
+[Chorus]
+Sunday bus is empty
+Nobody's asking where I've been
+Sunday bus is empty
+I'll get off when it feels right
+[Verse 2]
+The driver knows my stop by heart
+He slows down just in case
+I shake my head and pay again
+For one more block of quiet
+[Pre-Chorus]
+And the windows hold the winter
+Like a photograph of air
+[Chorus]
+Sunday bus is empty
+Nobody's asking where I've been
+Sunday bus is empty
+I'll get off when it feels right
+[Bridge]
+There's a seat that's always warm
+From the sun and nothing else
+[Chorus]
+Sunday bus is empty
+I'll get off when it feels right
+[Outro]
+One more stop, then I'll walk` }
+      ],
+      slots:[
+        {t:'The Kettle Knows First', h:'"the kettle knows before I do"', b:'김이 오르는 걸 보고 나서야 아침을 인정하는 화자. 도입은 물 끓는 소리만.'},
+        {t:'Slippers by the Door', h:'"two slippers by the door, only one pair is mine"', b:'현관의 신발. 후렴은 낮게, 거의 말하듯.'},
+        {t:'Jam Jar Lid', h:'"I couldn\'t open it, so I left it out"', b:'사소한 실패 하나. 브릿지에서 웃음소리 한 번.'},
+        {t:'You Called While I Was Rinsing', h:'"you called while I was rinsing a plate"', b:'부재중 전화. 물소리를 악기처럼.'},
+        {t:'Rice Cooker Song', h:'"the rice cooker sings and nobody\'s home"', b:'3분 40초의 짧은 곡. 앨범의 숨구멍.'},
+        {t:'Half a Window', h:'"half a window is enough light"', b:'커튼 절반. 기타 한 대로 시작.'},
+        {t:'Receipt in My Coat', h:'"a receipt from Tuesday in my coat"', b:'지난주의 영수증. 베이스가 곡을 끈다.'},
+        {t:'Second Toast', h:'"I burnt the first one, so here\'s the second"', b:'밝고 짧게. 브러시만.'},
+        {t:'Ceiling Fan', h:'"the fan turns like it\'s counting for me"', b:'천장 선풍기. 4분 16초, 드럼 없이.'},
+        {t:'Nothing on the Calendar', h:'"nothing on the calendar, everything on the table"', b:'빈 달력. 후렴에 화음 두 겹.'}
+      ],
+      timeline:[['Two Eggs, One Pan','4:08'],['The Kettle Knows First','3:52'],['Slippers by the Door','4:14'],['Sunday Bus Is Empty','3:46'],['Jam Jar Lid','4:02'],['You Called While I Was Rinsing','4:20'],['Rice Cooker Song','3:40'],['Half a Window','4:10'],['Receipt in My Coat','3:58'],['Second Toast','3:44'],['Ceiling Fan','4:16'],['Nothing on the Calendar','3:52'],['Two Eggs, One Pan (Slow)','4:24'],['The Kettle Knows First (Hum)','3:38'],['Radio in the Next Room','4:12'],['Slow Morning, Please','4:38']],
+      desc:`9am, and the sun only gets halfway across the kitchen.
+
+one enamel cup, a kettle that takes its time, and an hour of soft r&b for the morning you decided to start slowly.
+
+no ads between songs. the kettle's on.
+
+▸ TIME LINE
+{{TL}}
+
+▸ HOW THIS ONE WAS MADE
+I recorded the kitchen before writing anything: the fridge hum, the kettle click, a bus braking three floors down. Those three sounds sit under the first and last track. The lyrics came after, on the back of a delivery slip, while the eggs went cold. Suno sang them low because the room wanted a voice that wasn't trying. Bass and drums were played back to sound like someone in socks.
+
+▸ THE ROOM (affiliate)
+the cup and the kettle in the photo are the ones on my counter.
+▸ enamel cup: https://link.coupang.com/a/________  (본인 파트너스 링크로 교체)
+▸ stovetop kettle: https://link.coupang.com/a/________  (본인 파트너스 링크로 교체)
+This description contains affiliate links. If you buy through them, I may earn a small commission at no extra cost to you. (쿠팡 파트너스 활동의 일환으로 소정의 수수료를 받을 수 있습니다.)
+
+▸ NEXT
+ONE ROOM 02 opens at 2pm — same window, one chair of sun.
+
+▸ NOTE
+Every lyric here was written by hand for this episode. Vocals and instruments were produced with Suno from those lyrics; the arrangement is four instruments and one voice on purpose. No third-party samples or recordings.
+
+▸ 한국어
+아침 9시, 커튼 반쯤 열린 부엌에서 듣는 soft R&B 1시간. 곡 사이 광고 없이 이어집니다.
+
+#softrnb #morningplaylist #slowmorning #coffeernb #oneroom #감성플리 #아침플리`,
+      pinned:`☀️ what's the first thing you do when you wake up?
+mine: open the curtain halfway, then decide.
+
+0:00 Two Eggs, One Pan
+4:08 The Kettle Knows First
+8:00 Slippers by the Door
+
+the kettle's on. (links in the description are affiliate · 쿠팡 파트너스)`,
+      img_prompt:'Candid 35mm film photograph, Kodak Portra 400 look, natural morning sunlight through a small kitchen window in an old Korean apartment, a chipped white enamel cup and a stainless kettle on a worn wooden table, faint steam, condensation on the lower glass, a folded dish towel, pale cream plaster wall, the window mullion shadow falling across the table, slight dust in the air, gentle low contrast, fine grain, slightly off-centre composition, mundane and lived-in, no people, no text, no logos, photorealistic documentary realism, no 3d render, no neon, no purple — 16:9, large quiet area upper-left for a caption, bottom-right kept clear',
+      loop_prompt:'Image-to-video, 8s seamless loop, locked-off camera on a tripod: steam from the cup curls slowly and fades, dust drifts through the window light, the curtain edge moves two or three millimetres. No camera move, no people, no text. First and last frame identical; export 1080p 24fps, then slow to 0.95x.',
+      laynote:'사진은 부엌 창가. 자막 4층은 화면 중앙 하단, 우하단은 재생시간 자리로 비워둡니다.',
+      license:'Suno 유료(Pro 이상) 상태에서 다운로드한 곡만 상업 사용 가능. 2026-09-03 이후 Pro 월 20곡 / Premier 월 60곡 다운로드 제한. 이 편 16곡 → Pro는 월 1편, Premier는 월 3~4편.'
+    },
+    {
+      id:'EP02', ko:'오후 두 시, 창가 자리는 아직 따뜻해',
+      en:'playlist 창가 자리 하나는 비워두자 🤍 오후에 틀어두는 인디·베드룸 팝 | ONE ROOM 02',
+      alt:'playlist 해가 넘어가기 전에 🤍 창가에서 듣는 bedroom pop · indie | ONE ROOM 02',
+      badge:'ONE ROOM · SESSION 02', air:'02:00 PM',
+      genre:'Bedroom pop · Indie pop', bpm:'84–96 BPM', vocal:'breathy female lead, doubled harmonies',
+      mood:'창가의 먼지, 덮어둔 책, 꺼둔 폰',
+      thumb:'ai_pl_thumb2.jpg',
+      np:'Dust in the Light',
+      ly1:'the sun moved and nobody noticed',
+      ly2:'해는 옮겨갔고, 아무도 몰랐어',
+      sub:'BEDROOM POP · 14:00 · 1 HOUR',
+      motto:'one chair of sun, no plans that require shoes',
+      concept:'2PM. the room gets one hour of direct sun and everything ordinary starts to look intentional. a paperback face down on the sill, a phone face down on the floor, nobody in a hurry.',
+      style:'Bedroom indie pop, 90 BPM, clean jangly electric guitar, soft upright piano, simple kick and shaker, breathy female lead with doubled harmonies, light cassette wobble, dry close mix with a little room, afternoon haze, hopeful and unpolished, English lyrics',
+      style_alt:'Indie folk-pop, 86 BPM, fingerpicked acoustic guitar and harmonium, brushed drums, warm male and female duet, one-take live feel, English lyrics',
+      vocal_dir:'Custom mode · Styles = 위 문자열. Vocal Gender = Female, Weirdness 20~30%(높이면 카세트 노이즈가 보컬을 덮습니다), Style Influence 70%. 기타가 앞으로 나오면 Style에 "guitar sits behind the vocal"을 추가.',
+      lyrics:[
+        { name:'Dust in the Light', text:`[Intro]
+[Verse 1]
+There's dust in the light by the window
+Turning slow like it's got all day
+I left my book face down at noon
+And the page has moved, I think
+[Pre-Chorus]
+Nothing's happening, that's the thing
+[Chorus]
+Dust in the light
+Falling where it wants
+Dust in the light
+Nobody's in a rush
+[Verse 2]
+The phone is face down on the floor
+Buzzing like a fly that's tired
+I'll pick it up at seven
+When the room gets cool and quiet
+[Pre-Chorus]
+And the curtain breathes in once
+Like it's checking I'm still here
+[Chorus]
+Dust in the light
+Falling where it wants
+Dust in the light
+Nobody's in a rush
+[Bridge]
+If I move, it all rearranges
+So I'll stay a little more
+[Chorus]
+Dust in the light
+Nobody's in a rush
+[Outro]
+The sun moved and nobody noticed` },
+        { name:'Phone Face Down', text:`[Intro]
+[Verse 1]
+You said you'd call me back
+That was Tuesday, this is now
+I've been alphabetising nothing
+Just to keep the evening full
+[Pre-Chorus]
+And the phone is face down on the desk
+Facing something else instead
+[Chorus]
+Phone face down
+Let it learn to wait
+Phone face down
+I'll be busy being fine
+[Verse 2]
+My neighbour's playing something
+Through the wall, two songs behind
+I knock twice, she turns it up
+And I don't mind, I don't mind
+[Pre-Chorus]
+There's a paper cup of pencils
+That I never use for drawing
+[Chorus]
+Phone face down
+Let it learn to wait
+Phone face down
+I'll be busy being fine
+[Bridge]
+If it's important it'll come back
+Everything important comes back twice
+[Chorus]
+Phone face down
+I'll be busy being fine
+[Outro]
+You said you'd call me back` }
+      ],
+      slots:[
+        {t:'Book Face Down', h:'"page two hundred and I\'m still on page four"', b:'덮어둔 책. 후렴에서 기타가 열린다.'},
+        {t:'Three O\'Clock Sun', h:'"three o\'clock sun on a Tuesday floor"', b:'오후 3시의 빛. 드럼 없이 시작.'},
+        {t:'Someone\'s Playlist Next Door', h:'"someone\'s playlist through the wall"', b:'옆집 소리. 베이스 한 음만.'},
+        {t:'Laundry Line', h:'"the whole street\'s laundry on one line"', b:'골목의 빨래. 밝은 톤, 곡 중간에 박수.'},
+        {t:'The Neighbor\'s Cat', h:'"the neighbour\'s cat thinks it lives here"', b:'2분 50초의 짧은 곡. 앨범의 숨구멍.'},
+        {t:'Paper Cup', h:'"a paper cup that I keep refilling"', b:'종이컵. 셔플 리듬.'},
+        {t:'Sunburn on My Arm', h:'"sunburn on my arm from an open window"', b:'창가의 햇볕. 후렴에 화음 두 겹.'},
+        {t:'Half a Page', h:'"half a page and then I stopped"', b:'가사 노트. 거의 말하듯.'},
+        {t:'Afternoon Off', h:'"I took the afternoon off from everything"', b:'해방감. 템포 살짝 올림.'},
+        {t:'Nobody\'s Rushing', h:'"nobody\'s rushing, so I won\'t either"', b:'마지막 코러스에 하모니 세 겹.'}
+      ],
+      timeline:[['Dust in the Light','3:58'],['Book Face Down','3:44'],['Phone Face Down','3:36'],["Three O'Clock Sun",'4:02'],["Someone's Playlist Next Door",'3:50'],['Laundry Line','3:42'],["The Neighbor's Cat",'3:34'],['Paper Cup','3:56'],['Sunburn on My Arm','4:04'],['Half a Page','3:30'],['Room 402','4:10'],['Afternoon Off','3:48'],['Dust in the Light (Reprise)','3:40'],['Slippers by the Door (Acoustic)','3:52'],["Nobody's Rushing",'4:06'],["Stay Until It's Dark",'4:28']],
+      desc:`2pm. the room gets one hour of sun and everything ordinary starts looking intentional.
+
+▸ TIME LINE
+{{TL}}
+
+no ads between songs. put the phone face down.
+
+▸ THE ROOM (affiliate · 쿠팡 파트너스)
+the linen curtain and the paperback in the photo are mine. the curtain is the cheap one that lets in too much light, which is the point.
+▸ linen curtain: https://link.coupang.com/a/________  (본인 파트너스 링크로 교체)
+▸ paperback + mug: https://link.coupang.com/a/________  (본인 파트너스 링크로 교체)
+This description contains affiliate links. If you buy through them, I may earn a small commission at no extra cost to you. (쿠팡 파트너스 활동의 일환으로 소정의 수수료를 받을 수 있습니다.)
+
+▸ WHY THIS SOUND
+Two guitars, one piano, a shaker and a voice. No pads, no risers, nothing that swells — because a room at 2pm doesn't swell either. The tape wobble is from a cassette deck I bought for 8,000 won at the market and then recorded the guitar through twice.
+
+▸ NOTE
+Lyrics written by hand, one song at a time, in the same chair as the thumbnail. Suno sang them; the instruments were arranged so the voice stays in front. No third-party samples.
+
+▸ NEXT
+ONE ROOM 03 starts when it rains — 5pm, umbrellas in the hall.
+
+▸ 한국어
+오후 2시, 창가 자리에서 듣는 베드룸·인디 팝 1시간. 곡 사이 광고 없이 이어집니다.
+
+#bedroompop #indiepop #studyplaylist #afternoonplaylist #oneroom #감성팝 #창가`,
+      pinned:`🪟 what's on the chair next to you right now?
+mine: a book I'm not reading and a cup I keep refilling.
+
+0:00 Dust in the Light
+3:58 Book Face Down
+7:42 Phone Face Down
+
+the sun's moving. stay for it. (affiliate links in description · 쿠팡 파트너스)`,
+      img_prompt:'Candid 35mm film still, Kodak Portra 400, late afternoon winter sunlight falling through a window onto a window seat in a small Seoul apartment, the back of a person in an oversized knit sweater reading, face not visible, an open paperback face down, a ceramic mug on the sill, dust motes in the light, pale beige linen curtain, one small plant, muted warm neutral palette, soft low contrast, fine grain, quiet ordinary mood, no text, no logos, photorealistic film photography, no 3d render, no neon, no purple — 16:9, quiet left side for the caption, bottom-right clear',
+      loop_prompt:'Image-to-video, 8s seamless loop, locked-off camera: dust motes drift through the sunbeam, the curtain edge breathes a few millimetres, the person stays still. No camera move, no faces, no text. First and last frame identical; 1080p 24fps.',
+      laynote:'인물은 뒷모습만. 가사 자막은 인물 아래쪽 빈 공간에 놓아 얼굴과 겹치지 않게 합니다.',
+      license:'Suno 유료 구독 중 다운로드한 곡만 상업 사용. 이 편 16곡(신규 12곡 + 리프라이즈/어쿠스틱) → Premier 월 60곡이면 이 시리즈 4편을 한 달에 소화 가능.'
+    },
+    {
+      id:'EP03', ko:'비 오는 다섯 시, 약속은 하나쯤 미뤄도',
+      en:'playlist 비 오는 날엔 약속 하나쯤 미뤄도 괜찮아 🌧 재즈 보컬로 듣는 비 오는 오후 | ONE ROOM 03',
+      alt:'playlist 빗소리에 반쯤 자는 척 🌧 비 오는 오후의 재즈 보컬 | ONE ROOM 03',
+      badge:'ONE ROOM · SESSION 03', air:'05:00 PM',
+      genre:'Jazz vocal · Bossa-soul', bpm:'66–80 BPM', vocal:'husky female lead, small-room live',
+      mood:'젖은 우산, 빵집 불빛, 일찍 켠 램프',
+      thumb:'ai_pl_thumb3.jpg',
+      np:'Rain on the Awning',
+      ly1:"we'll get there when the rain gets bored",
+      ly2:'비가 지겨워지면 그때 가자',
+      sub:'JAZZ VOCAL · 17:00 · 1 HOUR',
+      motto:'nine blocks home, no shortcuts, one green light',
+      concept:'5PM and the rain that started at lunch is staying. umbrellas drying in the hallway, the bakery light on early, one voice and an upright bass for the appointment you moved to tomorrow.',
+      style:'Jazz vocal with a bossa-soul feel, 72 BPM, upright bass, brushed drums, nylon-string guitar, Wurlitzer, muted trumpet answers, husky female lead, small-room live mix with no reverb wash, light vinyl crackle and rain under the intro, warm and unhurried, English lyrics',
+      style_alt:'Late-afternoon jazz duet, 76 BPM, piano trio with brushes, warm male and female vocals trading lines, close acoustic mix, vinyl surface noise, English lyrics',
+      vocal_dir:'Custom mode · Styles = 위 문자열. Vocal Gender = Female. Weirdness 20%(재즈는 즉흥 변수가 많아 낮게), Style Influence 75%. 트럼펫 솔로는 [Instrumental Break] 한 줄로 유도.',
+      lyrics:[
+        { name:'Rain on the Awning', text:`[Intro]
+[Verse 1]
+Rain on the awning, one green light
+The bakery closes at six
+I'm the last one at the counter
+With a paper cup of tea
+[Pre-Chorus]
+And the woman with the keys
+Says take your time, I'm not in a rush
+[Chorus]
+Rain on the awning
+Let it take its time
+Rain on the awning
+We'll get there when it's bored
+[Verse 2]
+My sleeve is wet up to the elbow
+From a bus that didn't stop
+I could be annoyed about it
+But the horn played something soft
+[Pre-Chorus]
+And the bread is in a paper bag
+Getting warmer in my coat
+[Chorus]
+Rain on the awning
+Let it take its time
+Rain on the awning
+We'll get there when it's bored
+[Instrumental Break]
+[Bridge]
+Nine blocks home, no shortcuts
+Every window's got a lamp
+[Chorus]
+Rain on the awning
+We'll get there when it's bored
+[Outro]
+One green light, then rain again` },
+        { name:'The Bakery Closes at Six', text:`[Intro]
+[Verse 1]
+The bakery closes at six
+And the trays come out at five
+I know because I've been here
+Every rainy day this year
+[Pre-Chorus]
+The last slice, the last of the light
+[Chorus]
+The bakery closes at six
+So I'll stay till a quarter to
+The bakery closes at six
+And the bread is still warm in my hands
+[Verse 2]
+The sign says cash only
+I always bring too much
+She counts it out with one hand
+And tells me to come back tomorrow
+[Pre-Chorus]
+And the awning keeps the rain
+Off the two of us for now
+[Chorus]
+The bakery closes at six
+So I'll stay till a quarter to
+The bakery closes at six
+And the bread is still warm in my hands
+[Instrumental Break]
+[Bridge]
+If I'm late, she leaves it out
+She always leaves it out
+[Chorus]
+The bakery closes at six
+And the bread is still warm in my hands
+[Outro]
+A quarter to, then home` }
+      ],
+      slots:[
+        {t:'One Green Light', h:'"one green light and the whole street waits"', b:'신호등 하나. 베이스 워킹으로 시작.'},
+        {t:'Wet Sleeve', h:'"my sleeve is wet and I don\'t care"', b:'젖은 소매. 브러시만, 3분 34초.'},
+        {t:'Bus Stop Jazz', h:'"the bus stop plays jazz when it rains"', b:'정류장 소음 + 트럼펫 한 소절.'},
+        {t:'Coat on the Chair', h:'"your coat is on the chair, so you\'re coming back"', b:'남겨진 코트. 재즈 발라드.'},
+        {t:'Steam on the Glass', h:'"steam on the glass, my name in it"', b:'유리에 김. 피아노 트리오.'},
+        {t:'Late Afternoon Blue', h:'"late afternoon blue, early lamp"', b:'오후 5시의 색. 곡 길게.'},
+        {t:'Small Talk at the Counter', h:'"we talked about the weather for an hour"', b:'카운터 잡담. 스포큰 인트로.'},
+        {t:'Nine Blocks Home', h:'"nine blocks home and I took twelve"', b:'돌아가는 길. 기타 솔로 한 마디.'},
+        {t:'Last Slice', h:'"the last slice is always the best one"', b:'3분 30초. 밝게, 앨범의 숨구멍.'},
+        {t:'Umbrella Drying', h:'"the umbrella\'s still drying by the door"', b:'마지막 곡. 리버브 길게, 끝은 거의 무음.'}
+      ],
+      timeline:[['Rain on the Awning','4:02'],['One Green Light','3:40'],['The Bakery Closes at Six','3:54'],['Wet Sleeve','3:34'],['Bus Stop Jazz','4:06'],['Coat on the Chair','3:48'],['Steam on the Glass','3:56'],['Late Afternoon Blue','4:12'],['Small Talk at the Counter','3:38'],['Nine Blocks Home','4:04'],['Last Slice','3:30'],['Rain Stops Around Seven','4:00'],['Rain on the Awning (Instrumental)','3:52'],['One Green Light (Duet)','3:44'],['Umbrella Drying','3:58'],["Six O'Clock, Still Raining",'4:22']],
+      desc:`5pm. the rain started at lunch and decided to stay.
+
+umbrellas drying in the hallway, the bakery light on early, the appointment you moved to tomorrow without much guilt.
+
+▸ TIME LINE
+{{TL}}
+
+no ads between songs. walk home the long way.
+
+▸ WHY IT SOUNDS LIKE THIS
+A jazz vocal is mostly space. Upright bass, brushes, one nylon guitar, a muted trumpet that answers instead of solos. Everything was recorded close and dry so it sounds like a room with four people in it, not a hall. The rain under the intro is from my own awning at 5:12pm, recorded on a phone, kept as-is with the bus that passes.
+
+▸ THE WALK (affiliate · 쿠팡 파트너스)
+the bag and the cup in the photo are from the bakery at the end of my street.
+▸ canvas tote: https://link.coupang.com/a/________  (본인 파트너스 링크로 교체)
+▸ ceramic cup: https://link.coupang.com/a/________  (본인 파트너스 링크로 교체)
+This description contains affiliate links. If you buy through them, I may earn a small commission at no extra cost to you. (쿠팡 파트너스 활동의 일환으로 소정의 수수료를 받을 수 있습니다.)
+
+▸ NOTE
+Lyrics by hand — one about an awning, one about a bakery that closes at six. Vocals and instruments produced with Suno from those lyrics. No third-party samples.
+
+▸ NEXT
+ONE ROOM 04 is the last one in this room. 11pm, one lamp.
+
+▸ 한국어
+비 오는 오후 5시, 우산을 말리며 듣는 재즈 보컬 1시간. 곡 사이 광고 없이 이어집니다.
+
+#jazzvocal #rainyjazz #bossanova #coffeejazz #oneroom #비오는날 #재즈플리`,
+      pinned:`🌧 did you cancel anything today because of the rain?
+good. what's the bakery near you that closes early?
+
+0:00 Rain on the Awning
+4:02 One Green Light
+7:42 The Bakery Closes at Six
+
+the umbrella's still drying. (affiliate links in description · 쿠팡 파트너스)`,
+      img_prompt:'Candid 35mm film photograph, Kodak Portra 400, rainy late afternoon on a quiet Korean side street, two people seen from behind under one black umbrella walking away, a small bakery awning with warm interior light, wet asphalt with grey reflections, a parked bicycle, low saturation muted teal and grey palette, soft contrast, visible grain, documentary street photography, ordinary and real, no text, no logos, no neon signs, no purple, photorealistic, no 3d render — 16:9, quiet sky area at the top for the caption, bottom-right clear',
+      loop_prompt:'Image-to-video, 8s seamless loop, locked-off camera: rain falls steadily, puddles ripple, the two figures walk a few steps and the loop cuts back on a matching pose. No camera move, no faces, no text. 1080p 24fps, add 3% grain in the edit.',
+      laynote:'하늘이 밝은 위쪽 1/3에 자막을 두면 사진이 살아 있습니다. 어두운 화면이면 노출 -10%로 올려 대비를 확보하세요.',
+      license:'Suno 유료 구독 중 다운로드한 곡만 상업 사용. 재즈 보컬은 즉흥 변수가 많아 같은 가사로 3회 이상 뽑아 고르는 것을 권장(이 편 16곡).'
+    },
+    {
+      id:'EP04', ko:'밤 열한 시, 불은 하나만 켜두자',
+      en:'playlist 오늘 하루도 나름 잘 살았잖아 🌙 불 하나만 켜두고 듣는 네오소울 | ONE ROOM 04',
+      alt:'playlist 이 시간엔 아무한테도 답장 안 해도 돼 🌙 늦은 거실의 neo-soul | ONE ROOM 04',
+      badge:'ONE ROOM · SESSION 04', air:'11:00 PM',
+      genre:'Neo-soul · Chill R&B', bpm:'72–88 BPM', vocal:'warm male lead + airy female harmony',
+      mood:'낮은 스탠드, 레코드 슬리브, 아무도 안 부르는 밤',
+      thumb:'ai_pl_thumb4.jpg',
+      np:'Low Lamp',
+      ly1:'one lamp is enough for tonight',
+      ly2:'오늘 밤은 불 하나로 충분해',
+      sub:'NEO-SOUL · 23:00 · 1 HOUR',
+      motto:'the room with the lights half on',
+      concept:'11pm. one floor lamp, a record sleeve on the table, the city still making noise three floors down. the last session in this room, for the hour when nobody needs an answer from you.',
+      style:'Neo-soul and chill R&B, 80 BPM, warm Rhodes, round sub bass, lazy boom-bap drums, muted guitar, warm male lead with airy female harmony, dry intimate mix, tape saturation, late-night room tone, patient and warm, English lyrics',
+      style_alt:'Chill hip-hop R&B, 84 BPM, dusty drum loop, filtered keys, upright bass, spoken-sung male vocal, vinyl crackle, English lyrics',
+      vocal_dir:'Custom mode · Styles = 위 문자열. Vocal Gender = Male(1곡은 Female로 다시 뽑아 듀엣 버전 확보). Weirdness 30%, Style Influence 70%. 서브 베이스가 보컬을 덮으면 "sub bass sits under the vocal"을 추가.',
+      lyrics:[
+        { name:'Low Lamp', text:`[Intro]
+[Verse 1]
+One lamp on and the rest is dark
+The record's out of its sleeve
+I've got a glass I haven't poured
+And an hour I don't need
+[Pre-Chorus]
+And the city's still awake
+Three floors under me
+[Chorus]
+Low lamp, low lamp
+That's all the light I need
+Low lamp, low lamp
+Let the rest of it be
+[Verse 2]
+I left the dishes in the sink
+Not for spite, just for later
+There's a note I never sent
+Still a draft from last December
+[Pre-Chorus]
+And the needle finds the middle
+Where the song goes quiet
+[Chorus]
+Low lamp, low lamp
+That's all the light I need
+Low lamp, low lamp
+Let the rest of it be
+[Bridge]
+Nobody's calling, nobody's calling
+Good, good, good
+[Chorus]
+Low lamp, low lamp
+Let the rest of it be
+[Outro]
+One lamp on and the rest is dark` },
+        { name:"Nobody's Calling", text:`[Intro]
+[Verse 1]
+Nobody's calling, that's fine
+I turned it off at ten
+The sofa's got my shape in it
+From sitting here since then
+[Pre-Chorus]
+And the street makes all the noise
+I don't need to make
+[Chorus]
+Nobody's calling
+So the night's mine
+Nobody's calling
+I'll take my time
+[Verse 2]
+There's a bus that passes twice
+At eleven and at one
+The driver never looks up
+And I never wave, we're good
+[Pre-Chorus]
+And the radiator ticks
+Like it's counting down to sleep
+[Chorus]
+Nobody's calling
+So the night's mine
+Nobody's calling
+I'll take my time
+[Bridge]
+If it rings, I'll tape the message
+And decide tomorrow
+[Chorus]
+Nobody's calling
+So the night's mine
+[Outro]
+Nobody's calling, that's fine` }
+      ],
+      slots:[
+        {t:'Record Sleeve', h:'"the sleeve\'s still on the floor where we left it"', b:'레코드 슬리브. 바이닐 노이즈 전면.'},
+        {t:'Left the Dishes', h:'"I left the dishes, I\'ll leave them tomorrow too"', b:'설거지. 드럼 얇게, 베이스 무겁게.'},
+        {t:'Bare Feet on the Floor', h:'"bare feet on a cold floor, that\'s the whole song"', b:'맨발. 거의 말하듯, 코러스 낮게.'},
+        {t:'Static Between Stations', h:'"static between two stations, that\'s us"', b:'라디오 잡음. 곡 중간에 잡음만 8초.'},
+        {t:'Half a Glass', h:'"half a glass and no reason to finish it"', b:'반쯤 남은 잔. 3분 40초.'},
+        {t:'The Long Way Down the Hall', h:'"I took the long way down the hall"', b:'복도. 베이스 라인이 곡 전체를 끈다.'},
+        {t:'Night Bus Passes Twice', h:'"the night bus passes twice and I count both"', b:'11시와 1시의 버스. 신스 패드 넓게.'},
+        {t:'Sofa, 11PM', h:'"eleven pm and the sofa knows my name"', b:'소파. 후렴 마지막 줄은 속삭임.'},
+        {t:'Sleep When the City Does', h:'"I\'ll sleep when the city does"', b:'마지막 곡. 리버브 길게, 끝은 거의 무음.'},
+        {t:'One More Song, Then Sleep', h:'"one more song, then I swear I\'ll sleep"', b:'시리즈 예고. 마지막에 바늘 소리.'}
+      ],
+      timeline:[['Low Lamp','4:10'],['Record Sleeve','3:52'],["Nobody's Calling",'3:46'],['Left the Dishes','4:04'],['Bare Feet on the Floor','3:58'],['Static Between Stations','4:12'],['Half a Glass','3:40'],['The Long Way Down the Hall','4:06'],['Night Bus Passes Twice','3:54'],['Sofa, 11PM','4:00'],['Sleep When the City Does','4:18'],['Low Lamp (Night Version)','4:06'],['Record Sleeve (Instrumental)','3:44'],["Nobody's Calling (Reprise)",'3:36'],['One More Song, Then Sleep','4:14'],['Goodnight, Room','4:30']],
+      desc:`eleven pm. one lamp, one record out of its sleeve, and the city still awake three floors down.
+
+the last session in this room — an hour of neo-soul for the part of the night that belongs to nobody.
+
+▸ TIME LINE
+{{TL}}
+
+no ads between songs. you don't have to answer anyone.
+
+▸ HOW THIS ONE WAS MADE
+I turned the lights off except the floor lamp and recorded the room tone first: the radiator tick, a bus at 11:04, the fridge from the kitchen. The drums are a dusty loop played too slow on purpose. The lyrics are the shortest I've written for this series — I cut every line that explained itself. Suno sang them close, almost spoken, and I kept the take where the voice cracked once.
+
+▸ THE ROOM (affiliate)
+▸ floor lamp: https://link.coupang.com/a/________  (본인 파트너스 링크로 교체)
+▸ wool blanket: https://link.coupang.com/a/________  (본인 파트너스 링크로 교체)
+This description contains affiliate links. If you buy through them, I may earn a small commission at no extra cost to you. (쿠팡 파트너스 활동의 일환으로 소정의 수수료를 받을 수 있습니다.)
+
+▸ THE SERIES
+ONE ROOM is four hours in one apartment: 9am kitchen, 2pm window, 5pm rain, 11pm lamp. Same window in every thumbnail. If you want a fifth, tell me which hour.
+
+▸ NOTE
+Lyrics written by hand for this episode. Vocals and instruments produced with Suno from those lyrics. No third-party samples or recordings.
+
+▸ 한국어
+밤 11시, 불 하나만 켜둔 거실에서 듣는 네오소울 1시간. 곡 사이 광고 없이 이어집니다.
+
+#neosoul #chillrnb #lateNight #latenightrnb #oneroom #밤플리 #네오소울`,
+      pinned:`🌙 what time does your day actually end?
+0:00 Low Lamp
+4:10 Record Sleeve
+8:02 Nobody's Calling
+
+one lamp is enough. (affiliate links in description · 쿠팡 파트너스)`,
+      img_prompt:'Candid 35mm film photograph, tungsten-balanced film, a small living room at 11pm lit by a single warm floor lamp, a vinyl record sleeve leaning against a low wooden table, a glass of water, a wool blanket over a worn sofa, someone\'s hand resting on the armrest at the frame edge, deep warm shadows, a window showing dark blue night, low saturation, soft contrast, visible grain, quiet and lived-in, no text, no logos, no neon, no purple, photorealistic, no 3d render — 16:9, dark empty wall space for the caption, bottom-right clear',
+      loop_prompt:'Image-to-video, 8s seamless loop, locked-off camera: the lamp filament breathes very slightly, dust in the lamplight drifts, the hand stays still. No camera move, no faces, no text. First and last frame identical; 1080p 24fps, 4% grain.',
+      laynote:'어두운 사진은 글자가 묻힙니다. 노출 -10%·그레인 12%·비네트 켜고, 노란 가사는 그대로 두세요.',
+      license:'Suno 유료 구독 중 다운로드한 곡만 상업 사용. 이 편 16곡. 네오소울은 드럼·베이스가 보컬을 덮기 쉬워 2~3테이크 중 보컬이 가장 앞에 있는 것을 고릅니다.'
+    }
+  ],
+  refs: [
+    { n:'URLIST', h:'@urlist', kind:'hip-hop · R&B', nums:'구독 10.5만 · 263편 · 총 3,710만 · 중위 126분 · 주 수회', note:'제목 `[𝗣𝗹𝗮𝘆𝗹𝗶𝘀𝘁] {상황} {반응} | hip-hop · R&B 플리`. 설명란에 TIME LINE + 음원 링크 + "AI-assisted" 표기.', take:'실사 스냅 위에 고스트 PLAYLIST. 영상은 사진 1장 + 하단 이탤릭 세리프 곡명뿐.' },
+    { n:'중간광고없음', h:'@중간광고없음', kind:'감성힙합 · R&B', nums:'구독 1.95만 · 344편 · 총 1,124만 · 중위 603분', note:'`(중간광고없음)`을 제목 고정 슬롯으로 반복. "매장에서 틀면 손님들이 물어보는" 같은 사회적 증거 제목.', take:'상단에 크고 진한 PLAYLIST + 영상 하단 작은 이퀄라이저 하나. 10시간 확장의 여지.' },
+    { n:'라이크둠칫', h:'@likedoomchit', kind:'chill · R&B · mood', nums:'구독 2.28만 · 63편 · 총 584만 (편당 9.3만)', note:'MZ 붙임말 채널명. 3D 마스코트 1개를 중앙에 크게, 파스텔 단색 배경.', take:'캐릭터 대신 "앵커 오브제 1개" 원칙만 가져온다(창가·램프·컵). 3D 렌더는 버린다.' },
+    { n:'seroma room', h:'@seromaroom', kind:'팝송 · 감성', nums:'구독 1.69만 · 155편 · 9~11시간 · 최근 4~36만', note:'제목 `𝘱𝘭𝘢𝘺𝘭𝘪𝘴𝘵 {1인칭 문장} {이모지} {상황 설명} | {장르}`. 청춘영화 스틸컷 같은 실사 필름 사진.', take:'썸네일 4층: ♪ Now Playing → 노란 영문 가사 → 흰 한글 번역 → 하단 배지·모토. 우리 기본형.' },
+    { n:'모카냥', h:'@mocca_cat', kind:'AI 팝 · 인디', nums:'구독 3.13만 · 62편 · 총 550만 · 40~60분 · 주 1회', note:'`𝒑𝒍𝒂𝒚𝒍𝒊𝒔𝒕 오늘 좀 예쁜데? 아무래도 사랑받아야겠어` — 장르 없이 1인칭 문장만.', take:'제목 톤과 40~60분 길이만 가져온다. AI 일러스트 그림체는 버린다(사용자 지적 지점).' }
+  ],
+  checks: {
+    ypp: [
+      ['구독자 1,000명 + 최근 12개월 공개 시청시간 4,000시간', 'YPP 기준'],
+      ['편마다 제작 노트 문장이 다르다', 'inauthentic content 정책'],
+      ['실제처럼 보이는 합성 음성·영상은 변경된 콘텐츠 공개', '합성 콘텐츠 공개 의무'],
+      ['가사 원고·프로젝트 파일을 날짜별로 보관', '저작권 방어선'],
+      ['중간광고는 트랙 경계에만, 첫 곡은 광고 없이', '시청 지속']
+    ],
+    suno: [
+      ['곡을 생성한 시점에 Pro 이상 유료 구독 상태였는가', '무료 곡은 상업권 없음'],
+      ['쓰는 곡을 전부 다운로드했는가', '상업권은 다운로드에만'],
+      ['이번 달 한도(Pro 20 / Premier 60) 안인가', '편당 16곡'],
+      ['Suno 워터마크·메타데이터를 제거하지 않았다', '약관 금지'],
+      ['가사 원고를 버전별로 저장했다', '저작권 방어선']
+    ],
+    thumb: [
+      ['사진이 실사 필름처럼 보인다(그레인·저채도·불완전한 구도)', 'AI 티 제거'],
+      ['얼굴이 정면으로 크게 나오지 않는다(뒷모습·손·원경)', '초상 리스크'],
+      ['4층 텍스트만 있다: Now Playing / 영문 가사 / 한글 번역 / 배지·모토', 'seroma room 방식'],
+      ['우하단 200×90px가 비어 있다', '재생시간 배지'],
+      ['360px 폭에서 가사 한 줄이 읽힌다', '최소 노출 크기'],
+      ['파일 1280×720 PNG, 2MB 이하', '업로드 규격']
+    ],
+    layout: [
+      ['한 편에 사진 1장, 컷 편집 없음', '레퍼런스 공통'],
+      ['자막 y ≤ 900 (유튜브 컨트롤 바 회피)', '가림 방지'],
+      ['곡명은 곡 시작 후 6초만 노출', 'URLIST 방식'],
+      ['화면에 트랙리스트를 넣지 않았다', '설명란 TIME LINE'],
+      ['줌은 20분에 +2%를 넘지 않는다', '멀미 방지']
+    ]
+  },
+  routine: [
+    ['월 · 다음 편 키워드 3개 검색 → 자동완성 캡처', ''],
+    ['화 · 새 가사 12줄 직접 쓰기(추상어 금지)', ''],
+    ['수 · Suno 16곡 생성 → 좋은 테이크만 다운로드', ''],
+    ['목 · 트랙 순서·크로스페이드·TIME LINE 확정', ''],
+    ['금 · 썸네일 1장(4층 자막) + 설명란 새로 쓰기', ''],
+    ['토 · 업로드(같은 시간) + 고정댓글', ''],
+    ['일 · 댓글 전원 응대 + CTR·평균시청·구독 기록', '']
+  ]
+};
+
+/* ---------- derive timeline / totals / description ---------- */
+function toSec(mmss){
+  const p = String(mmss).split(':');
+  return (+p[0])*60 + (+p[1]);
+}
+function fmt(sec){
+  const h = Math.floor(sec/3600), m = Math.floor((sec%3600)/60), s = sec%60;
+  return h ? (h + ':' + String(m).padStart(2,'0') + ':' + String(s).padStart(2,'0'))
+           : (m + ':' + String(s).padStart(2,'0'));
+}
+DATA.episodes.forEach(ep => {
+  let acc = 0;
+  ep.tl = ep.timeline.map(row => {
+    const dur = toSec(row[1]);
+    const item = { t: fmt(acc), title: row[0], dur: row[1], sec: acc };
+    acc += dur;
+    return item;
+  });
+  ep.total_sec = acc;
+  ep.total_human = Math.floor(acc/60) + '분';
+  ep.tracklist_text = ep.tl.map(x => x.t + ' ' + x.title).join('\n');
+  ep.description_final = ep.desc.replace('{{TL}}', ep.tracklist_text);
+});
+
 const EPS = DATA.episodes;
 const STAGES = ['기획','음원','썸네일','편집','업로드'];
-const KEY = 'aps_v1';
+const KEY = 'aps_v2';
 
-let state = {checks:{}, rules:{}, routine:{}, thumb:{preset:0}};
-try { const raw = localStorage.getItem(KEY); if (raw) state = Object.assign(state, JSON.parse(raw)); } catch(e){}
-function save(){ try{ localStorage.setItem(KEY, JSON.stringify(state)); }catch(e){} }
-function $(s, r){ return (r||document).querySelector(s); }
-function $$(s, r){ return Array.from((r||document).querySelectorAll(s)); }
+let state = { checks:{}, rules:{}, routine:{}, thumb:{ preset:0, bg:0, grade:{desat:22, contrast:4, grain:10, dim:10} } };
+try {
+  const raw = localStorage.getItem(KEY);
+  if (raw) {
+    const s = JSON.parse(raw);
+    state = Object.assign(state, s);
+    state.thumb = Object.assign({ preset:0, bg:0, grade:{desat:22, contrast:4, grain:10, dim:10} }, s.thumb || {});
+    state.thumb.grade = Object.assign({desat:22, contrast:4, grain:10, dim:10}, (s.thumb && s.thumb.grade) || {});
+  }
+} catch(e){}
+function save(){ try { localStorage.setItem(KEY, JSON.stringify(state)); } catch(e){} }
+function $(s, r){ return (r || document).querySelector(s); }
+function $$(s, r){ return Array.from((r || document).querySelectorAll(s)); }
 
 let toastT;
 function toast(msg){
   const t = $('#toast'); t.textContent = msg; t.classList.add('show');
-  clearTimeout(toastT); toastT = setTimeout(()=>t.classList.remove('show'), 1400);
+  clearTimeout(toastT); toastT = setTimeout(() => t.classList.remove('show'), 1500);
 }
 function copyText(text, label){
-  const done = () => toast(label ? label+' 복사됨' : '복사됨');
+  const done = () => toast((label ? label + ' 복사' : '복사') + '됨');
   if (navigator.clipboard && window.isSecureContext){
-    navigator.clipboard.writeText(text).then(done).catch(()=>fallback(text, done));
+    navigator.clipboard.writeText(text).then(done).catch(() => fallback(text, done));
   } else fallback(text, done);
 }
 function fallback(text, done){
   const ta = document.createElement('textarea');
-  ta.value = text; ta.setAttribute('readonly',''); ta.style.position='fixed'; ta.style.top='-9999px';
+  ta.value = text; ta.setAttribute('readonly',''); ta.style.position = 'fixed'; ta.style.top = '-9999px';
   document.body.appendChild(ta); ta.select();
   try { document.execCommand('copy'); done(); } catch(e){ toast('복사 실패 — 길게 눌러 선택하세요'); }
   document.body.removeChild(ta);
 }
 
-/* ---------- TABS ---------- */
+/* ---------- tabs ---------- */
 $$('.tab').forEach(btn => btn.addEventListener('click', () => {
-  $$('.tab').forEach(b=>b.classList.toggle('on', b===btn));
+  $$('.tab').forEach(b => b.classList.toggle('on', b === btn));
   ['board','prompts','thumb','rules'].forEach(v => {
-    $('#view-'+v).classList.toggle('hidden', v !== btn.dataset.tab);
+    $('#view-' + v).classList.toggle('hidden', v !== btn.dataset.tab);
   });
-  window.scrollTo({top:0, behavior:'instant'});
+  window.scrollTo({ top: 0, behavior: 'auto' });
   if (btn.dataset.tab === 'thumb') draw();
 }));
 
-/* ---------- BOARD ---------- */
+/* ---------- board ---------- */
 function stageState(id){ return state.checks[id] || [false,false,false,false,false]; }
 const openSet = new Set(['EP01']);
 function renderBoard(){
   const list = $('#epList');
   list.innerHTML = '';
   let done = 0;
-  EPS.forEach((ep, idx) => {
+  EPS.forEach(ep => {
     const st = stageState(ep.id);
     const cnt = st.filter(Boolean).length; done += cnt;
     const card = document.createElement('article');
-    card.className = 'ep' + (openSet.has(ep.id) ? ' open' : ''); card.dataset.id = ep.id;
+    card.className = 'ep' + (openSet.has(ep.id) ? ' open' : '');
+    card.dataset.id = ep.id;
     card.innerHTML = `
       <button class="ep-head">
         <img class="ep-cover" src="${ep.thumb}" alt="" loading="lazy">
         <div class="ep-meta">
           <span class="ep-badge">${ep.badge} · ${ep.air}</span>
-          <h2>${ep.ko_title}</h2>
-          <p class="ep-en">${ep.en_title}</p>
-          <div class="chips">${ep.timeline[0] ? `<span class="chip">${ep.total_human}</span><span class="chip">${ep.genre}</span><span class="chip">${ep.bpm}</span>`:''}</div>
+          <h2>${ep.ko}</h2>
+          <p class="ep-en">${ep.en}</p>
+          <div class="chips"><span class="chip">${ep.total_human}</span><span class="chip">${ep.genre}</span><span class="chip">${ep.bpm}</span></div>
         </div>
         <span class="chev">›</span>
       </button>
       <div class="ep-body">
         <div class="bar"><i style="width:${cnt/5*100}%"></i></div>
-        <div class="stages">
-          ${STAGES.map((s,i)=>`<button class="stage ${st[i]?'on':''}" data-stage="${i}">${st[i]?'✓ ':''}${s}</button>`).join('')}
-        </div>
+        <div class="stages">${STAGES.map((s,i) => `<button class="stage ${st[i] ? 'on' : ''}" data-stage="${i}">${st[i] ? '✓ ' : ''}${s}</button>`).join('')}</div>
         <p class="hint">${ep.concept}</p>
+        <p class="hint" style="color:var(--muted);font-size:10.5px">${ep.laynote}</p>
         <div class="rows">
-          <button class="btn pri" data-copy="desc">설명란 복사</button>
-          <button class="btn" data-copy="pinned">고정댓글 복사</button>
-          <button class="btn" data-copy="tags">태그 복사</button>
-          <button class="btn" data-copy="timeline">타임라인 복사</button>
-          <button class="btn wide" data-copy="lyric">가사 복사</button>
+          <button class="btn pri" data-copy="desc">설명란</button>
+          <button class="btn" data-copy="pinned">고정댓글</button>
+          <button class="btn" data-copy="tags">태그</button>
+          <button class="btn" data-copy="timeline">TIME LINE</button>
+          <button class="btn" data-copy="title">제목</button>
+          <button class="btn" data-copy="lyric">가사</button>
+          <button class="btn wide" data-copy="thumbinfo">썸네일 4층 텍스트</button>
         </div>
       </div>`;
     list.appendChild(card);
@@ -477,7 +1170,7 @@ function renderBoard(){
       const arr = stageState(ep.id).slice();
       arr[i] = !arr[i];
       state.checks[ep.id] = arr; save(); renderBoard();
-      if (arr.every(Boolean)) toast(ep.id + ' 완료 🎉');
+      if (arr.every(Boolean)) toast(ep.id + ' 완료');
     }));
     $$('[data-copy]', card).forEach(b => b.addEventListener('click', (ev) => {
       ev.stopPropagation(); doCopy(ep, b.dataset.copy, b);
@@ -485,56 +1178,65 @@ function renderBoard(){
   });
   $('#stEps').textContent = EPS.length;
   $('#stDone').textContent = done + '/' + (EPS.length * 5);
-  const minLen = Math.min(...EPS.map(e=>e.total_sec));
-  $('#stLen').textContent = Math.floor(minLen/3600) + '시간+';
+  const minLen = Math.min.apply(null, EPS.map(e => e.total_sec));
+  $('#stLen').textContent = Math.floor(minLen/3600) ? Math.floor(minLen/3600) + '시간+' : Math.floor(minLen/60) + '분';
 }
 
+function tagsText(ep){
+  return [ep.genre.toLowerCase(), 'one room', 'oneroom', 'playlist', ep.air.toLowerCase(), '감성플리', '영어가사', 'no ads']
+    .join(', ');
+}
 function doCopy(ep, kind, btnEl){
   let text = '', label = '';
   if (kind === 'desc'){ text = ep.description_final; label = '설명란'; }
   if (kind === 'pinned'){ text = ep.pinned; label = '고정댓글'; }
-  if (kind === 'tags'){ text = ep.tags.join(', '); label = '태그'; }
-  if (kind === 'timeline'){ text = ep.tracklist_text; label = '타임라인'; }
+  if (kind === 'tags'){ text = tagsText(ep); label = '태그'; }
+  if (kind === 'timeline'){ text = ep.tracklist_text; label = 'TIME LINE'; }
+  if (kind === 'title'){ text = ep.en + '\n\n[대안]\n' + ep.alt; label = '제목'; }
   if (kind === 'lyric'){ text = ep.lyrics[0].text; label = ep.lyrics[0].name; }
-  if (kind === 'style'){ text = ep.style; label = '스타일 태그'; }
-  if (kind === 'img'){ text = ep.image_prompt; label = '이미지 프롬프트'; }
-  if (kind === 'loop'){ text = ep.loop_prompt; label = '루프 프롬프트'; }
-  if (kind === 'custom'){ text = $('#cOut').textContent; label = '커스텀 스타일'; }
+  if (kind === 'thumbinfo'){
+    text = '♪ Now Playing — ' + ep.np + '\n'
+      + ep.ly1 + '\n' + ep.ly2 + '\n'
+      + ep.motto + '\n'
+      + ep.sub;
+    label = '썸네일 텍스트';
+  }
   copyText(text, label);
   if (btnEl){
     const old = btnEl.textContent;
-    btnEl.classList.add('done'); btnEl.textContent = '✓ 복사됨';
-    setTimeout(()=>{ btnEl.classList.remove('done'); btnEl.textContent = old; }, 1200);
+    btnEl.classList.add('done'); btnEl.textContent = '복사됨';
+    setTimeout(() => { btnEl.classList.remove('done'); btnEl.textContent = old; }, 1200);
   }
 }
 
-/* ---------- PROMPTS ---------- */
+/* ---------- prompts ---------- */
 let curEp = 0, altStyle = false, curLyric = 0;
 function renderEpChips(){
   const box = $('#epChips'); box.innerHTML = '';
   EPS.forEach((ep, i) => {
     const b = document.createElement('button');
-    b.className = 'epchip' + (i===curEp?' on':'');
-    b.textContent = ep.id + ' · ' + ep.thumb_title;
-    b.addEventListener('click', ()=>{ curEp = i; curLyric = 0; altStyle = false; renderPrompts(); renderEpChips(); });
+    b.className = 'epchip' + (i === curEp ? ' on' : '');
+    b.textContent = ep.id + ' · ' + ep.np;
+    b.addEventListener('click', () => { curEp = i; curLyric = 0; altStyle = false; renderPrompts(); renderEpChips(); });
     box.appendChild(b);
   });
 }
 function renderPrompts(){
   const ep = EPS[curEp];
   $('#pStyle').textContent = altStyle ? ep.style_alt : ep.style;
-  $('#pVocal').textContent = ep.vocal_direction;
-  $('#pImg').textContent = ep.image_prompt;
+  $('#pVocal').textContent = ep.vocal_dir;
+  $('#pImg').textContent = ep.img_prompt;
   $('#pLoop').textContent = ep.loop_prompt;
   const sel = $('#lySel'); sel.innerHTML = '';
   ep.lyrics.forEach((ly, i) => {
     const o = document.createElement('option'); o.value = i;
-    o.textContent = (i+1) + '. ' + ly.name + '  (' + ly.text.split('\n').filter(l=>l.trim() && !l.startsWith('[')).length + ' lines)';
+    const lines = ly.text.split('\n').filter(l => l.trim() && l.charAt(0) !== '[').length;
+    o.textContent = (i+1) + '. ' + ly.name + '  (' + lines + ' lines)';
     sel.appendChild(o);
   });
   sel.value = curLyric;
   $('#pLyric').textContent = ep.lyrics[curLyric].text;
-  $('#pSlots').textContent = '나머지 ' + ep.slots.length + '트랙 슬롯: ' + ep.slots.map(s=>s.title).join(' · ');
+  $('#pSlots').textContent = '나머지 ' + ep.slots.length + '트랙 슬롯: ' + ep.slots.map(s => s.t).join(' · ');
 }
 $('#lySel').addEventListener('change', e => { curLyric = +e.target.value; renderPrompts(); });
 $('#view-prompts').addEventListener('click', (ev) => {
@@ -542,67 +1244,68 @@ $('#view-prompts').addEventListener('click', (ev) => {
   if (!b) return;
   const ep = EPS[curEp], kind = b.dataset.copy;
   let text = '', label = '';
-  if (kind === 'style'){ text = altStyle ? ep.style_alt : ep.style; label = '스타일 태그'; }
+  if (kind === 'style'){ text = altStyle ? ep.style_alt : ep.style; label = '스타일'; }
   if (kind === 'lyric'){ text = ep.lyrics[curLyric].text; label = ep.lyrics[curLyric].name; }
-  if (kind === 'img'){ text = ep.image_prompt; label = '이미지 프롬프트'; }
+  if (kind === 'img'){ text = ep.img_prompt; label = '사진 프롬프트'; }
   if (kind === 'loop'){ text = ep.loop_prompt; label = '루프 프롬프트'; }
   if (kind === 'custom'){ text = $('#cOut').textContent; label = '커스텀 스타일'; }
   if (!text) return;
   copyText(text, label);
   const old = b.textContent;
-  b.classList.add('done'); b.textContent = '✓ 복사됨';
-  setTimeout(()=>{ b.classList.remove('done'); b.textContent = old; }, 1300);
+  b.classList.add('done'); b.textContent = '복사됨';
+  setTimeout(() => { b.classList.remove('done'); b.textContent = old; }, 1300);
 });
-$('#btnAltStyle').addEventListener('click', ()=>{ altStyle = !altStyle; renderPrompts(); toast(altStyle?'대안 스타일':'기본 스타일'); });
-$('#btnLyricPrompt').addEventListener('click', ()=>{
+$('#btnAltStyle').addEventListener('click', () => { altStyle = !altStyle; renderPrompts(); toast(altStyle ? '대안 스타일' : '기본 스타일'); });
+$('#btnLyricPrompt').addEventListener('click', () => {
   const ep = EPS[curEp];
-  const slots = ep.slots.map(s=>`- ${s.title} :: ${s.hook} :: ${s.beat}`).join('\n');
+  const slots = ep.slots.map(s => '- ' + s.t + ' :: ' + s.h + ' :: ' + s.b).join('\n');
   const prompt =
-`You are writing English lyrics for a vocal playlist channel. Write ONE song lyric per request.
+`You are writing English lyrics for a Korean playlist channel called ONE ROOM.
+One song per request. The listener is Korean; the lyric must still sound like a person, not a poem.
 
-WORLD: ${ep.concept}
-GENRE/TEMPO: ${ep.genre}, ${ep.bpm}
+ROOM: ${ep.concept}
+GENRE / TEMPO: ${ep.genre}, ${ep.bpm}
 VOICE: ${ep.vocal}
-REFERENCES (feel only, do not copy): ${ep.style}
+REFERENCE FEEL (do not copy): ${ep.style}
 
 RULES
-1. Concrete objects and small actions only. No abstract mood words standing alone.
-2. BANNED words: neon, shadows, whispers, echoes, fading, endless, soul (as a metaphor), vibe, city lights (unless literal).
+1. Concrete objects and small actions only: a cup, a receipt, a bus, a key, a sleeve.
+2. BANNED words: neon, shadows, whispers, echoes, fading, endless, soul (as metaphor), vibe, city lights.
 3. Structure exactly: [Verse 1] [Pre-Chorus] [Chorus] [Verse 2] [Pre-Chorus] [Chorus] [Bridge] [Chorus] [Outro]
-4. Chorus = 2 short lines repeated, max 8 words per line, easy to sing on first listen.
-5. 60–90 words per verse. One specific time, one specific place, one specific object per verse.
-6. British or American spelling, consistent. No parentheses, no spoken lines.
-7. Keep the whole lyric under 32 lines. It must fit a 3:30–4:30 track.
+4. Chorus = two short lines repeated, max 8 words per line, singable on first listen.
+5. 40-70 words per verse. One specific time, one place, one object per verse.
+6. Under 32 lines total; it must fit a 3:30-4:30 track.
+7. Title in Title Case, like something that happened that day.
 
-TRACK SLOTS TO WRITE (same room, same night, same voice):
+TRACK SLOTS (same room, same hour, same voice):
 ${slots}
 
-Output: song title in Title Case, then the tagged lyric, nothing else.`;
-  copyText(prompt, '가사 생성 프롬프트');
+Output: the title, then the tagged lyric, nothing else.`;
+  copyText(prompt, '가사 프롬프트');
 });
 
 /* composer */
 const C = {
-  genre:['Chill R&B','Neo-soul','Bedroom pop','Dream pop','Jazz vocal','Bossa-soul','Lo-fi pop','Indie pop'],
-  vocal:['breathy female lead','warm male lead','husky female lead','male + female harmony','doubled soft vocal'],
-  inst:['Rhodes','muted guitar','upright bass','brushed drums','analog synth pad','muted trumpet','nylon guitar','shaker'],
-  mood:['melancholic','tender','bittersweet','hopeful','unhurried','cinematic','hazy','warm'],
-  sel:{genre:0,vocal:0,inst:[0,1,2,3],mood:[0,4]}
+  genre:['Soft R&B','Neo-soul','Bedroom pop','Indie pop','Jazz vocal','Bossa-soul','Chill hip-hop R&B','Lo-fi pop'],
+  vocal:['breathy female lead','warm male lead','husky female lead','male + airy female harmony','doubled soft vocal'],
+  inst:['Rhodes','upright piano','muted guitar','nylon guitar','upright bass','brushed drums','muted trumpet','shaker'],
+  mood:['tender','unhurried','lived-in','warm','bittersweet','quiet'],
+  sel:{ genre:0, vocal:0, inst:[0,4,5], mood:[0,1] }
 };
 function buildOpts(){
   const mk = (host, arr, key, single) => {
     host.innerHTML = '';
-    arr.forEach((v,i)=>{
+    arr.forEach((v, i) => {
       const b = document.createElement('button');
-      b.className = 'opt'; b.textContent = v;
-      const on = single ? C.sel[key]===i : C.sel[key].includes(i);
+      b.className = 'opt';
+      b.textContent = v;
+      const on = single ? C.sel[key] === i : C.sel[key].indexOf(i) >= 0;
       if (on) b.classList.add('on');
-      b.addEventListener('click', ()=>{
-        if (single){ C.sel[key] = i; }
+      b.addEventListener('click', () => {
+        if (single) C.sel[key] = i;
         else {
-          const arr2 = C.sel[key];
-          const p = arr2.indexOf(i);
-          if (p>=0) arr2.splice(p,1); else arr2.push(i);
+          const arr2 = C.sel[key], p = arr2.indexOf(i);
+          if (p >= 0) arr2.splice(p, 1); else arr2.push(i);
         }
         buildOpts(); compose();
       });
@@ -617,240 +1320,466 @@ function buildOpts(){
 function compose(){
   const g = C.genre[C.sel.genre];
   const v = C.vocal[C.sel.vocal];
-  const inst = C.sel.inst.map(i=>C.inst[i]);
-  const mood = C.sel.mood.map(i=>C.mood[i]);
+  const inst = C.sel.inst.map(i => C.inst[i]);
+  const mood = C.sel.mood.map(i => C.mood[i]);
   const bpm = $('#bpm').value;
   const parts = [g, bpm + ' BPM'];
   if (inst.length) parts.push(inst.join(', '));
   parts.push(v);
-  parts.push('close-mic intimate mix, light tape saturation');
+  parts.push('close-mic, dry small-room mix, light tape saturation');
   if (mood.length) parts.push(mood.join(' and '));
   parts.push('English lyrics');
   $('#cOut').textContent = parts.join(', ');
 }
 $('#bpm').addEventListener('input', e => { $('#bpmVal').textContent = e.target.value; compose(); });
 
-/* ---------- THUMBNAIL ---------- */
+/* ---------- thumbnail studio ---------- */
 const cv = $('#cv'), ctx = cv.getContext('2d');
-const THUMBS = [
-  {src:'ai_pl_thumb1.jpg', name:'rain'},
-  {src:'ai_pl_thumb2.jpg', name:'drive'},
-  {src:'ai_pl_thumb3.jpg', name:'moon'},
-  {src:'ai_pl_thumb4.jpg', name:'sunday'}
-];
-const FAM = {
-  'Pretendard':'"Pretendard", -apple-system, system-ui, sans-serif',
-  'Georgia':'Georgia, "Times New Roman", serif',
-  'Courier New':'"Courier New", ui-monospace, monospace',
-  'system-ui':'system-ui, -apple-system, "Segoe UI", sans-serif'
+const THUMBS = EPS.map(e => ({ src:e.thumb, name:e.id }));
+const FONT = {
+  serif:'Georgia, "Times New Roman", serif',
+  sans:'"Pretendard", -apple-system, system-ui, sans-serif',
+  mono:'"Courier New", ui-monospace, monospace'
 };
+const PRESETS = [
+  { id:'nowplaying', label:'가사 자막 4층', note:'seroma room 방식. 곡명 → 영문 가사(노랑) → 한글 번역 → 하단 모토. 사진은 실사 필름 톤으로.' },
+  { id:'ghost', label:'고스트 워드마크', note:'URLIST 방식. 화면을 가로지르는 흐린 ONE ROOM + 좌하단 작은 곡명. 인물 사진과 잘 맞습니다.' },
+  { id:'magazine', label:'매거진 캡션', note:'에디토리얼 방식. 좌하단 얇은 선 + 작은 라벨 + 세리프 제목. 사진 여백이 넓을 때.' },
+  { id:'bigtop', label:'상단 빅 워드', note:'중간광고없음 방식. 상단에 굵은 대문자 한 줄. 눈에 띄지만 사진을 가립니다.' },
+  { id:'frame', label:'필름 프레임', note:'필름 스틸 방식. 안쪽 테두리 + 코너 틱 + 모노 캡션. 조용한 사진에.' }
+];
 let img = new Image(); img.crossOrigin = 'anonymous';
 let userImg = null;
-let tg = {shadow:true, vignette:true, safe:false, accent:true};
+let tg = { vignette:true, shadow:true, safe:false };
+let procCanvas = null, procKey = '';
+
+const grade = () => state.thumb.grade;
+function readGrade(){
+  const g = grade();
+  g.desat = +$('#desat').value; g.contrast = +$('#contrast').value;
+  g.grain = +$('#grain').value; g.dim = +$('#dim').value;
+  save();
+}
+function paintGradeUI(){
+  const g = grade();
+  $('#desat').value = g.desat; $('#dsv').textContent = g.desat;
+  $('#contrast').value = g.contrast; $('#ctv').textContent = g.contrast;
+  $('#grain').value = g.grain; $('#grv').textContent = g.grain;
+  $('#dim').value = g.dim; $('#dmv').textContent = g.dim;
+}
 
 function renderPresets(){
   const box = $('#presets'); box.innerHTML = '';
-  THUMBS.forEach((t,i)=>{
+  PRESETS.forEach((p, i) => {
     const b = document.createElement('button');
-    b.className = 'preset' + (state.thumb.preset===i && !userImg ? ' on':'');
-    b.innerHTML = `<img src="${t.src}" alt="${t.name}"><span>${EPS[i]?EPS[i].id:''}</span>`;
-    b.addEventListener('click', ()=>{ userImg = null; state.thumb.preset = i; save(); loadPreset(i); fillFromEpisode(i); renderPresets(); });
+    b.className = 'preset' + (state.thumb.preset === i ? ' on' : '');
+    b.innerHTML = '<img src="' + THUMBS[state.thumb.bg % THUMBS.length].src + '" alt=""><span>' + (i+1) + ' · ' + p.label + '</span>';
+    b.addEventListener('click', () => { state.thumb.preset = i; save(); renderPresets(); laynote(); draw(); });
     box.appendChild(b);
   });
 }
-function loadPreset(i){
+function laynote(){
+  const p = PRESETS[state.thumb.preset] || PRESETS[0];
+  $('#laynote').textContent = p.note;
+}
+function loadBg(i, push){
   img = new Image();
-  img.onload = ()=>{ draw(); };
-  img.onerror = ()=>{ window.__errs.push('thumb load fail '+THUMBS[i].src); draw(); };
+  img.onload = () => { procKey = ''; draw(); };
+  img.onerror = () => { window.__errs.push('thumb load fail ' + THUMBS[i].src); draw(); };
   img.src = THUMBS[i].src;
+  if (push) toast(EPS[i].id + ' 사진');
 }
 function coverDraw(im){
   const cw = cv.width, ch = cv.height;
-  const r = Math.max(cw/im.width, ch/im.height);
-  const w = im.width*r, h = im.height*r;
-  ctx.drawImage(im, (cw-w)/2, (ch-h)/2, w, h);
+  const r = Math.max(cw / im.width, ch / im.height);
+  const w = im.width * r, h = im.height * r;
+  ctx.drawImage(im, (cw - w) / 2, (ch - h) / 2, w, h);
 }
-function roundRect(x,y,w,h,r){
-  ctx.beginPath();
-  ctx.moveTo(x+r,y); ctx.arcTo(x+w,y,x+w,y+h,r); ctx.arcTo(x+w,y+h,x,y+h,r);
-  ctx.arcTo(x,y+h,x,y,r); ctx.arcTo(x,y,x+w,y,r); ctx.closePath();
-}
-function draw(){
-  ctx.clearRect(0,0,cv.width,cv.height);
-  ctx.fillStyle = '#111'; ctx.fillRect(0,0,cv.width,cv.height);
-  if (userImg) coverDraw(userImg); else if (img.complete && img.naturalWidth) coverDraw(img);
+function clamp(v){ return v < 0 ? 0 : (v > 255 ? 255 : v); }
 
-  // dim
-  const dv = +$('#dim').value/100;
-  if (dv>0){ ctx.fillStyle = 'rgba(6,5,10,'+dv+')'; ctx.fillRect(0,0,cv.width,cv.height); }
+function processed(src){
+  const g = grade();
+  if (!g.desat && !g.contrast) return src;
+  const key = (src === userImg ? 'u' : THUMBS[state.thumb.bg % THUMBS.length].src) + '|' + g.desat + '|' + g.contrast;
+  if (procCanvas && procKey === key) return procCanvas;
+  const c = document.createElement('canvas');
+  c.width = cv.width; c.height = cv.height;
+  const cx = c.getContext('2d');
+  const cw = c.width, ch = c.height;
+  const r = Math.max(cw / src.width, ch / src.height);
+  const w = src.width * r, h = src.height * r;
+  cx.drawImage(src, (cw - w) / 2, (ch - h) / 2, w, h);
+  try {
+    const d = cx.getImageData(0, 0, cw, ch);
+    const a = d.data;
+    const sat = 1 - (g.desat / 100);
+    const k = 1 + (g.contrast / 100);
+    for (let i = 0; i < a.length; i += 4){
+      const r0 = a[i], g0 = a[i+1], b0 = a[i+2];
+      const gray = 0.299 * r0 + 0.587 * g0 + 0.114 * b0;
+      let nr = gray + (r0 - gray) * sat;
+      let ng = gray + (g0 - gray) * sat;
+      let nb = gray + (b0 - gray) * sat;
+      nr = (nr - 128) * k + 128;
+      ng = (ng - 128) * k + 128;
+      nb = (nb - 128) * k + 128;
+      a[i] = clamp(nr); a[i+1] = clamp(ng); a[i+2] = clamp(nb);
+    }
+    cx.putImageData(d, 0, 0);
+  } catch(e){ window.__errs.push('grade:' + String(e)); }
+  procCanvas = c; procKey = key;
+  return c;
+}
+
+let grainTile = null;
+function makeGrain(){
+  const n = 140;
+  const c = document.createElement('canvas');
+  c.width = n; c.height = n;
+  const cx = c.getContext('2d');
+  const d = cx.createImageData(n, n);
+  for (let i = 0; i < d.data.length; i += 4){
+    const v = 128 + (Math.random() * 90 - 45);
+    d.data[i] = d.data[i+1] = d.data[i+2] = v;
+    d.data[i+3] = 255;
+  }
+  cx.putImageData(d, 0, 0);
+  grainTile = ctx.createPattern(c, 'repeat');
+}
+
+/* text helpers */
+function tw(text, spacing){
+  let w = 0;
+  for (const ch of text) w += ctx.measureText(ch).width + spacing;
+  return Math.max(0, w - spacing);
+}
+function tracked(text, cx, y, spacing, align){
+  let w = tw(text, spacing);
+  let x = align === 'left' ? cx : cx - w / 2;
+  for (const ch of text){
+    ctx.fillText(ch, x, y);
+    x += ctx.measureText(ch).width + spacing;
+  }
+  return w;
+}
+function font(size, weight, fam, italic){
+  ctx.font = (italic ? 'italic ' : '') + (weight || 400) + ' ' + size + 'px ' + fam;
+}
+function shadowOn(on, blur, dy){
+  if (!on || !tg.shadow){ ctx.shadowColor = 'transparent'; ctx.shadowBlur = 0; ctx.shadowOffsetY = 0; return; }
+  ctx.shadowColor = 'rgba(0,0,0,.55)';
+  ctx.shadowBlur = blur || 14;
+  ctx.shadowOffsetY = dy || 3;
+}
+function shadowOff(){ ctx.shadowColor = 'transparent'; ctx.shadowBlur = 0; ctx.shadowOffsetY = 0; }
+function fitSize(text, fam, weight, italic, size, maxW){
+  let s = size;
+  while (s > 14){
+    font(s, weight, fam, italic);
+    if (ctx.measureText(text).width <= maxW) break;
+    s -= 2;
+  }
+  return s;
+}
+
+function draw(){
+  const W = cv.width, H = cv.height;
+  ctx.clearRect(0, 0, W, H);
+  ctx.fillStyle = '#121110'; ctx.fillRect(0, 0, W, H);
+
+  const src = userImg || (img.complete && img.naturalWidth ? img : null);
+  if (src){
+    try { ctx.drawImage(processed(src), 0, 0); }
+    catch(e){ coverDraw(src); }
+  }
+  if (!grainTile) makeGrain();
+
+  const g = grade();
+  if (g.dim > 0){ ctx.fillStyle = 'rgba(10,9,8,' + (g.dim / 100) + ')'; ctx.fillRect(0, 0, W, H); }
+
+  const preset = (PRESETS[state.thumb.preset] || PRESETS[0]).id;
+  const famKey = $('#font').value;
+  const fam = FONT[famKey] || FONT.serif;
+  const align = $('#align').value;
+  const pad = 62;
+  const np = $('#np').value || '';
+  const ly1 = $('#ly1').value || '';
+  const ly2 = $('#ly2').value || '';
+  const motto = $('#motto').value || '';
+  const t1 = $('#t1').value || '';
+  const t2 = $('#t2').value || '';
+  const cx = align === 'left' ? pad : W / 2;
+
+  ctx.textBaseline = 'alphabetic';
+
+  if (preset === 'nowplaying'){
+    // ① Now Playing
+    ctx.fillStyle = 'rgba(255,255,255,.58)';
+    font(17, 400, FONT.sans);
+    tracked('♪  NOW PLAYING', W / 2, 52, 5);
+    ctx.fillStyle = 'rgba(255,255,255,.86)';
+    font(24, 400, fam, famKey === 'serif');
+    tracked(np, W / 2, 86, 1);
+    // ② English lyric
+    shadowOn(true, 16, 3);
+    ctx.fillStyle = '#F2D06B';
+    const s1 = fitSize(ly1, fam, 400, true, 46, W - pad * 2);
+    font(s1, 400, fam, true);
+    tracked(ly1, align === 'left' ? pad : W / 2, 452, 0.5, align === 'left' ? 'left' : 'center');
+    // ③ Korean translation
+    ctx.fillStyle = 'rgba(255,255,255,.94)';
+    const s2 = fitSize(ly2, FONT.sans, 600, false, 38, W - pad * 2);
+    font(s2, 600, FONT.sans);
+    tracked(ly2, align === 'left' ? pad : W / 2, 500, 0.5, align === 'left' ? 'left' : 'center');
+    shadowOff();
+    // ④ badge + motto
+    ctx.fillStyle = 'rgba(255,255,255,.5)';
+    font(11, 700, FONT.sans);
+    tracked('ONE ROOM', W / 2, 618, 7);
+    ctx.fillStyle = 'rgba(255,255,255,.62)';
+    font(17, 400, fam, true);
+    const lines = motto.split('\n');
+    lines.forEach((ln, i) => tracked(ln, W / 2, 646 + i * 22, 0.4));
+  }
+
+  if (preset === 'ghost'){
+    ctx.save();
+    ctx.fillStyle = 'rgba(255,255,255,.14)';
+    font(fitSize('ONE ROOM', fam, 700, false, 230, W * 1.02), 700, fam);
+    tracked('ONE ROOM', W / 2, 470, 16);
+    ctx.restore();
+    shadowOn(true, 14, 3);
+    ctx.fillStyle = 'rgba(255,255,255,.72)';
+    font(15, 600, FONT.sans);
+    tracked(t2, pad, 622, 5, 'left');
+    ctx.fillStyle = 'rgba(255,255,255,.96)';
+    const s3 = fitSize(np, fam, 400, true, 40, W - pad * 2);
+    font(s3, 400, fam, true);
+    tracked(np, pad, 668, 0.4, 'left');
+    shadowOff();
+    if (ly1){
+      ctx.fillStyle = 'rgba(242,208,107,.92)';
+      font(19, 400, fam, true);
+      tracked(ly1, pad, 704, 0.3, 'left');
+    }
+  }
+
+  if (preset === 'magazine'){
+    shadowOn(true, 12, 2);
+    ctx.fillStyle = 'rgba(255,255,255,.92)';
+    font(16, 700, FONT.sans);
+    const wLabel = tracked(t2, pad, 556, 4.5, 'left');
+    ctx.strokeStyle = 'rgba(255,255,255,.8)'; ctx.lineWidth = 2;
+    ctx.beginPath(); ctx.moveTo(pad, 520); ctx.lineTo(pad + Math.max(96, wLabel), 520); ctx.stroke();
+    ctx.fillStyle = '#fff';
+    const s4 = fitSize(t1, fam, 600, false, 92, W - pad * 2);
+    font(s4, 600, fam);
+    tracked(t1, pad, 640, 0.5, 'left');
+    if (np){
+      ctx.fillStyle = 'rgba(242,208,107,.95)';
+      font(24, 400, fam, true);
+      tracked(np, pad, 682, 0.3, 'left');
+    }
+    shadowOff();
+  }
+
+  if (preset === 'bigtop'){
+    shadowOn(true, 18, 4);
+    ctx.fillStyle = 'rgba(255,255,255,.98)';
+    const big = np.toUpperCase();
+    const s5 = fitSize(big, FONT.sans, 800, false, 124, W - pad * 2);
+    font(s5, 800, FONT.sans);
+    tracked(big, W / 2, 186, 2);
+    ctx.fillStyle = 'rgba(255,255,255,.82)';
+    font(20, 600, FONT.sans);
+    tracked(t2, W / 2, 236, 7);
+    shadowOff();
+    if (ly1){
+      ctx.fillStyle = 'rgba(242,208,107,.95)';
+      font(28, 400, fam, true);
+      tracked(ly1, W / 2, 668, 0.4);
+    }
+  }
+
+  if (preset === 'frame'){
+    const inset = 46;
+    ctx.strokeStyle = 'rgba(255,255,255,.42)'; ctx.lineWidth = 1.5;
+    ctx.strokeRect(inset, inset, W - inset * 2, H - inset * 2);
+    ctx.strokeStyle = 'rgba(255,255,255,.85)'; ctx.lineWidth = 3;
+    const tick = 26;
+    [[inset, inset, 1, 1], [W - inset, inset, -1, 1], [inset, H - inset, 1, -1], [W - inset, H - inset, -1, -1]].forEach(c => {
+      ctx.beginPath();
+      ctx.moveTo(c[0] + tick * c[2], c[1]); ctx.lineTo(c[0], c[1]); ctx.lineTo(c[0], c[1] + tick * c[3]);
+      ctx.stroke();
+    });
+    shadowOn(true, 10, 2);
+    ctx.fillStyle = 'rgba(255,255,255,.72)';
+    font(11, 700, FONT.sans);
+    tracked('ONE ROOM  ·  35mm', inset + 34, inset + 34, 5, 'left');
+    ctx.fillStyle = '#fff';
+    font(28, 400, fam, true);
+    tracked(np, W / 2, 640, 0.6);
+    ctx.fillStyle = 'rgba(255,255,255,.66)';
+    font(13, 600, FONT.mono);
+    tracked(t2, W / 2, 668, 3);
+    shadowOff();
+  }
 
   // vignette
   if (tg.vignette){
-    const g = ctx.createRadialGradient(640,360,180,640,360,760);
-    g.addColorStop(0,'rgba(0,0,0,0)'); g.addColorStop(1,'rgba(0,0,0,.55)');
-    ctx.fillStyle = g; ctx.fillRect(0,0,cv.width,cv.height);
+    const rg = ctx.createRadialGradient(W/2, H/2, H * 0.28, W/2, H/2, W * 0.62);
+    rg.addColorStop(0, 'rgba(0,0,0,0)');
+    rg.addColorStop(1, 'rgba(0,0,0,.42)');
+    ctx.fillStyle = rg; ctx.fillRect(0, 0, W, H);
   }
 
-  const t1 = $('#t1').value || '';
-  const t2 = $('#t2').value || '';
-  const fs1 = +$('#s1').value, fs2 = +$('#s2').value;
-  const yp = +$('#yp').value/100, pad = +$('#xp').value;
-  const align = $('#align').value;
-  const fam = FAM[$('#font').value] || FAM['Pretendard'];
-  const color = $('#tc').value || '#FFF6EA';
-
-  ctx.textAlign = align === 'center' ? 'center' : (align === 'right' ? 'right' : 'left');
-  const x = align === 'center' ? 640 : (align === 'right' ? 1280-pad : pad);
-  const baseY = 720*yp;
-
-  // accent line above title
-  if (tg.accent){
-    ctx.fillStyle = 'rgba(240,164,106,.95)';
-    const lw = 64, lx = align==='center' ? 640-lw/2 : (align==='right'?1280-pad-lw:pad);
-    ctx.fillRect(lx, baseY - fs1*0.92, lw, 5);
+  // grain
+  if (g.grain > 0 && grainTile){
+    ctx.save();
+    ctx.globalAlpha = g.grain / 100 * 0.55;
+    ctx.globalCompositeOperation = 'overlay';
+    ctx.fillStyle = grainTile;
+    ctx.fillRect(0, 0, W, H);
+    ctx.restore();
   }
 
-  // main
-  ctx.font = '800 ' + fs1 + 'px ' + fam;
-  if (tg.shadow){ ctx.shadowColor='rgba(0,0,0,.65)'; ctx.shadowBlur=18; ctx.shadowOffsetY=6; }
-  ctx.fillStyle = color;
-  ctx.fillText(t1, x, baseY, 1280 - pad*2);
-  ctx.shadowColor='transparent'; ctx.shadowBlur=0; ctx.shadowOffsetY=0;
-
-  // sub
-  ctx.font = '700 ' + fs2 + 'px "Pretendard", system-ui, sans-serif';
-  if (tg.shadow){ ctx.shadowColor='rgba(0,0,0,.7)'; ctx.shadowBlur=12; ctx.shadowOffsetY=3; }
-  ctx.fillStyle = 'rgba(240,164,106,.98)';
-  ctx.fillText(t2, x, baseY + fs1*0.52, 1280 - pad*2);
-  ctx.shadowColor='transparent'; ctx.shadowBlur=0; ctx.shadowOffsetY=0;
-
-  // safe area guide
+  // safe area
   if (tg.safe){
-    ctx.strokeStyle = 'rgba(74,222,128,.9)'; ctx.lineWidth = 3; ctx.setLineDash([12,10]);
-    ctx.strokeRect(60,60,1160,600); ctx.setLineDash([]);
-    ctx.strokeStyle = 'rgba(255,122,138,.95)';
-    ctx.strokeRect(1280-200,720-90,140,60);
-    ctx.fillStyle='rgba(255,122,138,.95)'; ctx.font='700 20px Pretendard,sans-serif';
-    ctx.textAlign='left'; ctx.fillText('시간 배지 자리', 1280-340, 690);
+    ctx.save();
+    ctx.setLineDash([12, 10]); ctx.lineWidth = 3;
+    ctx.strokeStyle = 'rgba(120,220,150,.9)';
+    ctx.strokeRect(60, 60, W - 120, H - 120);
+    ctx.strokeStyle = 'rgba(255,120,120,.95)';
+    ctx.strokeRect(W - 200, H - 90, 140, 60);
+    ctx.setLineDash([]);
+    ctx.fillStyle = 'rgba(255,120,120,.95)';
+    font(18, 700, FONT.sans);
+    ctx.textAlign = 'left';
+    ctx.fillText('재생시간 자리', W - 356, 690);
+    ctx.restore();
   }
 }
+
 function bindThumb(){
-  ['#t1','#t2','#tc','#font','#align'].forEach(s => $(s).addEventListener('input', draw));
-  ['#s1','#s2','#yp','#xp','#dim'].forEach(s => {
-    $(s).addEventListener('input', e => {
-      const map = {'#s1':'#s1v','#s2':'#s2v','#yp':'#yv','#xp':'#xv','#dim':'#dv'};
-      if (map[s]) $(map[s]).textContent = e.target.value;
-      draw();
+  ['#np','#ly1','#ly2','#motto','#t1','#t2','#font','#align'].forEach(s => {
+    $(s).addEventListener('input', draw);
+    $(s).addEventListener('change', draw);
+  });
+  [['#desat','#dsv'],['#contrast','#ctv'],['#grain','#grv'],['#dim','#dmv']].forEach(pair => {
+    $(pair[0]).addEventListener('input', e => {
+      $(pair[1]).textContent = e.target.value;
+      procKey = ''; readGrade(); draw();
     });
   });
-  $$('[data-tg]').forEach(b => b.addEventListener('click', ()=>{
+  $$('[data-tg]').forEach(b => b.addEventListener('click', () => {
     const k = b.dataset.tg; tg[k] = !tg[k]; b.classList.toggle('on', tg[k]); draw();
   }));
-  $('#btnUpload').addEventListener('click', ()=> $('#fileInput').click());
+  $('#btnUpload').addEventListener('click', () => $('#fileInput').click());
   $('#fileInput').addEventListener('change', e => {
     const f = e.target.files && e.target.files[0];
     if (!f) return;
     const rd = new FileReader();
     rd.onload = () => {
       const im = new Image();
-      im.onload = () => { userImg = im; $$('.preset').forEach(p=>p.classList.remove('on')); draw(); toast('사진 불러옴'); };
+      im.onload = () => { userImg = im; procKey = ''; draw(); toast('사진 불러옴'); };
       im.src = rd.result;
     };
     rd.readAsDataURL(f);
   });
-  $('#btnDownload').addEventListener('click', ()=>{
-    try{
+  $('#btnDownload').addEventListener('click', () => {
+    try {
       cv.toBlob(b => {
         if (!b){ toast('저장 실패'); return; }
-        const ep = EPS[state.thumb.preset] || EPS[0];
+        const ep = EPS[state.thumb.bg % EPS.length] || EPS[0];
         const url = URL.createObjectURL(b);
         const a = document.createElement('a');
-        a.href = url;
-        a.download = 'thumb_' + ep.id + '_1280x720.png';
+        a.href = url; a.download = 'thumb_' + ep.id + '_1280x720.png';
         document.body.appendChild(a); a.click(); a.remove();
         const link = $('#saveLink');
         if (link){ link.href = url; link.style.display = 'flex'; }
         toast('PNG 저장 · 1280×720');
       }, 'image/png');
-    }catch(err){ toast('저장 실패: ' + err.message); }
+    } catch(err){ toast('저장 실패: ' + err.message); }
   });
 }
 function fillFromEpisode(i){
-  const ep = EPS[i];
-  $('#t1').value = ep.thumb_title;
-  $('#t2').value = ep.thumb_sub;
-  $('#font').value = 'Pretendard';
-  $('#align').value = i===1 ? 'left' : 'left';
-  $('#yp').value = i===1 ? 28 : 62; $('#yv').textContent = $('#yp').value;
-  $('#xp').value = 72; $('#xv').textContent = '72';
-  $('#s1').value = 118; $('#s1v').textContent = '118';
-  $('#s2').value = 34; $('#s2v').textContent = '34';
+  const ep = EPS[i % EPS.length];
+  $('#np').value = ep.np;
+  $('#ly1').value = ep.ly1;
+  $('#ly2').value = ep.ly2;
+  $('#motto').value = ep.motto;
+  $('#t1').value = ep.ko.split(',')[0];
+  $('#t2').value = ep.sub;
+  state.thumb.bg = i % EPS.length;
+  save();
   draw();
 }
 
-/* ---------- RULES ---------- */
+/* ---------- rules ---------- */
 function renderRules(){
   const rl = $('#refList'); rl.innerHTML = '';
   DATA.refs.forEach(r => {
     const d = document.createElement('div');
     d.className = 'ref';
-    d.innerHTML = `<div class="top"><b>${r.name}</b><span class="kind">${r.kind}</span></div>
-      <div class="nums">구독 ${r.subs} · 총 조회 ${r.views}</div>
-      <div class="note">${r.note}</div>
-      <div class="take">${r.take}</div>`;
+    d.innerHTML = '<div class="top"><b>' + r.n + '</b><span class="kind">' + r.kind + '</span></div>'
+      + '<div class="nums">' + r.h + ' · ' + r.nums + '</div>'
+      + '<div class="note">' + r.note + '</div>'
+      + '<div class="take">' + r.take + '</div>';
     rl.appendChild(d);
   });
 
-  const groups = [
-    ['ypp','유튜브 수익화(YPP)'],
-    ['suno','Suno 라이선스'],
-    ['thumb','썸네일 규칙']
-  ];
+  const groups = [['thumb','썸네일'],['layout','영상'],['ypp','수익화'],['suno','Suno']];
   const box = $('#chkBoxes'); box.innerHTML = '';
-  groups.forEach(([k,label], gi) => {
-    if (gi>0){ const h = document.createElement('div'); h.className='tdiv'; h.innerHTML = `<b>${label}</b><i></i>`; box.appendChild(h); }
-    else { const h = document.createElement('div'); h.className='tdiv'; h.innerHTML = `<b>${label}</b><i></i>`; box.appendChild(h); }
+  groups.forEach(([k, label]) => {
+    const h = document.createElement('div'); h.className = 'tdiv';
+    h.innerHTML = '<b>' + label + '</b><i></i>'; box.appendChild(h);
     DATA.checks[k].forEach((c, i) => {
-      const id = k+':'+i;
+      const id = k + ':' + i;
       const el = document.createElement('div');
-      el.className = 'check' + (state.rules[id] ? ' on':'');
-      el.innerHTML = `<div class="box">✓</div><div><p>${c[0]}</p><small>${c[1]||''}</small></div>`;
-      el.addEventListener('click', ()=>{ state.rules[id] = !state.rules[id]; save(); renderRules(); });
+      el.className = 'check' + (state.rules[id] ? ' on' : '');
+      el.innerHTML = '<div class="box">✓</div><div><p>' + c[0] + '</p><small>' + (c[1] || '') + '</small></div>';
+      el.addEventListener('click', () => { state.rules[id] = !state.rules[id]; save(); renderRules(); });
       box.appendChild(el);
     });
   });
 
   const rb = $('#routineBoxes'); rb.innerHTML = '';
-  DATA.checks.routine.forEach((c, i) => {
-    const id = 'r:'+i;
+  DATA.routine.forEach((c, i) => {
+    const id = 'r:' + i;
     const el = document.createElement('div');
-    el.className = 'check' + (state.routine[id] ? ' on':'');
-    el.innerHTML = `<div class="box">✓</div><div><p>${c[0]}</p></div>`;
-    el.addEventListener('click', ()=>{ state.routine[id] = !state.routine[id]; save(); renderRules(); });
+    el.className = 'check' + (state.routine[id] ? ' on' : '');
+    el.innerHTML = '<div class="box">✓</div><div><p>' + c[0] + '</p></div>';
+    el.addEventListener('click', () => { state.routine[id] = !state.routine[id]; save(); renderRules(); });
     rb.appendChild(el);
   });
 
-  const total = ['ypp','suno','thumb'].reduce((n,k)=>n+DATA.checks[k].length,0);
-  const done = ['ypp','suno','thumb'].reduce((n,k)=>n+DATA.checks[k].filter((_,i)=>state.rules[k+':'+i]).length,0);
+  const keys = ['thumb','layout','ypp','suno'];
+  let total = 0, done = 0;
+  keys.forEach(k => {
+    total += DATA.checks[k].length;
+    DATA.checks[k].forEach((_, i) => { if (state.rules[k + ':' + i]) done++; });
+  });
+  const rdone = DATA.routine.filter((_, i) => state.routine['r:' + i]).length;
   $('#chkSum').textContent = done + '/' + total;
-  const rdone = DATA.checks.routine.filter((_,i)=>state.routine['r:'+i]).length;
-  $('#routineSum').textContent = rdone + '/' + DATA.checks.routine.length;
+  $('#routineSum').textContent = rdone + '/' + DATA.routine.length;
 }
-$('#btnResetRoutine').addEventListener('click', ()=>{ state.routine = {}; save(); renderRules(); toast('이번 주 루틴 초기화'); });
+$('#btnResetRoutine').addEventListener('click', () => { state.routine = {}; save(); renderRules(); toast('이번 주 루틴 초기화'); });
 
-/* ---------- INIT ---------- */
+/* ---------- init ---------- */
+paintGradeUI();
 renderBoard();
 renderEpChips();
 renderPrompts();
 buildOpts();
 compose();
 renderPresets();
+laynote();
 bindThumb();
-loadPreset(state.thumb.preset || 0);
-fillFromEpisode(state.thumb.preset || 0);
+loadBg(state.thumb.bg || 0, false);
+fillFromEpisode(state.thumb.bg || 0);
 renderRules();
-if (document.fonts && document.fonts.ready) document.fonts.ready.then(draw);
-setTimeout(draw, 400);
+if (document.fonts && document.fonts.ready) document.fonts.ready.then(() => { procKey = ''; draw(); });
+setTimeout(() => { procKey = ''; draw(); }, 500);
 </script>
 </body>
 </html>
