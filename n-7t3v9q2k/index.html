@@ -157,6 +157,7 @@ select{background-image:linear-gradient(45deg,transparent 50%,var(--muted) 50%),
 .preset{flex:0 0 auto;display:flex;flex-direction:column;gap:4px;border:1px solid var(--rule);background:var(--paper2);padding:4px;width:104px}
 .preset.on{border-color:var(--ink);box-shadow:inset 0 0 0 1px var(--ink)}
 .preset img{width:100%;height:56px;object-fit:cover;display:block;filter:saturate(.85)}
+.preset canvas{width:100%;height:auto;display:block}
 .preset span{font-size:8.5px;letter-spacing:.05em;color:var(--ink2);text-align:center;line-height:1.3}
 .preset.on span{color:var(--ink);font-weight:700}
 .upbtn{width:100%;margin-top:9px}
@@ -1598,7 +1599,7 @@ function compose(){
 $('#bpm').addEventListener('input', e => { $('#bpmVal').textContent = e.target.value; compose(); });
 
 /* ---------- thumbnail studio ---------- */
-const cv = $('#cv'), ctx = cv.getContext('2d');
+const cv = $('#cv'); let ctx = cv.getContext('2d');
 const THUMBS = EPS.map(e => ({ src:e.thumb + THUMB_V, name:e.id }));
 const FONT = {
   serif:'Georgia, "Times New Roman", serif',
@@ -1637,10 +1638,24 @@ function renderPresets(){
   PRESETS.forEach((p, i) => {
     const b = document.createElement('button');
     b.className = 'preset' + (state.thumb.preset === i ? ' on' : '');
-    b.innerHTML = '<img src="' + THUMBS[state.thumb.bg % THUMBS.length].src + '" alt=""><span>' + (i+1) + ' · ' + p.label + '</span>';
+    const c = document.createElement('canvas');
+    c.width = 208; c.height = 117;
+    b.appendChild(c);
+    const lb = document.createElement('span');
+    lb.textContent = (i+1) + ' · ' + p.label;
+    b.appendChild(lb);
     b.addEventListener('click', () => { state.thumb.preset = i; save(); renderPresets(); laynote(); draw(); });
     box.appendChild(b);
+    miniPaint(c, i);
   });
+}
+function miniPaint(c, i){
+  if (!img || !img.complete || !img.naturalWidth) return;
+  const cx2 = c.getContext('2d');
+  cx2.save();
+  cx2.scale(c.width / 1280, c.height / 720);
+  try { draw({ c: cx2, preset: i }); } catch(e){ window.__errs.push('mini:' + String(e)); }
+  cx2.restore();
 }
 function laynote(){
   const p = PRESETS[state.thumb.preset] || PRESETS[0];
@@ -1648,7 +1663,7 @@ function laynote(){
 }
 function loadBg(i, push){
   img = new Image();
-  img.onload = () => { procKey = ''; draw(); };
+  img.onload = () => { procKey = ''; draw(); renderPresets(); };
   img.onerror = () => { window.__errs.push('thumb load fail ' + THUMBS[i].src); draw(); };
   img.src = THUMBS[i].src;
   if (push) toast(EPS[i].id + ' 사진');
@@ -1746,7 +1761,10 @@ function fitSize(text, fam, weight, italic, size, maxW){
   return s;
 }
 
-function draw(){
+function draw(opts){
+  const o = opts || {};
+  const prev = ctx;
+  if (o.c) ctx = o.c;
   const W = cv.width, H = cv.height;
   ctx.clearRect(0, 0, W, H);
   ctx.fillStyle = '#121110'; ctx.fillRect(0, 0, W, H);
@@ -1756,12 +1774,12 @@ function draw(){
     try { ctx.drawImage(processed(src), 0, 0); }
     catch(e){ coverDraw(src); }
   }
-  if (!grainTile) makeGrain();
+  if (!o.c && !grainTile) makeGrain();
 
   const g = grade();
   if (g.dim > 0){ ctx.fillStyle = 'rgba(10,9,8,' + (g.dim / 100) + ')'; ctx.fillRect(0, 0, W, H); }
 
-  const preset = (PRESETS[state.thumb.preset] || PRESETS[0]).id;
+  const preset = (PRESETS[o.preset !== undefined ? o.preset : state.thumb.preset] || PRESETS[0]).id;
   const famKey = $('#font').value;
   const fam = FONT[famKey] || FONT.serif;
   const align = $('#align').value;
@@ -1907,7 +1925,7 @@ function draw(){
   }
 
   // grain
-  if (g.grain > 0 && grainTile){
+  if (!o.c && g.grain > 0 && grainTile){
     ctx.save();
     ctx.globalAlpha = g.grain / 100 * 0.55;
     ctx.globalCompositeOperation = 'overlay';
@@ -1917,7 +1935,7 @@ function draw(){
   }
 
   // safe area
-  if (tg.safe){
+  if (tg.safe && !o.c){
     ctx.save();
     ctx.setLineDash([12, 10]); ctx.lineWidth = 3;
     ctx.strokeStyle = 'rgba(120,220,150,.9)';
@@ -1931,6 +1949,8 @@ function draw(){
     ctx.fillText('재생시간 자리', W - 356, 690);
     ctx.restore();
   }
+
+  if (o.c) ctx = prev;
 }
 
 function bindThumb(){
