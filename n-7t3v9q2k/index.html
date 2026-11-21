@@ -1471,7 +1471,7 @@ function renderSheet(ep){
     b.innerHTML = '<span class="no">' + String(i+1).padStart(2,'0') + '</span>'
       + '<span class="tt">' + t.title + '</span>'
       + '<span class="mt">' + meta[0] + ' · ' + meta[1] + '</span>'
-      + '<span class="lk">' + (has ? '가사' : '훅') + '</span>';
+      + '<span class="lk">' + (has ? '가사' : (/인스트루멘털|리프라이즈/.test(meta[0]) ? '인스트' : '훅')) + '</span>';
     b.addEventListener('click', () => copyText(trackRowText(ep, i), 'T' + (i+1) + ' ' + t.title));
     box.appendChild(b);
   });
