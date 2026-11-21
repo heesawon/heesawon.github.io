@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512">
+<rect width="512" height="512" fill="#F7F1E4"/>
+<g>
+<ellipse cx="110" cy="350" rx="26" ry="74" fill="#F8CFA8" stroke="#16181E" stroke-width="12"/>
+<ellipse cx="402" cy="350" rx="26" ry="74" fill="#F8CFA8" stroke="#16181E" stroke-width="12"/>
+<ellipse cx="256" cy="306" rx="140" ry="138" fill="#F8CFA8" stroke="#16181E" stroke-width="12"/>
+<path d="M114.0 306 A36.8 36.8 0 0 1 118.8 269.2 A36.8 36.8 0 0 1 133.0 235.0 A36.8 36.8 0 0 1 155.6 205.6 A36.8 36.8 0 0 1 185.0 183.0 A36.8 36.8 0 0 1 219.2 168.8 A36.8 36.8 0 0 1 256.0 164.0 A36.8 36.8 0 0 1 292.8 168.8 A36.8 36.8 0 0 1 327.0 183.0 A36.8 36.8 0 0 1 356.4 205.6 A36.8 36.8 0 0 1 379.0 235.0 A36.8 36.8 0 0 1 393.2 269.2 A36.8 36.8 0 0 1 398.0 306.0 L398.0 284 A11.8 11.8 0 0 1 374.3 284 A11.8 11.8 0 0 1 350.7 284 A11.8 11.8 0 0 1 327.0 284 A11.8 11.8 0 0 1 303.3 284 A11.8 11.8 0 0 1 279.7 284 A11.8 11.8 0 0 1 256.0 284 A11.8 11.8 0 0 1 232.3 284 A11.8 11.8 0 0 1 208.7 284 A11.8 11.8 0 0 1 185.0 284 A11.8 11.8 0 0 1 161.3 284 A11.8 11.8 0 0 1 137.7 284 A11.8 11.8 0 0 1 114.0 284 Z" fill="#16181E"/>
+<path d="M186 352 Q204 367 222 352" fill="none" stroke="#16181E" stroke-width="10" stroke-linecap="round"/><path d="M290 352 Q308 367 326 352" fill="none" stroke="#16181E" stroke-width="10" stroke-linecap="round"/>
+<path d="M234 382 Q256 400 278 382" fill="none" stroke="#16181E" stroke-width="11" stroke-linecap="round"/>
+<circle cx="256" cy="330" r="10" fill="#FF6B00"/>
+</g>
+</svg>
