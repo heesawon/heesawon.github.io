@@ -1449,6 +1449,7 @@ function trackRowText(ep, i){
   let out = 'TRACK ' + String(i+1).padStart(2,'0') + ' · ' + t.title + ' — ' + meta[0] + ' · ' + meta[1] + ' BPM\n';
   out += 'STYLE: ' + meta[2] + '\n';
   if (fullIdx !== undefined) out += 'LYRICS:\n' + ep.lyrics[fullIdx].text;
+  else if (/인스트루멘털|리프라이즈/.test(meta[0])) out += 'LYRICS: instrumental / rework — 같은 편 가사를 그대로 두고 보컬 제거 또는 slow rework로 1회 더 생성\nNOTE: 다운로드 1곡으로 3~4분을 벌는 칸.';
   else out += 'LYRICS SEED (같은 규칙으로 28줄까지 확장): ' + (slot ? slot.h : '(곡명에서 훅 한 줄을 직접)') + (slot ? '\nNOTE: ' + slot.b : '');
   return out;
 }
