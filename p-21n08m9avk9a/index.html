@@ -881,7 +881,14 @@ var BASELINE={
     {id:'e19',date:'2026-11-21',type:'퀴즈',name:'인천시의회 「인천의정소식」165호 의회 속 숨은 공간 찾기 (정답 방청석)',prize:'커피 기프티콘 (6명)',announce:'166호 발간 시 개별 연락',status:'응모 완료',url:'https://www.icouncil.go.kr/quiz/quizEntryRegForm.do?quiz_seq=78'},
     {id:'e20',date:'2026-11-21',type:'퀴즈',name:'서울시의회 <서울의회> 11월호 낱말 퀴즈',prize:'투썸플레이스 아메리카노 (10명)',announce:'12월호 웹진 발표',status:'응모 완료',url:'https://webzine.smc.seoul.kr/2026/11/event.html'},
     {id:'e21',date:'2026-11-21',type:'설문',name:'다누리포털·한국생활안내(정보더하기) 만족도 조사',prize:'백화점상품권 10만원·치킨 2만원·편의점 5천원 (122명)',announce:'11월 4주 다누리 공지',status:'응모 완료',url:'https://forms.gle/ve2ZQSUqmarnacfN8'},
-    {id:'e22',date:'2026-11-21',type:'퀴즈',name:'원주시 「행복원주」 11월 제563호 독자퀴즈 (정답 원주남부 복합체육센터)',prize:'온누리상품권 2만원',announce:'2026-11-25 마감 후 발표',status:'응모 완료',url:'https://www.wonju.go.kr/media/selectQuizList.do?key=771'}
+    {id:'e22',date:'2026-11-21',type:'퀴즈',name:'원주시 「행복원주」 11월 제563호 독자퀴즈 (정답 원주남부 복합체육센터)',prize:'온누리상품권 2만원',announce:'2026-11-25 마감 후 발표',status:'응모 완료',url:'https://www.wonju.go.kr/media/selectQuizList.do?key=771'},
+    {id:'e23',date:'2026-11-21',type:'체험단',name:'동아제약 팝티온 베스트셀러 연말 리뷰 체험단 (노스카나인 트러블 밀크 클렌저)',prize:'제품 무상 (80명)',announce:'2026-11-24',status:'응모 완료',url:'https://shopping.naver.com/window/beauty/store/100929090/news/5003149117'},
+    {id:'e24',date:'2026-11-21',type:'체험단',name:'닥터펩티 징크 펩타이드 수딩 배리어 세럼 50ml',prize:'제품 무상 (50명)',announce:'2026-12-02',status:'응모 완료',url:'https://shopping.naver.com/window/beauty/store/100164843/news/5003148988'},
+    {id:'e25',date:'2026-11-21',type:'체험단',name:'닥터펩티 비타 펩타이드 글로우 토닝 세럼 50ml',prize:'제품 무상 (50명)',announce:'2026-12-02',status:'응모 완료',url:'https://shopping.naver.com/window/beauty/store/100164843/news/5003148987'},
+    {id:'e26',date:'2026-11-21',type:'체험단',name:'바이오더마 센시비오 미셀라 클렌징 오일 300ml',prize:'제품 무상 (20명)',announce:'2026-11-26',status:'응모 완료',url:'https://shopping.naver.com/window/beauty/store/1000007643/news/5003128582'},
+    {id:'e27',date:'2026-11-21',type:'체험단',name:'후르디아 블루베리 립밤 트리오 기프트 세트',prize:'제품 무상 (20명)',announce:'2026-11-26',status:'응모 완료',url:'https://shopping.naver.com/window/beauty/store/100271339/news/5003145722'},
+    {id:'e28',date:'2026-11-21',type:'체험단',name:'뷰티시스 레티놀 0.8 리뉴얼 앰플 50ml',prize:'제품 무상 (25명)',announce:'2026-11-25',status:'응모 완료',url:'https://shopping.naver.com/window/beauty/store/1100259839/news/5003145414'},
+    {id:'e29',date:'2026-11-21',type:'체험단',name:'뷰티시스 프로틴 콜라겐 글로우 50ml',prize:'제품 무상 (25명)',announce:'2026-11-25',status:'응모 완료',url:'https://shopping.naver.com/window/beauty/store/1100259839/news/5003145278'}
   ]
 };
 
@@ -1575,6 +1582,7 @@ var TYPE_STYLE={
   '퀴즈':{bg:'#EFE9FB',fg:'#5B44A6'},
   '설문':{bg:'#E7EDF7',fg:'#2B4A78'},
   '예측':{bg:'#FBF0D9',fg:'#8A6A00'},
+  '체험단':{bg:'#FCE7EE',fg:'#8E2F52'},
   '기타':{bg:'#EFEDE7',fg:'#57544D'}
 };
 function statusClass(s){return s==='당첨'?'win':(s==='미당첨'?'lose':'wait');}
@@ -1609,7 +1617,7 @@ function viewEvents(){
 
   html+='<div class="chips">'+
     '<button class="chip'+(filter.type==='all'?' on':'')+'" data-act="filter-type" data-id="all">전체</button>';
-  ['퀴즈','설문','예측','기타'].forEach(function(t){
+  ['퀴즈','설문','예측','체험단','기타'].forEach(function(t){
     var cnt=state.events.filter(function(e){return e.type===t;}).length;
     if(!cnt&&filter.type!==t)return;
     html+='<button class="chip'+(filter.type===t?' on':'')+'" data-act="filter-type" data-id="'+t+'">'+t+'<span class="cnt">'+cnt+'</span></button>';
@@ -1960,7 +1968,7 @@ function openEventSheet(id){
       '<div class="field"><label for="f-edate">응모일</label>'+
         '<input type="date" id="f-edate" value="'+esc(e?e.date:todayISO())+'"></div>'+
       '<div class="field"><label for="f-etype">구분</label>'+
-        '<select id="f-etype">'+['퀴즈','설문','예측','기타'].map(function(t){
+        '<select id="f-etype">'+['퀴즈','설문','예측','체험단','기타'].map(function(t){
           return '<option value="'+t+'"'+(e&&e.type===t?' selected':'')+'>'+t+'</option>';
         }).join('')+'</select></div>'+
       '<div class="field"><label for="f-eurl">링크</label>'+
