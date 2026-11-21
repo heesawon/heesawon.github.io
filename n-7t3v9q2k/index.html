@@ -187,6 +187,12 @@ table.guide{width:100%;border-collapse:collapse;font-size:10px}
 table.guide th,table.guide td{text-align:left;padding:6px 5px;border-bottom:1px solid var(--rule2);vertical-align:top;line-height:1.5}
 table.guide th{font-size:9px;letter-spacing:.1em;color:var(--muted);font-weight:600;border-bottom:1px solid var(--rule)}
 table.guide td:first-child{color:var(--rust);white-space:nowrap}
+.trow{display:flex;gap:10px;align-items:baseline;padding:8px 0;border-bottom:1px solid var(--rule2);width:100%;text-align:left}
+.trow:last-child{border-bottom:0}
+.trow .no{font-family:var(--serif);font-size:10px;color:var(--rust);width:18px;flex:0 0 auto}
+.trow .tt{font-size:11.5px;font-weight:600;flex:1;min-width:0;line-height:1.35}
+.trow .mt{font-size:9px;color:var(--muted);letter-spacing:.05em;white-space:nowrap}
+.trow .lk{font-size:9px;color:var(--gold);letter-spacing:.06em;white-space:nowrap}
 
 /* ---------- tabbar ---------- */
 .tabbar{
@@ -303,6 +309,14 @@ table.guide td:first-child{color:var(--rust);white-space:nowrap}
     <div class="where">Runway / Kling · 이미지→비디오 8초</div>
     <pre id="pLoop"></pre>
     <div class="prow"><button class="btn pri" data-copy="loop">루프 프롬프트 복사</button></div>
+  </div>
+
+  <div class="panel">
+    <h4><span class="n">05</span> 트랙 시트 · 16곡</h4>
+    <div class="where">곡별 역할 · BPM · Suno 스타일. 줄을 누르면 그 곡만 복사됩니다.</div>
+    <div id="pSheet"></div>
+    <div class="prow"><button class="btn pri" data-copy="sheet">전체 시트 복사</button></div>
+    <p class="mini">T1~3 도입 훅 · T4 전환 · T5~12 메인 · T13~14 변주 · T15~16 마무리. 가사 전문이 없는 곡은 훅(한 줄)이 들어 있고, '가사 프롬프트'로 한 번에 뽑을 수 있습니다.</p>
   </div>
 
   <div class="tdiv"><b>COMBINER</b><i></i></div>
@@ -434,8 +448,8 @@ const DATA = {
   episodes: [
     {
       id:'EP01', ko:'아침 아홉 시, 커튼은 반만 열어두기',
-      en:'playlist 오늘 아침은 천천히 시작해도 돼 ☀️ 커튼 반쯤 열고 듣는 soft r&b | ONE ROOM 01',
-      alt:'playlist 커튼 반만 열었을 뿐인데 ☀️ 부엌에서 듣는 soft r&b · neo soul | ONE ROOM 01',
+      en:'playlist 첫 곡 듣자마자 커튼 활짝 열게 돼 ☀️ 아침에 트는 soft r&b | ONE ROOM 01',
+      alt:'playlist 어쩌다 틀었는데 아침이 좀 괜찮아졌어 ☀️ 부엌에서 듣는 soft r&b | ONE ROOM 01',
       badge:'ONE ROOM · SESSION 01', air:'09:00 AM',
       genre:'Soft R&B · Neo-soul', bpm:'68–76 BPM', vocal:'breathy female lead, close-mic',
       mood:'부엌의 아침 빛, 식은 커피, 아무 계획 없음',
@@ -519,8 +533,60 @@ From the sun and nothing else
 Sunday bus is empty
 I'll get off when it feels right
 [Outro]
-One more stop, then I'll walk` }
+One more stop, then I'll walk` },
+        { name:'Slow Morning, Please', text:`[Intro]
+[Verse 1]
+The clock says nine and I don't move
+The cup is cold, I fill it up
+There's a fly above the sink
+Doing laps like it's enough
+[Pre-Chorus]
+And the day is at the door
+Waiting like a patient friend
+[Chorus]
+Slow morning, please
+Don't make me choose
+Slow morning, please
+I've got nothing to lose
+[Verse 2]
+The paper's on the step outside
+I leave it there until it rains
+There's a list I wrote on Sunday
+Every line is a maybe
+[Pre-Chorus]
+And the kettle starts again
+Like it's asking one more time
+[Chorus]
+Slow morning, please
+Don't make me choose
+[Bridge]
+If I'm late to everything
+At least I'm on time for this
+[Chorus]
+Slow morning, please
+I've got nothing to lose
+[Outro]
+The clock says nine, I don't move` }
       ],
+      tracks:[
+        ['도입 훅',74,'soft r&b, 74bpm, rhodes, upright bass, brushes, finger snaps, breathy female lead, dry small room, tape hiss, English lyrics'],
+        ['도입',76,'soft r&b, 76bpm, wurlitzer, muted guitar, brushed drums, close female vocal, kitchen ambience under the intro'],
+        ['도입',72,'neo-soul, 72bpm, rhodes, upright bass, rim clicks, warm female lead, doubled chorus'],
+        ['전환 훅',78,'soft r&b, 78bpm, upright piano, soft kick, shaker, breathy lead, wide but dry'],
+        ['메인',70,'neo-soul, 70bpm, rhodes, bass, brushes, low female vocal, almost spoken verse'],
+        ['메인',72,'soft r&b, 72bpm, rhodes and muted guitar, rim clicks, water sound used as percussion'],
+        ['메인 숨구멍',76,'bedroom soul, 76bpm, wurlitzer, shaker, hand claps, playful female lead'],
+        ['메인',74,'soft r&b, 74bpm, nylon guitar, upright bass, brushes, airy lead'],
+        ['메인',68,'slow soul, 68bpm, wurlitzer, sub bass, brushes, low female lead, spoken bridge'],
+        ['메인 변주',78,'soft r&b, 78bpm, upright piano, kick and shaker, bright female lead, claps'],
+        ['메인',74,'neo-soul, 74bpm, rhodes, bass, no drums (the fan keeps time), close vocal'],
+        ['메인',70,'soft r&b, 70bpm, wurlitzer, upright bass, brushed drums, layered harmonies'],
+        ['리프라이즈',66,'slow rework, 66bpm, rhodes only, upright bass, single vocal, long reverb tail'],
+        ['인스트루멘털',68,'instrumental, 68bpm, rhodes, muted guitar, brushes, no lead vocal'],
+        ['마무리 전',76,'soft r&b, 76bpm, filtered through a wall, rhodes, bass, distant female vocal'],
+        ['마무리',72,'soft r&b ballad, 72bpm, upright piano, bass, brushes, breathy lead, outro to silence']
+      ],
+      full:{0:0, 3:1, 15:2},
       slots:[
         {t:'The Kettle Knows First', h:'"the kettle knows before I do"', b:'김이 오르는 걸 보고 나서야 아침을 인정하는 화자. 도입은 물 끓는 소리만.'},
         {t:'Slippers by the Door', h:'"two slippers by the door, only one pair is mine"', b:'현관의 신발. 후렴은 낮게, 거의 말하듯.'},
@@ -577,8 +643,8 @@ the kettle's on. (links in the description are affiliate · 쿠팡 파트너스)
     },
     {
       id:'EP02', ko:'오후 두 시, 창가 자리는 아직 따뜻해',
-      en:'playlist 창가 자리 하나는 비워두자 🤍 오후에 틀어두는 인디·베드룸 팝 | ONE ROOM 02',
-      alt:'playlist 해가 넘어가기 전에 🤍 창가에서 듣는 bedroom pop · indie | ONE ROOM 02',
+      en:'playlist 어쩌다 틀었는데 오후가 조용해졌어 🤍 창가에서 듣는 bedroom pop | ONE ROOM 02',
+      alt:'playlist 첫 소절부터 해가 옮겨가는 게 보여 🤍 오후 두 시의 인디 팝 | ONE ROOM 02',
       badge:'ONE ROOM · SESSION 02', air:'02:00 PM',
       genre:'Bedroom pop · Indie pop', bpm:'84–96 BPM', vocal:'breathy female lead, doubled harmonies',
       mood:'창가의 먼지, 덮어둔 책, 꺼둔 폰',
@@ -661,8 +727,60 @@ Everything important comes back twice
 Phone face down
 I'll be busy being fine
 [Outro]
-You said you'd call me back` }
+You said you'd call me back` },
+        { name:"Stay Until It's Dark", text:`[Intro]
+[Verse 1]
+The sun's already halfway down
+The wall has gone from white to gold
+You're on the window seat again
+With a book you've never sold
+[Pre-Chorus]
+And the room is doing nothing
+Very well
+[Chorus]
+Stay until it's dark
+Then we'll turn the lamp on
+Stay until it's dark
+Nothing's happening tonight
+[Verse 2]
+There's a cup ring on the table
+And a sweater on the chair
+I could clean it all up later
+I could leave it there
+[Pre-Chorus]
+And the street outside gets quiet
+Like it's taking off its coat
+[Chorus]
+Stay until it's dark
+Then we'll turn the lamp on
+[Bridge]
+We don't have to say a word
+We're good at this
+[Chorus]
+Stay until it's dark
+Nothing's happening tonight
+[Outro]
+The wall has gone from gold to grey` }
       ],
+      tracks:[
+        ['도입 훅',90,'bedroom pop, 90bpm, jangly electric guitar, upright piano, kick and shaker, breathy female lead, cassette wobble'],
+        ['도입',88,'indie pop, 88bpm, fingerpicked guitar, harmonium, brushed drums, doubled vocal'],
+        ['도입 훅',92,'bedroom pop, 92bpm, clean guitar, soft synth, drum machine, playful female lead'],
+        ['전환',86,'indie folk-pop, 86bpm, acoustic guitar, upright piano, shaker, close vocal'],
+        ['메인',94,'bedroom pop, 94bpm, filtered guitar through a wall, drum loop, distant harmonies'],
+        ['메인',90,'indie pop, 90bpm, bright guitar, hand claps, kick, female lead with a group hum'],
+        ['메인 숨구멍',84,'bedroom pop, 84bpm, soft guitar, upright piano, no drums'],
+        ['메인',92,'indie pop, 92bpm, jangly guitar, shaker, upright bass, doubled chorus'],
+        ['메인',88,'bedroom pop, 88bpm, warm guitar, soft synth pad, kick, layered harmonies'],
+        ['메인',86,'lo-fi pop, 86bpm, guitar and piano, brush, almost spoken'],
+        ['메인 변주',90,'indie pop, 90bpm, full band feel, guitar, bass, drums, group chorus'],
+        ['메인 변주',96,'upbeat indie pop, 96bpm, claps, bright guitar, shout chorus'],
+        ['리프라이즈',88,'reprise, 88bpm, piano only, voice and room, no drums'],
+        ['리프라이즈',84,'acoustic rework, 84bpm, nylon guitar, upright bass, single vocal'],
+        ['마무리 전',90,'bedroom pop, 90bpm, guitar, shaker, soft kick, three-layer harmonies'],
+        ['마무리',86,'indie ballad, 86bpm, piano, guitar, brushes, breathy lead, long outro']
+      ],
+      full:{0:0, 2:1, 15:2},
       slots:[
         {t:'Book Face Down', h:'"page two hundred and I\'m still on page four"', b:'덮어둔 책. 후렴에서 기타가 열린다.'},
         {t:'Three O\'Clock Sun', h:'"three o\'clock sun on a Tuesday floor"', b:'오후 3시의 빛. 드럼 없이 시작.'},
@@ -717,8 +835,8 @@ the sun's moving. stay for it. (affiliate links in description · 쿠팡 파트�
     },
     {
       id:'EP03', ko:'비 오는 다섯 시, 약속은 하나쯤 미뤄도',
-      en:'playlist 비 오는 날엔 약속 하나쯤 미뤄도 괜찮아 🌧 재즈 보컬로 듣는 비 오는 오후 | ONE ROOM 03',
-      alt:'playlist 빗소리에 반쯤 자는 척 🌧 비 오는 오후의 재즈 보컬 | ONE ROOM 03',
+      en:'playlist 비 오는 날 우연히 틀었는데 발이 멈췄어 🌧 재즈 보컬로 듣는 비 오는 오후 | ONE ROOM 03',
+      alt:'playlist 첫 곡부터 빗소리가 반으로 줄어들어 🌧 비 오는 오후의 재즈 보컬 | ONE ROOM 03',
       badge:'ONE ROOM · SESSION 03', air:'05:00 PM',
       genre:'Jazz vocal · Bossa-soul', bpm:'66–80 BPM', vocal:'husky female lead, small-room live',
       mood:'젖은 우산, 빵집 불빛, 일찍 켠 램프',
@@ -803,8 +921,62 @@ She always leaves it out
 The bakery closes at six
 And the bread is still warm in my hands
 [Outro]
-A quarter to, then home` }
+A quarter to, then home` },
+        { name:'Umbrella Drying', text:`[Intro]
+[Verse 1]
+The umbrella's still drying by the door
+Making a small lake on the tiles
+I should move it, I don't
+It's the only thing that's still outside
+[Pre-Chorus]
+And the room smells like rain and bread
+[Chorus]
+Umbrella drying
+Let it stay
+Umbrella drying
+We'll go out another day
+[Verse 2]
+There's a coat that isn't mine
+On the hook where mine should be
+I could call, I could ask
+But the answer's not for me
+[Pre-Chorus]
+And the radio plays something
+That I almost recognise
+[Chorus]
+Umbrella drying
+Let it stay
+Umbrella drying
+We'll go out another day
+[Instrumental Break]
+[Bridge]
+Nine blocks home, nine blocks back
+Same rain, different coat
+[Chorus]
+Umbrella drying
+We'll go out another day
+[Outro]
+A small lake on the tiles` }
       ],
+      tracks:[
+        ['도입 훅',72,'jazz vocal, 72bpm, upright bass, brushes, nylon guitar, husky female lead, small room, vinyl crackle'],
+        ['도입',74,'bossa-soul, 74bpm, nylon guitar, shaker, upright bass, soft female vocal'],
+        ['도입 훅',70,'jazz vocal, 70bpm, piano trio, brushes, muted trumpet answers, live room'],
+        ['전환',68,'slow jazz, 68bpm, upright bass and brushes only, close vocal'],
+        ['메인',76,'jazz, 76bpm, piano, bass, brushes, street ambience intro, trumpet solo 8 bars'],
+        ['메인',66,'jazz ballad, 66bpm, piano, upright bass, no drums, husky lead'],
+        ['메인',72,'bossa-soul, 72bpm, nylon guitar, soft flute line, shaker'],
+        ['메인',70,'jazz vocal, 70bpm, trio with brushes, warm piano solo'],
+        ['메인 변주',74,'jazz, 74bpm, spoken intro, piano comping, walking bass'],
+        ['메인',76,'jazz, 76bpm, one bar guitar solo, brushes, bass'],
+        ['메인 숨구멍',78,'bright bossa, 78bpm, shaker, guitar, short whistled hook'],
+        ['메인',72,'jazz vocal, 72bpm, trio, long piano outro'],
+        ['인스트루멘털',72,'instrumental jazz, 72bpm, trio, trumpet lead'],
+        ['변주 듀엣',74,'bossa-soul duet, 74bpm, male and female trading lines'],
+        ['마무리',70,'jazz ballad, 70bpm, piano, bass, brushes, rain under the outro'],
+        ['마무리',68,'slow jazz, 68bpm, piano only, voice and room tone, fade']
+      ],
+      full:{0:0, 2:1, 14:2},
       slots:[
         {t:'One Green Light', h:'"one green light and the whole street waits"', b:'신호등 하나. 베이스 워킹으로 시작.'},
         {t:'Wet Sleeve', h:'"my sleeve is wet and I don\'t care"', b:'젖은 소매. 브러시만, 3분 34초.'},
@@ -861,8 +1033,8 @@ the umbrella's still drying. (affiliate links in description · 쿠팡 파트너
     },
     {
       id:'EP04', ko:'밤 열한 시, 불은 하나만 켜두자',
-      en:'playlist 오늘 하루도 나름 잘 살았잖아 🌙 불 하나만 켜두고 듣는 네오소울 | ONE ROOM 04',
-      alt:'playlist 이 시간엔 아무한테도 답장 안 해도 돼 🌙 늦은 거실의 neo-soul | ONE ROOM 04',
+      en:'playlist 첫 소절 듣자마자 불 하나만 남기게 돼 🌙 밤 11시에 트는 네오소울 | ONE ROOM 04',
+      alt:'playlist 어쩌다 틀었는데 오늘 하루가 좀 괜찮아 보여 🌙 늦은 거실의 neo-soul | ONE ROOM 04',
       badge:'ONE ROOM · SESSION 04', air:'11:00 PM',
       genre:'Neo-soul · Chill R&B', bpm:'72–88 BPM', vocal:'warm male lead + airy female harmony',
       mood:'낮은 스탠드, 레코드 슬리브, 아무도 안 부르는 밤',
@@ -946,8 +1118,60 @@ And decide tomorrow
 Nobody's calling
 So the night's mine
 [Outro]
-Nobody's calling, that's fine` }
+Nobody's calling, that's fine` },
+        { name:'Goodnight, Room', text:`[Intro]
+[Verse 1]
+The lamp is lower than it was
+The record's finished, the arm is up
+I've been sitting in the dark
+Long enough to call it rest
+[Pre-Chorus]
+And the radiator says goodnight
+In its own way
+[Chorus]
+Goodnight, room
+See you at nine
+Goodnight, room
+You did fine
+[Verse 2]
+Tomorrow there's a list again
+A bus, a call, a bill
+Tonight there's just the ceiling
+And the window, and the still
+[Pre-Chorus]
+And the city finally lowers
+Its voice
+[Chorus]
+Goodnight, room
+See you at nine
+[Bridge]
+If I dream, I'll dream of this
+One lamp, one chair, one hour
+[Chorus]
+Goodnight, room
+You did fine
+[Outro]
+Goodnight, room` }
       ],
+      tracks:[
+        ['도입 훅',80,'neo-soul, 80bpm, rhodes, sub bass, lazy boom-bap drums, warm male lead'],
+        ['도입',78,'chill r&b, 78bpm, dusty drum loop, filtered keys, vinyl crackle'],
+        ['도입 훅',82,'neo-soul, 82bpm, rhodes, bass, rim clicks, male lead with airy female harmony'],
+        ['전환',76,'chill r&b, 76bpm, keys, upright bass, soft kick, spoken-sung'],
+        ['메인',84,'neo-soul, 84bpm, muffled drums, keys, close male vocal'],
+        ['메인',78,'chill r&b, 78bpm, radio static texture, keys, sub bass'],
+        ['메인',74,'slow r&b, 74bpm, piano, bass, brushes, intimate vocal'],
+        ['메인',80,'neo-soul, 80bpm, bass-led, keys, rim clicks'],
+        ['메인',76,'chill r&b, 76bpm, synth pad, soft drums, distant harmonies'],
+        ['메인',78,'neo-soul, 78bpm, rhodes, bass, brushed drums, whispered ending'],
+        ['메인 변주',72,'slow neo-soul, 72bpm, piano, sub bass, no drums, long reverb tail'],
+        ['리프라이즈',74,'rework, 74bpm, keys only, bass, voice, room tone'],
+        ['인스트루멘털',78,'instrumental, 78bpm, dusty loop, keys, bass'],
+        ['리프라이즈',76,'reprise, 76bpm, guitar and voice, short'],
+        ['마무리 전',80,'neo-soul, 80bpm, full band, male and female harmony'],
+        ['마무리',70,'neo-soul ballad, 70bpm, piano, bass, brushes, close vocal, outro to silence']
+      ],
+      full:{0:0, 2:1, 15:2},
       slots:[
         {t:'Record Sleeve', h:'"the sleeve\'s still on the floor where we left it"', b:'레코드 슬리브. 바이닐 노이즈 전면.'},
         {t:'Left the Dishes', h:'"I left the dishes, I\'ll leave them tomorrow too"', b:'설거지. 드럼 얇게, 베이스 무겁게.'},
@@ -1156,6 +1380,7 @@ function renderBoard(){
           <button class="btn" data-copy="timeline">TIME LINE</button>
           <button class="btn" data-copy="title">제목</button>
           <button class="btn" data-copy="lyric">가사</button>
+          <button class="btn" data-copy="sheet">트랙 시트</button>
           <button class="btn wide" data-copy="thumbinfo">썸네일 4층 텍스트</button>
         </div>
       </div>`;
@@ -1201,6 +1426,7 @@ function doCopy(ep, kind, btnEl){
       + ep.sub;
     label = '썸네일 텍스트';
   }
+  if (kind === 'sheet'){ text = sheetText(ep); label = '트랙 시트'; }
   copyText(text, label);
   if (btnEl){
     const old = btnEl.textContent;
@@ -1211,6 +1437,41 @@ function doCopy(ep, kind, btnEl){
 
 /* ---------- prompts ---------- */
 let curEp = 0, altStyle = false, curLyric = 0;
+
+function trackRowText(ep, i){
+  const t = ep.tl[i];
+  const meta = ep.tracks[i] || ['메인', 75, ''];
+  const fullIdx = ep.full[i];
+  const slot = ep.slots.filter(s => s.t === t.title)[0];
+  let out = 'TRACK ' + String(i+1).padStart(2,'0') + ' · ' + t.title + ' — ' + meta[0] + ' · ' + meta[1] + ' BPM\n';
+  out += 'STYLE: ' + meta[2] + '\n';
+  if (fullIdx !== undefined) out += 'LYRICS:\n' + ep.lyrics[fullIdx].text;
+  else out += 'LYRICS SEED (같은 규칙으로 28줄까지 확장): ' + (slot ? slot.h : '(곡명에서 훅 한 줄을 직접)') + (slot ? '\nNOTE: ' + slot.b : '');
+  return out;
+}
+function sheetText(ep){
+  return 'ONE ROOM ' + ep.id + ' — ' + ep.ko + ' (' + ep.air + ')\n'
+    + 'ROOM: ' + ep.concept + '\n'
+    + 'VOICE: ' + ep.vocal + ' · ' + ep.genre + ' · ' + ep.bpm + '\n'
+    + 'RULE: 한 편 = 한 방, 한 시간대. 영어 가사. 곡당 3:20~4:20. 추상어(neon/shadows/whispers/echoes/fading) 금지.\n\n'
+    + ep.tl.map((_, i) => trackRowText(ep, i)).join('\n\n');
+}
+function renderSheet(ep){
+  const box = $('#pSheet'); if (!box) return;
+  box.innerHTML = '';
+  ep.tl.forEach((t, i) => {
+    const meta = ep.tracks[i] || ['메인', 75, ''];
+    const has = ep.full[i] !== undefined;
+    const b = document.createElement('button');
+    b.className = 'trow';
+    b.innerHTML = '<span class="no">' + String(i+1).padStart(2,'0') + '</span>'
+      + '<span class="tt">' + t.title + '</span>'
+      + '<span class="mt">' + meta[0] + ' · ' + meta[1] + '</span>'
+      + '<span class="lk">' + (has ? '가사' : '훅') + '</span>';
+    b.addEventListener('click', () => copyText(trackRowText(ep, i), 'T' + (i+1) + ' ' + t.title));
+    box.appendChild(b);
+  });
+}
 function renderEpChips(){
   const box = $('#epChips'); box.innerHTML = '';
   EPS.forEach((ep, i) => {
@@ -1237,6 +1498,7 @@ function renderPrompts(){
   sel.value = curLyric;
   $('#pLyric').textContent = ep.lyrics[curLyric].text;
   $('#pSlots').textContent = '나머지 ' + ep.slots.length + '트랙 슬롯: ' + ep.slots.map(s => s.t).join(' · ');
+  renderSheet(ep);
 }
 $('#lySel').addEventListener('change', e => { curLyric = +e.target.value; renderPrompts(); });
 $('#view-prompts').addEventListener('click', (ev) => {
@@ -1249,6 +1511,7 @@ $('#view-prompts').addEventListener('click', (ev) => {
   if (kind === 'img'){ text = ep.img_prompt; label = '사진 프롬프트'; }
   if (kind === 'loop'){ text = ep.loop_prompt; label = '루프 프롬프트'; }
   if (kind === 'custom'){ text = $('#cOut').textContent; label = '커스텀 스타일'; }
+  if (kind === 'sheet'){ text = sheetText(ep); label = '트랙 시트'; }
   if (!text) return;
   copyText(text, label);
   const old = b.textContent;
