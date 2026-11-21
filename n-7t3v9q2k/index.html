@@ -355,6 +355,7 @@ canvas#cv{width:100%;height:auto;display:block;border-radius:10px;background:#00
     </div>
   </div>
   <button class="btn pri wide" id="btnDownload" style="width:100%;padding:14px;margin-top:4px">⬇︎ 1280×720 PNG 다운로드</button>
+  <a class="btn" id="saveLink" href="#" target="_blank" rel="noopener" style="display:none;width:100%;margin-top:7px">🖼️ 새 창에서 열기 (길게 눌러 저장)</a>
   <p class="foot">우하단은 재생시간 배지 자리 — 비워두세요</p>
 </main>
 
@@ -653,7 +654,7 @@ function renderPresets(){
     const b = document.createElement('button');
     b.className = 'preset' + (state.thumb.preset===i && !userImg ? ' on':'');
     b.innerHTML = `<img src="${t.src}" alt="${t.name}"><span>${EPS[i]?EPS[i].id:''}</span>`;
-    b.addEventListener('click', ()=>{ userImg = null; state.thumb.preset = i; save(); loadPreset(i); renderPresets(); });
+    b.addEventListener('click', ()=>{ userImg = null; state.thumb.preset = i; save(); loadPreset(i); fillFromEpisode(i); renderPresets(); });
     box.appendChild(b);
   });
 }
@@ -761,12 +762,14 @@ function bindThumb(){
     try{
       cv.toBlob(b => {
         if (!b){ toast('저장 실패'); return; }
-        const a = document.createElement('a');
         const ep = EPS[state.thumb.preset] || EPS[0];
-        a.href = URL.createObjectURL(b);
+        const url = URL.createObjectURL(b);
+        const a = document.createElement('a');
+        a.href = url;
         a.download = 'thumb_' + ep.id + '_1280x720.png';
         document.body.appendChild(a); a.click(); a.remove();
-        setTimeout(()=>URL.revokeObjectURL(a.href), 4000);
+        const link = $('#saveLink');
+        if (link){ link.href = url; link.style.display = 'flex'; }
         toast('PNG 저장 · 1280×720');
       }, 'image/png');
     }catch(err){ toast('저장 실패: ' + err.message); }
