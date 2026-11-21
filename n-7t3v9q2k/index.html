@@ -386,17 +386,17 @@ table.guide td:first-child{color:var(--rust);white-space:nowrap}
 
   <div class="tdiv"><b>FILM GRADE</b><i></i></div>
   <div class="panel">
-    <div class="field"><label>저채도 <span id="dsv" style="color:var(--rust);font-weight:700">22</span>%</label>
-      <input type="range" id="desat" class="range" min="0" max="70" value="22">
+    <div class="field"><label>저채도 <span id="dsv" style="color:var(--rust);font-weight:700">20</span>%</label>
+      <input type="range" id="desat" class="range" min="0" max="70" value="20">
     </div>
-    <div class="field"><label>대비 <span id="ctv" style="color:var(--rust);font-weight:700">4</span>%</label>
-      <input type="range" id="contrast" class="range" min="-10" max="25" value="4">
+    <div class="field"><label>대비 <span id="ctv" style="color:var(--rust);font-weight:700">3</span>%</label>
+      <input type="range" id="contrast" class="range" min="-10" max="25" value="3">
     </div>
-    <div class="field"><label>필름 그레인 <span id="grv" style="color:var(--rust);font-weight:700">10</span>%</label>
-      <input type="range" id="grain" class="range" min="0" max="40" value="10">
+    <div class="field"><label>필름 그레인 <span id="grv" style="color:var(--rust);font-weight:700">9</span>%</label>
+      <input type="range" id="grain" class="range" min="0" max="40" value="9">
     </div>
-    <div class="field"><label>노출 (어둡게) <span id="dmv" style="color:var(--rust);font-weight:700">10</span>%</label>
-      <input type="range" id="dim" class="range" min="0" max="55" value="10">
+    <div class="field"><label>노출 (어둡게) <span id="dmv" style="color:var(--rust);font-weight:700">5</span>%</label>
+      <input type="range" id="dim" class="range" min="0" max="55" value="5">
     </div>
     <div class="field"><label>효과</label>
       <div class="optrow">
@@ -1302,14 +1302,14 @@ const STAGES = ['기획','음원','썸네일','편집','업로드'];
 const KEY = 'aps_v2';
 const THUMB_V = '?v=2';
 
-let state = { checks:{}, rules:{}, routine:{}, thumb:{ preset:0, bg:0, grade:{desat:22, contrast:4, grain:10, dim:10} } };
+let state = { checks:{}, rules:{}, routine:{}, thumb:{ preset:0, bg:0, grade:{desat:20, contrast:3, grain:9, dim:5} } };
 try {
   const raw = localStorage.getItem(KEY);
   if (raw) {
     const s = JSON.parse(raw);
     state = Object.assign(state, s);
-    state.thumb = Object.assign({ preset:0, bg:0, grade:{desat:22, contrast:4, grain:10, dim:10} }, s.thumb || {});
-    state.thumb.grade = Object.assign({desat:22, contrast:4, grain:10, dim:10}, (s.thumb && s.thumb.grade) || {});
+    state.thumb = Object.assign({ preset:0, bg:0, grade:{desat:20, contrast:3, grain:9, dim:5} }, s.thumb || {});
+    state.thumb.grade = Object.assign({desat:20, contrast:3, grain:9, dim:5}, (s.thumb && s.thumb.grade) || {});
   }
 } catch(e){}
 function save(){ try { localStorage.setItem(KEY, JSON.stringify(state)); } catch(e){} }
@@ -1777,6 +1777,11 @@ function draw(){
   ctx.textBaseline = 'alphabetic';
 
   if (preset === 'nowplaying'){
+    // subtle scrim so the caption survives a bright photo
+    const sc = ctx.createLinearGradient(0, H * 0.4, 0, H);
+    sc.addColorStop(0, 'rgba(0,0,0,0)');
+    sc.addColorStop(1, 'rgba(0,0,0,.34)');
+    ctx.fillStyle = sc; ctx.fillRect(0, 0, W, H);
     // ① Now Playing
     ctx.fillStyle = 'rgba(255,255,255,.58)';
     font(17, 400, FONT.sans);
@@ -1809,7 +1814,9 @@ function draw(){
   if (preset === 'ghost'){
     ctx.save();
     ctx.fillStyle = 'rgba(255,255,255,.14)';
-    font(fitSize('ONE ROOM', fam, 700, false, 230, W * 1.02), 700, fam);
+    let gs = 230;
+    font(gs, 700, fam);
+    while (gs > 80 && tw('ONE ROOM', 16) > W - 130){ gs -= 6; font(gs, 700, fam); }
     tracked('ONE ROOM', W / 2, 470, 16);
     ctx.restore();
     shadowOn(true, 14, 3);
@@ -1851,8 +1858,10 @@ function draw(){
     shadowOn(true, 18, 4);
     ctx.fillStyle = 'rgba(255,255,255,.98)';
     const big = np.toUpperCase();
-    const s5 = fitSize(big, FONT.sans, 800, false, 124, W - pad * 2);
-    font(s5, 800, FONT.sans);
+    let bs = 124;
+    font(bs, 800, FONT.sans);
+    while (bs > 54 && tw(big, 2) > W - pad * 2){ bs -= 4; font(bs, 800, FONT.sans); }
+    font(bs, 800, FONT.sans);
     tracked(big, W / 2, 186, 2);
     ctx.fillStyle = 'rgba(255,255,255,.82)';
     font(20, 600, FONT.sans);
@@ -1891,9 +1900,9 @@ function draw(){
 
   // vignette
   if (tg.vignette){
-    const rg = ctx.createRadialGradient(W/2, H/2, H * 0.28, W/2, H/2, W * 0.62);
+    const rg = ctx.createRadialGradient(W/2, H/2, H * 0.3, W/2, H/2, W * 0.64);
     rg.addColorStop(0, 'rgba(0,0,0,0)');
-    rg.addColorStop(1, 'rgba(0,0,0,.42)');
+    rg.addColorStop(1, 'rgba(0,0,0,.34)');
     ctx.fillStyle = rg; ctx.fillRect(0, 0, W, H);
   }
 
