@@ -1300,6 +1300,7 @@ DATA.episodes.forEach(ep => {
 const EPS = DATA.episodes;
 const STAGES = ['기획','음원','썸네일','편집','업로드'];
 const KEY = 'aps_v2';
+const THUMB_V = '?v=2';
 
 let state = { checks:{}, rules:{}, routine:{}, thumb:{ preset:0, bg:0, grade:{desat:22, contrast:4, grain:10, dim:10} } };
 try {
@@ -1359,7 +1360,7 @@ function renderBoard(){
     card.dataset.id = ep.id;
     card.innerHTML = `
       <button class="ep-head">
-        <img class="ep-cover" src="${ep.thumb}" alt="" loading="lazy">
+        <img class="ep-cover" src="${ep.thumb}${THUMB_V}" alt="" loading="lazy">
         <div class="ep-meta">
           <span class="ep-badge">${ep.badge} · ${ep.air}</span>
           <h2>${ep.ko}</h2>
@@ -1598,7 +1599,7 @@ $('#bpm').addEventListener('input', e => { $('#bpmVal').textContent = e.target.v
 
 /* ---------- thumbnail studio ---------- */
 const cv = $('#cv'), ctx = cv.getContext('2d');
-const THUMBS = EPS.map(e => ({ src:e.thumb, name:e.id }));
+const THUMBS = EPS.map(e => ({ src:e.thumb + THUMB_V, name:e.id }));
 const FONT = {
   serif:'Georgia, "Times New Roman", serif',
   sans:'"Pretendard", -apple-system, system-ui, sans-serif',
