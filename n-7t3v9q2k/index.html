@@ -343,6 +343,7 @@ table.guide td:first-child{color:var(--rust);white-space:nowrap}
   <div class="canvas-wrap">
     <canvas id="cv" width="1280" height="720"></canvas>
   </div>
+  <div class="presets" id="bgs"></div>
   <div class="presets" id="presets"></div>
   <p class="laynote" id="laynote"></p>
   <button class="btn upbtn" id="btnUpload">내 사진 올리기</button>
@@ -1633,6 +1634,17 @@ function paintGradeUI(){
   $('#dim').value = g.dim; $('#dmv').textContent = g.dim;
 }
 
+function renderBgs(){
+  const box = $('#bgs'); if (!box) return;
+  box.innerHTML = '';
+  EPS.forEach((ep, i) => {
+    const b = document.createElement('button');
+    b.className = 'preset' + (state.thumb.bg === i && !userImg ? ' on' : '');
+    b.innerHTML = '<img src="' + ep.thumb + THUMB_V + '" alt=""><span>' + ep.id + ' · ' + ep.air.replace(':00','') + '</span>';
+    b.addEventListener('click', () => { userImg = null; loadBg(i, false); fillFromEpisode(i); renderBgs(); renderPresets(); });
+    box.appendChild(b);
+  });
+}
 function renderPresets(){
   const box = $('#presets'); box.innerHTML = '';
   PRESETS.forEach((p, i) => {
@@ -2066,6 +2078,7 @@ renderPrompts();
 buildOpts();
 compose();
 renderPresets();
+renderBgs();
 laynote();
 bindThumb();
 loadBg(state.thumb.bg || 0, false);
