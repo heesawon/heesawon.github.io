@@ -2490,11 +2490,11 @@ function updateInvestPreview(){
   var pill=$('#invLivePill');
   if(pill){
     if(initial>0){
+      pill.style.display='';
       pill.className='pill '+(s.recovered>=initial?'done':'rec');
       pill.textContent=s.recovered>=initial?'회수 완료 🎉':'회수 중 '+Math.min(999,Math.round(rate))+'%';
     }else{
-      pill.className='pill free';
-      pill.textContent='무자본';
+      pill.style.display='none';
     }
   }
   var ini=$('#invLiveInit');
@@ -2524,8 +2524,8 @@ function openInvestSheet(id){
   }else{
     body+='<div class="inv-hero">'+
       '<div class="ih-top"><span class="ih-l" id="invLiveLab">'+(s.initial>0?'현재 수익률':(s.recovered>0?'무자본 순수익':'회수 상태'))+'</span>'+
-        '<span id="invLivePill" class="pill '+(s.status==='done'?'done':(s.status==='progress'?'rec':'free'))+'">'+
-          (s.status==='done'?'회수 완료 🎉':(s.status==='progress'?'회수 중 '+Math.min(999,Math.round(s.rate))+'%':'무자본'))+'</span>'+
+        '<span id="invLivePill" class="pill '+(s.status==='done'?'done':(s.status==='progress'?'rec':'free'))+'"'+(s.initial>0?'':' style="display:none"')+'>'+
+          (s.status==='done'?'회수 완료 🎉':(s.status==='progress'?'회수 중 '+Math.min(999,Math.round(s.rate))+'%':''))+'</span>'+
       '</div>'+
       '<div class="ih-v'+(s.initial>0?(s.roi>0?' up':''):(s.recovered>0?' up':''))+'" id="invLivePct">'+invHeroBig(s)+'</div>'+
       '<div class="ih-grid">'+
