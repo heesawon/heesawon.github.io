@@ -1651,7 +1651,7 @@ function weekStrip(){
 function investRow(s){
   var has=s.initial>0;
   var pill=has?(s.status==='done'?'<span class="pill done">회수 완료 🎉</span>':'<span class="pill rec">회수 중 '+Math.min(999,Math.round(s.rate))+'%</span>'):'<span class="pill free">무자본</span>';
-  var bar=has?'<span class="inv-bar"><i style="width:'+Math.max(2,Math.min(100,s.rate))+'%;background:'+(s.status==='done'?'var(--up)':'var(--accent)')+'"></i></span>':'';
+  var bar=(has&&s.rate>0)?'<span class="inv-bar"><i style="width:'+Math.min(100,s.rate)+'%;background:'+(s.status==='done'?'var(--up)':'var(--accent)')+'"></i></span>':'';
   var foot='<span class="inv-foot"><span>수익 기록 <b>'+s.ledgerN+'건</b></span>';
   if(s.span)foot+='<i></i><span>하루</span><b class="'+(s.netPerDay>0?'up':'')+'">'+signedWon(Math.round(s.netPerDay))+'</b>';
   if(s.threadRec>0)foot+='<i></i><span>쓰레드 ₩'+money(s.threadRec)+'</span>';
