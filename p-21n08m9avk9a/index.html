@@ -1461,11 +1461,12 @@ function invTotals(){
   var T={initial:0,recovered:0,done:0,progress:0,free:0,places:0,roi:null};
   state.categories.forEach(function(c){
     var s=invStats(c.id);
+    var active=s.initial>0||s.recovered>0;
     T.initial+=s.initial;T.recovered+=s.recovered;
     if(s.status==='done')T.done++;
     else if(s.status==='progress')T.progress++;
-    else T.free++;
-    if(s.initial>0||s.recovered>0)T.places++;
+    else if(active)T.free++;   /* 손대지 않은 부업은 「무자본」으로 세지 않는다 */
+    if(active)T.places++;
   });
   T.net=T.recovered-T.initial;
   T.roi=T.initial>0?((T.recovered-T.initial)/T.initial*100):null;
@@ -1701,11 +1702,12 @@ function investSection(){
     '<div><span>총 순수익</span><b class="'+(T.net>0?'up':(T.net<0?'down':''))+'">'+signedWon(T.net)+'</b></div>'+
     '<div><span>전체 효율</span><b class="'+(T.roi>0?'up':(T.roi<0?'down':''))+'">'+roiText(T.roi)+'</b></div>'+
   '</div>';
-  html+='<div class="inv-count">'+
-    '<span class="inv-chip done">회수 완료 '+T.done+'</span>'+
-    '<span class="inv-chip rec">회수 중 '+T.progress+'</span>'+
-    '<span class="inv-chip">무자본 '+T.free+'</span>'+
-  '</div>';
+  var chips='';
+  if(T.done)chips+='<span class="inv-chip done">회수 완료 '+T.done+'</span>';
+  if(T.progress)chips+='<span class="inv-chip rec">회수 중 '+T.progress+'</span>';
+  if(T.free)chips+='<span class="inv-chip">무자본 '+T.free+'</span>';
+  if(!chips)chips='<span class="inv-chip">아직 기록한 부업 0곳</span>';
+  html+='<div class="inv-count">'+chips+'</div>';
   html+='<div class="inv-sort">'+[['roi','효율순'],['net','순수익순'],['day','하루순'],['start','최근 시작']].map(function(o){
     return '<button class="inv-sort-b'+(mode===o[0]?' on':'')+'" data-act="sort-inv" data-sort="'+o[0]+'">'+o[1]+'</button>';
   }).join('')+'</div>';
