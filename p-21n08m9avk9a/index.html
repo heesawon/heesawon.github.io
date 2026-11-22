@@ -732,14 +732,14 @@ body.sheet-open{overflow:hidden}
 .portal-t{display:block;margin-top:6px;font-size:10.5px;font-weight:850;letter-spacing:-.035em;line-height:1.3;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .portal-s{display:block;margin-top:2px;font-size:8.5px;font-weight:750;letter-spacing:-.01em;color:var(--ink-3);line-height:1.3;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .inv-sum{
-  display:grid;grid-template-columns:repeat(3,minmax(0,1fr));
+  display:grid;grid-template-columns:repeat(4,minmax(0,1fr));
   background:var(--paper-2);border:1px solid var(--line);border-radius:var(--r);
   padding:11px 0;margin-bottom:9px;
 }
 .inv-sum>div{padding:0 11px;min-width:0}
 .inv-sum>div+div{border-left:1px solid var(--line-2)}
 .inv-sum span{display:block;font-size:8px;font-weight:900;letter-spacing:.08em;color:var(--ink-3);line-height:1.2;white-space:nowrap}
-.inv-sum b{display:block;margin-top:4px;font-size:clamp(12.5px,3.9vw,15px);font-weight:850;letter-spacing:-.04em;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.inv-sum b{display:block;margin-top:4px;font-size:clamp(11.5px,3.35vw,13.5px);font-weight:850;letter-spacing:-.04em;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .inv-sum b.up{color:var(--up)} .inv-sum b.down{color:var(--down)}
 .inv-count{display:flex;gap:5px;flex-wrap:wrap;margin-bottom:9px}
 .inv-chip{font-size:9px;font-weight:900;letter-spacing:-.01em;padding:3px 7px;border-radius:99px;line-height:1.3;background:rgba(20,20,19,.05);color:var(--ink-3)}
@@ -751,11 +751,36 @@ body.sheet-open{overflow:hidden}
 .inv-top{display:flex;align-items:center;justify-content:space-between;gap:8px;min-width:0}
 .inv-n{display:flex;align-items:center;gap:6px;min-width:0;font-size:12.5px;font-weight:800;letter-spacing:-.025em;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .inv-n>i{flex:0 0 6px;width:6px;height:6px;border-radius:50%}
-.inv-nums{display:flex;align-items:baseline;gap:7px;margin-top:6px;font-size:10px;font-weight:700;color:var(--ink-3);letter-spacing:-.01em;white-space:nowrap;min-width:0}
-.inv-nums b{font-weight:850;color:var(--ink-2);font-size:10.5px}
-.inv-nums>i{flex:0 0 1px;width:1px;height:9px;background:var(--line);align-self:center}
-.inv-nums em{font-style:normal;margin-left:auto;flex:0 0 auto;font-size:12px;font-weight:900;letter-spacing:-.03em;color:var(--ink-3)}
-.inv-nums em.up{color:var(--up)}
+.inv-when{display:flex;align-items:center;gap:5px;margin-top:5px;font-size:9.5px;font-weight:750;color:var(--ink-3);letter-spacing:-.01em;white-space:nowrap;min-width:0;overflow:hidden}
+.inv-when>b{font-weight:850;color:var(--ink-2);letter-spacing:-.02em}
+.inv-when>em{flex:0 0 auto;font-style:normal;font-size:9px;font-weight:900;letter-spacing:-.01em;padding:2px 6px;border-radius:99px;background:rgba(20,20,19,.055);color:var(--ink-2);line-height:1.25}
+.inv-when>em.est{background:rgba(184,147,74,.15);color:#8A6B2E}
+.inv-when>em.miss{background:var(--accent-soft);color:var(--accent)}
+.inv-when>.est-n{font-size:8.5px;font-weight:800;color:#8A6B2E}
+.inv-when>i{flex:0 0 1px;width:1px;height:8px;background:var(--line);display:block}
+.inv-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));margin-top:9px;padding-top:8px;border-top:1px solid var(--line-2)}
+.inv-grid>span{min-width:0;padding:0 8px;border-left:1px solid var(--line-2)}
+.inv-grid>span:first-child{padding-left:0;border-left:0}
+.inv-grid i{display:block;font-style:normal;font-size:7.5px;font-weight:900;letter-spacing:.07em;color:var(--ink-3);line-height:1.2;white-space:nowrap}
+.inv-grid b{display:block;margin-top:3px;font-size:10.5px;font-weight:850;letter-spacing:-.035em;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.inv-grid b.up{color:var(--up)} .inv-grid b.down{color:var(--down)} .inv-grid b.zero{color:var(--ink-3)}
+.inv-foot{display:flex;align-items:center;gap:6px;margin-top:7px;font-size:9px;font-weight:750;color:var(--ink-3);letter-spacing:-.01em;white-space:nowrap;min-width:0;overflow:hidden}
+.inv-foot b{font-weight:900;color:var(--ink-2)}
+.inv-foot b.up{color:var(--up)}
+.inv-foot>i{flex:0 0 1px;width:1px;height:8px;background:var(--line);display:block}
+.inv-sort{display:flex;gap:5px;overflow-x:auto;margin:0 0 9px;padding-bottom:2px;-webkit-overflow-scrolling:touch;scrollbar-width:none}
+.inv-sort::-webkit-scrollbar{display:none}
+.inv-sort-b{flex:0 0 auto;font-family:var(--sans);font-size:9.5px;font-weight:850;letter-spacing:-.01em;color:var(--ink-2);background:transparent;border:1px solid var(--line);border-radius:99px;padding:4px 9px;line-height:1.3}
+.inv-sort-b.on{background:var(--ink);border-color:var(--ink);color:var(--paper)}
+.inv-quick{display:flex;gap:5px;flex-wrap:wrap;margin-top:7px}
+.qk{font-family:var(--sans);font-size:10px;font-weight:800;letter-spacing:-.01em;color:var(--ink-2);background:rgba(20,20,19,.045);border:0;border-radius:99px;padding:5px 10px;line-height:1.3}
+.qk:active{background:rgba(20,20,19,.09)}
+.ih-when{display:flex;align-items:center;gap:5px;flex-wrap:wrap;margin-top:3px;font-size:10px;font-weight:750;color:var(--ink-3);letter-spacing:-.01em}
+.ih-when>b{color:var(--ink-2);font-weight:850}
+.ih-when>em{font-style:normal;font-size:9.5px;font-weight:900;padding:2px 6px;border-radius:99px;background:rgba(20,20,19,.055);color:var(--ink-2)}
+.ih-when>em.est{background:rgba(184,147,74,.15);color:#8A6B2E}
+.ih-when>em.miss{background:var(--accent-soft);color:var(--accent)}
+.ih-when>i{flex:0 0 1px;width:1px;height:8px;background:var(--line);display:block}
 .pill.done{background:rgba(14,107,65,.12);color:var(--up)}
 .pill.rec{background:var(--accent-soft);color:var(--accent)}
 .pill.free{background:rgba(20,20,19,.05);color:var(--ink-3)}
@@ -823,7 +848,7 @@ body.sheet-open{overflow:hidden}
 <main id="main">
 <div class="note store" id="storeNote" role="status" hidden></div>
 <div id="view"><div class="note tip" role="note"><span class="note-ic" aria-hidden="true">↑</span><span><b>지금은 미리보기 화면이에요</b><span class="note-sub">공유(↑) → Safari로 열면 터치·기록·저장이 모두 작동해요</span></span></div>
-<section class="cover"><div class="cover-meta"><span>VOL.01</span><span class="csep">/</span><span class="cmid">2026. 11. 20 (금)</span><span class="cday">DAY 02</span></div><div class="cover-kicker"><span>이번 달 번 금액</span><em>This month</em></div><div class="cover-amount"><span class="won">₩</span><span class="num" id="coverNum">0</span></div><div class="cover-under"><span>누적 순수익 <b>0원</b></span><i></i><span>기록 0건</span></div><div class="cover-stats"><div class="cs"><span class="cs-l">부업 투자금</span><b class="cs-v">₩0</b></div><div class="cs"><span class="cs-l">이번 달 지출</span><b class="cs-v">₩0</b></div><div class="cs"><span class="cs-l">이번 달 순수익</span><b class="cs-v">0</b></div><div class="cs"><span class="cs-l">목표 달성률</span><b class="cs-v">0.0%</b><span class="cs-l" style="margin-top:3px;opacity:.75">수익 목표 ₩1,000만</span></div></div><div class="cover-quest"><span class="lv">LV.1</span><span class="lvname">루키</span><span class="cq-bar"><i id="xpFill" style="width: 0%;"></i></span><span class="cq-xp">0 / 100 XP</span><span class="cq-streak">🔥 0일</span></div></section><section class="sec"><div class="sec-head"><div class="sh-l"><span class="sh-no">01</span><div class="sh-t">오늘의 퀘스트</div></div><div class="sh-meta"><b>0</b>/5 · 0 XP</div></div><div class="qprog"><i id="qFill" style="width: 0%;"></i></div><div class="list"><div class="q" data-id="q1" data-q="q1" role="button" tabindex="-1" aria-pressed="false" aria-disabled="true"><span class="q-box"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.6l4.4 4.4L19 7.4"></path></svg></span><span class="q-main"><span class="q-t"><span class="q-e">🧵</span>쓰레드 1글 올리기</span><span class="q-s"><span class="q-tag" style="background:#E0F0F2;color:#1F6470">쓰레드</span>셔틀 2시간 중 5분 · 후추 추천 글 고르기</span></span><span class="q-xp">+20</span></div><div class="q" data-id="q2" data-q="q2" role="button" tabindex="-1" aria-pressed="false" aria-disabled="true"><span class="q-box"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.6l4.4 4.4L19 7.4"></path></svg></span><span class="q-main"><span class="q-t"><span class="q-e">💬</span>댓글·대댓글 3개 달기</span><span class="q-s"><span class="q-tag" style="background:#E0F0F2;color:#1F6470">쓰레드</span>첫 댓글 쿠팡링크 + 소통 3개</span></span><span class="q-xp">+15</span></div><div class="q" data-id="q3" data-q="q3" role="button" tabindex="-1" aria-pressed="false" aria-disabled="true"><span class="q-box"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.6l4.4 4.4L19 7.4"></path></svg></span><span class="q-main"><span class="q-t"><span class="q-e">🎁</span>퀴즈·설문 당첨 확인</span><span class="q-s"><span class="q-tag" style="background:#E8E3FA;color:#5B44A6">앱테크</span>아침·저녁 알림 1분 체크</span></span><span class="q-xp">+10</span></div><div class="q" data-id="q4" data-q="q4" role="button" tabindex="-1" aria-pressed="false" aria-disabled="true"><span class="q-box"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.6l4.4 4.4L19 7.4"></path></svg></span><span class="q-main"><span class="q-t"><span class="q-e">👜</span>리셀·공구 아이템 1개 보기</span><span class="q-s"><span class="q-tag" style="background:#FCE4D6;color:#8A4B2A">리셀·공구</span>당근 시세 또는 소싱 10분</span></span><span class="q-xp">+15</span></div><div class="q" data-id="q5" data-q="q5" role="button" tabindex="-1" aria-pressed="false" aria-disabled="true"><span class="q-box"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.6l4.4 4.4L19 7.4"></path></svg></span><span class="q-main"><span class="q-t"><span class="q-e">✍️</span>오늘 부업 기록 1줄 남기기</span><span class="q-s"><span class="q-tag" style="background:#EDEDED;color:#5A5A5E">기록</span>수익·지출 0원이라도 체크하기</span></span><span class="q-xp">+10</span></div></div><div class="q-actions"><button class="btn-line solid" tabindex="-1" aria-disabled="true">＋ 퀘스트 추가</button><button class="btn-line" tabindex="-1" aria-disabled="true">새 하루 시작</button></div></section><div class="stock-card"><span class="stock-badge">별도</span><span class="stock-main"><b>주식용 계좌</b><small>자동매매 웹앱에서 관리 · 부업 투자금과 합산하지 않아요</small></span><span class="stock-amt">₩1,000만</span></div><section class="portal" aria-label="작업실 바로가기"><div class="portal-head"><span class="portal-kick">Workspace</span><span class="portal-h">작업실</span></div><div class="portal-grid"><a class="portal-card" href="https://heesawon.github.io/q-5k8m3p7x/" target="_blank" rel="noopener noreferrer" data-stop="1"><span class="portal-top"><span class="portal-e" aria-hidden="true">📈</span><span class="portal-ar" aria-hidden="true">↗</span></span><span class="portal-t">주식 자동매매</span><span class="portal-s">계좌·룰 관리</span></a><a class="portal-card" href="https://heesawon.github.io/s-9m4k7p2x/" target="_blank" rel="noopener noreferrer" data-stop="1"><span class="portal-top"><span class="portal-e" aria-hidden="true">🎨</span><span class="portal-ar" aria-hidden="true">↗</span></span><span class="portal-t">부다차차 스튜디오</span><span class="portal-s">인스타툰 제작</span></a><a class="portal-card" href="https://heesawon.github.io/n-7t3v9q2k/" target="_blank" rel="noopener noreferrer" data-stop="1"><span class="portal-top"><span class="portal-e" aria-hidden="true">🎵</span><span class="portal-ar" aria-hidden="true">↗</span></span><span class="portal-t">AI 플리 스튜디오</span><span class="portal-s">플리·썸네일</span></a></div></section><section class="sec"><div class="sec-head"><div class="sh-l"><span class="sh-no">01</span><div class="sh-t">부업 투자 · 회수</div></div><button class="sec-link" tabindex="-1" aria-disabled="true">수익률 CSV →</button></div><div class="empty" style="border:1px solid var(--line);background:var(--paper-2);border-radius:3px"><div class="empty-ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><path d="M4 19V9M10 19V5M16 19v-6M22 19H2"></path></svg></div><p>아직 부업별 투자 기록이 없어요</p><span>Safari에서 열면 부업마다 초기 투자금을 적고<br>회수 여부와 수익률을 볼 수 있어요</span><button class="btn-soft" tabindex="-1" aria-disabled="true">기록 추가</button></div></section>
+<section class="cover"><div class="cover-meta"><span>VOL.01</span><span class="csep">/</span><span class="cmid">2026. 11. 20 (금)</span><span class="cday">DAY 02</span></div><div class="cover-kicker"><span>이번 달 번 금액</span><em>This month</em></div><div class="cover-amount"><span class="won">₩</span><span class="num" id="coverNum">0</span></div><div class="cover-under"><span>누적 순수익 <b>0원</b></span><i></i><span>기록 0건</span></div><div class="cover-stats"><div class="cs"><span class="cs-l">부업 투자금</span><b class="cs-v">₩0</b></div><div class="cs"><span class="cs-l">이번 달 지출</span><b class="cs-v">₩0</b></div><div class="cs"><span class="cs-l">이번 달 순수익</span><b class="cs-v">0</b></div><div class="cs"><span class="cs-l">목표 달성률</span><b class="cs-v">0.0%</b><span class="cs-l" style="margin-top:3px;opacity:.75">수익 목표 ₩1,000만</span></div></div><div class="cover-quest"><span class="lv">LV.1</span><span class="lvname">루키</span><span class="cq-bar"><i id="xpFill" style="width: 0%;"></i></span><span class="cq-xp">0 / 100 XP</span><span class="cq-streak">🔥 0일</span></div></section><section class="sec"><div class="sec-head"><div class="sh-l"><span class="sh-no">01</span><div class="sh-t">오늘의 퀘스트</div></div><div class="sh-meta"><b>0</b>/5 · 0 XP</div></div><div class="qprog"><i id="qFill" style="width: 0%;"></i></div><div class="list"><div class="q" data-id="q1" data-q="q1" role="button" tabindex="-1" aria-pressed="false" aria-disabled="true"><span class="q-box"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.6l4.4 4.4L19 7.4"></path></svg></span><span class="q-main"><span class="q-t"><span class="q-e">🧵</span>쓰레드 1글 올리기</span><span class="q-s"><span class="q-tag" style="background:#E0F0F2;color:#1F6470">쓰레드</span>셔틀 2시간 중 5분 · 후추 추천 글 고르기</span></span><span class="q-xp">+20</span></div><div class="q" data-id="q2" data-q="q2" role="button" tabindex="-1" aria-pressed="false" aria-disabled="true"><span class="q-box"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.6l4.4 4.4L19 7.4"></path></svg></span><span class="q-main"><span class="q-t"><span class="q-e">💬</span>댓글·대댓글 3개 달기</span><span class="q-s"><span class="q-tag" style="background:#E0F0F2;color:#1F6470">쓰레드</span>첫 댓글 쿠팡링크 + 소통 3개</span></span><span class="q-xp">+15</span></div><div class="q" data-id="q3" data-q="q3" role="button" tabindex="-1" aria-pressed="false" aria-disabled="true"><span class="q-box"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.6l4.4 4.4L19 7.4"></path></svg></span><span class="q-main"><span class="q-t"><span class="q-e">🎁</span>퀴즈·설문 당첨 확인</span><span class="q-s"><span class="q-tag" style="background:#E8E3FA;color:#5B44A6">앱테크</span>아침·저녁 알림 1분 체크</span></span><span class="q-xp">+10</span></div><div class="q" data-id="q4" data-q="q4" role="button" tabindex="-1" aria-pressed="false" aria-disabled="true"><span class="q-box"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.6l4.4 4.4L19 7.4"></path></svg></span><span class="q-main"><span class="q-t"><span class="q-e">👜</span>리셀·공구 아이템 1개 보기</span><span class="q-s"><span class="q-tag" style="background:#FCE4D6;color:#8A4B2A">리셀·공구</span>당근 시세 또는 소싱 10분</span></span><span class="q-xp">+15</span></div><div class="q" data-id="q5" data-q="q5" role="button" tabindex="-1" aria-pressed="false" aria-disabled="true"><span class="q-box"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.6l4.4 4.4L19 7.4"></path></svg></span><span class="q-main"><span class="q-t"><span class="q-e">✍️</span>오늘 부업 기록 1줄 남기기</span><span class="q-s"><span class="q-tag" style="background:#EDEDED;color:#5A5A5E">기록</span>수익·지출 0원이라도 체크하기</span></span><span class="q-xp">+10</span></div></div><div class="q-actions"><button class="btn-line solid" tabindex="-1" aria-disabled="true">＋ 퀘스트 추가</button><button class="btn-line" tabindex="-1" aria-disabled="true">새 하루 시작</button></div></section><div class="stock-card"><span class="stock-badge">별도</span><span class="stock-main"><b>주식용 계좌</b><small>자동매매 웹앱에서 관리 · 부업 투자금과 합산하지 않아요</small></span><span class="stock-amt">₩1,000만</span></div><section class="portal" aria-label="작업실 바로가기"><div class="portal-head"><span class="portal-kick">Workspace</span><span class="portal-h">작업실</span></div><div class="portal-grid"><a class="portal-card" href="https://heesawon.github.io/q-5k8m3p7x/" target="_blank" rel="noopener noreferrer" data-stop="1"><span class="portal-top"><span class="portal-e" aria-hidden="true">📈</span><span class="portal-ar" aria-hidden="true">↗</span></span><span class="portal-t">주식 자동매매</span><span class="portal-s">계좌·룰 관리</span></a><a class="portal-card" href="https://heesawon.github.io/s-9m4k7p2x/" target="_blank" rel="noopener noreferrer" data-stop="1"><span class="portal-top"><span class="portal-e" aria-hidden="true">🎨</span><span class="portal-ar" aria-hidden="true">↗</span></span><span class="portal-t">부다차차 스튜디오</span><span class="portal-s">인스타툰 제작</span></a><a class="portal-card" href="https://heesawon.github.io/n-7t3v9q2k/" target="_blank" rel="noopener noreferrer" data-stop="1"><span class="portal-top"><span class="portal-e" aria-hidden="true">🎵</span><span class="portal-ar" aria-hidden="true">↗</span></span><span class="portal-t">AI 플리 스튜디오</span><span class="portal-s">플리·썸네일</span></a></div></section><section class="sec"><div class="sec-head"><div class="sh-l"><span class="sh-no">01</span><div class="sh-t">부업 투자 · 회수</div></div><button class="sec-link" tabindex="-1" aria-disabled="true">수익률 CSV →</button></div><div class="empty" style="border:1px solid var(--line);background:var(--paper-2);border-radius:3px"><div class="empty-ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><path d="M4 19V9M10 19V5M16 19v-6M22 19H2"></path></svg></div><p>아직 부업별 기록이 없어요</p><span>Safari에서 열면 부업마다 시작일·투자금을 적고<br>회수율과 하루 효율을 볼 수 있어요</span><button class="btn-soft" tabindex="-1" aria-disabled="true">기록 추가</button></div></section>
 <p class="foot-note">수익·지출 · 체크리스트 · 응모·당첨 · 부업 투자 탭은 Safari에서 열면 채워져요.</p></div>
 </main>
 
@@ -865,7 +890,7 @@ body.sheet-open{overflow:hidden}
    상수 · 기본 데이터 (엑셀 1000만원_부업_관리표 + 아침 부업 루틴)
    ============================================================ */
 var KEY='bupsaeng1000.v1';
-var VERSION=12;
+var VERSION=13;
 var CHALLENGE_START='2026-11-19';
 var CHALLENGE_GOAL=10000000;
 var LV_NAMES=['루키','러너','하슬러','크루','캡틴','마스터','레전드'];
@@ -921,8 +946,9 @@ var BASELINE={
     {id:'c9',name:'인스타툰',bg:'#F3E8F7',fg:'#7A3F8F'},
     {id:'c10',name:'AI 플레이리스트',bg:'#E4F3E8',fg:'#2F6B4F'}
   ],
-  /* 부업별 초기 투자금: {catId:{initial:원, memo:''}} · 회수금은 수익 기록에서 자동 합산 */
-  invest:{},
+  /* 부업별 초기 투자금: {catId:{initial,memo,start,startSrc}} · 회수금은 수익 기록에서 자동 합산
+     start 'YYYY-MM-DD' · startSrc 'user'(직접 입력) / 'est'(기록에서 추정) / 'none'(지움) / ''(미입력) */
+  invest:{c5:{initial:0,memo:'',start:'2026-11-19',startSrc:'est'}},
   ledger:[],
   checklist:[
     {id:'k1',group:'공통 셋팅',text:'부업 수입·지출 기록 규칙 정하기 (영수증·캡처 보관 방법)',memo:'매주 일요일 정리',done:false},
@@ -1236,12 +1262,26 @@ function migrate(s){
   s.categories.forEach(function(c){
     if(!c||!c.id)return;
     var r=s.invest[c.id];
-    if(!r||typeof r!=='object')s.invest[c.id]={initial:0,memo:''};
+    if(!r||typeof r!=='object')s.invest[c.id]={initial:0,memo:'',start:'',startSrc:''};
     else{
       r.initial=Math.max(0,Math.round(n(r.initial)));
       r.memo=String(r.memo||'');
+      r.start=invDateStr(r.start);
+      if(!r.start&&r.startSrc!=='none')r.startSrc='';
+      else if(r.start&&r.startSrc!=='est')r.startSrc='user';
     }
   });
+  /* v13: 부업별 시작일 — 아는 것만 채우고 나머지는 「미입력」으로 둔다(기존 기록·금액은 그대로) */
+  if(v<13){
+    var seedStart={c5:'2026-11-19'};
+    s.categories.forEach(function(c){
+      if(!c||!c.id)return;
+      var r13=s.invest[c.id];
+      if(!r13||typeof r13!=='object')return;
+      if(!r13.start&&!r13.startSrc&&seedStart[c.id]){r13.start=seedStart[c.id];r13.startSrc='est';}
+    });
+    if(typeof s.invSort!=='string'||!s.invSort)s.invSort='roi';
+  }
   if(!Array.isArray(s.threads))s.threads=[];
   else s.threads=s.threads.map(function(t,i){
     t=t||{};
@@ -1331,7 +1371,57 @@ function invOf(cid){
   if(!r||typeof r!=='object'){r={initial:0,memo:''};state.invest[cid]=r;}
   r.initial=Math.max(0,Math.round(n(r.initial)));
   r.memo=String(r.memo||'');
+  r.start=invDateStr(r.start);
+  if(!r.start&&r.startSrc!=='none')r.startSrc='';
+  else if(r.start&&r.startSrc!=='est')r.startSrc='user';
   return r;
+}
+/* 부업 시작일 · 경과일 · 효율 헬퍼 */
+function invDateStr(v){
+  var m=/^(\d{4})-(\d{2})-(\d{2})$/.exec(String(v||''));
+  return m?m[0]:'';
+}
+function dayDiff(iso){
+  var d=parseISO(iso);if(!d)return null;
+  var t=new Date();t.setHours(0,0,0,0);
+  return Math.round((t-d)/86400000);
+}
+function daysText(iso){
+  var d=dayDiff(iso);
+  if(d===null)return '';
+  return d<0?('D-'+Math.abs(d)+'일'):('D+'+d+'일');
+}
+function won(v){var x=n(v);if(!x)return '₩0';return (x<0?'−':'')+'₩'+money(x);}
+function signedWon(v){var x=n(v);if(!x)return '0';return (x>0?'+':'−')+'₩'+money(x);}
+function autoStartOf(cid){
+  var best='';
+  (state.ledger||[]).forEach(function(e){
+    if(e.cat!==cid)return;
+    var d=invDateStr(e.date);
+    if(d&&(!best||d<best))best=d;
+  });
+  if(/쓰레드/.test(String(cat(cid).name))){
+    (state.threads||[]).forEach(function(t){
+      var d=invDateStr(t&&t.date);
+      if(d&&(!best||d<best))best=d;
+    });
+  }
+  return best;
+}
+/* 시작일 · 경과일 한 줄 (opt.daily 면 하루 평균 순수익까지) */
+function invWhenHtml(s,opt){
+  opt=opt||{};
+  var start=s.start||'';
+  var d=start?dayDiff(start):null;
+  if(!start||d===null)return '<em class="miss">시작일 미입력</em>';
+  var html='<b>'+esc(start)+'</b><span>시작</span>';
+  html+=d<0?('<em class="est">D-'+Math.abs(d)+'일</em>'):('<em>D+'+d+'일</em>');
+  if(s.startSrc==='est')html+='<span class="est-n">추정</span>';
+  if(opt.daily&&d>=0){
+    var span=Math.max(1,d+1);
+    html+='<i></i><span>하루 '+signedWon(Math.round(n(s.net)/span))+'</span>';
+  }
+  return html;
 }
 /* 쓰레드·쿠팡 탭에서 잡은 수익은 그 부업의 회수금에 합산 */
 function threadRevenue(){
@@ -1350,12 +1440,22 @@ function invStats(cid){
   var thRev=/쓰레드/.test(String(c.name))?threadRevenue():0;
   var recovered=led+thRev;
   var initial=Math.max(0,n(r.initial));
-  var roi=initial>0?((recovered-initial)/initial*100):null;
+  var net=recovered-initial;
+  var roi=initial>0?(net/initial*100):null;
   var rate=initial>0?(recovered/initial*100):0;
   var status=initial<=0?'free':(recovered>=initial?'done':'progress');
-  return {cid:cid,name:c.name,bg:c.bg,fg:c.fg,initial:initial,recovered:recovered,
+  var start=r.start,startSrc=r.startSrc||'';
+  if(!start&&startSrc!=='none'){
+    var auto=autoStartOf(cid);
+    if(auto){start=auto;startSrc='est';}
+  }
+  var days=start?dayDiff(start):null;
+  if(days!==null&&days<0)days=null;
+  var span=days!==null?Math.max(1,days+1):0;
+  return {cid:cid,name:c.name,bg:c.bg,fg:c.fg,initial:initial,recovered:recovered,net:net,
     ledgerRec:led,ledgerN:ledN,threadRec:thRev,memo:r.memo,roi:roi,rate:rate,
-    status:status,remaining:Math.max(0,initial-recovered)};
+    status:status,remaining:Math.max(0,initial-recovered),
+    start:start,startSrc:startSrc,days:days,span:span,netPerDay:span?(net/span):0};
 }
 function invTotals(){
   var T={initial:0,recovered:0,done:0,progress:0,free:0,places:0,roi:null};
@@ -1367,6 +1467,7 @@ function invTotals(){
     else T.free++;
     if(s.initial>0||s.recovered>0)T.places++;
   });
+  T.net=T.recovered-T.initial;
   T.roi=T.initial>0?((T.recovered-T.initial)/T.initial*100):null;
   return T;
 }
@@ -1550,41 +1651,70 @@ function weekStrip(){
 function investRow(s){
   var has=s.initial>0;
   var pill=has?(s.status==='done'?'<span class="pill done">회수 완료 🎉</span>':'<span class="pill rec">회수 중 '+Math.min(999,Math.round(s.rate))+'%</span>'):'<span class="pill free">무자본</span>';
-  var right=has?'<em class="'+(s.roi>0?'up':'')+'">'+roiText(s.roi)+'</em>'
-    :'<em class="'+(s.recovered>0?'up':'')+'">'+(s.recovered>0?'순수익 +'+money(s.recovered):'—')+'</em>';
-  var bar=has?'<span class="inv-bar"><i style="width:'+Math.max(2,Math.min(100,s.rate))+'%;background:'+(s.status==='done'?'var(--up)':'var(--accent)')+'"></i></span>':'';
-  return '<button class="inv" data-act="edit-invest" data-id="'+esc(s.cid)+'">'+
+  var bar=(has&&s.rate>0)?'<span class="inv-bar"><i style="width:'+Math.min(100,s.rate)+'%;background:'+(s.status==='done'?'var(--up)':'var(--accent)')+'"></i></span>':'';
+  var foot='<span class="inv-foot"><span>수익 기록 <b>'+s.ledgerN+'건</b></span>';
+  if(s.span)foot+='<i></i><span>하루</span><b class="'+(s.netPerDay>0?'up':'')+'">'+signedWon(Math.round(s.netPerDay))+'</b>';
+  if(s.threadRec>0)foot+='<i></i><span>쓰레드 ₩'+money(s.threadRec)+'</span>';
+  foot+='</span>';
+  return '<button class="inv" data-act="edit-invest" data-id="'+esc(s.cid)+'" aria-label="'+esc(s.name)+' 시작일·투자금 수정">'+
     '<span class="inv-top"><span class="inv-n"><i style="background:'+esc(s.fg)+'"></i>'+esc(s.name)+'</span>'+pill+'</span>'+
-    '<span class="inv-nums"><span>투자 <b>₩'+money(s.initial)+'</b></span><i></i><span>회수 <b>₩'+money(s.recovered)+'</b></span>'+right+'</span>'+
-    bar+'</button>';
+    '<span class="inv-when">'+invWhenHtml(s)+'</span>'+
+    '<span class="inv-grid">'+
+      '<span><i>투자</i><b'+(has?'':' class="zero"')+'>'+won(s.initial)+'</b></span>'+
+      '<span><i>회수</i><b'+(s.recovered>0?'':' class="zero"')+'>'+won(s.recovered)+'</b></span>'+
+      '<span><i>순수익</i><b class="'+(s.net>0?'up':(s.net<0?'down':'zero'))+'">'+signedWon(s.net)+'</b></span>'+
+      '<span><i>효율</i><b class="'+(s.initial>0?(s.roi>0?'up':(s.roi<0?'down':'')):'zero')+'">'+esc(s.initial>0?roiText(s.roi):'무자본')+'</b></span>'+
+    '</span>'+bar+foot+'</button>';
+}
+
+/* 정렬: 효율(수익률) · 순수익 · 하루 · 최근 시작 */
+function invSortVal(s,mode){
+  if(mode==='net')return s.net;
+  if(mode==='day')return s.netPerDay;
+  if(mode==='start')return s.start?(parseISO(s.start).getTime()/86400000):-1e9;
+  if(s.initial>0)return s.roi;
+  return s.recovered>0?9999:-9999;
+}
+function investSorted(list){
+  var mode=state.invSort||'roi';
+  return list.slice().sort(function(a,b){
+    var A=invSortVal(a,mode),B=invSortVal(b,mode);
+    if(A!==B)return B-A;
+    return String(a.name).localeCompare(String(b.name),'ko');
+  });
 }
 
 function investSection(){
   var T=invTotals();
-  var all=state.categories.map(function(c){return invStats(c.id);});
+  var all=investSorted(state.categories.map(function(c){return invStats(c.id);}));
   var live=all.filter(function(s){return s.initial>0||s.recovered>0;});
   var shown=(invShowAll||!live.length)?all:live;
   var hidden=all.length-shown.length;
+  var mode=state.invSort||'roi';
   var html='<section class="sec">'+
     '<div class="sec-head"><div class="sh-l"><span class="sh-no">01</span>'+
     '<div class="sh-t">부업 투자 · 회수</div></div>'+
     '<button class="sec-link" data-act="export-invest">수익률 CSV →</button></div>';
   html+='<div class="inv-sum">'+
-    '<div><span>총 초기 투자금</span><b>₩'+money(T.initial)+'</b></div>'+
-    '<div><span>총 회수금</span><b>₩'+money(T.recovered)+'</b></div>'+
-    '<div><span>전체 수익률</span><b class="'+(T.roi>0?'up':(T.roi<0?'down':''))+'">'+roiText(T.roi)+'</b></div>'+
+    '<div><span>총 투자금</span><b>'+won(T.initial)+'</b></div>'+
+    '<div><span>총 회수금</span><b class="up">'+won(T.recovered)+'</b></div>'+
+    '<div><span>총 순수익</span><b class="'+(T.net>0?'up':(T.net<0?'down':''))+'">'+signedWon(T.net)+'</b></div>'+
+    '<div><span>전체 효율</span><b class="'+(T.roi>0?'up':(T.roi<0?'down':''))+'">'+roiText(T.roi)+'</b></div>'+
   '</div>';
   html+='<div class="inv-count">'+
     '<span class="inv-chip done">회수 완료 '+T.done+'</span>'+
     '<span class="inv-chip rec">회수 중 '+T.progress+'</span>'+
     '<span class="inv-chip">무자본 '+T.free+'</span>'+
   '</div>';
+  html+='<div class="inv-sort">'+[['roi','효율순'],['net','순수익순'],['day','하루순'],['start','최근 시작']].map(function(o){
+    return '<button class="inv-sort-b'+(mode===o[0]?' on':'')+'" data-act="sort-inv" data-sort="'+o[0]+'">'+o[1]+'</button>';
+  }).join('')+'</div>';
   html+='<div class="list">'+shown.map(investRow).join('')+'</div>';
   html+='<div class="q-actions">'+
     (hidden>0?'<button class="btn-line" data-act="toggle-inv-all">'+(invShowAll?'접기':'전체 부업 '+all.length+'개')+'</button>':'')+
     '<button class="btn-line solid" data-act="add-invest">＋ 부업 추가</button>'+
   '</div>';
-  html+='<p class="hint-line">부업을 탭하면 초기 투자금을 적을 수 있어요. 회수금은 그 부업의 수익 기록이 자동 합산되고, 초기 투자금을 넘기면 「회수 완료」로 바뀌어요.</p>';
+  html+='<p class="hint-line">부업을 탭하면 시작일·초기 투자금을 고칠 수 있어요. 회수금은 그 부업의 수익 기록에서 자동으로 모이고, 효율은 (회수−투자)÷투자 수익률이에요. 하루는 경과일로 나눈 평균 순수익이에요.</p>';
   html+='</section>';
   return html;
 }
@@ -2530,6 +2660,12 @@ function investNoteHtml(initial,recovered,ledgerN,threadRec){
   return base+'<br>'+tail;
 }
 function updateInvestPreview(){
+  var shint=$('#f-invstart-hint');
+  if(shint){
+    var sv=invDateStr(((($('#f-invstart')||{}).value)||'').trim());
+    shint.textContent=sv?('경과 '+daysText(sv)):'비워 두면 「미입력」으로 보여요';
+    shint.classList.toggle('on',!!sv);
+  }
   if(!sheetCtx||sheetCtx.type!=='invest'||!sheetCtx.id)return;
   var s=invStats(sheetCtx.id);
   var initial=Number(((($('#f-inv')||{}).value)||'').replace(/[^\d]/g,''))||0;
@@ -2562,6 +2698,10 @@ function updateInvestPreview(){
   if(note)note.innerHTML=investNoteHtml(initial,s.recovered,s.ledgerN,s.threadRec);
   var hint=$('#f-inv-hint');
   if(hint){hint.textContent=initial?fmt(initial)+'원':'';hint.classList.toggle('on',!!initial);}
+  var when=$('#invLiveWhen');
+  if(when){
+    when.innerHTML=invWhenHtml({start:invDateStr(((($('#f-invstart')||{}).value)||'').trim()),startSrc:'user',net:s.recovered-initial},{daily:true});
+  }
 }
 function invHeroBig(s){
   if(s.initial>0)return roiText(s.roi);
@@ -2575,13 +2715,14 @@ function openInvestSheet(id){
   if(isNew){
     body+='<div class="form-card"><div class="field"><label for="f-iname">부업 이름</label>'+
       '<input type="text" id="f-iname" placeholder="예: AI 플레이리스트" maxlength="14"></div></div>'+
-      '<p class="hint-line" style="padding-top:0">부업을 하나 더 만들고 초기 투자금을 바로 적을 수 있어요.</p>';
+      '<p class="hint-line" style="padding-top:0">부업을 하나 더 만들고 시작일·초기 투자금을 바로 적을 수 있어요.</p>';
   }else{
     body+='<div class="inv-hero">'+
       '<div class="ih-top"><span class="ih-l" id="invLiveLab">'+(s.initial>0?'현재 수익률':(s.recovered>0?'무자본 순수익':'회수 상태'))+'</span>'+
         '<span id="invLivePill" class="pill '+(s.status==='done'?'done':(s.status==='progress'?'rec':'free'))+'"'+(s.initial>0?'':' style="display:none"')+'>'+
           (s.status==='done'?'회수 완료 🎉':(s.status==='progress'?'회수 중 '+Math.min(999,Math.round(s.rate))+'%':''))+'</span>'+
       '</div>'+
+      '<div class="ih-when" id="invLiveWhen">'+invWhenHtml(s,{daily:true})+'</div>'+
       '<div class="ih-v'+(s.initial>0?(s.roi>0?' up':''):(s.recovered>0?' up':''))+'" id="invLivePct">'+invHeroBig(s)+'</div>'+
       '<div class="ih-grid">'+
         '<div><span>초기 투자금</span><b id="invLiveInit">₩'+fmt(s.initial)+'</b></div>'+
@@ -2592,7 +2733,18 @@ function openInvestSheet(id){
       '<div class="ih-note" id="invLiveNote">'+investNoteHtml(s.initial,s.recovered,s.ledgerN,s.threadRec)+'</div>'+
     '</div>';
   }
-  body+='<div class="flabel-block">초기 투자금</div>'+
+  body+='<div class="flabel-block">시작일</div>'+
+    '<div class="form-card">'+
+      '<div class="field"><label for="f-invstart">부업 시작일</label>'+
+        '<input type="date" id="f-invstart" max="'+todayISO()+'" value="'+esc(s&&s.start?s.start:'')+'">'+
+        '<div class="amt-hint" id="f-invstart-hint">'+(s&&s.start?('경과 '+daysText(s.start)+(s.startSrc==='est'?' · 기록에서 추정한 날짜예요':'')):'비워 두면 「미입력」으로 보여요')+'</div></div>'+
+      '<div class="inv-quick">'+
+        '<button class="qk" data-act="set-invstart" data-date="'+todayISO()+'">오늘</button>'+
+        '<button class="qk" data-act="set-invstart" data-date="'+CHALLENGE_START+'">챌린지 시작일 '+shortDate(CHALLENGE_START)+'</button>'+
+        '<button class="qk" data-act="set-invstart" data-date="">지우기</button>'+
+      '</div>'+
+    '</div>'+
+    '<div class="flabel-block">초기 투자금</div>'+
     '<div class="form-card">'+
       '<div class="field"><label for="f-inv">초기 투자금 (원)</label>'+
         '<div class="amt-wrap"><input type="text" inputmode="numeric" id="f-inv" placeholder="0" value="'+(s&&s.initial?fmt(s.initial):'')+'"><span class="cur">원</span></div>'+
@@ -2624,6 +2776,7 @@ function openInvestSheet(id){
 function saveInvest(keepOpen){
   var mem=((($('#f-invmemo')||{}).value)||'').trim().slice(0,40);
   var initial=Number(((($('#f-inv')||{}).value)||'').replace(/[^\d]/g,''))||0;
+  var start=invDateStr(((($('#f-invstart')||{}).value)||'').trim());
   var cid=sheetCtx.id;
   if(!cid){
     var name=((($('#f-iname')||{}).value)||'').trim();
@@ -2635,14 +2788,17 @@ function saveInvest(keepOpen){
   var r=invOf(cid);
   r.initial=Math.max(0,Math.round(initial));
   r.memo=mem;
+  r.start=start;
+  r.startSrc=start?'user':'none';
   r.updatedAt=new Date().toISOString();
   save();
   sheetCtx.id=cid;
   if(keepOpen)return true;
   closeSheet();render();
   var st=invStats(cid);
-  toast(st.initial<=0?'「'+st.name+'」 초기 투자금 0원 · 무자본으로 뒀어요'
-    :(st.status==='done'?'「'+st.name+'」 회수 완료! 🎉':'「'+st.name+'」 초기 투자금을 저장했어요'));
+  toast(st.start?(st.initial<=0?'「'+st.name+'」 '+daysText(st.start)+'째 · 무자본으로 뒀어요'
+    :(st.status==='done'?'「'+st.name+'」 회수 완료! 🎉 ('+daysText(st.start)+')':'「'+st.name+'」 '+daysText(st.start)+'째 · '+roiText(st.roi)))
+    :'「'+st.name+'」 저장했어요 · 시작일은 나중에 적어도 돼요');
   return true;
 }
 
@@ -2665,7 +2821,7 @@ function openSettings(){
       setRow('export-check','체크리스트 CSV','구분·항목·상태·메모','<circle cx="12" cy="12" r="8.5"/><path d="M8.4 12.2l2.5 2.5 4.7-4.9"/>')+
       setRow('export-events','응모·당첨 CSV','응모일·이벤트·경품·발표일·상태','<path d="M4 10h16v10H4zM3 6.5h18V10H3z"/>')+
       setRow('export-threads','쓰레드·쿠팡 CSV','날짜·글·상품·링크·클릭·구매·전환율·수익','<path d="M7 3.5 5 20.5M17 3.5l-2 17M4 8.5h16M3 15.5h16"/>')+
-      setRow('export-invest','부업 투자·수익률 CSV','부업·초기 투자금·회수금·수익률·회수 상태','<path d="M4 19V9M10 19V5M16 19v-6M22 19H2"/>')+
+      setRow('export-invest','부업 투자·효율 CSV','부업·시작일·경과일·투자금·회수금·순수익·효율','<path d="M4 19V9M10 19V5M16 19v-6M22 19H2"/>')+
       setRow('export-json','JSON 백업','기록·퀘스트 전체를 파일 하나로','<path d="M12 3v12M8 11l4 4 4-4M5 20h14"/>')+
     '</div></div>'+
     '<div class="set-group"><div class="set-group-t">복원</div><div class="list">'+
@@ -2677,14 +2833,14 @@ function openSettings(){
       '<div class="set-row"><div class="set-ic"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3.5l2.6 5.3 5.9.9-4.3 4.1 1 5.8-5.2-2.8-5.2 2.8 1-5.8L3.5 9.7l5.9-.9z"/></svg></div>'+
         '<div class="set-t">LV.'+lv.lvl+' '+esc(lv.name)+'<small>'+n(state.quest.xp)+' XP · 오늘 퀘스트 '+questDone()+'/'+state.quest.items.length+' · 연속 '+n(state.quest.streak)+'일</small></div></div>'+
       setRow('reset','처음 상태로 초기화','수정한 내용을 모두 지우고 기본값으로','<path d="M3.5 12a8.5 8.5 0 1 0 2.8-6.3M3.5 4.5V10h5.5"/>','danger')+
-    '</div><p class="set-note">부업 투자금 ₩'+fmt(invT.initial)+' · 회수 ₩'+fmt(invT.recovered)+' · 수익률 '+roiText(invT.roi)+' · 누적 순수익 '+signed(t.net)+'원</p></div>'+
+    '</div><p class="set-note">부업 투자금 ₩'+fmt(invT.initial)+' · 회수 ₩'+fmt(invT.recovered)+' · 순수익 '+signedWon(invT.net)+' · 효율 '+roiText(invT.roi)+' · 누적 순수익 '+signed(t.net)+'원</p></div>'+
     '<div class="set-group"><div class="set-group-t">사용 팁</div><div class="list">'+
       '<div class="set-row"><div class="set-ic"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3.5v11M8 10.5l4 4 4-4M5 20h14"/></svg></div>'+
         '<div class="set-t">홈 화면에 추가<small>Safari 공유 → 「홈 화면에 추가」를 누르면 앱처럼 열려요</small></div></div>'+
       '<div class="set-row"><div class="set-ic"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.6 9.4 17 19 7.4"/></svg></div>'+
         '<div class="set-t">자동 저장<small>기록·체크·퀘스트가 바로 이 아이폰에 저장돼요</small></div></div>'+
     '</div></div>'+
-    '<p class="foot-note">1,000만 원 부업 챌린지 · EDITORIAL EDITION v'+VERSION+'<br>부업별 초기 투자금 · 회수율 관리 · 주식 계좌는 별도</p>';
+    '<p class="foot-note">1,000만 원 부업 챌린지 · EDITORIAL EDITION v'+VERSION+'<br>부업별 시작일 · 투자금 · 효율 관리 · 주식 계좌는 별도</p>';
   openSheet({title:'설정 · 백업',body:body,foot:null});
 }
 function setRow(act,title,sub,path,danger){
@@ -2790,16 +2946,18 @@ function buildSummary(){
 
   /* 부업별 투자 · 회수 · 수익률 */
   var ivT=invTotals();
-  L.push('■ 부업 투자 · 회수 · 전체 수익률 '+roiText(ivT.roi)+' · 회수 완료 '+ivT.done+'/'+ivT.places+'곳');
-  L.push('· 총 초기 투자금 '+fmt(ivT.initial)+'원 · 총 회수금 '+fmt(ivT.recovered)+'원'+(ivT.roi!==null?' · 수익률 '+roiText(ivT.roi):''));
-  var ivRows=state.categories.map(function(c){return invStats(c.id);}).filter(function(s){return s.initial>0||s.recovered>0;});
+  L.push('■ 부업 투자 · 회수 · 전체 효율 '+roiText(ivT.roi)+' · 회수 완료 '+ivT.done+'/'+ivT.places+'곳');
+  L.push('· 총 투자금 '+fmt(ivT.initial)+'원 · 총 회수금 '+fmt(ivT.recovered)+'원 · 총 순수익 '+signedWon(ivT.net)+(ivT.roi!==null?' · 효율 '+roiText(ivT.roi):''));
+  var ivRows=investSorted(state.categories.map(function(c){return invStats(c.id);})).filter(function(s){return s.initial>0||s.recovered>0;});
   if(ivRows.length){
     ivRows.forEach(function(s){
-      var roiTxt=s.roi===null?('순수익 +'+fmt(s.recovered)+'원'):roiText(s.roi);
-      L.push('  '+(s.status==='done'?'🟢':(s.status==='progress'?'🟡':'⚪'))+' '+s.name+' · 투자 '+fmt(s.initial)+'원 → 회수 '+fmt(s.recovered)+'원 · '+roiTxt+' ('+statusText(s)+')');
+      L.push('  '+(s.status==='done'?'🟢':(s.status==='progress'?'🟡':'⚪'))+' '+s.name+
+        ' · '+(s.start?('시작 '+s.start+' '+daysText(s.start)+(s.startSrc==='est'?'(추정)':'')):'시작일 미입력')+
+        ' · 투자 '+fmt(s.initial)+'원 → 회수 '+fmt(s.recovered)+'원 · 순수익 '+signedWon(s.net)+' · 효율 '+(s.roi===null?'무자본':roiText(s.roi))+
+        (s.span?' · 하루 '+signedWon(Math.round(s.netPerDay)):''));
     });
   }else{
-    L.push('  · 아직 초기 투자금을 적은 부업이 없어요');
+    L.push('  · 아직 투자금이나 수익을 적은 부업이 없어요');
   }
   L.push('· 주식용 계좌 '+fmt(n(state.seed))+'원은 별도(자동매매 전용) · 부업 투자금에 포함하지 않아요');
 
@@ -2896,6 +3054,7 @@ function exportAll(){
   rows.push(['총 순수익',t.net]);
   rows.push(['총 초기 투자금',invT.initial]);
   rows.push(['총 회수금',invT.recovered]);
+  rows.push(['부업 총 순수익',invT.net]);
   rows.push(['부업 전체 수익률',invT.roi===null?'무자본':invT.roi.toFixed(1)+'%']);
   rows.push(['레벨','LV.'+levelInfo(state.quest.xp).lvl+' (XP '+n(state.quest.xp)+')']);
   rows.push(['연속 기록',n(state.quest.streak)+'일']);
@@ -2932,12 +3091,12 @@ function exportAll(){
   });
   rows.push([]);
   rows.push(['[부업 투자·회수]']);
-  rows.push(['부업','초기 투자금','회수금','수익률(%)','회수 상태','수익 기록 건','쓰레드·쿠팡 수익','메모']);
+  rows.push(['부업','시작일','경과일(D+)','초기 투자금','회수금','순수익','효율(%)','회수 상태','수익 기록 건','하루 평균 순수익','쓰레드·쿠팡 수익','메모']);
   state.categories.forEach(function(c){
     var s=invStats(c.id);
-    rows.push([s.name,n(s.initial),n(s.recovered),s.roi===null?'무자본':s.roi.toFixed(1),statusText(s),s.ledgerN,n(s.threadRec),s.memo||'']);
+    rows.push([s.name,s.start||'미입력',s.days===null?'':s.days,n(s.initial),n(s.recovered),n(s.net),s.roi===null?'무자본':s.roi.toFixed(1),statusText(s),s.ledgerN,s.span?Math.round(s.netPerDay):'',n(s.threadRec),s.memo||'']);
   });
-  rows.push(['합계',n(invT.initial),n(invT.recovered),invT.roi===null?'무자본':invT.roi.toFixed(1),'회수 완료 '+invT.done+'/'+invT.places+'곳','','','']);
+  rows.push(['합계','','',n(invT.initial),n(invT.recovered),n(invT.net),invT.roi===null?'무자본':invT.roi.toFixed(1),'회수 완료 '+invT.done+'/'+invT.places+'곳','','','','']);
   rows.push([]);
   rows.push(['[주식용 계좌 · 별도]',n(state.seed),'자동매매 전용 · 부업 투자금에 포함하지 않음']);
   downloadFile('1000만원_부업_기록_'+stamp()+'.csv',csv(rows),'text/csv;charset=utf-8');
@@ -2971,14 +3130,14 @@ function exportThreads(){
 }
 function exportInvest(){
   var T=invTotals();
-  var rows=[['부업','초기 투자금','회수금','수익률(%)','회수 상태','수익 기록 건','쓰레드·쿠팡 수익','메모']];
+  var rows=[['부업','시작일','경과일(D+)','초기 투자금','회수금','순수익','효율(%)','회수 상태','수익 기록 건','하루 평균 순수익','쓰레드·쿠팡 수익','메모']];
   state.categories.forEach(function(c){
     var s=invStats(c.id);
-    rows.push([s.name,n(s.initial),n(s.recovered),s.roi===null?'무자본':s.roi.toFixed(1),statusText(s),s.ledgerN,n(s.threadRec),s.memo||'']);
+    rows.push([s.name,s.start||'미입력',s.days===null?'':s.days,n(s.initial),n(s.recovered),n(s.net),s.roi===null?'무자본':s.roi.toFixed(1),statusText(s),s.ledgerN,s.span?Math.round(s.netPerDay):'',n(s.threadRec),s.memo||'']);
   });
-  rows.push(['합계',n(T.initial),n(T.recovered),T.roi===null?'무자본':T.roi.toFixed(1),'회수 완료 '+T.done+'/'+T.places+'곳','','','']);
+  rows.push(['합계','','',n(T.initial),n(T.recovered),n(T.net),T.roi===null?'무자본':T.roi.toFixed(1),'회수 완료 '+T.done+'/'+T.places+'곳','','','','']);
   rows.push([]);
-  rows.push(['주식용 계좌 (별도)',n(state.seed),'','','자동매매 전용 · 부업 투자금에 미포함','','','']);
+  rows.push(['주식용 계좌 (별도)','','',n(state.seed),'','','','자동매매 전용 · 부업 투자금에 미포함','','','','']);
   downloadFile('부업투자수익률_'+stamp()+'.csv',csv(rows),'text/csv;charset=utf-8');
 }
 function exportJSON(){
@@ -3056,6 +3215,14 @@ document.addEventListener('click',function(ev){
     case 'add-invest':openInvestSheet(null);break;
     case 'save-invest':saveInvest();break;
     case 'toggle-inv-all':invShowAll=!invShowAll;render(true);break;
+    case 'sort-inv':
+      state.invSort=el.getAttribute('data-sort')||'roi';
+      save();render(true);
+      break;
+    case 'set-invstart':
+      var si=$('#f-invstart');
+      if(si){si.value=el.getAttribute('data-date')||'';updateInvestPreview();}
+      break;
     case 'export-invest':exportInvest();break;
     case 'invest-add-record':
       var invCid=sheetCtx.id;
@@ -3168,6 +3335,8 @@ document.addEventListener('input',function(ev){
     var dv=t.value.replace(/[^\d]/g,'').slice(0,12);
     if(dv!==t.value)t.value=dv;
     updateInvestPreview();
+  }else if(t.id==='f-invstart'){
+    updateInvestPreview();
   }else if(t.id==='f-tclick'||t.id==='f-tbuy'||t.id==='f-trev'){
     var dt=t.value.replace(/[^\d]/g,'').slice(0,12);
     if(dt!==t.value)t.value=dt;
@@ -3226,6 +3395,9 @@ window.__bupsaeng={
   openInvestSheet:openInvestSheet,saveInvest:saveInvest,
   updateInvestPreview:updateInvestPreview,exportInvest:exportInvest,
   money:money,roiText:roiText,statusText:statusText,
+  won:won,signedWon:signedWon,investSorted:investSorted,invWhenHtml:invWhenHtml,
+  dayDiff:dayDiff,daysText:daysText,autoStartOf:autoStartOf,
+  setInvSort:function(m){state.invSort=m;save();},
   setInvestAll:function(v){invShowAll=!!v;},
   summary:buildSummary,
   version:VERSION,
