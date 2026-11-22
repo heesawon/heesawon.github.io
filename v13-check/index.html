@@ -2660,6 +2660,12 @@ function investNoteHtml(initial,recovered,ledgerN,threadRec){
   return base+'<br>'+tail;
 }
 function updateInvestPreview(){
+  var shint=$('#f-invstart-hint');
+  if(shint){
+    var sv=invDateStr(((($('#f-invstart')||{}).value)||'').trim());
+    shint.textContent=sv?('경과 '+daysText(sv)):'비워 두면 「미입력」으로 보여요';
+    shint.classList.toggle('on',!!sv);
+  }
   if(!sheetCtx||sheetCtx.type!=='invest'||!sheetCtx.id)return;
   var s=invStats(sheetCtx.id);
   var initial=Number(((($('#f-inv')||{}).value)||'').replace(/[^\d]/g,''))||0;
@@ -2695,12 +2701,6 @@ function updateInvestPreview(){
   var when=$('#invLiveWhen');
   if(when){
     when.innerHTML=invWhenHtml({start:invDateStr(((($('#f-invstart')||{}).value)||'').trim()),startSrc:'user',net:s.recovered-initial},{daily:true});
-  }
-  var shint=$('#f-invstart-hint');
-  if(shint){
-    var sv=invDateStr(((($('#f-invstart')||{}).value)||'').trim());
-    shint.textContent=sv?('경과 '+daysText(sv)):'비워 두면 「미입력」으로 보여요';
-    shint.classList.toggle('on',!!sv);
   }
 }
 function invHeroBig(s){
