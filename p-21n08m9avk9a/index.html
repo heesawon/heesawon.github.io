@@ -1020,7 +1020,7 @@ body.sheet-open{overflow:hidden}
       <div class="brand-title" id="brandTitle">오늘의 부업</div>
     </div>
     <button class="upd-btn" data-act="check-update" aria-label="앱 업데이트 확인" title="업데이트 확인">
-      <span class="upd-ic" aria-hidden="true">🔄</span><span class="upd-tx">업데이트</span><span class="upd-v" id="verBadge">v17</span>
+      <span class="upd-ic" aria-hidden="true">🔄</span><span class="upd-tx">업데이트</span><span class="upd-v" id="verBadge">v18</span>
     </button>
     <button class="icon-btn" data-act="settings" aria-label="설정 및 백업">
       <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
@@ -1080,7 +1080,7 @@ body.sheet-open{overflow:hidden}
    상수 · 기본 데이터 (엑셀 1000만원_부업_관리표 + 아침 부업 루틴)
    ============================================================ */
 var KEY='bupsaeng1000.v1';
-var VERSION=17;
+var VERSION=18;
 var CHALLENGE_START='2026-11-19';
 var CHALLENGE_GOAL=10000000;
 var LV_NAMES=['루키','러너','하슬러','크루','캡틴','마스터','레전드'];
@@ -1211,7 +1211,9 @@ var BASELINE={
     {id:'e45',date:'2026-11-23',type:'설문',name:'세종특별자치시교육청 2026 하반기 홍보 만족도 설문조사',prize:'신세계 상품권 5만원 3명·피자 10명·커피 100명 등 (113명)',announce:'2026-12-09',status:'응모 완료',url:'https://form.naver.com/response/3xmDyb8CL5p'},
     {id:'e46',date:'2026-11-23',type:'설문',name:'국립해양조사원 2026 누리집 만족도조사',prize:'햄버거 세트 기프티콘 (130명)',announce:'11/26 마감 후 공지',status:'응모 완료',url:'https://form.naver.com/response/87jxmoqZ8LA'},
     {id:'e47',date:'2026-11-23',type:'투표',name:'대덕구 2026 가장 기억에 남는 대덕구 이슈 5개 투표',prize:'치킨 기프티콘 2만원 (80명)',announce:'2026-12-08',status:'응모 완료',url:'https://form.naver.com/response/Cr4JxOzkF12'},
-    {id:'e48',date:'2026-11-23',type:'퀴즈',name:'상주시 제2회 2026 상주쌀 학력고사 [미소진품 탐구영역] (객관식 9+주관식 5)',prize:'상주쌀 미소진품 4kg (250명·고득점자순)',announce:'2026-12-07',status:'응모 완료',url:'https://form.naver.com/response/IzvcZwhQzUl'}
+    {id:'e48',date:'2026-11-23',type:'퀴즈',name:'상주시 제2회 2026 상주쌀 학력고사 [미소진품 탐구영역] (객관식 9+주관식 5)',prize:'상주쌀 미소진품 4kg (250명·고득점자순)',announce:'2026-12-07',status:'응모 완료',url:'https://form.naver.com/response/IzvcZwhQzUl'},
+    {id:'e49',date:'2026-11-24',type:'설문',name:'한국가스기술공사 2026 대국민 인지도 및 인식 조사',prize:'네이버페이 포인트 5,000원 (30명)',announce:'추후 별도 공지',status:'응모 완료',url:'https://form.naver.com/response/1NOwT9w1v0K'},
+    {id:'e50',date:'2026-11-24',type:'설문',name:'청년공간 유유기지 부평 2026 하반기 공간 이용 만족도 조사',prize:'음료 기프티콘 (30명)',announce:'2026-12-04',status:'응모 완료',url:'https://docs.google.com/forms/d/14ISh1SEOT-E0dcKBEqqj9ENCuu1dQ4nSExVkvai1aK8/viewform'}
   ]
 };
 
@@ -1532,6 +1534,10 @@ function migrate(s){
     if(!Array.isArray(s.deletedCats))s.deletedCats=[];
     if(!s.yt||typeof s.yt!=='object'||Array.isArray(s.yt))s.yt={subs:0,videos:0,hours:0,shorts:0,updatedAt:''};
     if(typeof s.yt.updatedAt!=='string')s.yt.updatedAt='';
+  }
+  /* v18: 새 응모 기록(e49·e50) 병합 — 기존 기록·수익 달력·삭제한 부업·유튜브 조건은 그대로 */
+  if(v<18){
+    if(!Array.isArray(s.events))s.events=[];
   }
   /* v16: 홈 단순화 · 상단 업데이트 버튼 — 저장 데이터 구조는 그대로 */
   s.categories=dropDeletedCats(s);
