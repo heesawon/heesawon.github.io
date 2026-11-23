@@ -890,7 +890,7 @@ body.sheet-open{overflow:hidden}
    상수 · 기본 데이터 (엑셀 1000만원_부업_관리표 + 아침 부업 루틴)
    ============================================================ */
 var KEY='bupsaeng1000.v1';
-var VERSION=14;
+var VERSION=15;
 var CHALLENGE_START='2026-11-19';
 var CHALLENGE_GOAL=10000000;
 var LV_NAMES=['루키','러너','하슬러','크루','캡틴','마스터','레전드'];
@@ -977,7 +977,7 @@ var BASELINE={
     {id:'e3',date:'2026-11-20',type:'퀴즈',name:'국회예산정책처 11월 재정 퀴즈',prize:'모바일 커피쿠폰',announce:'11/30 마감 후 추첨',status:'응모 완료',url:'https://nabo.go.kr/ko/fiscalQuiz/quiz.do?key=2507040020'},
     {id:'e4',date:'2026-11-19',type:'설문',name:'행정안전부 2026 공공 마이데이터 만족도 조사',prize:'모바일상품권 10,000원 (300명)',announce:'2026-11-25',status:'응모 완료',url:'https://forms.gle/nrbtWYPsfkAVjamN7'},
     {id:'e5',date:'2026-11-19',type:'설문',name:'국토안전관리원 2026 공공기관 인지도조사',prize:'모바일 기프티콘 2,000원 (2,000명)',announce:'개별 문자 안내',status:'응모 완료',url:'https://docs.google.com/forms/d/e/1FAIpQLSccXsjQVhJ2QcIni8qExKxnAhWPwmHj_ldjvDSm-RMd26UBfw/viewform'},
-    {id:'e6',date:'2026-11-19',type:'예측',name:'GCF 이스포츠리그 2026 승부예측',prize:'메가커피 아메리카노 (100명)',announce:'2026-11-22',status:'응모 완료',url:'https://forms.gle/ST32uMrNYZyL9qSf9'},
+    {id:'e6',date:'2026-11-19',type:'예측',name:'GCF 이스포츠리그 2026 승부예측',prize:'메가커피 아메리카노 (100명)',announce:'2026-11-22',status:'미당첨',url:'https://forms.gle/ST32uMrNYZyL9qSf9'},
     {id:'e7',date:'2026-11-20',type:'설문',name:'2026 인천 남동구 청년꿈터 설문조사',prize:'기프티콘 5,000원',announce:'개별 안내',status:'응모 완료',url:'https://forms.gle/jwsCGyyCdfec8MHZ7'},
     {id:'e8',date:'2026-11-20',type:'퀴즈',name:'한국전력 「전력을 다해 맞혀라!」 전력퀴즈',prize:'투썸플레이스 아메리카노 (100명)',announce:'2026-12-07',status:'응모 완료',url:'https://kepcoquiz.kr/'},
     {id:'e9',date:'2026-11-20',type:'퀴즈',name:'강남구청 강남라이프 11월호 가로세로 낱말 퀴즈',prize:'20명 추첨 (경품 미표기)',announce:'2026-12-01 이후',status:'응모 완료',url:'https://www.gangnam.go.kr/gangnamlife/2026/html/vol375/sub02_06.html'},
@@ -1289,6 +1289,12 @@ function migrate(s){
       if(!r13.start&&!r13.startSrc&&seedStart[c.id]){r13.start=seedStart[c.id];r13.startSrc='est';}
     });
     if(typeof s.invSort!=='string'||!s.invSort)s.invSort='roi';
+  }
+  /* v15: GCF 이스포츠리그 2026 승부예측 결과 반영 — 발표(2026-11-22) 후 개별 연락·기프티콘 없음 → 미당첨(2026-11-23 확인) */
+  if(v<15){
+    s.events.forEach(function(e){
+      if(e&&e.id==='e6'&&e.status==='응모 완료')e.status='미당첨';
+    });
   }
   if(!Array.isArray(s.threads))s.threads=[];
   else s.threads=s.threads.map(function(t,i){
