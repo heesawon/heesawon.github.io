@@ -3272,7 +3272,7 @@ function openInvestSheet(id){
       body+='<p class="hint-line" style="padding-top:0;margin-bottom:10px">아직 수익 기록이 없어요.</p>';
     }
     body+='<button class="btn-line solid" style="width:100%" data-act="invest-add-record">＋ 이 부업 수익 기록 추가</button>';
-    body+='<button class="btn-danger" data-act="ask-del-invest">이 부업 삭제</button>';
+    body+='<button class="btn-danger" data-act="ask-del-invest" data-id="'+esc(s.cid)+'">이 부업 삭제</button>';
   }
   openSheet({
     title:isNew?'부업 추가':(s.name+' · 투자'),
@@ -3315,6 +3315,7 @@ function saveInvest(keepOpen){
 
 /* ---------- 부업 삭제 (v17) ---------- */
 function confirmDelInvest(id){
+  if(!id)return;
   var s=invStats(id);
   var recs=state.ledger.filter(function(e){return e.cat===id;});
   sheetCtx={type:'delcat',id:id};
