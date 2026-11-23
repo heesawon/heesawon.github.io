@@ -603,7 +603,7 @@ body.sheet-open .fab{opacity:0;pointer-events:none;transform:scale(.8)}
 .tabbar{
   position:fixed;left:0;right:0;bottom:0;z-index:50;
   height:calc(var(--tabh) + var(--safe-b));padding-bottom:var(--safe-b);
-  display:grid;grid-template-columns:repeat(5,minmax(0,1fr));
+  display:grid;grid-template-columns:repeat(6,minmax(0,1fr));
   background:rgba(247,245,240,.94);
   -webkit-backdrop-filter:blur(20px) saturate(160%);
   backdrop-filter:blur(20px) saturate(160%);
@@ -611,7 +611,7 @@ body.sheet-open .fab{opacity:0;pointer-events:none;transform:scale(.8)}
 }
 .tab{
   position:relative;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;
-  color:var(--ink-3);font-size:9px;font-weight:850;letter-spacing:-.02em;height:100%;
+  color:var(--ink-3);font-size:8.5px;font-weight:850;letter-spacing:-.03em;height:100%;
   transition:color .15s,transform .12s;min-width:0;
 }
 .tab:active{transform:scale(.94)}
@@ -883,6 +883,107 @@ body.sheet-open{overflow:hidden}
 .irec>span{flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 .irec b{flex:0 0 auto;font-size:11.5px;font-weight:850;color:var(--up)}
 
+/* ---------------- 수익 달력 (v17) ---------------- */
+.cal{
+  margin-top:14px;background:var(--paper-2);border:1px solid var(--line);border-radius:var(--r);
+  padding:11px 9px 11px;max-width:100%;box-shadow:0 1px 2px rgba(20,20,19,.03);
+}
+.cal-top{display:flex;align-items:center;justify-content:space-between;gap:8px;padding:0 2px 9px}
+.cal-m{display:flex;align-items:baseline;gap:5px;min-width:0}
+.cal-m b{font-size:15.5px;font-weight:900;letter-spacing:-.045em;white-space:nowrap;line-height:1.1}
+.cal-m span{font-size:9.5px;font-weight:800;color:var(--ink-3);letter-spacing:-.01em;white-space:nowrap}
+.cal-nav{display:flex;align-items:center;gap:4px;flex:0 0 auto}
+.cal-nav button{
+  width:30px;height:30px;border-radius:50%;display:grid;place-items:center;
+  border:1px solid var(--line);background:var(--paper);color:var(--ink-2);
+  font-size:15px;font-weight:900;line-height:1;
+}
+.cal-nav button:active{background:rgba(20,20,19,.06)}
+.cal-nav button.cal-today{width:auto;padding:0 9px;border-radius:99px;font-size:9.5px;font-weight:900;letter-spacing:-.01em}
+.cal-dow{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:3px;padding:2px 0 5px}
+.cal-dow span{text-align:center;font-size:8px;font-weight:900;letter-spacing:.06em;color:var(--ink-3)}
+.cal-dow span:first-child{color:var(--down)}
+.cal-grid{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:3px}
+.cal-c{
+  position:relative;min-height:47px;padding:4px 1px 3px;border-radius:3px;
+  border:1px solid transparent;background:rgba(20,20,19,.022);
+  display:flex;flex-direction:column;align-items:center;gap:1px;
+  overflow:hidden;min-width:0;transition:background .12s;
+}
+.cal-c:active{background:rgba(20,20,19,.07)}
+.cal-c.out{background:transparent;pointer-events:none}
+.cal-c .cd{font-size:10px;font-weight:850;line-height:1.15;letter-spacing:-.02em;color:var(--ink)}
+.cal-c.sun .cd{color:var(--down)}
+.cal-c.today{border-color:var(--ink);background:var(--paper)}
+.cal-c.sel{background:var(--ink);border-color:var(--ink)}
+.cal-c.sel .cd,.cal-c.sel .cr,.cal-c.sel .ce{color:var(--paper)!important}
+.cal-c .cr,.cal-c .ce{
+  font-size:7.5px;font-weight:900;letter-spacing:-.04em;line-height:1.2;
+  white-space:nowrap;width:100%;overflow:hidden;text-align:center;
+}
+.cal-c .cr{color:var(--up)}
+.cal-c .ce{color:var(--down)}
+.cal-sum{
+  display:grid;grid-template-columns:repeat(3,minmax(0,1fr));
+  margin-top:11px;padding-top:10px;border-top:1px solid var(--line-2);
+}
+.cal-sum>div{min-width:0;padding:0 8px}
+.cal-sum>div:first-child{padding-left:2px}
+.cal-sum>div+div{border-left:1px solid var(--line-2)}
+.cal-sum span{display:block;font-size:7.5px;font-weight:900;letter-spacing:.08em;color:var(--ink-3);line-height:1.2}
+.cal-sum b{display:block;margin-top:3px;font-size:11.5px;font-weight:850;letter-spacing:-.035em;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.cal-sum b.up{color:var(--up)} .cal-sum b.down{color:var(--down)}
+.cal-day{margin-top:16px}
+.cal-day-h{display:flex;align-items:baseline;gap:8px;padding:0 2px 7px;border-bottom:1.5px solid var(--ink)}
+.cal-day-h b{font-size:12px;font-weight:900;letter-spacing:-.03em;white-space:nowrap}
+.cal-day-h b i{font-style:normal;font-weight:750;font-size:10px;color:var(--ink-3);margin-left:4px}
+.cal-day-h span{flex:1;min-width:0;font-size:10.5px;font-weight:850;color:var(--ink-3);letter-spacing:-.02em}
+.cal-day-h span.up{color:var(--up)} .cal-day-h span.down{color:var(--down)}
+.cal-day-h .cal-add{flex:0 0 auto;font-size:10px;font-weight:900;color:var(--accent);padding:2px 0 2px 8px;letter-spacing:-.02em}
+.cal-empty{padding:20px 14px;text-align:center;font-size:11px;font-weight:700;color:var(--ink-3);line-height:1.55}
+
+/* ---------------- 유튜브 수익창출 (v17) ---------------- */
+.yt-fields{display:grid;grid-template-columns:repeat(2,minmax(0,1fr))}
+.yt-fields .field{border-top:1px solid var(--line-2);padding:9px 12px 10px;min-width:0}
+.yt-fields .field:nth-child(-n+2){border-top:0}
+.yt-fields .field:nth-child(2n){border-left:1px solid var(--line-2)}
+.yt-fields .field input{font-size:15px;font-weight:750;min-width:0}
+.yt-fields .field>label{letter-spacing:.06em;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.yt-stage{
+  margin-top:10px;background:var(--paper-2);border:1px solid var(--line);border-radius:var(--r);
+  padding:12px 13px 13px;max-width:100%;box-shadow:0 1px 2px rgba(20,20,19,.03);
+}
+.yt-stage.done{border-color:rgba(14,107,65,.3)}
+.yt-h{display:flex;align-items:center;gap:7px;min-width:0}
+.yt-no{
+  flex:0 0 auto;font-size:8.5px;font-weight:900;letter-spacing:.06em;
+  color:var(--accent);background:var(--accent-soft);padding:3px 6px;border-radius:3px;line-height:1.3;
+}
+.yt-stage.done .yt-no{color:var(--up);background:rgba(14,107,65,.11)}
+.yt-t{flex:1;min-width:0;font-size:12.5px;font-weight:900;letter-spacing:-.03em;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.yt-t em{font-style:normal;font-weight:700;font-size:10px;color:var(--ink-3);margin-left:3px}
+.yt-pct{flex:0 0 auto;font-size:11px;font-weight:900;color:var(--ink-3);letter-spacing:-.02em;white-space:nowrap}
+.yt-stage.done .yt-pct{color:var(--up)}
+.yt-stage .bar{margin-top:9px}
+.yr{margin-top:9px}
+.yr-top{display:flex;align-items:baseline;justify-content:space-between;gap:8px;min-width:0}
+.yr-top>span{font-size:10px;font-weight:800;color:var(--ink-2);letter-spacing:-.01em;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.yr-top>b{flex:0 0 auto;font-size:11px;font-weight:900;letter-spacing:-.02em;white-space:nowrap}
+.yr-top>b em{font-style:normal;font-weight:700;color:var(--ink-3);font-size:9.5px}
+.yr-bar{height:3px;border-radius:99px;background:rgba(20,20,19,.08);margin-top:4px;overflow:hidden}
+.yr-bar i{display:block;height:100%;border-radius:99px;background:var(--accent);transition:width .45s cubic-bezier(.32,.72,0,1)}
+.yr.ok .yr-bar i{background:var(--up)}
+.yr.ok .yr-top>b{color:var(--up)}
+.yt-or{display:flex;align-items:center;gap:7px;margin:10px 0 -1px;font-size:8px;font-weight:900;letter-spacing:.12em;color:var(--ink-3)}
+.yt-or::before,.yt-or::after{content:"";flex:1;height:1px;background:var(--line-2)}
+.yt-need{
+  margin-top:11px;padding:9px 10px;border-radius:3px;background:rgba(232,74,39,.055);
+  font-size:10.5px;font-weight:750;line-height:1.5;color:var(--ink-2);letter-spacing:-.01em;
+}
+.yt-need b{color:var(--accent);font-weight:900}
+.yt-need.ok{background:rgba(14,107,65,.075);color:var(--up)}
+.yt-need.ok b{color:var(--up)}
+
 /* ---------------- toast ---------------- */
 .toast{
   position:fixed;left:50%;transform:translate(-50%,14px);
@@ -919,7 +1020,7 @@ body.sheet-open{overflow:hidden}
       <div class="brand-title" id="brandTitle">오늘의 부업</div>
     </div>
     <button class="upd-btn" data-act="check-update" aria-label="앱 업데이트 확인" title="업데이트 확인">
-      <span class="upd-ic" aria-hidden="true">🔄</span><span class="upd-tx">업데이트</span><span class="upd-v" id="verBadge">v16</span>
+      <span class="upd-ic" aria-hidden="true">🔄</span><span class="upd-tx">업데이트</span><span class="upd-v" id="verBadge">v17</span>
     </button>
     <button class="icon-btn" data-act="settings" aria-label="설정 및 백업">
       <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
@@ -934,7 +1035,7 @@ body.sheet-open{overflow:hidden}
 <div class="note store" id="storeNote" role="status" hidden></div>
 <div id="view"><div class="note tip" role="note"><span class="note-ic" aria-hidden="true">↑</span><span><b>지금은 미리보기 화면이에요</b><span class="note-sub">공유(↑) → Safari로 열면 터치·기록·저장이 모두 작동해요</span></span></div>
 <section class="cover"><div class="cover-meta"><span>VOL.01</span><span class="csep">/</span><span class="cmid">2026. 11. 20 (금)</span><span class="cday">DAY 02</span></div><div class="cover-kicker"><span>이번 달 번 금액</span><em>This month</em></div><div class="cover-amount"><span class="won">₩</span><span class="num" id="coverNum">0</span></div><div class="cover-under"><span>누적 순수익 <b>0원</b></span><i></i><span>기록 0건</span></div><div class="cover-stats"><div class="cs"><span class="cs-l">부업 투자금</span><b class="cs-v">₩0</b></div><div class="cs"><span class="cs-l">이번 달 지출</span><b class="cs-v">₩0</b></div><div class="cs"><span class="cs-l">이번 달 순수익</span><b class="cs-v">0</b></div><div class="cs"><span class="cs-l">목표 달성률</span><b class="cs-v">0.0%</b><span class="cs-l" style="margin-top:3px;opacity:.75">수익 목표 ₩1,000만</span></div></div><div class="cover-quest"><span class="lv">LV.1</span><span class="lvname">루키</span><span class="cq-bar"><i id="xpFill" style="width: 0%;"></i></span><span class="cq-xp">0 / 100 XP</span><span class="cq-streak">🔥 0일</span></div></section><section class="sec"><div class="sec-head"><div class="sh-l"><span class="sh-no">01</span><div class="sh-t">오늘의 퀘스트</div></div><div class="sh-meta"><b>0</b>/5 · 0 XP</div></div><div class="qprog"><i id="qFill" style="width: 0%;"></i></div><div class="list"><div class="q" data-id="q1" data-q="q1" role="button" tabindex="-1" aria-pressed="false" aria-disabled="true"><span class="q-box"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.6l4.4 4.4L19 7.4"></path></svg></span><span class="q-main"><span class="q-t"><span class="q-e">🧵</span>쓰레드 1글 올리기</span><span class="q-s"><span class="q-tag" style="background:#E0F0F2;color:#1F6470">쓰레드</span>셔틀 2시간 중 5분 · 후추 추천 글 고르기</span></span><span class="q-xp">+20</span></div><div class="q" data-id="q2" data-q="q2" role="button" tabindex="-1" aria-pressed="false" aria-disabled="true"><span class="q-box"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.6l4.4 4.4L19 7.4"></path></svg></span><span class="q-main"><span class="q-t"><span class="q-e">💬</span>댓글·대댓글 3개 달기</span><span class="q-s"><span class="q-tag" style="background:#E0F0F2;color:#1F6470">쓰레드</span>첫 댓글 쿠팡링크 + 소통 3개</span></span><span class="q-xp">+15</span></div><div class="q" data-id="q3" data-q="q3" role="button" tabindex="-1" aria-pressed="false" aria-disabled="true"><span class="q-box"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.6l4.4 4.4L19 7.4"></path></svg></span><span class="q-main"><span class="q-t"><span class="q-e">🎁</span>퀴즈·설문 당첨 확인</span><span class="q-s"><span class="q-tag" style="background:#E8E3FA;color:#5B44A6">앱테크</span>아침·저녁 알림 1분 체크</span></span><span class="q-xp">+10</span></div><div class="q" data-id="q4" data-q="q4" role="button" tabindex="-1" aria-pressed="false" aria-disabled="true"><span class="q-box"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.6l4.4 4.4L19 7.4"></path></svg></span><span class="q-main"><span class="q-t"><span class="q-e">👜</span>리셀·공구 아이템 1개 보기</span><span class="q-s"><span class="q-tag" style="background:#FCE4D6;color:#8A4B2A">리셀·공구</span>당근 시세 또는 소싱 10분</span></span><span class="q-xp">+15</span></div><div class="q" data-id="q5" data-q="q5" role="button" tabindex="-1" aria-pressed="false" aria-disabled="true"><span class="q-box"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.6l4.4 4.4L19 7.4"></path></svg></span><span class="q-main"><span class="q-t"><span class="q-e">✍️</span>오늘 부업 기록 1줄 남기기</span><span class="q-s"><span class="q-tag" style="background:#EDEDED;color:#5A5A5E">기록</span>수익·지출 0원이라도 체크하기</span></span><span class="q-xp">+10</span></div></div><div class="q-actions"><button class="btn-line solid" tabindex="-1" aria-disabled="true">＋ 퀘스트 추가</button><button class="btn-line" tabindex="-1" aria-disabled="true">새 하루 시작</button></div></section><div class="stock-card"><span class="stock-badge">별도</span><span class="stock-main"><b>주식용 계좌</b><small>자동매매 웹앱에서 관리 · 부업 투자금과 합산하지 않아요</small></span><span class="stock-amt">₩1,000만</span></div><section class="portal" aria-label="작업실 바로가기"><div class="portal-head"><span class="portal-kick">Workspace</span><span class="portal-h">작업실</span></div><div class="portal-grid"><a class="portal-card" href="https://heesawon.github.io/q-5k8m3p7x/" target="_blank" rel="noopener noreferrer" data-stop="1"><span class="portal-top"><span class="portal-e" aria-hidden="true">📈</span><span class="portal-ar" aria-hidden="true">↗</span></span><span class="portal-t">주식 자동매매</span><span class="portal-s">계좌·룰 관리</span></a><a class="portal-card" href="https://heesawon.github.io/s-9m4k7p2x/" target="_blank" rel="noopener noreferrer" data-stop="1"><span class="portal-top"><span class="portal-e" aria-hidden="true">🎨</span><span class="portal-ar" aria-hidden="true">↗</span></span><span class="portal-t">부다차차 스튜디오</span><span class="portal-s">인스타툰 제작</span></a><a class="portal-card" href="https://heesawon.github.io/n-7t3v9q2k/" target="_blank" rel="noopener noreferrer" data-stop="1"><span class="portal-top"><span class="portal-e" aria-hidden="true">🎵</span><span class="portal-ar" aria-hidden="true">↗</span></span><span class="portal-t">AI 플리 스튜디오</span><span class="portal-s">플리·썸네일</span></a></div></section><section class="sec"><div class="sec-head"><div class="sh-l"><span class="sh-no">01</span><div class="sh-t">부업 투자 · 회수</div></div><button class="sec-link" tabindex="-1" aria-disabled="true">수익률 CSV →</button></div><div class="empty" style="border:1px solid var(--line);background:var(--paper-2);border-radius:3px"><div class="empty-ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><path d="M4 19V9M10 19V5M16 19v-6M22 19H2"></path></svg></div><p>아직 부업별 기록이 없어요</p><span>Safari에서 열면 부업마다 시작일·투자금을 적고<br>회수율과 하루 효율을 볼 수 있어요</span><button class="btn-soft" tabindex="-1" aria-disabled="true">기록 추가</button></div></section>
-<p class="foot-note">수익·지출 · 체크리스트 · 응모·당첨 · 부업 투자 탭은 Safari에서 열면 채워져요.</p></div>
+<p class="foot-note">수익·지출(달력) · 유튜브 수익창출 · 체크리스트 · 응모·당첨 · 부업 투자 탭은 Safari에서 열면 채워져요.</p></div>
 </main>
 
 <button class="fab" id="fab" data-act="fab" aria-label="추가">
@@ -949,6 +1050,10 @@ body.sheet-open{overflow:hidden}
   <button class="tab" data-act="tab" data-tab="ledger" aria-label="수익·지출">
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4 6.5h16M4 12h16M4 17.5h9"/></svg>
     <span>수익·지출</span>
+  </button>
+  <button class="tab" data-act="tab" data-tab="yt" aria-label="유튜브 수익창출">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="2.6" y="5.4" width="18.8" height="13.2" rx="4"/><path d="M10.4 9.6l4.8 2.4-4.8 2.4z"/></svg>
+    <span>유튜브</span>
   </button>
   <button class="tab" data-act="tab" data-tab="check" aria-label="체크리스트">
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8.6"/><path d="M8.4 12.2l2.5 2.5 4.7-4.9"/></svg>
@@ -975,7 +1080,7 @@ body.sheet-open{overflow:hidden}
    상수 · 기본 데이터 (엑셀 1000만원_부업_관리표 + 아침 부업 루틴)
    ============================================================ */
 var KEY='bupsaeng1000.v1';
-var VERSION=16;
+var VERSION=17;
 var CHALLENGE_START='2026-11-19';
 var CHALLENGE_GOAL=10000000;
 var LV_NAMES=['루키','러너','하슬러','크루','캡틴','마스터','레전드'];
@@ -1056,6 +1161,8 @@ var BASELINE={
     {id:'k18',group:'경매·강의',text:'강의·클래스 개설 플랫폼 후보 비교하기',memo:'수수료·정산 조건 비교',done:false}
   ],
   threads:[],
+  deletedCats:[],       /* v17: 삭제한 부업 — 기본 데이터로 다시 살아나지 않게 기록 */
+  yt:{subs:0,videos:0,hours:0,shorts:0,updatedAt:''},  /* v17: 유튜브 수익창출 조건 현재 수치 */
   events:[
     {id:'e1',date:'2026-11-19',type:'퀴즈',name:'용산구청 11월 음주폐해 예방의 달 OX 퀴즈',prize:'편의점 모바일상품권 5,000원 (200명)',announce:'2026-11-27',status:'응모 완료',url:'https://naver.me/I5wql1zx'},
     {id:'e2',date:'2026-11-20',type:'퀴즈',name:'국립한글박물관 한박웃음 11월호 맞춤법 퀴즈',prize:'메가MGC커피 3,000원 (20명)',announce:'11/30 마감 후 개별연락',status:'응모 완료',url:'https://www.hangeul.go.kr/webzine/202611/sub3_2.html'},
@@ -1237,11 +1344,30 @@ function showStoreNote(){
 var state=null;
 var uiTab='home';
 var invShowAll=false;
-var filter={cat:'all',type:'all',scope:'month',thScope:'month'};
+var filter={cat:'all',type:'all',scope:'month',thScope:'month',ledScope:'cal'};
+var calMonth='';        /* v17: 달력에서 보고 있는 달 (YYYY-MM) */
+var calSel='';          /* v17: 달력에서 고른 날짜 (YYYY-MM-DD) */
+var ytSaveTimer=null;
 var sheetCtx={type:null,id:null,cat:null,color:0,emoji:'✦',xp:20};
 var anim={amount:-1};
 var pendingPop=null;
 var toastTimer=null;
+
+/* v17: 삭제한 부업을 기억해 두고 기본 데이터가 다시 살리지 않게 한다 */
+function catDeleted(s,id,name){
+  var L=(s&&s.deletedCats)||[];
+  for(var i=0;i<L.length;i++){
+    var t=L[i];
+    if(!t)continue;
+    if(id&&t.id&&t.id===id)return true;
+    if(name&&t.name&&t.name===name)return true;
+  }
+  return false;
+}
+function dropDeletedCats(s){
+  if(!Array.isArray(s.categories))return [];
+  return s.categories.filter(function(c){return c&&c.id&&!catDeleted(s,c.id,c.name);});
+}
 
 function freshQuest(){
   return {
@@ -1275,6 +1401,7 @@ function load(){
     s.seed=n(p.seed)||BASELINE.seed;
     if(!s.challengeStart)s.challengeStart=CHALLENGE_START;
     migrate(s);
+    s.categories=dropDeletedCats(s);
     return s;
   }catch(e){return base;}
 }
@@ -1282,6 +1409,7 @@ function load(){
 /* v1/v2 저장 데이터 -> v3 (기존 기록은 그대로 두고 새 구조만 채움) */
 function migrate(s){
   var v=n(s.version);
+  if(!Array.isArray(s.deletedCats))s.deletedCats=[];
   if(v<VERSION){
     var have={};
     s.events.forEach(function(e){if(e&&e.id)have[e.id]=1;});
@@ -1345,6 +1473,7 @@ function migrate(s){
     }
     [{id:'c9',name:'인스타툰',bg:'#F3E8F7',fg:'#7A3F8F'},
      {id:'c10',name:'AI 플레이리스트',bg:'#E4F3E8',fg:'#2F6B4F'}].forEach(function(d){
+      if(catDeleted(s,d.id,d.name))return;   /* v17: 사용자가 삭제한 부업은 다시 넣지 않는다 */
       var has=false;
       s.categories.forEach(function(c){if(c&&c.name===d.name)has=true;});
       if(!has)s.categories.push(deep(d));
@@ -1398,7 +1527,14 @@ function migrate(s){
       updatedAt:t.updatedAt||''
     };
   });
+  /* v17: 부업 삭제 기록 · 유튜브 수익창출 조건 — 기존 기록·금액은 그대로 */
+  if(v<17){
+    if(!Array.isArray(s.deletedCats))s.deletedCats=[];
+    if(!s.yt||typeof s.yt!=='object'||Array.isArray(s.yt))s.yt={subs:0,videos:0,hours:0,shorts:0,updatedAt:''};
+    if(typeof s.yt.updatedAt!=='string')s.yt.updatedAt='';
+  }
   /* v16: 홈 단순화 · 상단 업데이트 버튼 — 저장 데이터 구조는 그대로 */
+  s.categories=dropDeletedCats(s);
   s.version=VERSION;
   return s;
 }
@@ -1638,7 +1774,7 @@ function rolloverIfNeeded(){
 }
 
 /* ============================ 렌더 ============================ */
-var TAB_TITLES={home:'오늘의 부업',ledger:'수익 · 지출',check:'체크리스트',events:'응모 · 당첨',threads:'쓰레드 · 쿠팡'};
+var TAB_TITLES={home:'오늘의 부업',ledger:'수익 · 지출',yt:'유튜브 수익창출',check:'체크리스트',events:'응모 · 당첨',threads:'쓰레드 · 쿠팡'};
 
 function render(keepScroll){
   var y=window.scrollY||0;
@@ -1651,7 +1787,7 @@ function render(keepScroll){
   var bt=$('#brandTitle');
   if(bt)bt.textContent=TAB_TITLES[v]||'부업 챌린지';
   var fb=$('#fab');
-  if(fb)fb.style.display=(v==='home')?'none':'';
+  if(fb)fb.style.display=(v==='home'||v==='yt')?'none':'';
   postRender(v);
   if(keepScroll)window.scrollTo(0,y);
   else window.scrollTo(0,0);
@@ -1961,6 +2097,100 @@ function ledgerRow(e){
 }
 
 /* ============================ 수익·지출 ============================ */
+/* v17: 달력 보기 — 날짜별 수익·지출을 한눈에 */
+function trimNum(v){return String(v>=100?Math.round(v):Math.round(v*10)/10);}
+function calAmt(v){
+  var x=Math.abs(n(v));
+  if(!x)return '';
+  if(x>=1e8)return trimNum(x/1e8)+'억';
+  if(x>=1e4)return trimNum(x/1e4)+'만';
+  if(x>=1000)return trimNum(x/1000)+'천';
+  return fmt(x);
+}
+function calMonthOf(){
+  if(!/^\d{4}-\d{2}$/.test(String(calMonth)))calMonth=curMonth();
+  return calMonth;
+}
+function calMove(delta){
+  var mk=calMonthOf(),d=parseISO(mk+'-01')||new Date();
+  var nd=new Date(d.getFullYear(),d.getMonth()+delta,1);
+  calMonth=nd.getFullYear()+'-'+p2(nd.getMonth()+1);
+  if(calSel&&calSel.slice(0,7)!==calMonth)calSel='';
+  render(true);
+}
+function calPick(iso){
+  var m=invDateStr(iso);
+  if(!m)return;
+  calSel=(calSel===m?'':m);
+  calMonth=m.slice(0,7);
+  render(true);
+}
+function calDayMap(mk){
+  var map={};
+  state.ledger.forEach(function(e){
+    var ds=String(e.date||'').slice(0,10);
+    if(ds.slice(0,7)!==mk)return;
+    if(!map[ds])map[ds]={rev:0,exp:0,n:0};
+    map[ds].rev+=n(e.revenue);map[ds].exp+=n(e.expense);map[ds].n++;
+  });
+  return map;
+}
+function calDayPart(){
+  if(!calSel)return '';
+  var list=state.ledger.filter(function(e){return String(e.date||'').slice(0,10)===calSel;}).sort(sortLedger);
+  var rv=0,ex=0;
+  list.forEach(function(e){rv+=n(e.revenue);ex+=n(e.expense);});
+  var d=parseISO(calSel)||new Date();
+  var net=rv-ex;
+  return '<div class="cal-day">'+
+    '<div class="cal-day-h"><b>'+shortDate(calSel)+'<i>'+WD[d.getDay()]+'</i></b>'+
+      '<span class="'+(list.length?(net>0?'up':(net<0?'down':'')):'')+'" style="'+(list.length?'':'color:var(--ink-3)')+'">'+
+        (list.length?signed(net)+'원':'기록 없음')+'</span>'+
+      '<button class="cal-add" data-act="add-record-on" data-date="'+calSel+'">＋ 기록</button></div>'+
+    (list.length?'<div class="list">'+list.map(ledgerRow).join('')+'</div>'
+      :'<div class="cal-empty">이 날은 기록이 없어요.<br>「＋ 기록」으로 수익이나 지출을 남길 수 있어요.</div>')+
+  '</div>';
+}
+function calendarBlock(){
+  var mk=calMonthOf();
+  var d0=parseISO(mk+'-01')||new Date();
+  var y=d0.getFullYear(),mo=d0.getMonth();
+  var lastD=new Date(y,mo+1,0).getDate();
+  var lead=new Date(y,mo,1).getDay();
+  var map=calDayMap(mk),mt=monthTotals(mk),tiso=todayISO();
+  var html='<div class="cal">'+
+    '<div class="cal-top"><div class="cal-m"><b>'+y+'. '+p2(mo+1)+'</b><span>'+mt.count+'건 기록</span></div>'+
+      '<div class="cal-nav">'+
+        '<button data-act="cal-move" data-dir="-1" aria-label="이전 달">‹</button>'+
+        '<button class="cal-today" data-act="cal-today">이번 달</button>'+
+        '<button data-act="cal-move" data-dir="1" aria-label="다음 달">›</button>'+
+      '</div></div>'+
+    '<div class="cal-dow">'+['일','월','화','수','목','금','토'].map(function(w){return '<span>'+w+'</span>';}).join('')+'</div>'+
+    '<div class="cal-grid">';
+  for(var i=0;i<lead;i++)html+='<span class="cal-c out" aria-hidden="true"></span>';
+  for(var dd=1;dd<=lastD;dd++){
+    var iso=y+'-'+p2(mo+1)+'-'+p2(dd);
+    var rec=map[iso];
+    var dow=new Date(y,mo,dd).getDay();
+    var cls='cal-c'+(iso===tiso?' today':'')+(iso===calSel?' sel':'')+(dow===0?' sun':'');
+    html+='<button class="'+cls+'" data-act="cal-pick" data-date="'+iso+'" aria-label="'+esc(niceDate(iso))+' 기록 보기">'+
+      '<span class="cd">'+dd+'</span>'+
+      (rec&&rec.rev?'<span class="cr">+'+calAmt(rec.rev)+'</span>':'')+
+      (rec&&rec.exp?'<span class="ce">−'+calAmt(rec.exp)+'</span>':'')+
+    '</button>';
+  }
+  html+='</div>';
+  html+='<div class="cal-sum">'+
+    '<div><span>이 달 수익</span><b class="'+(mt.rev>0?'up':'')+'">'+(mt.rev>0?'+'+compact(mt.rev):'0')+'</b></div>'+
+    '<div><span>이 달 지출</span><b class="'+(mt.exp>0?'down':'')+'">'+(mt.exp>0?'−'+compact(mt.exp):'0')+'</b></div>'+
+    '<div><span>이 달 순수익</span><b class="'+(mt.net>0?'up':(mt.net<0?'down':''))+'">'+signedWon(mt.net)+'</b></div>'+
+  '</div>'+
+  '</div>';
+  html+=calDayPart();
+  if(!calSel)html+='<p class="hint-line" style="text-align:center">날짜를 탭하면 그날 수익·지출이 아래에 보여요.</p>';
+  return html;
+}
+
 function viewLedger(){
   var base=state.ledger.filter(function(e){return filter.cat==='all'||e.cat===filter.cat;});
   var list=(filter.scope==='month'?base.filter(function(e){return monthOf(e)===curMonth();}):base).slice().sort(sortLedger);
@@ -1978,6 +2208,16 @@ function viewLedger(){
     '<div><span>이번 달 지출</span><b class="'+(mt.exp>0?'down':'')+'">'+(mt.exp>0?'−'+fmt(mt.exp):'0')+'</b></div>'+
   '</div>';
   html+='</section>';
+
+  html+='<div class="seg">'+
+    '<button class="'+(filter.ledScope==='list'?'':'on')+'" data-act="led-scope" data-scope="cal">📅 달력</button>'+
+    '<button class="'+(filter.ledScope==='list'?'on':'')+'" data-act="led-scope" data-scope="list">☰ 목록</button>'+
+  '</div>';
+
+  if(filter.ledScope!=='list'){
+    html+=calendarBlock();
+    return html;
+  }
 
   html+='<div class="seg">'+
     '<button class="'+(filter.scope==='month'?'on':'')+'" data-act="filter-scope" data-scope="month">이번 달 '+mt.count+'</button>'+
@@ -2264,7 +2504,126 @@ function viewThreads(){
   return html;
 }
 
-var VIEWS={home:viewHome,ledger:viewLedger,check:viewCheck,events:viewEvents,threads:viewThreads};
+/* ============================ 유튜브 수익창출 (v17) ============================ */
+/* 유튜브 파트너 프로그램(YPP) 1단계(팬 후원) · 2단계(광고 수익) 최소 조건 */
+var YT_STAGE1={subs:500,videos:3,hours:3000,shorts:3000000};
+var YT_STAGE2={subs:1000,videos:0,hours:4000,shorts:10000000};
+function ytOf(){
+  if(!state.yt||typeof state.yt!=='object'||Array.isArray(state.yt))state.yt={};
+  var y=state.yt;
+  y.subs=Math.max(0,Math.round(n(y.subs)));
+  y.videos=Math.max(0,Math.round(n(y.videos)));
+  y.hours=Math.max(0,Math.round(n(y.hours)));
+  y.shorts=Math.max(0,Math.round(n(y.shorts)));
+  if(typeof y.updatedAt!=='string')y.updatedAt='';
+  return y;
+}
+/* 단계 전체 진행률: 구독자 · 공개영상(AND) + 시청시간 또는 쇼츠(OR) 중 가장 늦은 것 */
+function ytPct(y,st){
+  var subs=st.subs?Math.min(1,n(y.subs)/st.subs):1;
+  var vids=st.videos?Math.min(1,n(y.videos)/st.videos):1;
+  var orv=Math.max(st.hours?Math.min(1,n(y.hours)/st.hours):0,st.shorts?Math.min(1,n(y.shorts)/st.shorts):0);
+  return Math.round(Math.min(subs,vids,orv)*100);
+}
+function ytGap(y,st){
+  var out=[];
+  var ds=st.subs-n(y.subs);
+  if(ds>0)out.push('구독자 '+fmt(ds)+'명');
+  if(st.videos){
+    var dv=st.videos-n(y.videos);
+    if(dv>0)out.push('공개영상 '+fmt(dv)+'개');
+  }
+  var hOk=n(y.hours)>=st.hours,sOk=n(y.shorts)>=st.shorts;
+  if(!hOk&&!sOk){
+    out.push('시청시간 '+fmt(st.hours-n(y.hours))+'시간 또는 쇼츠 '+compact(st.shorts-n(y.shorts))+'회');
+  }
+  return out;
+}
+function ytNum(v){return n(v)>=100000?compact(v):fmt(v);}
+function ytRow(label,cur,goal,unit,fn){
+  var f=fn||fmt;
+  var p=goal?Math.min(100,Math.round(n(cur)/goal*100)):100;
+  var ok=goal>0&&n(cur)>=goal;
+  return '<div class="yr'+(ok?' ok':'')+'">'+
+    '<div class="yr-top"><span>'+esc(label)+'</span>'+
+      '<b>'+f(cur)+'<em> / '+f(goal)+esc(unit)+'</em></b></div>'+
+    '<div class="yr-bar"><i style="width:'+(ok?100:Math.max(0,p))+'%"></i></div></div>';
+}
+function ytStageHtml(y,no,name,note,st){
+  var pct=ytPct(y,st),done=pct>=100;
+  var gaps=ytGap(y,st);
+  var h='<div class="yt-stage'+(done?' done':'')+'">'+
+    '<div class="yt-h"><span class="yt-no">'+no+'단계</span>'+
+      '<span class="yt-t">'+esc(name)+(note?'<em>'+esc(note)+'</em>':'')+'</span>'+
+      '<span class="yt-pct">'+(done?'조건 충족':pct+'%')+'</span></div>'+
+    '<div class="bar'+(done?'':' acc')+'"><i style="width:'+(done?100:Math.max(2,pct))+'%'+(done?';background:var(--up)':'')+'"></i></div>'+
+    ytRow('구독자',y.subs,st.subs,'명',fmt);
+  if(st.videos)h+=ytRow('최근 90일 공개영상',y.videos,st.videos,'개',fmt);
+  h+='<div class="yt-or">또는</div>';
+  h+=ytRow('최근 1년 시청시간',y.hours,st.hours,'시간',fmt);
+  h+=ytRow('최근 90일 쇼츠 조회수',y.shorts,st.shorts,'회',ytNum);
+  h+='<div class="yt-need'+(done?' ok':'')+'">'+
+    (done?('<b>'+no+'단계 조건을 모두 채웠어요.</b> 유튜브 스튜디오에서 수익창출 신청을 확인해 보세요.')
+      :(no+'단계까지 <b>'+esc(gaps.join(' · '))+'</b> 남음'))+
+  '</div></div>';
+  return h;
+}
+function ytStagesHtml(y){
+  return '<div class="sec" style="margin-top:24px">'+
+    '<div class="sec-head"><div class="sh-l"><span class="sh-no">02</span><div class="sh-t">단계별 조건</div></div>'+
+      '<span class="sh-meta">조건 충족까지</span></div>'+
+    ytStageHtml(y,1,'팬 후원','슈퍼챗 · 멤버십',YT_STAGE1)+
+    ytStageHtml(y,2,'광고 수익 창출','YPP',YT_STAGE2)+
+  '</div>';
+}
+function ytField(id,label,val,unit){
+  return '<div class="field"><label for="'+id+'">'+esc(label)+'</label>'+
+    '<div class="amt-wrap"><input type="text" inputmode="numeric" id="'+id+'" placeholder="0" value="'+(n(val)?fmt(val):'')+'">'+
+    '<span class="cur">'+esc(unit)+'</span></div></div>';
+}
+function updateYtLive(){
+  var y=ytOf(),p=ytPct(y,YT_STAGE2);
+  var big=$('#ytBig');
+  if(big)big.textContent=p;
+  var fill=$('#ytFill');
+  if(fill)fill.style.width=p+'%';
+  var box=$('#ytStages');
+  if(box)box.innerHTML=ytStagesHtml(y);
+  var saved=$('#ytSaved');
+  if(saved)saved.textContent='저장 '+timeStr(y.updatedAt);
+}
+function viewYt(){
+  var y=ytOf();
+  var p=ytPct(y,YT_STAGE2);
+  var html='';
+  html+='<section class="page">';
+  html+='<div class="ph-kick">YouTube · Monetization</div>';
+  html+='<h1 class="ph-title">유튜브 수익창출</h1>';
+  html+='<div class="ph-big"><span id="ytBig">'+p+'</span><span class="pct">%</span></div>';
+  html+='<div class="ph-sub">2단계(광고 수익)까지 · 구독자 1,000명 + 시청 4,000시간 또는 쇼츠 1,000만 회</div>';
+  html+='<div class="bar acc"><i id="ytFill" style="width:'+p+'%"></i></div>';
+  html+='</section>';
+
+  html+='<section class="sec"><div class="sec-head"><div class="sh-l"><span class="sh-no">01</span>'+
+    '<div class="sh-t">현재 수치</div></div>'+
+    '<span class="sh-meta" id="ytSaved">'+(y.updatedAt?'저장 '+timeStr(y.updatedAt):'자동 저장')+'</span></div>'+
+    '<div class="form-card yt-fields">'+
+      ytField('f-yt-subs','구독자 수',y.subs,'명')+
+      ytField('f-yt-videos','공개 영상 (90일)',y.videos,'개')+
+      ytField('f-yt-hours','시청시간 (1년)',y.hours,'시간')+
+      ytField('f-yt-shorts','쇼츠 조회수 (90일)',y.shorts,'회')+
+    '</div>'+
+    '<p class="hint-line" style="padding-top:0">유튜브 스튜디오 → 채널 분석에서 확인한 숫자를 넣어 주세요. 입력값은 이 기기에 바로 저장되고, 위 게이지가 함께 움직여요.</p>'+
+  '</section>';
+
+  html+='<div id="ytStages">'+ytStagesHtml(y)+'</div>';
+  html+='<div class="note tip" style="margin-top:14px"><span class="note-ic" aria-hidden="true">!</span>'+
+    '<span><b>조건은 유튜브 정책에 따라 바뀔 수 있어요</b>'+
+    '<span class="note-sub">1단계는 팬 후원(슈퍼챗·멤버십)을 위한 조건이고, 2단계는 광고 수익 창출 조건이에요. 신청 전 유튜브 스튜디오의 최신 안내를 확인해 주세요.</span></span></div>';
+  return html;
+}
+
+var VIEWS={home:viewHome,ledger:viewLedger,check:viewCheck,events:viewEvents,threads:viewThreads,yt:viewYt};
 
 /* ============================ 시트 ============================ */
 function openSheet(opt){
@@ -2320,7 +2679,7 @@ function openRecordSheet(id,preset){
   sheetCtx={type:'record',id:id||null,cat:e?e.cat:(p.cat||(state.categories[0]||{}).id),color:0};
   var body=''+
     '<div class="form-card"><div class="field"><label for="f-date">날짜</label>'+
-      '<input type="date" id="f-date" value="'+esc(e?e.date:todayISO())+'"></div></div>'+
+      '<input type="date" id="f-date" value="'+esc(e?e.date:(p.date||todayISO()))+'"></div></div>'+
     '<div class="flabel-block">부업</div>'+
     '<div class="cat-grid" id="catGrid">'+catChips(sheetCtx.cat)+'</div>'+
     '<div class="form-card">'+
@@ -2372,6 +2731,7 @@ function saveRecord(){
     state.ledger.push({id:'l'+Date.now(),date:date,cat:sheetCtx.cat,desc:desc,revenue:rev,expense:exp,memo:memo,createdAt:new Date().toISOString()});
     anim.amount=-1; /* 새 기록은 0부터 올라가듯 보여 줌 */
   }
+  if(uiTab==='ledger'&&filter.ledScope!=='list'&&invDateStr(date)){calSel=invDateStr(date);calMonth=String(date).slice(0,7);}
   save();closeSheet();render();toast(sheetCtx.id?'기록을 수정했어요':'기록을 저장했어요');
 }
 function delRecord(){
@@ -2789,6 +3149,7 @@ function saveCat(){
   var p=PALETTE[sheetCtx.color||0];
   var id='c'+Date.now();
   state.categories.push({id:id,name:name,bg:p.bg,fg:p.fg});
+  state.deletedCats=(state.deletedCats||[]).filter(function(t){return !(t&&t.name===name);});
   sheetCtx.cat=id;
   save();
   var g=$('#catGrid');
@@ -2911,6 +3272,7 @@ function openInvestSheet(id){
       body+='<p class="hint-line" style="padding-top:0;margin-bottom:10px">아직 수익 기록이 없어요.</p>';
     }
     body+='<button class="btn-line solid" style="width:100%" data-act="invest-add-record">＋ 이 부업 수익 기록 추가</button>';
+    body+='<button class="btn-danger" data-act="ask-del-invest">이 부업 삭제</button>';
   }
   openSheet({
     title:isNew?'부업 추가':(s.name+' · 투자'),
@@ -2930,7 +3292,9 @@ function saveInvest(keepOpen){
     if(!name){toast('부업 이름을 입력해 주세요');return false;}
     var p=PALETTE[state.categories.length%PALETTE.length];
     cid='c'+Date.now();
-    state.categories.push({id:cid,name:name.slice(0,14),bg:p.bg,fg:p.fg});
+    var nm=name.slice(0,14);
+    state.categories.push({id:cid,name:nm,bg:p.bg,fg:p.fg});
+    state.deletedCats=(state.deletedCats||[]).filter(function(t){return !(t&&t.name===nm);});
   }
   var r=invOf(cid);
   r.initial=Math.max(0,Math.round(initial));
@@ -2947,6 +3311,44 @@ function saveInvest(keepOpen){
     :(st.status==='done'?'「'+st.name+'」 회수 완료! 🎉 ('+daysText(st.start)+')':'「'+st.name+'」 '+daysText(st.start)+'째 · '+roiText(st.roi)))
     :'「'+st.name+'」 저장했어요 · 시작일은 나중에 적어도 돼요');
   return true;
+}
+
+/* ---------- 부업 삭제 (v17) ---------- */
+function confirmDelInvest(id){
+  var s=invStats(id);
+  var recs=state.ledger.filter(function(e){return e.cat===id;});
+  sheetCtx={type:'delcat',id:id};
+  openSheet({
+    title:'부업 삭제',
+    body:'<div class="form-card" style="padding:17px 15px;margin-bottom:12px">'+
+      '<p style="font-size:13.5px;font-weight:850;letter-spacing:-.03em">「'+esc(s.name)+'」 부업을 목록에서 삭제할까요?</p>'+
+      '<p style="margin-top:7px;font-size:11px;color:var(--ink-3);line-height:1.6;font-weight:650">'+
+        (recs.length?('수익·지출 기록 <b>'+recs.length+'건</b>은 그대로 남고, 이 기록들의 부업 이름은 「기타」로 표시돼요. '):'')+
+        '삭제한 부업은 기본 데이터로 다시 살아나지 않아요. 필요하면 「＋ 부업 추가」로 다시 만들 수 있어요.</p></div>',
+    foot:'<button class="btn-danger" style="margin-top:0" data-act="do-del-invest">「'+esc(s.name)+'」 삭제하기</button>'+
+      '<div style="height:8px"></div>'+
+      '<button class="btn-ghost" style="width:100%" data-act="close-sheet">취소</button>'
+  });
+}
+function delInvest(){
+  var id=sheetCtx.id,idx=-1,item=null;
+  for(var i=0;i<state.categories.length;i++){
+    if(state.categories[i].id===id){idx=i;item=state.categories[i];}
+  }
+  if(idx<0){closeSheet();return;}
+  var invBack=state.invest&&state.invest[id]?deep(state.invest[id]):null;
+  state.categories.splice(idx,1);
+  if(state.invest&&Object.prototype.hasOwnProperty.call(state.invest,id))delete state.invest[id];
+  if(!Array.isArray(state.deletedCats))state.deletedCats=[];
+  state.deletedCats.push({id:item.id,name:item.name,at:todayISO()});
+  if(filter.cat===id)filter.cat='all';
+  save();closeSheet();render();
+  toast('「'+item.name+'」 부업을 삭제했어요','되돌리기',function(){
+    state.categories.splice(Math.min(idx,state.categories.length),0,item);
+    if(invBack){if(!state.invest)state.invest={};state.invest[item.id]=invBack;}
+    state.deletedCats=(state.deletedCats||[]).filter(function(t){return !(t&&t.id===item.id);});
+    save();render(true);toast('되돌렸어요');
+  });
 }
 
 /* ---------- 설정 ---------- */
@@ -3089,6 +3491,15 @@ function buildSummary(){
   }else{
     L.push('  · 아직 기록 없음');
   }
+  L.push('');
+
+  /* 유튜브 수익창출 조건 */
+  var yv=ytOf(),yp1=ytPct(yv,YT_STAGE1),yp2=ytPct(yv,YT_STAGE2);
+  var yg1=ytGap(yv,YT_STAGE1),yg2=ytGap(yv,YT_STAGE2);
+  L.push('■ 유튜브 수익창출 · 1단계 '+yp1+'% · 2단계 '+yp2+'%');
+  L.push('· 구독자 '+fmt(yv.subs)+'명 · 공개영상 '+fmt(yv.videos)+'개 · 시청시간 '+fmt(yv.hours)+'시간 · 쇼츠 '+fmt(yv.shorts)+'회');
+  L.push('· 1단계까지 '+(yg1.length?yg1.join(' · ')+' 남음':'조건 충족'));
+  L.push('· 2단계까지 '+(yg2.length?yg2.join(' · ')+' 남음':'조건 충족'));
   L.push('');
 
   /* 부업별 투자 · 회수 · 수익률 */
@@ -3237,6 +3648,15 @@ function exportAll(){
     rows.push([t.date||'',t.title||'',t.tag||'',t.product||'',t.url||'',n(t.clicks),n(t.buys),threadConv(t.clicks,t.buys).toFixed(1),n(t.revenue)]);
   });
   rows.push([]);
+  rows.push(['[유튜브 수익창출 조건]']);
+  var yv=ytOf();
+  rows.push(['구분','현재','1단계 기준','2단계 기준']);
+  rows.push(['구독자(명)',n(yv.subs),YT_STAGE1.subs,YT_STAGE2.subs]);
+  rows.push(['최근 90일 공개영상(개)',n(yv.videos),YT_STAGE1.videos,'-']);
+  rows.push(['최근 1년 시청시간(시간)',n(yv.hours),YT_STAGE1.hours,YT_STAGE2.hours]);
+  rows.push(['최근 90일 쇼츠 조회수(회)',n(yv.shorts),YT_STAGE1.shorts,YT_STAGE2.shorts]);
+  rows.push(['진행률(%)','',ytPct(yv,YT_STAGE1),ytPct(yv,YT_STAGE2)]);
+  rows.push([]);
   rows.push(['[부업 투자·회수]']);
   rows.push(['부업','시작일','경과일(D+)','초기 투자금','회수금','순수익','효율(%)','회수 상태','수익 기록 건','하루 평균 순수익','쓰레드·쿠팡 수익','메모']);
   state.categories.forEach(function(c){
@@ -3299,6 +3719,7 @@ function restoreJSON(file){
       if(!d||!Array.isArray(d.ledger)||!Array.isArray(d.checklist)||!Array.isArray(d.events))throw new Error('bad');
       state=migrate(d);
       if(!Array.isArray(state.categories)||!state.categories.length)state.categories=deep(BASELINE).categories;
+      state.categories=dropDeletedCats(state);
       state.seed=n(state.seed)||BASELINE.seed;
       if(!state.challengeStart)state.challengeStart=CHALLENGE_START;
       filter.cat='all';filter.type='all';
@@ -3406,6 +3827,17 @@ document.addEventListener('click',function(ev){
     case 'filter-cat':filter.cat=id;render(true);break;
     case 'filter-type':filter.type=id;render(true);break;
     case 'filter-scope':filter.scope=el.getAttribute('data-scope');render(true);break;
+    case 'led-scope':filter.ledScope=el.getAttribute('data-scope')||'cal';render(true);break;
+    case 'cal-move':calMove(Number(el.getAttribute('data-dir'))||0);break;
+    case 'cal-today':calMonth=curMonth();calSel='';render(true);break;
+    case 'cal-pick':calPick(el.getAttribute('data-date'));break;
+    case 'add-record-on':
+      var rdate=invDateStr(el.getAttribute('data-date'));
+      if(rdate){calSel=rdate;calMonth=rdate.slice(0,7);}
+      openRecordSheet(null,{date:rdate||todayISO()});
+      break;
+    case 'ask-del-invest':confirmDelInvest(id);break;
+    case 'do-del-invest':delInvest();break;
     case 'settings':openSettings();break;
     case 'check-update':checkUpdate();break;
     case 'close-sheet':closeSheet();break;
@@ -3543,6 +3975,18 @@ document.addEventListener('keydown',function(e){
 document.addEventListener('input',function(ev){
   var t=ev.target;
   if(!t||!t.id)return;
+  var ytk={'f-yt-subs':'subs','f-yt-videos':'videos','f-yt-hours':'hours','f-yt-shorts':'shorts'};
+  if(ytk[t.id]){
+    var yd=t.value.replace(/[^\d]/g,'').slice(0,10);
+    if(yd!==t.value)t.value=yd;
+    var y=ytOf();
+    y[ytk[t.id]]=Number(yd)||0;
+    y.updatedAt=new Date().toISOString();
+    clearTimeout(ytSaveTimer);
+    ytSaveTimer=setTimeout(function(){save();},400);
+    updateYtLive();
+    return;
+  }
   if(t.id==='f-rev'||t.id==='f-exp'){
     var d=t.value.replace(/[^\d]/g,'').slice(0,12);
     if(d!==t.value)t.value=d;
@@ -3568,6 +4012,18 @@ document.addEventListener('input',function(ev){
       }
     }
     updateThreadConv();
+  }
+});
+
+document.addEventListener('change',function(ev){
+  var t=ev.target;
+  if(!t||!t.id)return;
+  if(/^f-yt-/.test(t.id)){
+    var d=t.value.replace(/[^\d]/g,'');
+    t.value=d?fmt(Number(d)):'';
+    clearTimeout(ytSaveTimer);
+    save();
+    updateYtLive();
   }
 });
 
@@ -3627,7 +4083,11 @@ window.__bupsaeng={
   clearPendingPop:function(){pendingPop=null;},
   setTab:function(t){uiTab=t;},
   get tab(){return uiTab;},
-  setFilter:function(f){if(f.cat)filter.cat=f.cat;if(f.type)filter.type=f.type;if(f.scope)filter.scope=f.scope;},
+  setFilter:function(f){if(f.cat)filter.cat=f.cat;if(f.type)filter.type=f.type;if(f.scope)filter.scope=f.scope;if(f.ledScope)filter.ledScope=f.ledScope;},
+  get calSel(){return calSel;},get calMonth(){return calMonth;},
+  calAmt:calAmt,calMove:calMove,calPick:calPick,calendarBlock:calendarBlock,calDayPart:calDayPart,
+  ytOf:ytOf,ytPct:ytPct,ytGap:ytGap,viewYt:viewYt,updateYtLive:updateYtLive,
+  confirmDelInvest:confirmDelInvest,delInvest:delInvest,catDeleted:catDeleted,dropDeletedCats:dropDeletedCats,
   rolloverIfNeeded:rolloverIfNeeded,upsertHistory:upsertHistory,
   view:function(t){return VIEWS[t]();},
   challengeDay:challengeDay,
