@@ -3325,7 +3325,7 @@ function confirmDelInvest(id){
       '<p style="font-size:13.5px;font-weight:850;letter-spacing:-.03em">「'+esc(s.name)+'」 부업을 목록에서 삭제할까요?</p>'+
       '<p style="margin-top:7px;font-size:11px;color:var(--ink-3);line-height:1.6;font-weight:650">'+
         (recs.length?('수익·지출 기록 <b>'+recs.length+'건</b>은 그대로 남고, 이 기록들의 부업 이름은 「기타」로 표시돼요. '):'')+
-        '삭제한 부업은 기본 데이터로 다시 살아나지 않아요. 필요하면 「＋ 부업 추가」로 다시 만들 수 있어요.</p></div>',
+        '이 부업의 시작일·투자금 정보도 함께 지워져요. 삭제한 부업은 기본 데이터로 다시 살아나지 않고, 필요하면 「＋ 부업 추가」로 다시 만들 수 있어요.</p></div>',
     foot:'<button class="btn-danger" style="margin-top:0" data-act="do-del-invest">「'+esc(s.name)+'」 삭제하기</button>'+
       '<div style="height:8px"></div>'+
       '<button class="btn-ghost" style="width:100%" data-act="close-sheet">취소</button>'
