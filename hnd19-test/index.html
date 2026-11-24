@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="ko"><head><meta charset="utf-8"><meta name="robots" content="noindex,nofollow">
+<title>v19 검증</title>
+<style>body{font:12px/1.45 -apple-system,sans-serif;margin:8px}iframe{width:390px;height:640px;border:1px solid #ccc}pre{white-space:pre-wrap;font-size:11px}</style>
+</head><body>
+<pre id="out">running…</pre>
+<div id="host"></div>
+<script>
+var APP='../p-21n08m9avk9a/index.html';
+var KEY='bupsaeng1000.v1';
+var results=[];
+function log(o){results.push(o);document.getElementById('out').textContent=JSON.stringify(results,null,1);document.title='R'+results.length;}
+function snap(win){
+  var st=win.__bupsaeng.state, f=function(id){var a=st.events.filter(function(e){return e.id===id});return a[0]||{status:'(없음)'};};
+  return {version:st.version,badge:(win.document.querySelector('#verBadge')||{}).textContent,
+    n:st.events.length,e18:f('e18').status,e23:f('e23').status,e6:f('e6').status,e1:f('e1').status,e4:f('e4').status,
+    e5:!!st.events.filter(function(e){return e.id==='e5'}).length,
+    ledger:st.ledger.length,led0:(st.ledger[0]||{}).desc,deleted:st.deletedCats,cats:st.categories.map(function(c){return c.id}).join(','),
+    wins:st.events.filter(function(e){return e.status==='당첨'}).length,
+    loses:st.events.filter(function(e){return e.status==='미당첨'}).length,
+    waits:st.events.filter(function(e){return e.status!=='당첨'&&e.status!=='미당첨'}).length};
+}
+function runCase(name,seed,keep,cb){
+  try{localStorage.removeItem(KEY);if(seed)localStorage.setItem(KEY,JSON.stringify(seed));}catch(e){}
+  var f=document.createElement('iframe');
+  f.onload=function(){
+    setTimeout(function(){
+      var o={case:name};
+      try{var s=snap(f.contentWindow);for(var k in s)o[k]=s[k];if(keep)keep(f.contentWindow,o);}catch(e){o.err=String(e);}
+      log(o);f.parentNode.removeChild(f);cb();
+    },1600);
+  };
+  document.getElementById('host').appendChild(f);
+  f.src=APP+'?t='+Date.now();
+}
+var freshState=null;
+runCase('1-fresh',null,function(win,o){freshState=JSON.parse(JSON.stringify(win.__bupsaeng.state));},function(){
+  /* v18 저장 데이터 만들기: e18/e23 응모 완료, e1 사용자가 당첨으로 바꿈, e4 미당첨, c1 삭제, 기록 1건 */
+  var v18=JSON.parse(JSON.stringify(freshState));
+  v18.version=18;
+  v18.events.forEach(function(e){
+    if(e.id==='e18'||e.id==='e23')e.status='응모 완료';
+    if(e.id==='e1')e.status='당첨';
+    if(e.id==='e4')e.status='미당첨';
+  });
+  v18.ledger=[{id:'old1',date:'2026-11-23',cat:'c5',desc:'지난 기록',revenue:12000,expense:0,memo:'보존',createdAt:'2026-11-23T00:00:00.000Z'}];
+  v18.categories=v18.categories.filter(function(c){return c.id!=='c1';});
+  v18.deletedCats=['c1'];
+  runCase('2-upgrade-v18',v18,null,function(){
+    /* e18을 사용자가 이미 당첨으로 바꾼 경우는 건드리지 않아야 함 */
+    var v18b=JSON.parse(JSON.stringify(v18));
+    v18b.events.forEach(function(e){if(e.id==='e18')e.status='당첨';if(e.id==='e23')e.status='미당첨';});
+    runCase('3-upgrade-user-changed',v18b,null,function(){
+      log({done:true});
+    });
+  });
+});
+</script>
+</body></html>
