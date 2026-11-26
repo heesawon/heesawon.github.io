@@ -71,7 +71,7 @@ input,textarea{font-family:var(--hand);color:var(--ink)}
 .pill.arrow{width:32px;padding:0;font-size:16px;color:var(--ink2);line-height:1}
 .pill.dim{color:#8a867d}
 
-main{flex:1;min-height:0;display:flex;flex-direction:column;margin-top:11px;padding-bottom:calc(var(--safe-b) + 12px);overflow:hidden}
+main{flex:1;min-height:0;display:flex;flex-direction:column;margin-top:11px;padding-bottom:calc(var(--safe-b) + 8px);overflow:hidden}
 
 /* ---------- month grid ---------- */
 .calgrid{
@@ -101,10 +101,10 @@ main{flex:1;min-height:0;display:flex;flex-direction:column;margin-top:11px;padd
 .it .s{color:#be8a20;font-size:8.5px;margin-right:1px}
 .it .tm{color:#6a665e;font-size:9.5px;letter-spacing:0}
 .moren{position:absolute;right:4px;bottom:1px;font-family:var(--hand);font-size:9px;color:#b3afa5;background:inherit;padding-left:3px;line-height:1.2}
-.dtext{font-family:var(--hand);font-size:10px;line-height:1.35;color:#3a3833;word-break:break-word;display:-webkit-box;-webkit-line-clamp:4;-webkit-box-orient:vertical;overflow:hidden}
+.dtext{font-family:var(--hand);font-size:11px;line-height:1.3;color:#3a3833;word-break:break-word;display:-webkit-box;-webkit-line-clamp:4;-webkit-box-orient:vertical;overflow:hidden}
 .dtext.empty{color:#d2cec4}
 .dmark{position:absolute;left:4px;bottom:1px;font-size:8px;color:#c6c1b5;line-height:1}
-.hint{font-family:var(--hand);font-size:10.5px;color:#b3afa5;text-align:center;padding:7px 0 0;letter-spacing:.01em}
+.hint{font-family:var(--hand);font-size:10.5px;color:#b3afa5;text-align:center;padding:6px 0 2px;letter-spacing:.01em}
 
 /* highlighters */
 .hl-mint{background:linear-gradient(180deg,transparent 8%,var(--mint) 8%,var(--mint) 94%,transparent 94%)}
@@ -123,7 +123,9 @@ main{flex:1;min-height:0;display:flex;flex-direction:column;margin-top:11px;padd
 .wday.today .wn{text-decoration:underline;text-decoration-thickness:1.6px;text-underline-offset:3px}
 .wmain{flex:1;min-width:0}
 .wstamp{font-family:var(--hand);font-weight:700;font-size:10.5px;color:#b0462f;display:inline-block;transform:rotate(-4deg);margin-bottom:2px}
-.wi{font-family:var(--hand);font-size:15px;line-height:1.4;padding:1px 0;cursor:pointer}
+.wi{font-family:var(--hand);font-size:15px;line-height:1.4;padding:1px 0;cursor:pointer;display:flex;gap:6px;align-items:flex-start}
+.wcb{width:13px;height:13px;flex:0 0 13px;border:1.2px solid #cfcbc1;border-radius:3px;margin-top:4px;font-size:9px;line-height:11px;text-align:center;color:#2a2a26}
+.wi.done .wcb{background:#2a2a26;border-color:#2a2a26;color:#fff}
 .wi .wtx{padding:0 2px;border-radius:2px;-webkit-box-decoration-break:clone;box-decoration-break:clone;word-break:break-word}
 .wi.done .wtx{text-decoration:line-through;color:#a9a59b}
 .wi .wt{font-size:12px;color:#6a665e}
@@ -146,7 +148,8 @@ main{flex:1;min-height:0;display:flex;flex-direction:column;margin-top:11px;padd
 .row{display:flex;align-items:flex-start;gap:9px;padding:8px 3px;font-family:var(--hand);font-size:16px;line-height:1.35;cursor:pointer;border-radius:6px;-webkit-user-select:none;user-select:none}
 .row .cb{width:20px;height:20px;border:1.5px solid #bcb8ad;border-radius:5px;flex:0 0 20px;display:grid;place-items:center;font-size:12px;line-height:1;color:#2a2a26;margin-top:2px;background:#fff}
 .row.done .cb{background:#2a2a26;border-color:#2a2a26;color:#fff}
-.row .tx{flex:1;min-width:0;word-break:break-word;padding:0 2px;border-radius:2px;-webkit-box-decoration-break:clone;box-decoration-break:clone}
+.row .tx{flex:1;min-width:0;word-break:break-word}
+.row .txh{padding:0 2px;border-radius:2px;-webkit-box-decoration-break:clone;box-decoration-break:clone}
 .row.done .tx{text-decoration:line-through;color:#a9a59b}
 .row .tt{font-size:13px;color:#55524b;margin-right:5px}
 .row .star{width:24px;flex:0 0 24px;font-size:15px;color:#dcd7c9;text-align:center;line-height:1.4}
@@ -361,7 +364,7 @@ main{flex:1;min-height:0;display:flex;flex-direction:column;margin-top:11px;padd
     <button class="mbtn" id="impBtn">JSON 가져오기</button>
     <input type="file" id="impFile" accept=".json,application/json" hidden>
     <button class="mbtn quiet" id="seedBtn">샘플 다시 채우기</button>
-    <button class="mbtn quiet" id="wipeBtn">모두 지우기</button>
+    <button class="mbtn quiet" id="wipeBtn">샘플 비우기 · 모두 지우기</button>
     <p class="note">기록은 이 기기 브라우저(localStorage)에만 저장돼요. 기기를 바꾸기 전에 백업을 내보내 두세요.</p>
     <button class="mclose" id="setClose">닫기</button>
   </div>
@@ -529,7 +532,7 @@ function cellHTML(ds,out){
   var body='';
   if(diary){
     var txt=d&&d.diary?esc(d.diary):'';
-    body='<div class="dtext'+(txt?'':' empty')+'">'+(txt||'…')+'</div>';
+    body='<div class="dtext'+(txt?'':' empty')+'">'+txt+'</div>';
   }else{
     var items=d?sortedTodos(d.todos):[];
     var lim=(d&&d.sticker)?2:3;
@@ -538,7 +541,7 @@ function cellHTML(ds,out){
     if(items.length>shown.length)body+='<div class="moren">+'+(items.length-shown.length)+'</div>';
   }
   var stamp=(d&&d.stamp)?'<span class="stamp" data-s="'+esc(d.stamp)+'">'+esc(d.stamp)+'</span>':'';
-  var dnumStyle=(d&&d.hi&&HL[d.hi])?' style="background:'+HL[d.hi].c+'"':'';
+  var dnumStyle=(d&&d.hi&&HL[d.hi])?' style="background:'+HL[d.hi].c+';padding:0 4px;border-radius:3px"':'';
   var stk=(d&&d.sticker)?'<svg class="stk" aria-hidden="true"><use href="#st-'+esc(d.sticker)+'"/></svg>':'';
   var dmark=(!diary&&d&&d.diary)?'<span class="dmark">✎</span>':'';
   return '<div class="'+cls+'" data-act="cell" data-date="'+ds+'">'+stamp+
@@ -581,6 +584,7 @@ function weekItemHTML(ds,it){
   var time=it.time?'<span class="wt">'+esc(it.time)+'</span> ':'';
   var hl=it.hi?' hl-'+it.hi:'';
   return '<div class="wi'+(it.done?' done':'')+'" data-act="toggle" data-date="'+ds+'" data-id="'+it.id+'">'+
+    '<span class="wcb">'+(it.done?'✓':'')+'</span>'+
     '<span class="wtx'+hl+'">'+star+tag+time+esc(it.text)+'</span></div>';
 }
 
@@ -607,10 +611,10 @@ function weekHTML(){
 
 function rowHTML(ds,it){
   var time=it.time?'<span class="tt">'+esc(it.time)+'</span>':'';
-  var hl=it.hi?' hl-'+it.hi:'';
+  var hl=(it.hi&&HL[it.hi])?' hl-'+it.hi:'';
   return '<div class="row'+(it.done?' done':'')+'" data-act="toggle" data-date="'+ds+'" data-id="'+it.id+'">'+
     '<span class="cb">'+(it.done?'✓':'')+'</span>'+
-    '<span class="tx'+hl+'">'+time+esc(it.text)+'</span>'+
+    '<span class="tx"><span class="txh'+hl+'">'+time+esc(it.text)+'</span></span>'+
     '<button class="star'+(it.star?' on':'')+'" data-act="t-star" data-date="'+ds+'" data-id="'+it.id+'" aria-label="중요 표시">★</button>'+
   '</div>';
 }
@@ -618,7 +622,7 @@ function rowHTML(ds,it){
 function todayHTML(){
   var ds=dCursor, dt=fromISO(ds), d=S.days[ds];
   var items=d?sortedTodos(d.todos):[];
-  var stars=items.filter(function(x){return x.star;}).slice(0,3);
+  var stars=items.filter(function(x){return x.star;}).sort(function(a,b){return (a.done?1:0)-(b.done?1:0);}).slice(0,3);
   var top=stars.length?stars.map(function(it){return rowHTML(ds,it);}).join('')
     :'<div class="t3hint">항목 옆 ★를 누르면 오늘의 핵심으로 모여요 · 하루 3개까지</div>';
   var bands='';
