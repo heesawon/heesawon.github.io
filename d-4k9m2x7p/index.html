@@ -1039,7 +1039,7 @@ function toast(msg,label,fn){
   }
   el.classList.add('on');
   clearTimeout(toastT);
-  toastT=setTimeout(hideToast,label?4600:2200);
+  toastT=setTimeout(hideToast,label?7000:2200);
 }
 function hideToast(){ $('toast').classList.remove('on'); clearTimeout(toastT); }
 
