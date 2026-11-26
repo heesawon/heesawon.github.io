@@ -1080,7 +1080,7 @@ body.sheet-open{overflow:hidden}
    상수 · 기본 데이터 (엑셀 1000만원_부업_관리표 + 아침 부업 루틴)
    ============================================================ */
 var KEY='bupsaeng1000.v1';
-var VERSION=24;
+var VERSION=25;
 var CHALLENGE_START='2026-11-19';
 var CHALLENGE_GOAL=10000000;
 var LV_NAMES=['루키','러너','하슬러','크루','캡틴','마스터','레전드'];
@@ -1219,7 +1219,11 @@ var BASELINE={
     {id:'e53',date:'2026-11-25',type:'설문',name:'한국철도공사 공공데이터 이용 활성화 대국민 수요조사',prize:'모바일 커피 쿠폰 (100명)',announce:'추후 공지',status:'응모 완료',url:'https://form.naver.com/response/8iZIZqjRoVE'},
     {id:'e54',date:'2026-11-26',type:'설문',name:'경기관광공사 경기관광 플랫폼 이용 만족도 조사',prize:'여기어때 5만원 50명·컴포즈커피 돌체라떼 500명 (총 550명)',announce:'2026-12-09',status:'응모 완료',url:'https://ggtour.or.kr/information/event/64383c1d-f83a-4984-bcf1-1a3b5d0cbbcd?tab=event'},
     {id:'e55',date:'2026-11-26',type:'설문',name:'한국문화정보원 디지털문화자원 공동활용플랫폼 만족도 조사',prize:'갤럭시 버즈4 프로 1명 포함 총 176명 (스타벅스·네이버페이 1만원 등)',announce:'2026-12-03',status:'응모 완료',url:'https://surveypro.co.kr/s?sCode=MTEyNDA0NTQyOA-MTQyMjU'},
-    {id:'e56',date:'2026-11-26',type:'설문',name:'농식품정보누리 홈페이지 이용자 만족도 조사',prize:'네이버페이 3만원 3명·3천원 70명 (총 73명)',announce:'2026-12-01',status:'응모 완료',url:'https://form.naver.com/response/AJpHyznLro8'}
+    {id:'e56',date:'2026-11-26',type:'설문',name:'농식품정보누리 홈페이지 이용자 만족도 조사',prize:'네이버페이 3만원 3명·3천원 70명 (총 73명)',announce:'2026-12-01',status:'응모 완료',url:'https://form.naver.com/response/AJpHyznLro8'},
+    {id:'e57',date:'2026-11-27',type:'설문',name:'노사발전재단 2026 적극행정 우수사례 국민참여조사 (25건 별점)',prize:'모바일 커피쿠폰 5,000원 (인원 미공지)',announce:'기관 공지 확인',status:'응모 완료',url:'https://form.naver.com/response/BwhYx2MCHfY'},
+    {id:'e58',date:'2026-11-27',type:'설문',name:'노사발전재단 2026 부서별 혁신 실행과제 국민참여조사 (20건 별점)',prize:'모바일 커피쿠폰 5,000원 (인원 미공지)',announce:'기관 공지 확인',status:'응모 완료',url:'https://form.naver.com/response/B5kx1Zw4eZb'},
+    {id:'e59',date:'2026-11-27',type:'퀴즈',name:'부천시 생생부천 11월 스마트 안전 퀴즈 (정답 8,815대·비상벨)',prize:'모바일 아메리카노 쿠폰 (50명)',announce:'2026-12-02',status:'응모 완료',url:'https://form.naver.com/response/J0nJDiS3qua'},
+    {id:'e60',date:'2026-11-27',type:'설문',name:'미추홀구시설관리공단 2026 가치체계 공유도 조사',prize:'모바일 기프티콘 5,000원 (10명)',announce:'2026-12-04',status:'응모 완료',url:'https://form.naver.com/response/EWE8wZXhZZR'}
   ]
 };
 
@@ -1572,6 +1576,8 @@ function migrate(s){
       if(e&&(e.id==='e4'||e.id==='e26'||e.id==='e27')&&e.status==='응모 완료')e.status='미당첨';
     });
   }
+  /* v25: 새 응모 기록(e57 노사발전재단 적극행정·e58 노사발전재단 부서별 혁신·e59 생생부천 스마트 안전 퀴즈·
+     e60 미추홀구시설관리공단 가치체계) 병합 — 2026-11-27 제출. 상태 변경 없음(모두 발표 대기). */
   /* v24: 주식용 계좌 기본금 정정 1,000만 원 → 100만 원(국내 50만 + 미국 50만)
      — 사용자가 직접 다른 금액으로 바꿨을 수 있으니 1,000만 원(10000000)일 때만 교체한다.
      체크리스트 k2도 기본 문구 그대로일 때만 새 문구로 바꾼다(사용자가 고친 항목은 그대로). */
