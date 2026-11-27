@@ -68,7 +68,7 @@ input,textarea{font-family:var(--hand);color:var(--ink)}
 .more.rf.busy svg{animation:rfspin .8s linear infinite}
 @keyframes rfspin{to{transform:rotate(360deg)}}
 
-.bar{display:flex;align-items:center;gap:8px;margin-top:9px}
+.bar{display:flex;align-items:center;gap:8px;margin-top:9px;flex-wrap:wrap;row-gap:6px}
 .tabs{display:flex;align-items:center;gap:1px;font-family:var(--hand);font-size:13px}
 .tabs button{padding:4px 6px;border-radius:7px;color:#a5a199;letter-spacing:-.01em}
 .tabs button.on{color:var(--ink);font-weight:700;background:#f2f1eb}
@@ -186,7 +186,7 @@ main{flex:1;min-height:0;display:flex;flex-direction:column;margin-top:11px;padd
 .ttx{flex:1;min-width:0;word-break:break-word;padding-top:1px}
 .ttx .tm{font-size:12px;color:#6a665e;margin-right:4px}
 .trow.done .ttx{text-decoration:line-through;color:#a9a59b}
-.pbadge{flex:0 0 auto;min-width:26px;height:26px;padding:0 5px;border:1.4px solid #dcd8cd;border-radius:999px;display:grid;place-items:center;font-family:var(--ui);font-size:10.5px;font-weight:700;color:#b3afa5;background:#fff;letter-spacing:-.02em}
+.pbadge{flex:0 0 auto;min-width:26px;height:26px;padding:0 5px;border:1.4px dashed #d9d5c9;border-radius:999px;display:grid;place-items:center;font-family:var(--ui);font-size:10.5px;font-weight:700;color:#c3bfb4;background:#fff;letter-spacing:-.02em}
 .pbadge.a{border-color:#22221f;background:#22221f;color:#fff}
 .pbadge.b{border-color:#d7b370;color:#a97e18;background:#fffdf4}
 .pbadge.c{border-color:#bccada;color:#6f83a6;background:#fbfcfe}
@@ -224,6 +224,9 @@ main{flex:1;min-height:0;display:flex;flex-direction:column;margin-top:11px;padd
 .hr.nowline{min-height:0;position:relative;margin:1px 0 2px}
 .nowbar{flex:1;border-top:1.4px dashed #c0553a;position:relative;margin-top:5px}
 .nowbar b{position:absolute;right:0;top:-8px;font-family:var(--ui);font-size:8.5px;font-weight:600;color:#c0553a;background:#fff;padding:0 3px;letter-spacing:.02em}
+.hr.cur{background:linear-gradient(90deg,rgba(192,85,58,.08),rgba(192,85,58,0) 72%);border-radius:4px}
+.hr.cur .ht{color:#c0553a;font-weight:600}
+.nowtag{display:block;font-family:var(--ui);font-size:8px;font-weight:600;color:#c0553a;letter-spacing:0;line-height:1.15}
 .dnote{margin-top:2px}
 #dnIn{width:100%;min-height:70px;border:1px solid var(--line);border-radius:10px;padding:8px 10px;font-family:var(--hand);font-size:15px;line-height:1.5;background:#fdfdfa;outline:none;resize:vertical;display:block}
 #dnIn:focus{border-color:#cfcbc1}
@@ -802,18 +805,16 @@ function schedHTML(ds){
   var out='', i=0;
   while(i<times.length){
     var t0=times[i];
-    if(nowRow===t0){
-      out+='<div class="hr nowline"><span class="ht"></span><div class="hc"><span class="nowbar"><b>지금 '+hhmm(nowMin)+'</b></span></div></div>';
-      nowRow=null;
-    }
+    var cur=(nowRow===t0);
     if(busy[t0]){
       var list=busy[t0];
-      out+='<div class="hr has"><span class="ht '+bandCls(t0)+'">'+hhmm(t0)+'</span><div class="hc">'+
+      out+='<div class="hr has'+(cur?' cur':'')+'"><span class="ht '+bandCls(t0)+'">'+hhmm(t0)+(cur?'<b class="nowtag">지금</b>':'')+'</span><div class="hc">'+
         list.map(function(e){return entryRowHTML(ds,e,t0);}).join('')+'</div></div>';
       i++; continue;
     }
     var j=i;
     while(j<times.length&&!busy[times[j]]&&times[j]!==nowRow)j++;
+    if(j===i)j=i+1;
     var n2=j-i;
     var key=ds+'|'+t0;
     if(n2>=3&&!gapOpen[key]){
@@ -821,8 +822,9 @@ function schedHTML(ds){
         '<span>'+hhmm(t0)+' – '+hhmm(times[j-1]+step)+'</span><span class="x">비어 있음 ＋</span></button></div></div>';
     }else{
       for(var k=i;k<j;k++){
-        out+='<div class="hr empty"><span class="ht '+bandCls(times[k])+'">'+hhmm(times[k])+'</span>'+
-          '<button class="hadd" data-act="slot-add" data-date="'+ds+'" data-min="'+times[k]+'" aria-label="'+hhmm(times[k])+' 일정 추가">＋</button></div>';
+        var t1=times[k], c1=(nowRow===t1);
+        out+='<div class="hr empty'+(c1?' cur':'')+'"><span class="ht '+bandCls(t1)+'">'+hhmm(t1)+(c1?'<b class="nowtag">지금</b>':'')+'</span>'+
+          '<button class="hadd" data-act="slot-add" data-date="'+ds+'" data-min="'+t1+'" aria-label="'+hhmm(t1)+' 일정 추가">＋</button></div>';
       }
     }
     i=j;
