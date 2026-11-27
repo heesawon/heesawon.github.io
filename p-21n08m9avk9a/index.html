@@ -1094,7 +1094,7 @@ body.sheet-open{overflow:hidden}
    상수 · 기본 데이터 (엑셀 1000만원_부업_관리표 + 아침 부업 루틴)
    ============================================================ */
 var KEY='bupsaeng1000.v1';
-var VERSION=28;
+var VERSION=29;
 var CHALLENGE_START='2026-11-19';
 var CHALLENGE_GOAL=10000000;
 var LV_NAMES=['루키','러너','하슬러','크루','캡틴','마스터','레전드'];
@@ -1237,7 +1237,13 @@ var BASELINE={
     {id:'e57',date:'2026-11-27',type:'설문',name:'노사발전재단 2026 적극행정 우수사례 국민참여조사 (25건 별점)',prize:'모바일 커피쿠폰 5,000원 (인원 미공지)',announce:'기관 공지 확인',status:'응모 완료',url:'https://form.naver.com/response/BwhYx2MCHfY'},
     {id:'e58',date:'2026-11-27',type:'설문',name:'노사발전재단 2026 부서별 혁신 실행과제 국민참여조사 (20건 별점)',prize:'모바일 커피쿠폰 5,000원 (인원 미공지)',announce:'기관 공지 확인',status:'응모 완료',url:'https://form.naver.com/response/B5kx1Zw4eZb'},
     {id:'e59',date:'2026-11-27',type:'퀴즈',name:'부천시 생생부천 11월 스마트 안전 퀴즈 (정답 8,815대·비상벨)',prize:'모바일 아메리카노 쿠폰 (50명)',announce:'2026-12-02',status:'응모 완료',url:'https://form.naver.com/response/J0nJDiS3qua'},
-    {id:'e60',date:'2026-11-27',type:'설문',name:'미추홀구시설관리공단 2026 가치체계 공유도 조사',prize:'모바일 기프티콘 5,000원 (10명)',announce:'2026-12-04',status:'응모 완료',url:'https://form.naver.com/response/EWE8wZXhZZR'}
+    {id:'e60',date:'2026-11-27',type:'설문',name:'미추홀구시설관리공단 2026 가치체계 공유도 조사',prize:'모바일 기프티콘 5,000원 (10명)',announce:'2026-12-04',status:'응모 완료',url:'https://form.naver.com/response/EWE8wZXhZZR'},
+    {id:'e61',date:'2026-11-28',type:'퀴즈',name:'식약처 수입식품정보마루「알아두면 쓸모 있는 수입식품 안전 상식」퀴즈 (정답 ①·②·①)',prize:'케이크 기프티콘 (50명)',announce:'2026-12-01',status:'응모 완료',url:'https://forms.gle/h39MHw7NERB9eDu4A'},
+    {id:'e62',date:'2026-11-28',type:'설문',name:'국가유산진흥원 2026 홈페이지 만족도 조사',prize:'편의점 모바일 상품권 1만원 (100명)',announce:'공지 미기재',status:'응모 완료',url:'https://survey.metrix.co.kr/?2026kha'},
+    {id:'e63',date:'2026-11-28',type:'설문',name:'한국건설기술연구원(KICT) 대표 홈페이지 만족도 조사',prize:'투썸플레이스 아메리카노R (100명)',announce:'공지 미기재',status:'응모 완료',url:'https://docs.google.com/forms/d/e/1FAIpQLSfPkJsLURUiVGBKSwQ43w6-yhtTsLZGnqZxOLOfI9rBANm2Pw/viewform'},
+    {id:'e64',date:'2026-11-28',type:'설문',name:'행정안전부 착한가격업소·누리집 이용자 만족도 조사',prize:'편의점 5,000원 (100명)·우수 의견 3명 아이스크림 1만원',announce:'12월 중 공지',status:'응모 완료',url:'https://forms.gle/ZUA4nJT8RPz4Vvo28'},
+    {id:'e65',date:'2026-11-28',type:'설문',name:'산림청 2026 I LOVE WOOD 캠페인 대국민 설문조사',prize:'GS25 모바일 상품권 5,000원 (100명)',announce:'2026-12-07',status:'응모 완료',url:'https://docs.google.com/forms/d/e/1FAIpQLSfnA50_Nh-aSNdCfmfQ_J2md7cVMFyYAxxNvfCrZLANJHIVZQ/viewform'},
+    {id:'e66',date:'2026-11-28',type:'설문',name:'옥천군 관광브랜드 개발 의견 수렴 설문',prize:'아메리카노 교환권 (200명)',announce:'공지 미기재',status:'응모 완료',url:'https://form.naver.com/response/5rcc0UvbIhV'}
   ]
 };
 
@@ -1611,6 +1617,12 @@ function migrate(s){
     s.events.forEach(function(e){
       if(e&&e.id==='e6'&&(e.status==='미당첨'||e.status==='응모 완료'))e.status='당첨';
     });
+  }
+  /* v29: 새 응모 기록(e61 식약처 수입식품정보마루 퀴즈·e62 국가유산진흥원 만족도·e63 KICT 홈페이지 만족도·
+     e64 행안부 착한가격업소 만족도·e65 산림청 I LOVE WOOD 설문·e66 옥천 관광브랜드 의견) 병합 — 2026-11-28 제출.
+     신규 6건 모두 '응모 완료'(발표 대기)이고, 기존 상태(e6 당첨 포함)·수익 달력·삭제한 부업은 그대로 둔다. */
+  if(v<29){
+    if(!Array.isArray(s.events))s.events=[];
   }
   /* v24: 주식용 계좌 기본금 정정 1,000만 원 → 100만 원(국내 50만 + 미국 50만)
      — 사용자가 직접 다른 금액으로 바꿨을 수 있으니 1,000만 원(10000000)일 때만 교체한다.
