@@ -748,9 +748,9 @@ function taskRowHTML(ds,it,aIdx,opt){
   var pc=aIdx?' a':(it.pri==='B'?' b':(it.pri==='C'?' c':''));
   var time=it.time?'<span class="tm">'+esc(it.time)+'</span> ':'';
   return '<div class="trow'+(it.done?' done':'')+'" data-act="toggle" data-date="'+ds+'" data-id="'+it.id+'">'+
-    '<button class="pbadge'+pc+'" data-act="pcyc" data-date="'+ds+'" data-id="'+it.id+'" aria-label="우선순위 '+p+'">'+p+'</button>'+
     '<span class="tcb">'+(it.done?'✓':'')+'</span>'+
     '<span class="ttx">'+time+esc(it.text)+'</span>'+
+    '<button class="pbadge'+pc+'" data-act="pcyc" data-date="'+ds+'" data-id="'+it.id+'" aria-label="우선순위 '+p+'">'+p+'</button>'+
     (opt.tom?'<button class="ptom" data-act="tom" data-date="'+ds+'" data-id="'+it.id+'" aria-label="내일로">→</button>':'')+
   '</div>';
 }
@@ -767,11 +767,10 @@ function entryRowHTML(ds,e,t0,im){
   var p=it.star?('A'+(im[it.id]||1)):(it.pri==='B'?'B':(it.pri==='C'?'C':'–'));
   var pc=it.star?' a':(it.pri==='B'?' b':(it.pri==='C'?' c':''));
   return '<div class="hent todo'+(it.done?' done':'')+'" data-act="toggle" data-date="'+ds+'" data-id="'+it.id+'">'+
-    '<button class="pbadge sm'+pc+'" data-act="pcyc" data-date="'+ds+'" data-id="'+it.id+'" aria-label="우선순위 '+p+'">'+p+'</button>'+
     '<span class="hcb">'+(it.done?'✓':'')+'</span>'+
     (e.t!==t0?'<span class="htm">'+hhmm(e.t)+'</span>':'')+
     '<span class="hx">'+esc(it.text)+'</span>'+
-    (it.star?'<span class="hstar">★</span>':'')+'</div>';
+    '<button class="pbadge sm'+pc+'" data-act="pcyc" data-date="'+ds+'" data-id="'+it.id+'" aria-label="우선순위 '+p+'">'+p+'</button></div>';
 }
 function schedHTML(ds){
   var d=S.days[ds]||{};
@@ -852,7 +851,7 @@ function todayHTML(){
     return rk(a)-rk(b);
   });
   var pri=starred.length?starred.map(function(it){return taskRowHTML(ds,it,idxm[it.id],{tom:true});}).join('')
-    :'<div class="nhint">아직 없어요. 할 일 옆 동그라미를 눌러 A1부터 올려 보세요.</div>';
+    :'<div class="nhint">아직 없어요. 할 일 오른쪽 배지를 눌러 A1부터 올려 보세요.</div>';
   var list=untimed.length?untimed.map(function(it){return taskRowHTML(ds,it,null,{tom:true});}).join('')
     :'<div class="nhint">남은 할 일이 없어요. 아래에 적어 보세요.</div>';
   var carry='';
