@@ -191,7 +191,7 @@ main{flex:1;min-height:0;display:flex;flex-direction:column;margin-top:11px;padd
 .pbadge.sm{min-width:21px;height:21px;font-size:9.5px;padding:0 4px;margin-top:1px}
 .pbadge.b{border-color:#d7b370;color:#a97e18;background:#fffdf4}
 .pbadge.c{border-color:#bccada;color:#6f83a6;background:#fbfcfe}
-.ptom{flex:0 0 auto;font-family:var(--ui);font-size:10px;color:#8b877d;border:1px solid var(--line);border-radius:999px;padding:3px 6px;white-space:nowrap;margin-top:2px}
+.ptom{flex:0 0 auto;font-family:var(--ui);font-size:10.5px;color:#6a665e;border:1px solid var(--line);border-radius:999px;padding:3px 7px;white-space:nowrap;margin-top:2px;letter-spacing:-.01em}
 .ptom:active{background:#f4f4f0}
 .nhint{font-family:var(--hand);font-size:12.5px;color:#b3afa5;padding:4px 1px 3px;line-height:1.4}
 .sch{padding-bottom:5px}
@@ -744,14 +744,14 @@ function bandCls(min){
 }
 function taskRowHTML(ds,it,aIdx,opt){
   opt=opt||{};
-  var p=aIdx?('A'+aIdx):(it.pri==='B'?'B':(it.pri==='C'?'C':'–'));
+  var p=aIdx?('A'+aIdx):(it.pri==='B'?'B':(it.pri==='C'?'C':''));
   var pc=aIdx?' a':(it.pri==='B'?' b':(it.pri==='C'?' c':''));
   var time=it.time?'<span class="tm">'+esc(it.time)+'</span> ':'';
   return '<div class="trow'+(it.done?' done':'')+'" data-act="toggle" data-date="'+ds+'" data-id="'+it.id+'">'+
     '<span class="tcb">'+(it.done?'✓':'')+'</span>'+
     '<span class="ttx">'+time+esc(it.text)+'</span>'+
-    '<button class="pbadge'+pc+'" data-act="pcyc" data-date="'+ds+'" data-id="'+it.id+'" aria-label="우선순위 '+p+'">'+p+'</button>'+
-    (opt.tom?'<button class="ptom" data-act="tom" data-date="'+ds+'" data-id="'+it.id+'" aria-label="내일로">→</button>':'')+
+    '<button class="pbadge'+pc+'" data-act="pcyc" data-date="'+ds+'" data-id="'+it.id+'" aria-label="우선순위 '+(p||'없음')+'">'+p+'</button>'+
+    (opt.tom?'<button class="ptom" data-act="tom" data-date="'+ds+'" data-id="'+it.id+'" aria-label="내일로 미루기">내일</button>':'')+
   '</div>';
 }
 function entryRowHTML(ds,e,t0,im){
@@ -764,13 +764,13 @@ function entryRowHTML(ds,e,t0,im){
       '<button class="hdel" data-act="slot-del" data-date="'+ds+'" data-id="'+s.id+'" aria-label="삭제">×</button></div>';
   }
   var it=e.it;
-  var p=it.star?('A'+(im[it.id]||1)):(it.pri==='B'?'B':(it.pri==='C'?'C':'–'));
+  var p=it.star?('A'+(im[it.id]||1)):(it.pri==='B'?'B':(it.pri==='C'?'C':''));
   var pc=it.star?' a':(it.pri==='B'?' b':(it.pri==='C'?' c':''));
   return '<div class="hent todo'+(it.done?' done':'')+'" data-act="toggle" data-date="'+ds+'" data-id="'+it.id+'">'+
     '<span class="hcb">'+(it.done?'✓':'')+'</span>'+
     (e.t!==t0?'<span class="htm">'+hhmm(e.t)+'</span>':'')+
     '<span class="hx">'+esc(it.text)+'</span>'+
-    '<button class="pbadge sm'+pc+'" data-act="pcyc" data-date="'+ds+'" data-id="'+it.id+'" aria-label="우선순위 '+p+'">'+p+'</button></div>';
+    '<button class="pbadge sm'+pc+'" data-act="pcyc" data-date="'+ds+'" data-id="'+it.id+'" aria-label="우선순위 '+(p||'없음')+'">'+p+'</button></div>';
 }
 function schedHTML(ds){
   var d=S.days[ds]||{};
