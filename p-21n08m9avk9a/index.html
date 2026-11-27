@@ -1094,7 +1094,7 @@ body.sheet-open{overflow:hidden}
    상수 · 기본 데이터 (엑셀 1000만원_부업_관리표 + 아침 부업 루틴)
    ============================================================ */
 var KEY='bupsaeng1000.v1';
-var VERSION=26;
+var VERSION=27;
 var CHALLENGE_START='2026-11-19';
 var CHALLENGE_GOAL=10000000;
 var LV_NAMES=['루키','러너','하슬러','크루','캡틴','마스터','레전드'];
@@ -1178,7 +1178,7 @@ var BASELINE={
   deletedCats:[],       /* v17: 삭제한 부업 — 기본 데이터로 다시 살아나지 않게 기록 */
   yt:{subs:0,videos:0,hours:0,shorts:0,updatedAt:''},  /* v17: 유튜브 수익창출 조건 현재 수치 */
   events:[
-    {id:'e1',date:'2026-11-19',type:'퀴즈',name:'용산구청 11월 음주폐해 예방의 달 OX 퀴즈',prize:'편의점 모바일상품권 5,000원 (200명)',announce:'2026-11-27',status:'응모 완료',url:'https://naver.me/I5wql1zx'},
+    {id:'e1',date:'2026-11-19',type:'퀴즈',name:'용산구청 11월 음주폐해 예방의 달 OX 퀴즈',prize:'편의점 모바일상품권 5,000원 (200명)',announce:'2026-11-27',status:'미당첨',url:'https://naver.me/I5wql1zx'},
     {id:'e2',date:'2026-11-20',type:'퀴즈',name:'국립한글박물관 한박웃음 11월호 맞춤법 퀴즈',prize:'메가MGC커피 3,000원 (20명)',announce:'11/30 마감 후 개별연락',status:'응모 완료',url:'https://www.hangeul.go.kr/webzine/202611/sub3_2.html'},
     {id:'e3',date:'2026-11-20',type:'퀴즈',name:'국회예산정책처 11월 재정 퀴즈',prize:'모바일 커피쿠폰',announce:'11/30 마감 후 추첨',status:'응모 완료',url:'https://nabo.go.kr/ko/fiscalQuiz/quiz.do?key=2507040020'},
     {id:'e4',date:'2026-11-19',type:'설문',name:'행정안전부 2026 공공 마이데이터 만족도 조사',prize:'모바일상품권 10,000원 (300명)',announce:'2026-11-25',status:'미당첨',url:'https://forms.gle/nrbtWYPsfkAVjamN7'},
@@ -1198,7 +1198,7 @@ var BASELINE={
     {id:'e18',date:'2026-11-20',type:'설문',name:'교육부 2026년 온라인 정책홍보 이해도 조사',prize:'모바일 상품권 최대 100,000원 (40명)',announce:'2026-11-24 추첨',status:'미당첨',url:'https://forms.gle/FeC652nfgGTv3Snf6'},
     {id:'e19',date:'2026-11-21',type:'퀴즈',name:'인천시의회 「인천의정소식」165호 의회 속 숨은 공간 찾기 (정답 방청석)',prize:'커피 기프티콘 (6명)',announce:'166호 발간 시 개별 연락',status:'응모 완료',url:'https://www.icouncil.go.kr/quiz/quizEntryRegForm.do?quiz_seq=78'},
     {id:'e20',date:'2026-11-21',type:'퀴즈',name:'서울시의회 <서울의회> 11월호 낱말 퀴즈',prize:'투썸플레이스 아메리카노 (10명)',announce:'12월호 웹진 발표',status:'응모 완료',url:'https://webzine.smc.seoul.kr/2026/11/event.html'},
-    {id:'e21',date:'2026-11-21',type:'설문',name:'다누리포털·한국생활안내(정보더하기) 만족도 조사',prize:'백화점상품권 10만원·치킨 2만원·편의점 5천원 (122명)',announce:'11월 4주 다누리 공지',status:'응모 완료',url:'https://forms.gle/ve2ZQSUqmarnacfN8'},
+    {id:'e21',date:'2026-11-21',type:'설문',name:'다누리포털·한국생활안내(정보더하기) 만족도 조사',prize:'백화점상품권 10만원·치킨 2만원·편의점 5천원 (122명)',announce:'2026-11-27',status:'미당첨',url:'https://forms.gle/ve2ZQSUqmarnacfN8'},
     {id:'e22',date:'2026-11-21',type:'퀴즈',name:'원주시 「행복원주」 11월 제563호 독자퀴즈 (정답 원주남부 복합체육센터)',prize:'온누리상품권 2만원',announce:'2026-11-25 마감 후 발표',status:'응모 완료',url:'https://www.wonju.go.kr/media/selectQuizList.do?key=771'},
     {id:'e23',date:'2026-11-21',type:'체험단',name:'동아제약 파티온 베스트셀러 연말 리뷰 체험단 (노스카나인 트러블 밀크 클렌저)',prize:'제품 무상 (80명)',announce:'2026-11-24',status:'미당첨',url:'https://shopping.naver.com/window/beauty/store/100929090/news/5003149117'},
     {id:'e24',date:'2026-11-21',type:'체험단',name:'닥터펩티 징크 펩타이드 수딩 배리어 세럼 50ml',prize:'제품 무상 (50명)',announce:'2026-12-02',status:'응모 완료',url:'https://shopping.naver.com/window/beauty/store/100164843/news/5003148988'},
@@ -1215,12 +1215,12 @@ var BASELINE={
     {id:'e35',date:'2026-11-22',type:'체험단',name:'무신사 · 자빈드서울 윙크 쿠션 미니백 기획 (글로우 21 시어 아이보리+립 증정)',prize:'제품 무상 정가 129,000원 (30명·5,108명) · 당첨 시 제세공과금 약 2.8만원',announce:'2026-11-30',status:'응모 완료',url:'https://www.musinsa.com/preuser/events/48939'},
     {id:'e36',date:'2026-11-22',type:'체험단',name:'무신사 · 피브 무드 베일 새틴 스틱 (02 피치 던)',prize:'제품 무상 14,000원 (50명 모집·7,982명 신청)',announce:'2026-11-30',status:'응모 완료',url:'https://www.musinsa.com/preuser/events/50286'},
     {id:'e37',date:'2026-11-22',type:'체험단',name:'무신사 · 딘토 블러글로이 립 틴트 본품+미니 세트 (208 보눔/252 메멘토리)',prize:'제품 무상 3만원대 (50명 모집·8,918명 신청)',announce:'2026-11-30',status:'응모 완료',url:'https://www.musinsa.com/preuser/events/50293'},
-    {id:'e38',date:'2026-11-22',type:'설문',name:'부산시설공단 2026 공공데이터 대국민 설문조사',prize:'교촌치킨 허니콤보+콜라 기프티콘 (20명)',announce:'11/24 마감 후 개별 안내',status:'응모 완료',url:'https://naver.me/FZoYToyr'},
+    {id:'e38',date:'2026-11-22',type:'설문',name:'부산시설공단 2026 공공데이터 대국민 설문조사',prize:'교촌치킨 허니콤보+콜라 기프티콘 (20명)',announce:'11/24 마감 후 개별 안내',status:'미당첨',url:'https://naver.me/FZoYToyr'},
     {id:'e39',date:'2026-11-22',type:'퀴즈',name:'성인지통계 2026년 11월 퀴즈이벤트 (한국여성정책연구원)',prize:'온라인 문화상품권 (30명·10월 회차 5,000원)',announce:'11/30 마감 후 누리집 발표',status:'응모 완료',url:'https://gsis.kwdi.re.kr/gsis/kr/event/EventView.html?q_seq=119'},
     {id:'e40',date:'2026-11-22',type:'설문',name:'국립한글박물관 2026 누리집 이용자 만족도 조사',prize:'음료 교환권 1만원 (100명)',announce:'2026-12-04',status:'응모 완료',url:'https://d2y0dq2lemx2do.cloudfront.net'},
     {id:'e41',date:'2026-11-23',type:'퀴즈',name:'괴산군장애인복지관 제3차 장애인 고용캠페인 퀴즈 (5문항)',prize:'모바일 쿠폰 (80명)',announce:'2026-12-01',status:'응모 완료',url:'https://form.naver.com/response/FETxGyPuo85'},
-    {id:'e42',date:'2026-11-23',type:'설문',name:'비짓부산 2026 홈페이지 사용자 만족도 조사',prize:'투썸플레이스 아메리카노 (50명)',announce:'2026-11-27',status:'응모 완료',url:'https://form.naver.com/response/JwZxPGkM7sY'},
-    {id:'e43',date:'2026-11-23',type:'퀴즈',name:'국민건강보험공단 간호·간병통합서비스 제대로 알기 OX 퀴즈 (정답 O/X/O/X/O)',prize:'모바일 문화상품권 1만원',announce:'2026-11-27',status:'응모 완료',url:'https://www.nhis.or.kr/nhis/etc/20261104_banner_pop01.do'},
+    {id:'e42',date:'2026-11-23',type:'설문',name:'비짓부산 2026 홈페이지 사용자 만족도 조사',prize:'투썸플레이스 아메리카노 (50명)',announce:'2026-11-27',status:'미당첨',url:'https://form.naver.com/response/JwZxPGkM7sY'},
+    {id:'e43',date:'2026-11-23',type:'퀴즈',name:'국민건강보험공단 간호·간병통합서비스 제대로 알기 OX 퀴즈 (정답 O/X/O/X/O)',prize:'모바일 문화상품권 1만원',announce:'2026-11-27',status:'미당첨',url:'https://www.nhis.or.kr/nhis/etc/20261104_banner_pop01.do'},
     {id:'e44',date:'2026-11-23',type:'설문',name:'한국원자력안전기술원 2026 SNS 만족도 조사',prize:'BHC 뿌링클+콜라 5명·배민 1만원 15~30명·메가커피 100명',announce:'2026-11-30',status:'응모 완료',url:'https://form.naver.com/response/ID2HfGrlx0M'},
     {id:'e45',date:'2026-11-23',type:'설문',name:'세종특별자치시교육청 2026 하반기 홍보 만족도 설문조사',prize:'신세계 상품권 5만원 3명·피자 10명·커피 100명 등 (113명)',announce:'2026-12-09',status:'응모 완료',url:'https://form.naver.com/response/3xmDyb8CL5p'},
     {id:'e46',date:'2026-11-23',type:'설문',name:'국립해양조사원 2026 누리집 만족도조사',prize:'햄버거 세트 기프티콘 (130명)',announce:'11/26 마감 후 공지',status:'응모 완료',url:'https://form.naver.com/response/87jxmoqZ8LA'},
@@ -1592,6 +1592,17 @@ function migrate(s){
   }
   /* v25: 새 응모 기록(e57 노사발전재단 적극행정·e58 노사발전재단 부서별 혁신·e59 생생부천 스마트 안전 퀴즈·
      e60 미추홀구시설관리공단 가치체계) 병합 — 2026-11-27 제출. 상태 변경 없음(모두 발표 대기). */
+  /* v27: 2026-11-27 발표분 미당첨 확정 — 용산구청 음주폐해 OX퀴즈(e1, 공개명단 220명에 뒷자리 8048 없음)·
+     다누리포털 만족도 조사(e21, 2026-11-27 공지 122명 마스킹 명단 불일치)·비짓부산 만족도 조사(e42, 공지 282번 50명 명단 없음)·
+     건보공단 간호·간병통합서비스 OX퀴즈(e43, 2026-11-27 공지 첨부 당첨자 150명 명단 없음),
+     그리고 부산시설공단 공공데이터 설문(e38, 개별 안내 전용·발표일 경과·연락 미수신 → 규칙상 미당첨).
+     원주시 563호(e22)·국립해양조사원(e46)·무신사 티셔츠(e30)는 아직 공지 전/확인 대기라 '응모 완료' 유지.
+     — 사용자가 직접 바꾼 상태가 있을 수 있으니 '응모 완료'일 때만 바꾼다. */
+  if(v<27){
+    s.events.forEach(function(e){
+      if(e&&(e.id==='e1'||e.id==='e21'||e.id==='e38'||e.id==='e42'||e.id==='e43')&&e.status==='응모 완료')e.status='미당첨';
+    });
+  }
   /* v24: 주식용 계좌 기본금 정정 1,000만 원 → 100만 원(국내 50만 + 미국 50만)
      — 사용자가 직접 다른 금액으로 바꿨을 수 있으니 1,000만 원(10000000)일 때만 교체한다.
      체크리스트 k2도 기본 문구 그대로일 때만 새 문구로 바꾼다(사용자가 고친 항목은 그대로). */
