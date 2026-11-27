@@ -60,6 +60,13 @@ input,textarea{font-family:var(--hand);color:var(--ink)}
 .month{font-family:var(--marker);font-size:clamp(30px,8.6vw,44px);line-height:.92;letter-spacing:.012em;margin:0;font-weight:400;color:#141412}
 .year{font-family:var(--hand);font-size:12px;color:var(--ink3);padding-bottom:4px;letter-spacing:.02em}
 .more{margin-left:auto;width:31px;height:31px;border:1px solid var(--line);border-radius:999px;display:grid;place-items:center;font-size:15px;color:var(--ink2);background:#fff;padding-bottom:2px}
+.hbtns{margin-left:auto;display:flex;align-items:flex-end;gap:6px}
+.hbtns .more{margin-left:0}
+.more.rf{padding-bottom:0;color:var(--ink2)}
+.more.rf:active{background:#f4f4f0}
+.more.rf svg{width:16px;height:16px}
+.more.rf.busy svg{animation:rfspin .8s linear infinite}
+@keyframes rfspin{to{transform:rotate(360deg)}}
 
 .bar{display:flex;align-items:center;gap:8px;margin-top:9px}
 .tabs{display:flex;align-items:center;gap:1px;font-family:var(--hand);font-size:13px}
@@ -328,7 +335,12 @@ main{flex:1;min-height:0;display:flex;flex-direction:column;margin-top:11px;padd
     <div class="mrow">
       <h1 class="month" id="monthName">NOVEMBER</h1>
       <span class="year" id="yearNum">2026</span>
-      <button class="more" id="moreBtn" aria-label="설정과 백업">⋯</button>
+      <div class="hbtns">
+        <button class="more rf" id="rfBtn" aria-label="새로고침" title="최신 화면으로 새로고침">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.4 12a8.4 8.4 0 1 1-2.6-6.1"/><path d="M20.7 3.9v4.3h-4.3"/></svg>
+        </button>
+        <button class="more" id="moreBtn" aria-label="설정과 백업">⋯</button>
+      </div>
     </div>
     <div class="bar">
       <div class="tabs" id="tabs">
@@ -983,6 +995,14 @@ document.addEventListener('keydown',function(e){
 });
 
 /* ---------------- settings ---------------- */
+$('rfBtn').addEventListener('click',function(){
+  var b=$('rfBtn'); if(b)b.classList.add('busy');
+  var url=location.pathname+'?t='+Date.now()+(location.hash||'');
+  setTimeout(function(){
+    try{ location.replace(url); }
+    catch(e){ try{ location.reload(); }catch(e2){ location.href=url; } }
+  },90);
+});
 $('moreBtn').addEventListener('click',function(){ $('setWrap').classList.add('open'); });
 $('setClose').addEventListener('click',function(){ $('setWrap').classList.remove('open'); });
 $('setWrap').addEventListener('click',function(e){ if(e.target===$('setWrap'))$('setWrap').classList.remove('open'); });

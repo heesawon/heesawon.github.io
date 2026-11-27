@@ -122,6 +122,15 @@ svg{display:block}
 }
 .upd-btn.busy .upd-ic{animation:spin360 .9s linear infinite}
 @keyframes spin360{to{transform:rotate(360deg)}}
+.rf-btn{
+  width:34px;height:34px;flex:0 0 34px;border-radius:50%;
+  display:grid;place-items:center;color:var(--ink-2);
+  border:1px solid var(--line);background:var(--paper-2);
+  transition:transform .15s,background .15s;
+}
+.rf-btn:active{transform:scale(.9);background:#F0EDE6}
+.rf-btn svg{width:16px;height:16px}
+.rf-btn.busy svg{animation:spin360 .8s linear infinite}
 
 /* ---------------- layout ---------------- */
 main{
@@ -1002,6 +1011,8 @@ body.sheet-open{overflow:hidden}
   .brand-kick{letter-spacing:.16em}
   .upd-btn{padding:0 7px;gap:3px}
   .upd-btn .upd-tx{font-size:10px}
+  .topbar-in{gap:8px}
+  .rf-btn{width:32px;height:32px;flex:0 0 32px}
 }
 @media (prefers-reduced-motion:reduce){*{animation-duration:.001s!important;transition-duration:.001s!important}}
 @media (min-width:600px){
@@ -1020,7 +1031,10 @@ body.sheet-open{overflow:hidden}
       <div class="brand-title" id="brandTitle">오늘의 부업</div>
     </div>
     <button class="upd-btn" data-act="check-update" aria-label="앱 업데이트 확인" title="업데이트 확인">
-      <span class="upd-ic" aria-hidden="true">🔄</span><span class="upd-tx">업데이트</span><span class="upd-v" id="verBadge">v19</span>
+      <span class="upd-ic" aria-hidden="true">🔄</span><span class="upd-tx">업데이트</span><span class="upd-v" id="verBadge">v26</span>
+    </button>
+    <button class="rf-btn" data-act="refresh" aria-label="새로고침" title="최신 화면으로 새로고침">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.4 12a8.4 8.4 0 1 1-2.6-6.1"/><path d="M20.7 3.9v4.3h-4.3"/></svg>
     </button>
     <button class="icon-btn" data-act="settings" aria-label="설정 및 백업">
       <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
@@ -1080,7 +1094,7 @@ body.sheet-open{overflow:hidden}
    상수 · 기본 데이터 (엑셀 1000만원_부업_관리표 + 아침 부업 루틴)
    ============================================================ */
 var KEY='bupsaeng1000.v1';
-var VERSION=25;
+var VERSION=26;
 var CHALLENGE_START='2026-11-19';
 var CHALLENGE_GOAL=10000000;
 var LV_NAMES=['루키','러너','하슬러','크루','캡틴','마스터','레전드'];
@@ -3797,10 +3811,23 @@ function restoreJSON(file){
 /* ============================ 업데이트 확인 ============================ */
 function forceReload(){
   try{
-    location.replace(location.pathname+'?v='+Date.now());
+    location.replace(location.pathname+'?v='+Date.now()+(location.hash||''));
   }catch(e){
     try{location.reload();}catch(e2){}
   }
+}
+/* 홈 화면(standalone)에서도 캐시 없이 최신 화면을 부르는 새로고침 (데이터는 localStorage에 그대로) */
+function hardRefresh(){
+  var btn=$('[data-act="refresh"]');
+  if(btn)btn.classList.add('busy');
+  var url=location.pathname+'?t='+Date.now()+(location.hash||'');
+  setTimeout(function(){
+    try{
+      location.replace(url);
+    }catch(e){
+      try{location.reload();}catch(e2){location.href=url;}
+    }
+  },90);
 }
 function readServerVersion(txt){
   var s=String(txt||'');
@@ -3900,6 +3927,7 @@ document.addEventListener('click',function(ev){
     case 'do-del-invest':delInvest();break;
     case 'settings':openSettings();break;
     case 'check-update':checkUpdate();break;
+    case 'refresh':hardRefresh();break;
     case 'close-sheet':closeSheet();break;
     case 'fab':
       if(uiTab==='check')openCheckSheet(null);
