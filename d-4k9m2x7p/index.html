@@ -804,6 +804,7 @@ function schedHTML(ds){
     var t0=times[i];
     if(nowRow===t0){
       out+='<div class="hr nowline"><span class="ht"></span><div class="hc"><span class="nowbar"><b>지금 '+hhmm(nowMin)+'</b></span></div></div>';
+      nowRow=null;
     }
     if(busy[t0]){
       var list=busy[t0];
@@ -900,16 +901,19 @@ $('main').addEventListener('input',function(e){
 });
 $('main').addEventListener('change',function(e){
   var el=e.target, sid=el.dataset&&el.dataset.slot; if(!sid)return;
+  var s=slotOf(el.dataset.date,sid); if(!s)return;
+  s.text=el.value; save();
+});
+$('main').addEventListener('focusout',function(e){
+  var el=e.target, sid=el.dataset&&el.dataset.slot; if(!sid)return;
   var ds=el.dataset.date, s=slotOf(ds,sid); if(!s)return;
-  s.text=el.value;
-  if(!el.value.trim()){
-    var d=S.days[ds];
-    if(d&&d.scheduleSlots){
-      for(var i=0;i<d.scheduleSlots.length;i++){ if(d.scheduleSlots[i].id===sid){ d.scheduleSlots.splice(i,1); break; } }
-    }
-    cleanupDay(ds); save(); render(); return;
+  if(el.value.trim()){ s.text=el.value; save(); return; }
+  var d=S.days[ds];
+  if(d&&d.scheduleSlots){
+    for(var i=0;i<d.scheduleSlots.length;i++){ if(d.scheduleSlots[i].id===sid){ d.scheduleSlots.splice(i,1); break; } }
   }
-  save();
+  cleanupDay(ds); save();
+  setTimeout(function(){ if(!$('sheet').classList.contains('open'))render(); },0);
 });
 $('main').addEventListener('keydown',function(e){
   if(e.key!=='Enter')return;
