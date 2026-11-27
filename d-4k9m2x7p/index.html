@@ -997,10 +997,11 @@ document.addEventListener('keydown',function(e){
 /* ---------------- settings ---------------- */
 $('rfBtn').addEventListener('click',function(){
   var b=$('rfBtn'); if(b)b.classList.add('busy');
-  var url=location.pathname+'?t='+Date.now()+(location.hash||'');
   setTimeout(function(){
-    try{ location.replace(url); }
-    catch(e){ try{ location.reload(); }catch(e2){ location.href=url; } }
+    try{
+      if(location.protocol==='file:'){ location.reload(); return; }
+      location.replace(location.pathname+'?t='+Date.now()+(location.hash||''));
+    }catch(e){ try{ location.reload(); }catch(e2){} }
   },90);
 });
 $('moreBtn').addEventListener('click',function(){ $('setWrap').classList.add('open'); });

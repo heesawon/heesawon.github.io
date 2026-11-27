@@ -3820,12 +3820,12 @@ function forceReload(){
 function hardRefresh(){
   var btn=$('[data-act="refresh"]');
   if(btn)btn.classList.add('busy');
-  var url=location.pathname+'?t='+Date.now()+(location.hash||'');
   setTimeout(function(){
     try{
-      location.replace(url);
+      if(location.protocol==='file:'){location.reload();return;}
+      location.replace(location.pathname+'?t='+Date.now()+(location.hash||''));
     }catch(e){
-      try{location.reload();}catch(e2){location.href=url;}
+      try{location.reload();}catch(e2){}
     }
   },90);
 }
