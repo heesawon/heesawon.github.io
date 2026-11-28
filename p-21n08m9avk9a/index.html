@@ -1094,7 +1094,7 @@ body.sheet-open{overflow:hidden}
    상수 · 기본 데이터 (엑셀 1000만원_부업_관리표 + 아침 부업 루틴)
    ============================================================ */
 var KEY='bupsaeng1000.v1';
-var VERSION=29;
+var VERSION=30;
 var CHALLENGE_START='2026-11-19';
 var CHALLENGE_GOAL=10000000;
 var LV_NAMES=['루키','러너','하슬러','크루','캡틴','마스터','레전드'];
@@ -1207,7 +1207,7 @@ var BASELINE={
     {id:'e27',date:'2026-11-21',type:'체험단',name:'후르디아 블루베리 립밤 트리오 기프트 세트',prize:'제품 무상 (20명)',announce:'2026-11-26',status:'미당첨',url:'https://shopping.naver.com/window/beauty/store/100271339/news/5003145722'},
     {id:'e28',date:'2026-11-21',type:'체험단',name:'뷰티시스 레티놀 0.8 리뉴얼 앰플 50ml',prize:'제품 무상 (25명)',announce:'2026-11-25',status:'미당첨',url:'https://shopping.naver.com/window/beauty/store/1100259839/news/5003145414'},
     {id:'e29',date:'2026-11-21',type:'체험단',name:'뷰티시스 프로틴 콜라겐 글로우 50ml',prize:'제품 무상 (25명)',announce:'2026-11-25',status:'미당첨',url:'https://shopping.naver.com/window/beauty/store/1100259839/news/5003145278'},
-    {id:'e30',date:'2026-11-22',type:'체험단',name:'무신사 · 아웃도어 프로덕츠 여성 레귤러 이지웨어 반팔 티셔츠 (화이트/S)',prize:'제품 무상 21,900원 (50명 모집·8,868명 신청)',announce:'2026-11-24',status:'응모 완료',url:'https://www.musinsa.com/preuser/events/50129'},
+    {id:'e30',date:'2026-11-22',type:'체험단',name:'무신사 · 아웃도어 프로덕츠 여성 레귤러 이지웨어 반팔 티셔츠 (화이트/S)',prize:'제품 무상 21,900원 (50명 모집·8,868명 신청)',announce:'2026-11-24',status:'미당첨',url:'https://www.musinsa.com/preuser/events/50129'},
     {id:'e31',date:'2026-11-22',type:'체험단',name:'무신사 · 립힙 롱래스팅 글로시 립 틴트 (L26 누드피치)',prize:'제품 무상 22,000원 (50명 모집·6,164명 신청)',announce:'2026-11-30',status:'응모 완료',url:'https://www.musinsa.com/preuser/events/48954'},
     {id:'e32',date:'2026-11-22',type:'체험단',name:'무신사 · 디퍼 피디알엔큐브 미들샷 2000 세럼 30ml 2EA',prize:'제품 무상 정가 92,000원 (50명·6,831명) · 당첨 시 제세공과금 약 2만원',announce:'2026-11-30',status:'응모 완료',url:'https://www.musinsa.com/preuser/events/50289'},
     {id:'e33',date:'2026-11-22',type:'체험단',name:'무신사 · 피브 스킨 베일 틴티드 비비 40g (21 라이트 베이지)',prize:'제품 무상 22,000원 (50명 모집·6,889명 신청)',announce:'2026-11-30',status:'응모 완료',url:'https://www.musinsa.com/preuser/events/50285'},
@@ -1623,6 +1623,17 @@ function migrate(s){
      신규 6건 모두 '응모 완료'(발표 대기)이고, 기존 상태(e6 당첨 포함)·수익 달력·삭제한 부업은 그대로 둔다. */
   if(v<29){
     if(!Array.isArray(s.events))s.events=[];
+  }
+  /* v30: 2026-11-28 발표분 — 무신사 아웃도어 프로덕츠 반팔 티셔츠 체험단(e30) 미당첨 확정
+     (추첨 2026-11-24 · '발표 후 영업일 4일 내 개별 알림' 조건 · 11/28까지 사용자 당첨 알림 미수신 →
+      개별 통보 전용 규칙대로 미당첨 정리. 무신사 웹 마이페이지는 Cloudflare '보안 확인 수행 중'으로 확인 불가.
+      추후 늦은 당첨 알림이 오면 '당첨'으로 수정.)
+     원주시 563호 독자퀴즈(e22)·국립해양조사원 만족도조사(e46)는 2026-11-28 기준 공지 미게시라 '응모 완료' 유지.
+     — 사용자가 직접 바꾼 상태가 있을 수 있으니 '응모 완료'일 때만 바꾼다. */
+  if(v<30){
+    s.events.forEach(function(e){
+      if(e&&e.id==='e30'&&e.status==='응모 완료')e.status='미당첨';
+    });
   }
   /* v24: 주식용 계좌 기본금 정정 1,000만 원 → 100만 원(국내 50만 + 미국 50만)
      — 사용자가 직접 다른 금액으로 바꿨을 수 있으니 1,000만 원(10000000)일 때만 교체한다.
